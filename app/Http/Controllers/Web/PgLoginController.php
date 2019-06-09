@@ -10,7 +10,7 @@ class PgLoginController extends Controller
 {
     public function login(Request $request){
     	if (Session::get('pg')) {
-            return view('web.pg.dashboard.dashboard');
+            return Redirect::to("pg/dashboard");
         }
     	return view('web.pg.auth.login');
     }
@@ -41,6 +41,8 @@ class PgLoginController extends Controller
 
                 Session::put(['pg' => $user->id]); 
                 return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+            } else {
+                    return Redirect::to("pg/login")->withFail('Please check credentials.');
             }
         } else {
             return Redirect::to("pg/login")->withFail('Please check credentials.');

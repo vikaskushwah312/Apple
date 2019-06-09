@@ -11,7 +11,7 @@ class OwnerLoginController extends Controller
 {
     public function login(Request $request){
     	if (Session::get('owner')) {
-            return view('web.owner.dashboard.dashboard');
+            return Redirect::to("owner/dashboard");
         }
     	return view('web.owner.auth.login');
     }
@@ -44,6 +44,8 @@ class OwnerLoginController extends Controller
 
                 Session::put(['owner' => $user->id]); 
                 return Redirect::to("owner/dashboard")->withSuccess('You have success fully login.');
+            } else {
+                return Redirect::to("owner/login")->withFail('Please check credentials.');
             }
         } else {
             return Redirect::to("owner/login")->withFail('Please check credentials.');
@@ -101,5 +103,10 @@ class OwnerLoginController extends Controller
 
     public function postForgotPassword(Request $request){
         
+    }
+
+    public function logout(Request $request){
+        Session()->flush();
+        return redirect('owner/login')->withSuccess('You have Successfull LogOut.');
     }
 }

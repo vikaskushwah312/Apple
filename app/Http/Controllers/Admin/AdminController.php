@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{Country,State,City,User};
 use URL,Validator,Redirect,Response,Session;
-use Auth;
+use Auth,Mail,DateTime;
+use App\Mail\SendMailable;
 
 class AdminController extends Controller
 {
@@ -92,7 +93,7 @@ class AdminController extends Controller
               return Redirect::to("admin/change-password")->withErrors($validation)->withInput();
             }else{
 
-                $data = array(  'password'  => bcrypt($request->password),
+                $data = array(  'password'  => bcrypt($request->new_password),
                             );
               
                 $upd = User::where('id',auth()->user()->id)->update($data);
@@ -124,7 +125,7 @@ class AdminController extends Controller
 
         $validation = validator::make($request->all(),[
             
-            'email'=> 'required',
+            'email'=> 'required|email',
         ]);
         if ($validation->fails()) {
           
@@ -132,10 +133,111 @@ class AdminController extends Controller
           
         }else{
             
-            $getId = User::where(array('email' => $request->email))->first(['id']);
+            $user = User::where(array('email' => $request->email,'user_type' => 1))->first();
+            Session::put(['forgot_id'=>$user->id]); 
+            
+            try{
 
+                if(!empty($user)){
+                $email = $user->email;
+                //email shut
+                $otp =  rand(1000,9999); // otp Generate
+                User::where('email',$email)->update(['otp'=>$otp,'otp_time'=>date('Y-m-d H:i')]);
+                $mail_data = [
+                                'to'        => $email,
+                                'subject'   => 'Forgot Password',
+                                'meta_data' => [    'username'=> $email,
+                                                    'otp' => $otp,
+                                                ],
+                            ];
+
+                Mail::to($email)->send(new SendMailable($mail_data));
+                
+                return Redirect::to('admin/otp')->withSuccess("Opt will send your email id.");
+            
+                } else { //email doesn't found
+
+                    return Redirect::to('admin/forgot-auth')->withFail("Email Does not exists");
+                }
+
+            } catch(Exception $e) {
+
+              echo 'Message: ' .$e->getMessage();
+            }
         }
 
+    }
+
+    /*
+    *post otp 
+    */
+    public function postOtp(Request $request){
+        
+        if($request->isMethod('post')){
+
+            $validation = validator::make($request->all(),[
+            
+            'otp'=> 'required|numeric',
+            ]);
+            if ($validation->fails()) {
+          
+                return Redirect::to("admin/otp")->withErrors($validation)->withInput();
+          
+            }else{
+
+                $otp = $request->otp;
+                $user_id = Session::get('forgot_id');
+                $data = User::where('id',$user_id)->first(['otp','otp_time']);
+
+                $date =  new DateTime($data['otp_time']);
+                $otp_time = $date->format('H:i'); //when otp was send
+                
+                $new_time = date('H:i',strtotime('+30 minutes',strtotime($otp_time))); // after 30 minutes
+                $current_time = date("H:i");
+                
+                //if otp and time true
+                if( $data['otp'] == $otp && strtotime($current_time) <= strtotime($new_time)){ 
+                  return Redirect::to("admin/forgot-password")->withSuccess('Now You can Update the password.');
+                } else {
+
+                    return Redirect::to("admin/otp")->withFail('Something went to wrong.');
+                }
+            } 
+        } else {
+
+            return view('admin.auth.login-otp');
+        }
+    }
+
+    public function forgotPassword(Request $request){ //change password
+
+        if($request->isMethod('post')){
+
+            $validation = Validator::make($request->all(),[
+            
+            'new_password'    => 'required|min:6|max:20',
+            'confirm_password'     => 'required|same:new_password|min:6|max:20',
+            ]);
+
+            if ($validation->fails()) {
+              return Redirect::to("admin/forgot-password")->withErrors($validation)->withInput();
+            }else{
+
+                $data = array(  'password'  => bcrypt($request->new_password),
+                            );
+              
+                $upd = User::where('id',Session::get('forgot_id'))->update($data);
+                if ($upd) {   
+                
+                  return Redirect::to("admin/login")->withSuccess('Password Successfull Updated.');
+                }else{
+                  return Redirect::to("admin/forgot-password")->withFail('Something went to wrong.');
+                  }
+            }
+        } else {
+
+            return view('admin.auth.chnage_forgot_password');
+        }
     }
 
     /*

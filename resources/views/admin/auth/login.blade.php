@@ -19,6 +19,7 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <script src="{{url('public/sweetalert/sweetalert.min.js')}}"></script>
         <style type="text/css">
             .error{color: red;}
         </style>
@@ -80,7 +81,31 @@
             <!-- /.login-box-body -->
         </div>
         <!-- /.login-box -->
+        @if(Session::has('success'))
+      <script type="text/javascript">
+        swal({
+            title: 'Success!',
+            text: "{{Session::get('success')}}",
+            timer: 3000,
+            type: 'success'
+        }).then((value) => {
+            //location.reload();
+        }).catch(swal.noop);
+      </script>
+  @endif
 
+  @if(Session::has('fail'))
+  <script type="text/javascript">
+    swal({
+        title: 'Oops!',
+        text: "{{Session::get('fail')}}",
+        type: 'error',
+        timer: 3000
+    }).then((value) => {
+        //location.reload();
+    }).catch(swal.noop);
+  </script>
+  @endif
         <!-- jQuery 3 -->
         <script src="{{ asset('public/admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('public/admin/jquery.validate.min.js') }}"></script>

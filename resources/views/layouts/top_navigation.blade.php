@@ -1,10 +1,8 @@
 <header class="main-header header-transparent sticky-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo" href="index.html">
-                <p style="color: red;">Logo Image</p>
-                <!-- <img class="d-block w-100" src="{{url('public/img/home1920_1000.jpg')}}" alt="logo1"> -->
-                <!-- <img src="{{url('public/img/logos/logo.jpg')}}" alt="logo1"> -->
+            <a class="navbar-brand" href="{{url('')}}">
+                <img src="{{logoImage()}}" alt="logo1" height="50px;"width=50px;>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -157,7 +155,7 @@
                     </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="{{url('owner-zone')}}">
+                        <a class="nav-link dropdown-toggle" href="{{url('owner/zone')}}">
                             Owner Zone
                         </a>
                     </li>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <title>Neer - Real Estate HTML Template</title>
+    <title>{{Config::get('constants.SITE_NAME')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -87,5 +87,5 @@
   </script>
   @endif
 
-<div class="page_loader"></div>
+<!-- <div class="page_loader" style="display: none"></div> -->
 @yield('content')

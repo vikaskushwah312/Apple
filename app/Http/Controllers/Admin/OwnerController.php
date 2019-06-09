@@ -116,7 +116,7 @@ class OwnerController extends Controller
 		        exit();
 		} else {
 			$data['title'] = "Owner List";
-			return view('admin.owner.Owner_list',$data);
+			return view('admin.owner.owner_list',$data);
 		}
     }
 }

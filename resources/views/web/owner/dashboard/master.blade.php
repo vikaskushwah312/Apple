@@ -16,7 +16,7 @@
                         <a href="dashboard.html" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="{{url('pg/messages')}}" class="nav-link">Messages</a>
+                        <a href="{{url('owner/messages')}}" class="nav-link">Messages</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="bookings.html" class="nav-link">Bookings</a>
@@ -25,7 +25,7 @@
                         <a href="my-properties.html" class="nav-link">My Properties</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="my-invoices.html" class="nav-link">My Invoices</a>
+                        <a href="{{url('owner/invoices')}}" class="nav-link">My Invoices</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="favorited-properties.html" class="nav-link">Favorited Properties</a>
@@ -45,12 +45,14 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="http://placehold.it/45x45" alt="avatar">
+                                    <img src="{{ getPrifileImage('6') }}" 
+                                        alt="avatar">
+                                        <!-- <span>{{ getPrifileImage('6') }}</span> -->
                                     My Account
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{url('pg/dashboard')}}">Dashboard</a>
-                                    <a class="dropdown-item" href="{{url('pg/messages')}}">Messages</a>
+                                    <a class="dropdown-item" href="{{url('owner/dashboard')}}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{url('owner/messages')}}">Messages</a>
                                     <a class="dropdown-item" href="bookings.html">Bookings</a>
                                     <a class="dropdown-item" href="my-profile.html">My profile</a>
                                     <a class="dropdown-item" href="index.html">Logout</a>
@@ -77,25 +79,50 @@
                     <div class="dashboard-inner">
                         <h4>Main</h4>
                         <ul>
-                            <li class="active"><a href="{{url('pg/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
-                            <li><a href="{{url('pg/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
+                            <li class="active"><a href="{{url('owner/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
+                            <li><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
                         </ul>
                         <h4>Listings</h4>
                         <ul>
                             <li><a href="my-properties.html"><i class="flaticon-apartment-1"></i>My Properties</a></li>
-                            <li><a href="my-invoices.html"><i class="flaticon-bill"></i>My Invoices</a></li>
+                            <li><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li><a href="favorited-properties.html"><i class="flaticon-heart"></i>Favorited Properties</a></li>
-                            <li><a href="submit-property.html"><i class="flaticon-plus"></i>Submit Property</a></li>
+                            <li><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                         </ul>
                         <h4>Account</h4>
                         <ul>
-                            <li><a href="{{url('pg/my-profile')}}"><i class="flaticon-people"></i>My Profile</a></li>
-                            <li><a href="{{url('pg/logout')}}"><i class="flaticon-logout"></i>Logout</a></li>
+                            <li><a href="{{url('owner/my-profile')}}"><i class="flaticon-people"></i>My Profile</a></li>
+                            <li><a href="{{url('owner/change-password')}}"><i class="flaticon-people"></i>Change Password</a></li>
+                            <li><a href="{{url('owner/logout')}}"><i class="flaticon-logout"></i>Logout</a></li>
                         </ul>
+
                     </div>
                 </div>
             </div>
-            @yield('webcontent')
+            <div class="col-lg-9 col-md-12 col-sm-12 col-pad">
+                <div class="content-area5 dashboard-content">
+                    <div class="dashboard-header clearfix">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6"><h4>{{$title}}</h4></div>
+                            <div class="col-sm-12 col-md-6">
+                                <!-- <div class="breadcrumb-nav">
+                                    <ul>
+                                        <li>
+                                            <a href="index.html">Index</a>
+                                        </li>
+                                        <li>
+                                            <a href="dashboard.html">Dashboard</a>
+                                        </li>
+                                        <li class="active">Invoice</li>
+                                    </ul>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    @yield('webcontent')
+                  <p class="sub-banner-2 text-center" style="position: absolute;">© 2018 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

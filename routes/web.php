@@ -21,6 +21,8 @@ Route::post('post-auth', 'AdminController@postAuth');
 
 Route::get('forgot-auth', 'AdminController@forgotAuth');
 Route::post('post-forgot', 'AdminController@postForgot');
+Route::any('otp','AdminController@postOtp');
+Route::any('forgot-password','AdminController@forgotPassword');
 
 /*Route::get('reset-auth', 'AdminController@resetAuth');
 Route::post('post-reset-auth', 'AdminController@postResetAuth');*/
@@ -73,6 +75,8 @@ Route::get('block_unblock/{id}/{Status}/{function}','AdminController@block_unblo
 
 /*############# My Account Urls ###########################*/
 Route::get('/','HomeController@home');
+Route::get('home-filter','HomeController@homeFilter');
+Route::get('about-us','HomeController@aboutUs');
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
@@ -84,18 +88,24 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 	Route::post('post-signup','OwnerLoginController@postSignup');
 	Route::get('forgot-password','OwnerLoginController@forgotPassword');
 	Route::post('post-forgot-password','OwnerLoginController@postForgotPassword');
-
+	
 	/*################# // Login ###################*/
 
+	######################## Owner URLS AFTER LOGIN #####################
+	Route::group(['middleware' => ['ownerLogin']], function () {
+
+		Route::get('zone','OwnerController@dashboard');
+		Route::get('dashboard','OwnerController@dashboard');
+		Route::get('messages','OwnerController@messages');
+		Route::any('my-profile','OwnerController@myProfile');
+		Route::any('change-password','OwnerController@changePassword');
+		Route::get('invoices','OwnerController@invoices');
+		Route::get('submit-property','OwnerController@submitProperty');
+		Route::get('logout','OwnerLoginController@logout');
+	/*####################  Oner-Zone #################################*/
+	});
 });
 
-######################## Owner URLS AFTER LOGIN #####################
-Route::group(['middleware' => ['ownerLogin']], function () {
-
-	Route::get('owner-zone','OwnerController@dashboard');
-	Route::get('dashboard','OwnerController@dashboard');
-/*####################  Oner-Zone #################################*/
-});
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################

@@ -7,5 +7,6 @@ return [
 	'SITE_LAST_NAME' => 'Blossom',
 	'SITE_SHORT_FIRST_NAME' => 'A',
 	'SITE_SHORT_LAST_NAME' => 'B',
-	'SITE_SHORT_NAME' => 'AB',
+	'SITE_SHORT_NAME' 	=> 'AB',
+	'PROFILE_IMAGE'		=> 'public/uploads/profile_image/',
 ];   

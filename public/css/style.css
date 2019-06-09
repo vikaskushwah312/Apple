@@ -3977,7 +3977,7 @@ footer {
 
 /** Sub Banner start **/
 .sub-banner {
-    background: rgba(0, 0, 0, 0.04) url(http://placehold.it/1920x355) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url("img/rant_160_80.jpg") top left repeat;
     background-size: cover;
     height: 355px;
     background-position: center center;

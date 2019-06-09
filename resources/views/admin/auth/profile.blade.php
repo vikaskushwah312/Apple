@@ -72,6 +72,19 @@
                 </div>
                 </div>
 
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label for="" class="col-sm-2 control-label">File input</label>
+                  <div class="col-sm-10">
+                    <input type="file" class="form-control" id="image" name="image">
+                    <p class="error help-block" id="image">
+                      @if($errors->has('image'))
+                        <i class="error"></i> {{ $errors->first('image') }}
+                      @endif
+                    </p>
+                  </div>
+                </div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">

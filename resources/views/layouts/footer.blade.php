@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="footer-item clearfix">
-                    <img href="{{url('public/img/logos/logo.png')}}" alt="logosss" class="f-logo">
+                    <img src="{{logoImage()}}" alt="logo1" height="50px;"width=50px;>
                     <div class="text">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.</p>
                     </div>
@@ -40,7 +40,7 @@
                             <a href="#">Home</a>
                         </li>
                         <li>
-                            <a href="about.html">About Us</a>
+                            <a href="{{url('about-us')}}">About Us</a>
                         </li>
                         <li>
                             <a href="services.html">Services</a>

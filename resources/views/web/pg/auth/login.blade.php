@@ -10,9 +10,8 @@
                     <!-- details -->
                     <div class="details">
                         <!-- Logo -->
-                        <a href="index.html">
-                            <span style="color:red;">Logo Image</span>
-                            <!-- <img src="img/black-logo.png" class="cm-logo" alt="black-logo"> -->
+                        <a href="{{url('')}}">
+                            <img src="{{logoImage()}}" class="cm-logo" alt="black-logo">
                         </a>
                         <!-- Name -->
                          <h3>Login as Paying Guest</h3>
