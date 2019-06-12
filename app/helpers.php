@@ -11,4 +11,16 @@ function logoImage()	{
 	return url('public/img/logos/logo.png');
 }
 
+//it will take a properte id and send url 
+function searchImage(){
+
+	return url('public/img/search1.jpg');
+}
+function searchBigImage(){
+	return url('public/img/search2.jpg');
+}
+
+function searchSmallImage(){
+	return url('public/img/search2.jpg');
+}
 ?>

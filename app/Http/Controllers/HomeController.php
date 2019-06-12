@@ -16,9 +16,15 @@ class HomeController extends Controller
     }
     public function homeFilter(Request $request){
         $data = $request->location;
-        print($data);
+        // print($data);
         return view('web.home.properte_list');
     }
+    
+    public function properteDetails(Request $request){
+
+        return view('web.home.properte_details');
+    }
+
 
     public function aboutUs(){
 
