@@ -14,13 +14,10 @@
 	                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	                            </p>
 	                            <div class="inline-search-area ml-auto mr-auto d-none d-xl-block d-lg-block">
+	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" name="any-status">
-										        <option>Any Status</option>
-										        <option>For Rent</option>
-										        <option>For Sale</option>
-										    </select>
+										    <input type="text" name="location" id="location">
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" name="all-type">
@@ -65,6 +62,7 @@
 										</div>
 	                                	
 	                                </div>
+	                                </form>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -87,7 +85,7 @@
 	        <div class="search-section-area">
 	            <div class="search-area-inner">
 	                <div class="search-contents">
-	                    <form method="GET"        >
+	                    <form method="GET">
 	                        <div class="row">
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">

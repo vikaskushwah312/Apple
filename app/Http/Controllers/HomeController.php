@@ -14,9 +14,10 @@ class HomeController extends Controller
         return view('layouts.home');
         // return view('layouts.master');
     }
-    public function homeFilter(){
-        $res = ['status'=>true,'result'=>view('layouts.home_filter')->render()];
-        return $res;
+    public function homeFilter(Request $request){
+        $data = $request->location;
+        print($data);
+        return view('web.home.properte_list');
     }
 
     public function aboutUs(){
