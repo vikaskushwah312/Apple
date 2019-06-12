@@ -87,7 +87,7 @@
 	        <div class="search-section-area">
 	            <div class="search-area-inner">
 	                <div class="search-contents">
-	                    <form method="GET">
+	                    <form method="GET"   >
 	                        <div class="row">
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
