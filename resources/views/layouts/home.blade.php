@@ -17,7 +17,34 @@
 	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <input type="text" name="location" id="location">
+										    <input type="text" class="search-fields" name="location" id="location" style="height: 54px;">
+										</div>
+										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+										    <select class="selectpicker search-fields" name="all-type">
+										        <option>All Type</option>
+										        <option>Apartments</option>
+										        <option>Shop</option>
+										        <option>Restaurant</option>
+										        <option>Villa</option>
+										    </select>
+										</div>
+										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+										    <select class="selectpicker search-fields" name="bedrooms">
+										        <option>Bedrooms</option>
+										        <option>1</option>
+										        <option>2</option>
+										        <option>3</option>
+										        <option>4</option>
+										    </select>
+										</div>
+										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+										    <select class="selectpicker search-fields" name="bathrooms">
+										        <option>Bathrooms</option>
+										        <option>1</option>
+										        <option>2</option>
+										        <option>3</option>
+										        <option>4</option>
+										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" name="location">

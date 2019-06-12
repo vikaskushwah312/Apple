@@ -15,8 +15,6 @@ class HomeController extends Controller
         // return view('layouts.master');
     }
     public function homeFilter(Request $request){
-        $data = $request->location;
-        // print($data);
         return view('web.home.properte_list');
     }
     
@@ -28,7 +26,6 @@ class HomeController extends Controller
 
     public function aboutUs(){
 
-        $data = "vikas";
         return view('web.home.about_us');
     }
 }
