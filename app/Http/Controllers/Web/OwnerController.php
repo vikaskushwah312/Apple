@@ -17,7 +17,7 @@ class OwnerController extends Controller
 
     public function messages(Request $request){
         $data['title'] = "";
-    	return view('web.owner.dashboard.messages');
+    	return view('web.owner.dashboard.messages',$data);
     }
 
     public function myProfile(Request $request){
