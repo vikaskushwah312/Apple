@@ -4,8 +4,8 @@
 <header class="main-header header-2 fixed-header">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand logo pad-0" href="index.html">
-                <img src="img/logos/black-logo.png" alt="logo">
+            <a class="navbar-brand pad-0" href="{{url('')}}">
+                <img src="{{logoImage()}}" alt="logo" height="50px;" width="50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -53,7 +53,6 @@
                         <ul>
                             <li><a href="my-properties.html"><i class="flaticon-apartment-1"></i>My Properties</a></li>
                             <li><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
-                            <li><a href="favorited-properties.html"><i class="flaticon-heart"></i>Favorited Properties</a></li>
                             <li><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                         </ul>
                         <h4>Account</h4>

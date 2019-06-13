@@ -7,7 +7,6 @@
     </form>
 </div>
 
-<script src="{{ asset('public/admin/customjs.js') }}"></script>
 <script src="{{url('public/js/popper.min.js')}}"></script>
 <script src="{{url('public/js/bootstrap.min.js')}}"></script>
 <script  src="{{url('public/js/bootstrap-submenu.js')}}"></script>
