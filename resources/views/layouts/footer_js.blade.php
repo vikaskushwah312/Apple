@@ -19,7 +19,7 @@
 <script  src="{{url('public/js/leaflet.js')}}"></script>
 <script  src="{{url('public/js/leaflet-providers.js')}}"></script>
 <script  src="{{url('public/js/leaflet.markercluster.js')}}"></script>
-<script  src="{{url('public/js/dropzone.js')}}"></script>
+<!-- <script  src="{{url('public/js/dropzone.js')}}"></script> -->
 <script  src="{{url('public/js/slick.min.js')}}"></script>
 <script  src="{{url('public/js/jquery.filterizr.js')}}"></script>
 <script  src="{{url('public/js/jquery.magnific-popup.min.js')}}"></script>

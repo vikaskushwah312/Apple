@@ -34,7 +34,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" type="text/css" href="{{url('public/css/ie10-viewport-bug-workaround.css')}}">
 
-    <script src="{{ asset('public/admin/bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-2.2.0.min.js') }}"></script>
     <script src="{{ asset('public/admin/jquery.validate.min.js') }}"></script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script  src="{{url('public/js/ie8-responsive-file-warning.js')}}"></script><![endif]-->

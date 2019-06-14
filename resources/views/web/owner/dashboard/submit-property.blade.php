@@ -1,4 +1,6 @@
 @extends('web.owner.dashboard.master')
+@section('css')
+@endsection
 @section('webcontent')
 <div class="submit-address dashboard-list">
     <h4 class="bg-grea-3">Basic Information</h4>
@@ -87,6 +89,19 @@
             <div class="col-lg-12">
                 <div id="myDropZone" class="dropzone dropzone-design">
                     <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+                    
+                    <div class="dz-preview dz-processing dz-error dz-complete dz-image-preview">
+                        <div class="">
+                            <img data-dz-thumbnail="" alt="home1920_1000.jpg" src="{{logoImage()}}" width="120px;" height="120px;">
+                            <!-- https://bootsnipp.com/snippets/2eNKz -->
+                        </div>
+                        <div class="dz-details">
+                            <div class="dz-filename"><span data-dz-name="">home1920_1000.jpg</span>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -190,5 +205,16 @@
     </form>
 </div>
 
-    
 @stop
+@section('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('body').on('click','.dz-success-mark',function(){
+            alert("vikas11");
+        });
+        $('#button1').on('click',function(){
+            alert("vikas");
+        })
+    })
+</script>
+@endsection
