@@ -99,7 +99,9 @@ class OwnerController extends Controller
     public function submitProperty(Request $request){
 
         if ($request->isMethod('post')) {
-        
+            echo "string";
+            $data = $request->file('image');
+            print_r($data);die;
         } else {
             
             $data['title'] = "Submit Property";

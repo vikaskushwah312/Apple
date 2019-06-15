@@ -101,8 +101,12 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		Route::any('my-profile','OwnerController@myProfile');
 		Route::any('change-password','OwnerController@changePassword');
 		Route::get('invoices','OwnerController@invoices');
-		Route::get('submit-property','OwnerController@submitProperty');
+		Route::any('submit-property','OwnerController@submitProperty');
 		Route::get('logout','OwnerLoginController@logout');
+
+		///propertey
+		// Route::post('submit-property','OwnerController@submitProperty');
+		
 	/*####################  Oner-Zone #################################*/
 	});
 });
