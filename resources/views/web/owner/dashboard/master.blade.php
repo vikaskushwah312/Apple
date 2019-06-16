@@ -51,7 +51,7 @@
                         </ul>
                         <h4>Listings</h4>
                         <ul>
-                            <li><a href="my-properties.html"><i class="flaticon-apartment-1"></i>My Properties</a></li>
+                            <li><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
                             <li><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                         </ul>

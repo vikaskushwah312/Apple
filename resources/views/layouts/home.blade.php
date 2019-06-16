@@ -17,20 +17,11 @@
 	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <input type="text" class="search-fields" name="location" id="location" style="height: 54px;" placeholder="Location">
+										    <input type="text" class="selectpicker search-fields" name="location" id="location" style="height: 54px;" placeholder="Location">
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" name="all-type">
-										        <option>All Type</option>
-										        <option>Apartments</option>
-										        <option>Shop</option>
-										        <option>Restaurant</option>
-										        <option>Villa</option>
-										    </select>
-										</div>
-										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" name="bedrooms">
-										        <option>Bedrooms</option>
+										    <select class="selectpicker search-fields" id="share_bed" name="share_bed">
+										        <option>Sharing</option>
 										        <option>1</option>
 										        <option>2</option>
 										        <option>3</option>
@@ -38,8 +29,8 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" name="bathrooms">
-										        <option>Bathrooms</option>
+										    <select class="selectpicker search-fields" id="room" name="room">
+										        <option>Rooms</option>
 										        <option>1</option>
 										        <option>2</option>
 										        <option>3</option>
@@ -47,12 +38,12 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" name="location">
-										        <option>location</option>
-										        <option>United States</option>
-										        <option>American Samoa</option>
-										        <option>Belgium</option>
-										        <option>Canada</option>
+										    <select class="selectpicker search-fields" id="bed" name="bed">
+										        <option>Bed</option>
+										        <option>1</option>
+										        <option>2</option>
+										        <option>3</option>
+										        <option>4</option>
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">

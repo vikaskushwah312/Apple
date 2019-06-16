@@ -104,6 +104,7 @@ class OwnerController extends Controller
              $validation = Validator::make($request->all(),[
                 'title'    => 'required',
                 'price'    => 'required',
+                'type'    => 'required',
                 'gender'    => 'required',
                 'room'      => 'required',
                 'share_bed' => 'required',
@@ -125,8 +126,9 @@ class OwnerController extends Controller
                 3.property id insert into featurs tabel*/
 
                 $data = array(  'title'     => $request->title,
-                                'status'     => 'For Sale', 
-                                'price'        => $request->price, 
+                                'status'     => 'For Sale',
+                                'price'        => $request->price,
+                                'type'        => $request->type,
                                 'area'         => $request->area, 
                                 'gender'       => $request->gender, 
                                 'room'         => $request->room, 
@@ -191,5 +193,12 @@ class OwnerController extends Controller
     public function invoices(Request $request){
     	$data['title'] =  "Invoice";
     	return view('web.owner.dashboard.invoices',$data);
+    }
+
+    public function myProperties(Request $request){
+
+        $data['title'] =  "My Properties";
+        return view('web.owner.dashboard.my_properties',$data);
+
     }
 }

@@ -103,6 +103,21 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
+                        <label>Ac/Non-Ac<strong class="required">*</strong></label>
+                        <select class="selectpicker search-fields" id="type" name="type" required>
+                            <option value="">Select Type</option>
+                            <option value="Ac">Ac</option>
+                            <option value="Non-Ac">Non-Ac</option>
+                        </select>
+                        <p class="error help-block" id="gender">
+                          @if($errors->has('gender'))
+                            <i class="error"></i> {{ $errors->first('gender') }}
+                          @endif
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
                         <label>Area(Sqft) <strong class="required"></strong></label>
                         <input type="text" class="input-text" id="area" name="area" value="{{old('area')}}" placeholder="SqFt">
                         <p class="error help-block" id="area">
