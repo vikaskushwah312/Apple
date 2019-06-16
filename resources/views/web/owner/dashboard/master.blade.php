@@ -55,12 +55,12 @@
                             <li><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                         </ul>
-                        <h4>Account</h4>
-                        <ul>
-                            <li><a href="{{url('owner/my-profile')}}"><i class="flaticon-people"></i>My Profile</a></li>
-                            <li><a href="{{url('owner/change-password')}}"><i class="flaticon-people"></i>Change Password</a></li>
-                            <li><a href="{{url('owner/logout')}}"><i class="flaticon-logout"></i>Logout</a></li>
-                        </ul>
+                       <!--  <h4>Account</h4>
+                       <ul>
+                           <li><a href="{{url('owner/my-profile')}}"><i class="flaticon-people"></i>My Profile</a></li>
+                           <li><a href="{{url('owner/change-password')}}"><i class="flaticon-people"></i>Change Password</a></li>
+                           <li><a href="{{url('owner/logout')}}"><i class="flaticon-logout"></i>Logout</a></li>
+                       </ul> -->
 
                     </div>
                 </div>
