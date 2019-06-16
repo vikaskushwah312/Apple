@@ -65,6 +65,11 @@
 .container {
     padding-top: 50px;
 }
+.required{
+    color: red;
+    font-size: 20px;
+}
+
     </style>
 @endsection
 @section('webcontent')
@@ -76,78 +81,148 @@
             <div class="row pad-20">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Property Title</label>
-                        <input type="text" class="input-text" name="your name" placeholder="Property Title">
+                        <label>Property Title <strong class="required">*</strong></label>
+                        <input type="text" class="input-text" id="title" name="title" placeholder="Property Title" value="{{old('title')}}" required>
+                        <p class="error help-block" id="title">
+                          @if($errors->has('title'))
+                            <i class="error"></i> {{ $errors->first('title') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Status</label>
-                        <select class="selectpicker search-fields" name="for-sale">
-                            <option>For Sale</option>
-                            <option>For Rent</option>
+                        <label>Price <strong class="required">*</strong></label>
+                        <input type="text" class="input-text" id="price" name="price" placeholder="Price" value="{{old('price')}}" required>
+                        <p class="error help-block" id="price">
+                          @if($errors->has('price'))
+                            <i class="error"></i> {{ $errors->first('price') }}
+                          @endif
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label>Area(Sqft) <strong class="required"></strong></label>
+                        <input type="text" class="input-text" id="area" name="area" value="{{old('area')}}" placeholder="SqFt">
+                        <p class="error help-block" id="area">
+                          @if($errors->has('area'))
+                            <i class="error"></i> {{ $errors->first('area') }}
+                          @endif
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label>Girls/Boys <strong class="required">*</strong></label>
+                        <select class="selectpicker search-fields" id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Girls">Girls</option>
+                            <option value="Boys">Boys</option>
+                            <option value="Both">Both</option>
                         </select>
+                        <p class="error help-block" id="gender">
+                          @if($errors->has('gender'))
+                            <i class="error"></i> {{ $errors->first('gender') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" class="input-text" name="your name" placeholder="USD">
+                        <label>Rooms <strong class="required">*</strong></label>
+                        <input type="number" class="input-text" id="room" name="room" placeholder="Rooms" required value="{{old('room')}}">
+                        <p class="error help-block" id="room">
+                          @if($errors->has('room'))
+                            <i class="error"></i> {{ $errors->first('room') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Area/Location</label>
-                        <input type="text" class="input-text" name="your name" placeholder="SqFt">
+                        <label>Sharing <strong class="required">*</strong></label>
+                        <input type="number" class="input-text" id="share_bed" name="share_bed" placeholder="Sharing" value="{{old('share_bed')}}" required>
+                        <p class="error help-block" id="share_bed">
+                          @if($errors->has('share_bed'))
+                            <i class="error"></i> {{ $errors->first('share_bed') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Rooms</label>
-                        <select class="selectpicker search-fields" name="1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                        <label>Bed <strong class="required">*</strong></label>
+                        <input type="number" class="input-text" id="bed" name="bed" placeholder="Bed" value="{{old('bed')}}" required>
+                        <p class="error help-block" id="bed">
+                          @if($errors->has('bed'))
+                            <i class="error"></i> {{ $errors->first('bed') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label>Bathroom</label>
-                        <select class="selectpicker search-fields" name="1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+                        <label>BathRooms <strong class="required">*</strong></label>
+                        <input type="number" class="input-text" id="bathroom" name="bathroom" placeholder="BathRooms" value="{{old('bathroom')}}" required>
+                        <p class="error help-block" id="bathroom">
+                          @if($errors->has('bathroom'))
+                            <i class="error"></i> {{ $errors->first('bathroom') }}
+                          @endif
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label>Kitchen <strong class="required">*</strong></label>
+                        <input type="number" class="input-text" id="kitchen" name="kitchen" placeholder="Kitchen" value="{{old('kitchen')}}" required>
+                        <p class="error help-block" id="kitchen">
+                          @if($errors->has('kitchen'))
+                            <i class="error"></i> {{ $errors->first('kitchen') }}
+                          @endif
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <h4 class="bg-grea-3">Location</h4>
+        <h4 class="bg-grea-3">Location </h4>
         <div class="row pad-20">
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" class="input-text" name="address"  placeholder="Address">
+                    <label>Address <strong class="required">*</strong></label>
+                    <input type="text" class="input-text" id="address" name="address"  placeholder="Address" value="{{old('address')}}" required>
+                    <p class="error help-block" id="address">
+                      @if($errors->has('address'))
+                        <i class="error"></i> {{ $errors->first('address') }}
+                      @endif
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>State</label>
-                    <select class="selectpicker search-fields" name="choose-state">
+                    <select class="selectpicker search-fields" id="state" name="state">
                         <option>Choose State</option>
-                        <option>Alabama</option>
-                        <option>California</option>
-                        <option>Florida</option>
+                        @foreach($state as $s)
+                            <option value="{{$s->id}}">{{$s->state_name}}</option>
+                        @endforeach
                     </select>
+                    <p class="error help-block" id="state">
+                      @if($errors->has('state'))
+                        <i class="error"></i> {{ $errors->first('state') }}
+                      @endif
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Postal Code</label>
-                    <input type="text" class="input-text" name="zip"  placeholder="Postal Code">
+                    <input type="text" class="input-text" id="postal_code" name="postal_code" value="{{old('postal_code')}}"  placeholder="Postal Code">
+                    <p class="error help-block" id="postal_code">
+                      @if($errors->has('postal_code'))
+                        <i class="error"></i> {{ $errors->first('postal_code') }}
+                      @endif
+                    </p>
                 </div>
             </div>
         </div>
@@ -155,8 +230,13 @@
         <div class="container">
             <!-- <input type="file" id="image" name="image" style="" class="form-control" multiple> -->
             <fieldset class="form-group">
-                <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image</a>
-                <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="">
+                <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image<strong class="required">*</strong></a>
+                <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
+                <p class="error help-block" id="image">
+                  @if($errors->has('image'))
+                    <i class="error"></i> {{ $errors->first('image') }}
+                  @endif
+                </p>
             </fieldset>
             <div class="preview-images-zone">
                 <div class="row col-sm-12" id="image_append">
@@ -164,75 +244,24 @@
                 </div>
             </div>
         </div>
-        <h4 class="bg-grea-3">Detailed Information</h4>
+        <h4 class="bg-grea-3">Detailed Information <strong class="required">*</strong></h4>
         <div class="row pad-20">
             <div class="col-lg-12">
-                <textarea class="input-text" name="message" placeholder="Detailed Information"></textarea>
+                <textarea class="input-text" id="description" name="description" placeholder="Detailed Information" required="" value="{{old('description')}}"></textarea>
+                <p class="error help-block" id="description">
+                  @if($errors->has('description'))
+                    <i class="error"></i> {{ $errors->first('description') }}
+                  @endif
+                </p>
             </div>
         </div>
         <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox1" type="checkbox">
-                    <label for="checkbox1">
+                    <input id="features" type="checkbox" name="features">
+                    <label for="features">
                         Free Parking
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox2" type="checkbox">
-                    <label for="checkbox2">
-                        Air Condition
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox4" type="checkbox">
-                    <label for="checkbox4">
-                        Swimming Pool
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox5" type="checkbox">
-                    <label for="checkbox5">
-                        Laundry Room
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox7" type="checkbox">
-                    <label for="checkbox7">
-                        Central Heating
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox8" type="checkbox">
-                    <label for="checkbox8">
-                        Alarm
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox3" type="checkbox">
-                    <label for="checkbox3">
-                        Places to seat
-                    </label>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="checkbox6" type="checkbox">
-                    <label for="checkbox6">
-                        Window Covering
                     </label>
                 </div>
             </div>
@@ -242,19 +271,34 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="input-text" name="name" placeholder="Name">
+                    <input type="text" class="input-text" id="name" name="name" placeholder="Name" required="" value="{{old('name')}}">
+                    <p class="error help-block" id="name">
+                      @if($errors->has('name'))
+                        <i class="error"></i> {{ $errors->first('name') }}
+                      @endif
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="input-text" name="email" placeholder="Email">
+                    <input type="email" class="input-text" id="email" name="email" placeholder="Email" required="" value="{{old('email')}}">
+                    <p class="error help-block" id="email">
+                      @if($errors->has('email'))
+                        <i class="error"></i> {{ $errors->first('email') }}
+                      @endif
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Phone (optional)</label>
-                    <input type="text" class="input-text" name="phone"  placeholder="Phone">
+                    <input type="text" class="input-text" id="phone" name="phone"  placeholder="Phone" required="" value="{{old('phone')}}">
+                    <p class="error help-block" id="phone">
+                      @if($errors->has('phone'))
+                        <i class="error"></i> {{ $errors->first('phone') }}
+                      @endif
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12">

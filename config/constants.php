@@ -9,4 +9,5 @@ return [
 	'SITE_SHORT_LAST_NAME' => 'B',
 	'SITE_SHORT_NAME' 	=> 'AB',
 	'PROFILE_IMAGE'		=> 'public/uploads/profile_image/',
+	'Gallery_Image'		=> 'public/uploads/gallery_image/',
 ];   
