@@ -16,14 +16,14 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ getPrifileImage('6') }}" 
+                                    <img src="{{ getPrifileImage(Auth::id()) }}" 
                                         alt="avatar">
                                         <!-- <span>{{ getPrifileImage('6') }}</span> -->
                                     My Account
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{url('owner/dashboard')}}">Dashboard</a>
-                                    <a class="dropdown-item" href="{{url('owner/messages')}}">Messages</a>
+                                    <!-- <a class="dropdown-item" href="{{url('owner/dashboard')}}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{url('owner/messages')}}">Messages</a> -->
                                     <a class="dropdown-item" href="{{url('owner/my-profile')}}">My profile</a>
                                     <a class="dropdown-item" href="{{url('owner/logout')}}">Logout</a>
                                 </div>

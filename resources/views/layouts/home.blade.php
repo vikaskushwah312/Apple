@@ -39,11 +39,8 @@
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="bed" name="bed">
-										        <option>Bed</option>
-										        <option>1</option>
-										        <option>2</option>
-										        <option>3</option>
-										        <option>4</option>
+										        <option value="Ac">Ac</option>
+										        <option value="Non-Ac">Non-Ac</option>
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">

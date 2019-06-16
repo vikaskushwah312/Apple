@@ -270,7 +270,7 @@
                 </p>
             </div>
         </div>
-        <h4 class="bg-grea-3">Features (optional)</h4>
+        <!-- <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="checkbox checkbox-theme checkbox-circle">
@@ -280,7 +280,7 @@
                     </label>
                 </div>
             </div>
-        </div>
+        </div> -->
         <h4 class="bg-grea-3">Contact Details</h4>
         <div class="row pad-20">
             <div class="col-lg-4 col-md-4 col-sm-12">
