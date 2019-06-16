@@ -37,12 +37,12 @@
                     <div class="f-border"></div>
                     <ul class="links">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="{{url('')}}">Home</a>
                         </li>
                         <li>
                             <a href="{{url('about-us')}}">About Us</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="services.html">Services</a>
                         </li>
                         <li>
@@ -50,7 +50,7 @@
                         </li>
                         <li>
                             <a href="properties-details.html">Properties Details</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
