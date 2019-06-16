@@ -89,7 +89,7 @@ class OwnerLoginController extends Controller
           
           	$insert = User::insertGetId($data);
             if ($insert) {	            
-              return Redirect::to("owner/login")->withSuccess('You have Successfull Registered.');
+              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
               }
@@ -107,6 +107,6 @@ class OwnerLoginController extends Controller
 
     public function logout(Request $request){
         Session()->flush();
-        return redirect('owner/login')->withSuccess('You have Successfull LogOut.');
+        return redirect('login')->withSuccess('You have Successfull LogOut.');
     }
 }

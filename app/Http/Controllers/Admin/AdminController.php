@@ -114,7 +114,7 @@ class AdminController extends Controller
     public function logout() {
 
         Session()->flush();
-        return redirect('admin/login');
+        return redirect('login');
     }
     //forgot password
     public function forgotAuth(Request $request){

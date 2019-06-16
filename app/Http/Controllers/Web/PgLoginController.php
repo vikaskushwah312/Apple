@@ -88,7 +88,7 @@ class PgLoginController extends Controller
 
           	$insert = User::insertGetId($data);
             if ($insert) {	            
-              return Redirect::to("pg/login")->withSuccess('You have Successfull Registered.');
+              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("pg/signup")->withFail('Something went to wrong.');
               }
@@ -106,6 +106,6 @@ class PgLoginController extends Controller
 
     public function logout(Request $request){
         Session()->flush();
-        return redirect('pg/login')->withSuccess('You have Successfull LogOut.');
+        return redirect('login')->withSuccess('You have Successfull LogOut.');
     }
 }

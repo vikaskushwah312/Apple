@@ -79,6 +79,9 @@ Route::get('home-filter','HomeController@homeFilter');
 Route::get('properte-details','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
 
+//log in for all in one 
+Route::any('login','HomeController@login');
+
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
 Route::namespace('Web')->prefix('owner')->group(function(){

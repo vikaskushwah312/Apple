@@ -11,8 +11,8 @@
                     <!-- details -->
                     <div class="details">
                         <!-- Logo-->
-                        <a href="index.html">
-                            <img src="img/black-logo.png" class="cm-logo" alt="black-logo">
+                        <a href="{{url('')}}">
+                            <img src="{{logoImage()}}" alt="logo1" height="50px;"width=50px;>
                         </a>
                         <!-- Name -->
                         <h3>Create an account for Owner </h3>
@@ -76,7 +76,7 @@
                     </div>
                     <!-- Footer -->
                     <div class="footer">
-                        <span>Already a member? <a href="{{url('owner/login')}}">Login here</a></span>
+                        <span>Already a member? <a href="{{url('login')}}">Login here</a></span>
                     </div>
                 </div>
                 <!-- Form content box end -->

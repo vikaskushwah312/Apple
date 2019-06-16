@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\{User};
+use Validator,Redirect,Session;
 
 class HomeController extends Controller
 {
@@ -27,5 +29,54 @@ class HomeController extends Controller
     public function aboutUs(){
 
         return view('web.home.about_us');
+    }
+
+    public function login(Request $request){
+
+        if($request->isMethod('post')){ //post method
+
+            $validator = Validator::make($request->all(),[
+     
+                'email'         => 'required',
+                'password'      => 'required',
+                
+            ]); 
+            if($validator->fails()){
+
+                return Redirect::to("login")->withInput()->withErrors($validator);
+                
+            } else {
+                $credentials = array(
+
+                    'email'=> $request->email,
+                    'password' => $request->password );
+
+                if (auth('user')->attempt($credentials)) {
+
+                    $user = auth('user')->user();
+                    if($user->user_type == '2'){ // If user is owner 
+
+                        Session::put(['owner' => $user->id]); 
+                        return Redirect::to("owner/dashboard")->withSuccess('You have success fully login.');
+
+                    } elseif($user->user_type == '3'){ // If user is Paying uest
+                        Session::put(['pg' => $user->id]); 
+                        return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+                        
+                    } elseif($user->user_type == '1'){ // If user is owner 
+                        Session::put(['id' => $user->id]);  
+                        # Redirect to dashboard
+                        return redirect()->intended('admin/dashboard');
+                    }
+
+                } else {
+                    return Redirect::to("owner/login")->withFail('Please check credentials.');
+                } 
+
+            }
+
+        } else { //get mehtod
+            return view('web.home.login');
+        }
     }
 }
