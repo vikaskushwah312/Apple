@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand pad-0" href="{{url('')}}">
-                <img src="{{logoImage()}}" alt="logo" height="50px;" width="50px;">
+                <img src="{{logoImage(auth('user')->user()->id)}}" alt="logo" height="50px;" width="50px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
                         <li>
                             <div class="dropdown btns">
                                 <a class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ getPrifileImage(Auth::id()) }}" 
+                                    <img src="{{ getPrifileImage(auth('user')->user()->id) }}" 
                                         alt="avatar">
                                         <!-- <span>{{ getPrifileImage('6') }}</span> -->
                                     My Account
