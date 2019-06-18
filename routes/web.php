@@ -106,6 +106,8 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		Route::get('invoices','OwnerController@invoices');
 		Route::any('submit-property','OwnerController@submitProperty');
 		Route::any('my-properties','OwnerController@myProperties');
+		Route::any('my-properties/edit/{id}','OwnerController@myPropertiesEdit');
+		Route::any('property-details','OwnerController@PropertyDetails');
 		Route::get('logout','OwnerLoginController@logout');
 
 		///propertey

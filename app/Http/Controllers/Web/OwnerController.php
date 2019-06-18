@@ -195,10 +195,35 @@ class OwnerController extends Controller
     	return view('web.owner.dashboard.invoices',$data);
     }
 
+    /*
+    *purpose : To show the list of my properties
+    */
     public function myProperties(Request $request){
 
         $data['title'] =  "My Properties";
+        $data['property'] = Property::where('p_status','Active')->get();
         return view('web.owner.dashboard.my_properties',$data);
+    }
 
+    public function myPropertiesEdit(Request $request,$id){
+        
+        $data['title'] =  "My Properties Update";
+        
+        if($request->isMethod('post')){ //post method
+
+        } else { //Get method
+
+            $data['property_edit'] = Property::with('cop')->where('id',$id)->first();
+            $data['state'] = State::where('status','Active')->get();
+            // $phone = Property::find(1)->cop;
+            // print_r($data['property_edit']);die;
+            return view('web.owner.dashboard.my_properties_edit',$data);
+        }
+
+
+    }
+    public function PropertyDetails(Request $request){
+         $data['title'] =  "Properties Detail";
+        return view('web.owner.dashboard.properte_details',$data);
     }
 }
