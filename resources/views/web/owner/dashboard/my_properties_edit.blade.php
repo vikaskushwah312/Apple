@@ -260,25 +260,25 @@
         <div class="container">
             <!-- <input type="file" id="image" name="image" style="" class="form-control" multiple> -->
             <fieldset class="form-group">
-                <input type="file" id="image" name="image" class="" multiple="" required>
-                <p class="error help-block" id="image">
-                  @if($errors->has('image'))
-                    <i class="error"></i> {{ $errors->first('image') }}
-                  @endif
-                </p>
-            </fieldset>
-
-            <fieldset class="form-group">
                 <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image<strong class="required">*</strong></a>
                 <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
+
                 <p class="error help-block" id="image">
                   @if($errors->has('image'))
                     <i class="error"></i> {{ $errors->first('image') }}
                   @endif
                 </p>
             </fieldset>
-            <div class="preview-images-zone">
+            <div class="preview-images-zone" >
                 <div class="row col-sm-12" id="image_append">
+                    @foreach($image_gallery as $img)
+                    <div class="col-lg-2 col-md-2 preview-image preview-show-{{$img->id}} ">
+                        <div class="close_image image-cancel" data-no="{{$img->id}}">x</div>
+                        <div class="image-zone">
+                            <img id="image-num" src="{{url('public/uploads/gallery_image').'/'.$img->image}}" width="150px;" height="150px;">
+                        </div>
+                    </div>
+                    @endforeach
                     <!-- append preview images -->
                 </div>
             </div>
@@ -310,7 +310,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="input-text" id="name" name="name" placeholder="Name" required="" value="{{ $property_edit->name}}">
+                    <input type="text" class="input-text" id="name" name="name" placeholder="Name" required="" value="{{ $property_edit['cop']->name}}">
                     <p class="error help-block" id="name">
                       @if($errors->has('name'))
                         <i class="error"></i> {{ $errors->first('name') }}
@@ -321,7 +321,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="input-text" id="email" name="email" placeholder="Email" required="" value="{{ $property_edit->email}}">
+                    <input type="email" class="input-text" id="email" name="email" placeholder="Email" required="" value="{{ $property_edit['cop']->email}}">
                     <p class="error help-block" id="email">
                       @if($errors->has('email'))
                         <i class="error"></i> {{ $errors->first('email') }}
@@ -332,7 +332,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Phone (optional)</label>
-                    <input type="text" class="input-text" id="phone" name="phone"  placeholder="Phone" required="" value="{{ $property_edit->phone}}" >
+                    <input type="text" class="input-text" id="phone" name="phone"  placeholder="Phone" required="" value="{{ $property_edit['cop']->phone}}" >
                     <p class="error help-block" id="phone">
                       @if($errors->has('phone'))
                         <i class="error"></i> {{ $errors->first('phone') }}

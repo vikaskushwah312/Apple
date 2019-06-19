@@ -244,14 +244,14 @@
         <h4 class="bg-grea-3">Property Gallery</h4>
         <div class="container">
             <!-- <input type="file" id="image" name="image" style="" class="form-control" multiple> -->
-            <fieldset class="form-group">
+            <!-- <fieldset class="form-group">
                 <input type="file" id="image" name="image" class="" multiple="" required>
                 <p class="error help-block" id="image">
                   @if($errors->has('image'))
                     <i class="error"></i> {{ $errors->first('image') }}
                   @endif
                 </p>
-            </fieldset>
+            </fieldset> -->
 
             <fieldset class="form-group">
                 <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image<strong class="required">*</strong></a>

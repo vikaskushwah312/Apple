@@ -201,7 +201,9 @@ class OwnerController extends Controller
     public function myProperties(Request $request){
 
         $data['title'] =  "My Properties";
-        $data['property'] = Property::where('p_status','Active')->get();
+        $data['property'] = Property::with('imgGallery')->where('p_status','Active')->orderBy('created_at','desc')->get();
+
+        // print_r($data['property'][0]['imgGallery']);die();
         return view('web.owner.dashboard.my_properties',$data);
     }
 
@@ -213,7 +215,8 @@ class OwnerController extends Controller
 
         } else { //Get method
 
-            $data['property_edit'] = Property::with('cop')->where('id',$id)->first();
+            $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
+            $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
             $data['state'] = State::where('status','Active')->get();
             // $phone = Property::find(1)->cop;
             // print_r($data['property_edit']);die;
