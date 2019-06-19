@@ -17,10 +17,10 @@
 	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <input type="text" class="selectpicker search-fields" name="location" id="location" style="height: 54px;" placeholder="Location">
+										    <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;" placeholder="Location">
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" id="share_bed" name="share_bed">
+										    <select class="selectpicker search-fields" id="share_bed" name="share_bed" style="text-align: center;">
 										        <option>Sharing</option>
 										        <option>1</option>
 										        <option>2</option>
@@ -29,7 +29,7 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" id="room" name="room">
+										    <select class="selectpicker search-fields" id="room" name="room" >
 										        <option>Rooms</option>
 										        <option>1</option>
 										        <option>2</option>

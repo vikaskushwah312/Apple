@@ -1654,7 +1654,8 @@ input[type=checkbox]:checked + label:before {
 
 .bootstrap-select .dropdown-toggle .filter-option-inner {
     overflow: hidden;
-    font-size: 13px;
+    /*font-size: 13px;*/
+    text-align: center;
 }
 
 .bootstrap-select .dropdown-menu li a.active:hover .text {
