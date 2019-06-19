@@ -75,7 +75,7 @@
 @section('webcontent')
 <div class="submit-address dashboard-list">
     <h4 class="bg-grea-3">Basic Information</h4>
-    <form method="post" action="{{url('my-properties/edit/'.$property_edit->id)}}" id="submit_property" name="submit_property" enctype="multipart/form-data">
+    <form method="post" action="{{url('owner/my-properties/edit/'.$property_edit->id)}}" id="submit_property" name="submit_property" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="search-contents-sidebar">
             <div class="row pad-20">

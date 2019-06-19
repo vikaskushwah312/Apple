@@ -213,13 +213,92 @@ class OwnerController extends Controller
         
         if($request->isMethod('post')){ //post method
 
+            $validation = Validator::make($request->all(),[
+                'title'    => 'required',
+                'price'    => 'required',
+                'type'    => 'required',
+                'gender'    => 'required',
+                'room'      => 'required',
+                'share_bed' => 'required',
+                'bed'      => 'required',
+                'bathroom' => 'required',
+                'kitchen'  => 'required',
+                'address'  => 'required',
+                'image'    => 'required',
+                'name'     => 'required',
+                'email'    => 'required',
+                'phone'    => 'required',
+            ]);
+
+            if ($validation->fails()) {
+              return Redirect::to("owner/my-properties/edit/$id")->withErrors($validation)->withInput();
+            }else{
+
+                /*1 Image insert 
+                2. then image id insert into propertey
+                3.property id insert into featurs tabel*/
+
+                $data = array(  'title'     => $request->title,
+                                'status'     => 'For Sale',
+                                'price'        => $request->price,
+                                'type'        => $request->type,
+                                'area'         => $request->area, 
+                                'gender'       => $request->gender, 
+                                'room'         => $request->room, 
+                                'share_bed'    => $request->share_bed, 
+                                'bed'         => $request->bed, 
+                                'bathroom'     => $request->bathroom, 
+                                'kitchen'      => $request->kitchen, 
+                                'address'      => $request->address,
+                                'state'      => $request->state,
+                                'postal_code'  => $request->postal_code, 
+                                'description'  => $request->description, 
+                           );
+          
+                $update = Property::where('id',$id)->update($data);
+                if ($update) {  //if properte insert                
+                    //now insert the images GalleryImage
+                    // $data = $request->file('image');
+                    // print_r($data);die;
+                    if ($files = $request->file('image')) {
+                        GalleryImage::where('property_id',$id)->delete();
+                        foreach($files as $file){
+                            $destinationPath = Config::get('constants.Gallery_Image');
+                            $name=rand(11111, 99999) . $file->getClientOriginalName();
+                            $file->move($destinationPath,$name);
+
+                            $imageData = array(
+                                    'property_id' => $id, //propertey id
+                                    'image' => $name,
+                                    'created_at'    => date('Y-m-d H:i:s'),
+                                );
+                            GalleryImage::insertGetId($imageData);
+                        }
+
+                    } //images
+
+                    //Now Insert the Contact Details contact_of_person
+                    $contactData = array(
+                                'property_id' => $id, //propertey id
+                                'name'=> $request->name,
+                                'email'=> $request->email,
+                                'phone'=> $request->phone,
+                    );
+                    ContactOfPerson::where('property_id',$id)->update($contactData);
+                    
+                  return Redirect::to("owner/submit-property")->withSuccess('You have Successfull Properte Updated.');
+                }else{
+                  return Redirect::to("owner/submit-property")->withFail('Something went to wrong.');
+                  }
+
+            }
+
+
         } else { //Get method
 
             $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
             $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
             $data['state'] = State::where('status','Active')->get();
-            // $phone = Property::find(1)->cop;
-            // print_r($data['property_edit']);die;
             return view('web.owner.dashboard.my_properties_edit',$data);
         }
 

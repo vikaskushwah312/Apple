@@ -75,7 +75,7 @@
 @section('webcontent')
 <div class="submit-address dashboard-list">
     <h4 class="bg-grea-3">Basic Information</h4>
-    <form method="post" action="{{url('owner/submit-property')}}" id="submit_property" name="submit_property" enctype="multipart/form-data">
+    <form method="post" action="{{url('owner/submit-property')}}" id="submit_property" name="submit_property" enctype="multipart/form-data" >
         {{ csrf_field() }}
         <div class="search-contents-sidebar">
             <div class="row pad-20">
@@ -340,7 +340,6 @@ $(document).ready(function() {
    /*******************************************************************/
     var num=1;
     function readImage() {
-        console.log("i am in readImage");
         if (window.File && window.FileList && window.FileReader) {
             var files = event.target.files; //FileList object
 
