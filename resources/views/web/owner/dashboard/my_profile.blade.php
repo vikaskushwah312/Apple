@@ -55,7 +55,6 @@
                                     @else
                                     <img src="{{url('public/uploads/no_image.jpg')}}" alt="profile-photo" class="img-fluid" id="preview" name="preview">
                                     @endif
-                                
                                 <input type="file" class="upload" id="image" name="image" style="margin-top: 10px;">
                                 <!-- <div class="change-photo-btn">
                                     <div class="photoUpload">
@@ -63,6 +62,12 @@
                                         <input type="file" class="upload" id="image" name="image">
                                     </div>
                                 </div> -->
+                                <p class="error help-block" id="image">
+                                  @if($errors->has('image'))
+                                    <i class="error"></i> {{ $errors->first('image') }}
+                                  @endif
+                                </p>
+
                             </div>
                         </div>
                         <div class="col-lg-12">
