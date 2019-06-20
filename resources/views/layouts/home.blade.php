@@ -14,7 +14,7 @@
 	                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	                            </p>
 	                            <div class="inline-search-area ml-auto mr-auto d-none d-xl-block d-lg-block">
-	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter">
+	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter" style="margin-left:140px;">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;" placeholder="Location">
