@@ -15,7 +15,7 @@
                     <div class="f-border"></div>
                     <ul class="contact-info">
                         <li>
-                            <i class="flaticon-pin"></i>201, gulmohar enclave, block-D, scheme no. 94, Indore 452001
+                            <i class="flaticon-pin"></i>201, gulmohar enclave, block-D, scheme no. 94, Indore 452001 (MP)
                         </li>
                         <li>
                             <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">appleblossomshelter@gmail.com</a>
