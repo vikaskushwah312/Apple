@@ -15,7 +15,7 @@
                     <div class="f-border"></div>
                     <ul class="contact-info">
                         <li>
-                            <i class="flaticon-pin"></i>20/F Green Road, Dhanmondi, Dhaka
+                            <i class="flaticon-pin"></i>201, gulmohar enclave, block-D, scheme no. 94, Indore 452001
                         </li>
                         <li>
                             <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">appleblossomshelter@gmail.com</a>
@@ -63,8 +63,10 @@
 <div class="sub-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-12 col-md-12">
+                <center>
                 <p class="copy">© 2019 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                </center>
             </div>
         </div>
     </div>

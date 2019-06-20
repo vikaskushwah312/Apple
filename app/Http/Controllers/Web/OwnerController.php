@@ -112,7 +112,7 @@ class OwnerController extends Controller
                 'bathroom' => 'required',
                 'kitchen'  => 'required',
                 'address'  => 'required',
-                'image'    => 'required',
+                'image'    => 'required|mimes:jpeg,bmp,png,jpg|max:50240',
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
@@ -224,7 +224,7 @@ class OwnerController extends Controller
                 'bathroom' => 'required',
                 'kitchen'  => 'required',
                 'address'  => 'required',
-                'image'    => 'required',
+                'image'    => 'mimes:jpeg,bmp,png,jpg|max:50240',
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
@@ -307,5 +307,31 @@ class OwnerController extends Controller
     public function PropertyDetails(Request $request){
          $data['title'] =  "Properties Detail";
         return view('web.owner.dashboard.properte_details',$data);
+    }
+
+    /*
+    * purpose : To delete the property
+    */
+    public function PropertyDelete(Request $request){
+
+        $property_id = $request->id;
+        
+        $res['success'] = false;
+        $res['msg'] = "Something went to wrong.";
+        $delete = Property::where('id',$property_id)->delete();
+        
+        if($delete){
+            $res['success'] = false;
+            $res['msg'] = "You have Successfull Properte Updated.";
+
+            $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
+            $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
+            $data['state'] = State::where('status','Active')->get();
+            
+            return ['res'=>$res,'data'=>view('web.owner.dashboard.my_properties_edit',$data)] ;
+       
+       }
+
+
     }
 }

@@ -49,18 +49,20 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <label>Profile Image</label>
-                            <div class="edit-profile-photo">
+                            <div class="">
                                     @if($info->image != "")
                                     <img src="{{url('public/uploads/profile_image/'.$info->image)}}" alt="profile-photo" class="img-fluid" id="preview" name="preview">
                                     @else
                                     <img src="{{url('public/uploads/no_image.jpg')}}" alt="profile-photo" class="img-fluid" id="preview" name="preview">
                                     @endif
-                                <div class="change-photo-btn">
+                                
+                                <input type="file" class="upload" id="image" name="image" style="margin-top: 10px;">
+                                <!-- <div class="change-photo-btn">
                                     <div class="photoUpload">
                                         <span><i class="fa fa-upload"></i></span>
                                         <input type="file" class="upload" id="image" name="image">
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col-lg-12">
