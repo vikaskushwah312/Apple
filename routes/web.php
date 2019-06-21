@@ -136,7 +136,10 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::group(['middleware'=>['pgLogin']],function(){
 		Route::get('dashboard','PgController@dashboard');
 		Route::get('messages','PgController@messages');
-		Route::get('my-profile','PgController@myProfile');
+		Route::any('my-profile','PgController@myProfile');
+		Route::any('invoices','PgController@invoices');
+		Route::any('complain','PgController@complain');
+
 		Route::get('logout','PgLoginController@logout');
 	});
 

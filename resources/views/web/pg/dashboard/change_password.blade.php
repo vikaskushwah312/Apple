@@ -1,4 +1,4 @@
-@extends('web.owner.dashboard.master')
+@extends('web.pg.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
     <h3 class="heading">Change Password</h3>

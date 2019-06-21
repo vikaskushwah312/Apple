@@ -1,4 +1,4 @@
-@extends('web.owner.dashboard.master')
+@extends('web.pg.dashboard.master')
 @section('webcontent')
 <div class="submit-address dashboard-list">
     <form method="GET">

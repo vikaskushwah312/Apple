@@ -1,11 +1,11 @@
-@extends('web.owner.dashboard.master')
+@extends('web.pg.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
     <h3 class="heading">Profile Details</h3>
     <div class="dashboard-message contact-2 bdr clearfix">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <form action="{{url('owner/my-profile')}}" method="POST" id="my_profile" name="my_profile" enctype="multipart/form-data" >
+                <form action="{{url('pg/my-profile')}}" method="POST" id="my_profile" name="my_profile" enctype="multipart/form-data" >
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-lg-6 col-md-6">

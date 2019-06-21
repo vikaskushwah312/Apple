@@ -48,9 +48,8 @@
                         </ul>
                         <h4>Listings</h4>
                         <ul>
-                            <li><a href="{{url('pg/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
                             <li><a href="{{url('pg/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
-                            <li><a href="{{url('pg/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
+                            <li><a href="{{url('pg/complain')}}"><i class="fa fa-comment"></i>Complain</a></li>
                         </ul>
                     </div>
                 </div>
