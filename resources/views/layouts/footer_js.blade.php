@@ -33,6 +33,9 @@
 <script  src="{{url('public/js/ie10-viewport-bug-workaround.js')}}"></script>
 
 <script  src="{{url('public/js/customjs.js')}}"></script>
+<script type="text/javascript">
+ $('.dashoard-list li.active').removeClass('active');
+</script>
 @yield('js')
 </body>
 </html>

@@ -77,3 +77,10 @@
     </div>
 </div>
 @stop
+@section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#complain-active').addClass('active');
+});
+</script>
+@endsection

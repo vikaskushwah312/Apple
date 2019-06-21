@@ -30,3 +30,10 @@
     </form>
 </div>
 @stop
+@section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#invoices-active').addClass('active');
+});
+</script>
+@endsection
