@@ -71,4 +71,5 @@
         $('#mypropertis-active').addClass('active');
     })
 </script>
+
 @endsection

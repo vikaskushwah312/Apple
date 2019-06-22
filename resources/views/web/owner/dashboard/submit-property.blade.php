@@ -1,5 +1,6 @@
 @extends('web.owner.dashboard.master')
 @section('css')
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 <style type="text/css">
         .preview-images-zone {
     width: 100%;
@@ -382,6 +383,20 @@ $(document).ready(function() {
         let no = $(this).data('no');
         $(".preview-image.preview-show-"+no).remove();
     });
+
+    
+
 });
 </script>
+<script type="text/javascript">
+    //google autocomplete
+     function initAutocomplete() {
+  
+        var autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('address'), {types: ['geocode']});
+        autocomplete.setFields(['address_component']);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD48RM8R6yisl1QRVKIJd77de5EtwT7-WY&libraries=places&callback=initAutocomplete"
+        async defer></script>
 @endsection

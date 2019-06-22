@@ -175,12 +175,10 @@ class OwnerController extends Controller
                     );
                     ContactOfPerson::insertGetId($contactData);
                     
-                  return Redirect::to("owner/submit-property")->withSuccess('You have Successfull Properte added.');
+                  return Redirect::to("owner/my-properties")->withSuccess('You have Successfull Properte added.');
                 }else{
                   return Redirect::to("owner/submit-property")->withFail('Something went to wrong.');
                   }
-
-
             }
         
         } else { //get method
