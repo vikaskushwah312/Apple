@@ -10,4 +10,5 @@ return [
 	'SITE_SHORT_NAME' 	=> 'AB',
 	'PROFILE_IMAGE'		=> 'public/uploads/profile_image/',
 	'Gallery_Image'		=> 'public/uploads/gallery_image/',
+	'NO_Image'			=> 'public/uploads/no_image.jpg/',
 ];   

@@ -75,14 +75,14 @@
 @section('webcontent')
 <div class="submit-address dashboard-list">
     <h4 class="bg-grea-3">Basic Information</h4>
-    <form method="post" action="{{url('owner/submit-property')}}" id="submit_property" name="submit_property" enctype="multipart/form-data" >
+    <form method="post" action="{{url('owner/my-properties/edit/'.$property_edit->id)}}" id="submit_property" name="submit_property" enctype="multipart/form-data" novalidate>
         {{ csrf_field() }}
         <div class="search-contents-sidebar">
             <div class="row pad-20">
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Property Title <strong class="required">*</strong></label>
-                        <input type="text" class="input-text" id="title" name="title" placeholder="Property Title" value="{{old('title')}}" required>
+                        <input type="text" class="input-text" id="title" name="title" placeholder="Property Title" value="{{ $property_edit->title}}" required>
                         <p class="error help-block" id="title">
                           @if($errors->has('title'))
                             <i class="error"></i> {{ $errors->first('title') }}
@@ -93,7 +93,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Price <strong class="required">*</strong></label>
-                        <input type="text" class="input-text" id="price" name="price" placeholder="Price" value="{{old('price')}}" required>
+                        <input type="text" class="input-text" id="price" name="price" placeholder="Price" value="{{ $property_edit->price}}" required>
                         <p class="error help-block" id="price">
                           @if($errors->has('price'))
                             <i class="error"></i> {{ $errors->first('price') }}
@@ -106,8 +106,13 @@
                         <label>Ac/Non-Ac<strong class="required">*</strong></label>
                         <select class="selectpicker search-fields" id="type" name="type" required>
                             <option value="">Select Type</option>
-                            <option value="Ac">Ac</option>
-                            <option value="Non-Ac">Non-Ac</option>
+                            @if($property_edit->type == 'Ac')
+                                <option value="Ac" selected="">Ac</option>
+                                <option value="Non-Ac">Non-Ac</option>
+                            @else
+                                <option value="Ac" >Ac</option>
+                                <option value="Non-Ac" selected="">Non-Ac</option>
+                            @endif
                         </select>
                         <p class="error help-block" id="type">
                           @if($errors->has('type'))
@@ -119,7 +124,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Area(Sqft) <strong class="required"></strong></label>
-                        <input type="text" class="input-text" id="area" name="area" value="{{old('area')}}" placeholder="SqFt">
+                        <input type="text" class="input-text" id="area" name="area" value="{{ $property_edit->area}}" placeholder="SqFt">
                         <p class="error help-block" id="area">
                           @if($errors->has('area'))
                             <i class="error"></i> {{ $errors->first('area') }}
@@ -132,9 +137,19 @@
                         <label>Girls/Boys <strong class="required">*</strong></label>
                         <select class="selectpicker search-fields" id="gender" name="gender" required>
                             <option value="">Select Gender</option>
-                            <option value="Girls">Girls</option>
-                            <option value="Boys">Boys</option>
-                            <option value="Both">Both</option>
+                             @if($property_edit->gender == 'Girls')
+                                <option value="Girls" selected="">Girls</option>
+                                <option value="Boys">Boys</option>
+                                <option value="Both">Both</option>
+                            @elseif($property_edit->gender == 'Boys')
+                                <option value="Girls">Girls</option>
+                                <option value="Boys" selected="">Boys</option>
+                                <option value="Both">Both</option>
+                            @elseif($property_edit->gender == 'Both')
+                                <option value="Girls">Girls</option>
+                                <option value="Boys">Boys</option>
+                                <option value="Both" selected="">Both</option>
+                            @endif
                         </select>
                         <p class="error help-block" id="gender">
                           @if($errors->has('gender'))
@@ -146,7 +161,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Rooms <strong class="required">*</strong></label>
-                        <input type="number" class="input-text" id="room" name="room" placeholder="Rooms" required value="{{old('room')}}">
+                        <input type="number" class="input-text" id="room" name="room" placeholder="Rooms" required value="{{ $property_edit->room}}" >
                         <p class="error help-block" id="room">
                           @if($errors->has('room'))
                             <i class="error"></i> {{ $errors->first('room') }}
@@ -157,7 +172,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Sharing <strong class="required">*</strong></label>
-                        <input type="number" class="input-text" id="share_bed" name="share_bed" placeholder="Sharing" value="{{old('share_bed')}}" required>
+                        <input type="number" class="input-text" id="share_bed" name="share_bed" placeholder="Sharing" value="{{ $property_edit->share_bed}}" required>
                         <p class="error help-block" id="share_bed">
                           @if($errors->has('share_bed'))
                             <i class="error"></i> {{ $errors->first('share_bed') }}
@@ -168,7 +183,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Bed <strong class="required">*</strong></label>
-                        <input type="number" class="input-text" id="bed" name="bed" placeholder="Bed" value="{{old('bed')}}" required>
+                        <input type="number" class="input-text" id="bed" name="bed" placeholder="Bed" value="{{ $property_edit->bed}}" required>
                         <p class="error help-block" id="bed">
                           @if($errors->has('bed'))
                             <i class="error"></i> {{ $errors->first('bed') }}
@@ -179,7 +194,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>BathRooms <strong class="required">*</strong></label>
-                        <input type="number" class="input-text" id="bathroom" name="bathroom" placeholder="BathRooms" value="{{old('bathroom')}}" required>
+                        <input type="number" class="input-text" id="bathroom" name="bathroom" placeholder="BathRooms" value="{{ $property_edit->bathroom}}" required>
                         <p class="error help-block" id="bathroom">
                           @if($errors->has('bathroom'))
                             <i class="error"></i> {{ $errors->first('bathroom') }}
@@ -190,7 +205,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Kitchen <strong class="required">*</strong></label>
-                        <input type="number" class="input-text" id="kitchen" name="kitchen" placeholder="Kitchen" value="{{old('kitchen')}}" required>
+                        <input type="number" class="input-text" id="kitchen" name="kitchen" placeholder="Kitchen" value="{{ $property_edit->kitchen}}" required>
                         <p class="error help-block" id="kitchen">
                           @if($errors->has('kitchen'))
                             <i class="error"></i> {{ $errors->first('kitchen') }}
@@ -205,7 +220,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Address <strong class="required">*</strong></label>
-                    <input type="text" class="input-text" id="address" name="address"  placeholder="Address" value="{{old('address')}}" required>
+                    <input type="text" class="input-text" id="address" name="address"  placeholder="Address" value="{{ $property_edit->address}}" required>
                     <p class="error help-block" id="address">
                       @if($errors->has('address'))
                         <i class="error"></i> {{ $errors->first('address') }}
@@ -219,7 +234,7 @@
                     <select class="selectpicker search-fields" id="state" name="state">
                         <option>Choose State</option>
                         @foreach($state as $s)
-                            <option value="{{$s->id}}">{{$s->state_name}}</option>
+                            <option value="{{$s->id}}" {{ $property_edit->state? $property_edit->state == $s->id?'selected':'' :''}}>{{$s->state_name}}</option>
                         @endforeach
                     </select>
                     <p class="error help-block" id="state">
@@ -232,7 +247,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Postal Code</label>
-                    <input type="text" class="input-text" id="postal_code" name="postal_code" value="{{old('postal_code')}}"  placeholder="Postal Code">
+                    <input type="text" class="input-text" id="postal_code" name="postal_code" value="{{ $property_edit->postal_code}}"  placeholder="Postal Code">
                     <p class="error help-block" id="postal_code">
                       @if($errors->has('postal_code'))
                         <i class="error"></i> {{ $errors->first('postal_code') }}
@@ -244,26 +259,26 @@
         <h4 class="bg-grea-3">Property Gallery</h4>
         <div class="container">
             <!-- <input type="file" id="image" name="image" style="" class="form-control" multiple> -->
-            <!-- <fieldset class="form-group">
-                <input type="file" id="image" name="image" class="" multiple="" required>
-                <p class="error help-block" id="image">
-                  @if($errors->has('image'))
-                    <i class="error"></i> {{ $errors->first('image') }}
-                  @endif
-                </p>
-            </fieldset> -->
-
             <fieldset class="form-group">
                 <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image<strong class="required">*</strong></a>
                 <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
+
                 <p class="error help-block" id="image">
                   @if($errors->has('image'))
                     <i class="error"></i> {{ $errors->first('image') }}
                   @endif
                 </p>
             </fieldset>
-            <div class="preview-images-zone">
+            <div class="preview-images-zone" >
                 <div class="row col-sm-12" id="image_append">
+                    @foreach($image_gallery as $img)
+                    <div class="col-lg-2 col-md-2 preview-image preview-show-{{$img->id}} ">
+                        <div class="close_image image-cancel" data-no="{{$img->id}}">x</div>
+                        <div class="image-zone">
+                            <img id="image-num" src="{{url('public/uploads/gallery_image').'/'.$img->image}}" width="150px;" height="150px;">
+                        </div>
+                    </div>
+                    @endforeach
                     <!-- append preview images -->
                 </div>
             </div>
@@ -271,7 +286,7 @@
         <h4 class="bg-grea-3">Detailed Information <strong class="required">*</strong></h4>
         <div class="row pad-20">
             <div class="col-lg-12">
-                <textarea class="input-text" id="description" name="description" placeholder="Detailed Information" required="" value="{{old('description')}}"></textarea>
+                <textarea class="input-text" id="description" name="description" placeholder="Detailed Information" required="" value="">{{ $property_edit->description}}</textarea>
                 <p class="error help-block" id="description">
                   @if($errors->has('description'))
                     <i class="error"></i> {{ $errors->first('description') }}
@@ -295,7 +310,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="input-text" id="name" name="name" placeholder="Name" required="" value="{{old('name')}}">
+                    <input type="text" class="input-text" id="name" name="name" placeholder="Name" required="" value="{{ $property_edit['cop']->name}}">
                     <p class="error help-block" id="name">
                       @if($errors->has('name'))
                         <i class="error"></i> {{ $errors->first('name') }}
@@ -306,7 +321,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="input-text" id="email" name="email" placeholder="Email" required="" value="{{old('email')}}">
+                    <input type="email" class="input-text" id="email" name="email" placeholder="Email" required="" value="{{ $property_edit['cop']->email}}">
                     <p class="error help-block" id="email">
                       @if($errors->has('email'))
                         <i class="error"></i> {{ $errors->first('email') }}
@@ -317,7 +332,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="form-group">
                     <label>Phone (optional)</label>
-                    <input type="text" class="input-text" id="phone" name="phone"  placeholder="Phone" required="" value="{{old('phone')}}">
+                    <input type="text" class="input-text" id="phone" name="phone"  placeholder="Phone" required="" value="{{ $property_edit['cop']->phone}}" >
                     <p class="error help-block" id="phone">
                       @if($errors->has('phone'))
                         <i class="error"></i> {{ $errors->first('phone') }}
@@ -340,6 +355,7 @@ $(document).ready(function() {
    /*******************************************************************/
     var num=1;
     function readImage() {
+        console.log("i am in readImage");
         if (window.File && window.FileList && window.FileReader) {
             var files = event.target.files; //FileList object
 

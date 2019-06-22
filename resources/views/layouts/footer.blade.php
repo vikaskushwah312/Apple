@@ -15,21 +15,21 @@
                     <div class="f-border"></div>
                     <ul class="contact-info">
                         <li>
-                            <i class="flaticon-pin"></i>20/F Green Road, Dhanmondi, Dhaka
+                            <i class="flaticon-pin"></i>201, gulmohar enclave, block-D, scheme no. 94, Indore 452001 (MP)
                         </li>
                         <li>
-                            <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+                            <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">appleblossomshelter@gmail.com</a>
                         </li>
                         <li>
-                            <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">+0477 85X6 552</a>
+                            <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">9009991924</a>
                         </li>
                         <li>
-                            <i class="flaticon-fax"></i>+0477 85X6 552
+                            <i class="flaticon-fax"></i>9753165691
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+            <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <div class="footer-item">
                     <h4>
                         Useful Links
@@ -42,7 +42,7 @@
                         <li>
                             <a href="{{url('about-us')}}">About Us</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a href="services.html">Services</a>
                         </li>
                         <li>
@@ -50,10 +50,10 @@
                         </li>
                         <li>
                             <a href="properties-details.html">Properties Details</a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>
@@ -63,8 +63,10 @@
 <div class="sub-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8">
+            <div class="col-lg-12 col-md-12">
+                <center>
                 <p class="copy">© 2019 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                </center>
             </div>
         </div>
     </div>

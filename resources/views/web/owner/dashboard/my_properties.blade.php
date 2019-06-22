@@ -4,71 +4,45 @@
     <h3>My Properties List</h3>
     <table class="manage-table">
         <tbody>
+        @foreach($property as $pro)
         <tr class="responsive-table">
             <td class="listing-photoo">
-                <img src="http://placehold.it/180x120" alt="listing-photo" class="img-fluid">
+                <img src="{{url('public/uploads/gallery_image').'/'.$pro->imgGallery->image}}" alt="listing-photo" class="img-fluid">
             </td>
             <td class="title-container">
-                <h2><a href="#">Travel To England</a></h2>
-                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i> 123 Kathal St. Tampa City, </h5>
-                <h6 class="table-property-price">$900 / monthly</h6>
+                <h2><a href="{{url('owner/property-details')}}">{{ $pro->title }}</a></h2>
+                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i>{{ $pro->address }}</h5>
+                <h6 class="table-property-price">{{ $pro->price }} / monthly</h6>
             </td>
-            <td class="expire-date">4.01.2018</td>
+            <!-- <td class="expire-date"></td> $pro->created_at -->
             <td class="action">
-                <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
+                <a href="{{url('owner/my-properties/edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
+                <!-- <a href=""><i class="fa  fa-eye-slash"></i> Hide</a> -->
+                <!-- <a href="javascript:void(0)" class="delete" id="p_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a> -->
             </td>
         </tr>
-        <tr class="responsive-table">
-            <td class="listing-photoo">
-                <img src="http://placehold.it/180x120" alt="listing-photo" class="img-fluid">
-            </td>
-            <td class="title-container">
-                <h2><a href="#">Amazing Hotel</a></h2>
-                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i> 123 Kathal St. Tampa City, </h5>
-                <h6 class="table-property-price">$900 / monthly</h6>
-            </td>
-            <td class="expire-date">4.01.2018</td>
-            <td class="action">
-                <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-            </td>
-        </tr>
-        <tr class="responsive-table">
-            <td class="listing-photoo">
-                <img src="http://placehold.it/180x120" alt="listing-photo" class="img-fluid">
-            </td>
-            <td class="title-container">
-                <h2><a href="#">Royal Botanic Gardens Sydney</a></h2>
-                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i> 123 Kathal St. Tampa City, </h5>
-                <h6 class="table-property-price">$900 / monthly</h6>
-            </td>
-            <td class="expire-date">4.01.2018</td>
-            <td class="action ">
-                <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-            </td>
-        </tr>
-        <tr class="responsive-table">
-            <td class="listing-photoo">
-                <img src="http://placehold.it/180x120" alt="listing-photo" class="img-fluid">
-            </td>
-            <td class="title-container">
-                <h2><a href="#">Radisson hotel</a></h2>
-                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i> 123 Kathal St. Tampa City, </h5>
-                <h6 class="table-property-price">$900 / monthly</h6>
-            </td>
-            <td class="expire-date">4.01.2018</td>
-            <td class="action">
-                <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-            </td>
-        </tr>
+        @endforeach
         </tbody>
     </table>
     </div>
 @stop
+@section('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.delete').on('click',function(){
+            var p_delete = $(this).data('id');
+            var result = confirm("Are you sure you want to delete?");
+            if (result) {
+                $.ajax({
+                  url: "{{'my-properties/delete'}}",
+                  data:{'id':p_delete},
+                  cache: false,
+                  success: function(html){
+                    $("#results").append(html);
+                  }
+                });
+            }
+        })
+    })
+</script>
+@endsection

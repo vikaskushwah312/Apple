@@ -13,7 +13,7 @@ class OwnerLoginController extends Controller
     	if (Session::get('owner')) {
             return Redirect::to("owner/dashboard");
         }
-    	return view('web.owner.auth.login');
+    	return view('web.home.login');
     }
 
     //post login for paying guest and owner

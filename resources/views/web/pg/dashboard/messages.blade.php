@@ -1,23 +1,5 @@
 @extends('web.pg.dashboard.master')
 @section('webcontent')
-<div class="dashboard-header clearfix">
-    <div class="row">
-        <div class="col-sm-12 col-md-6"><h4>Messages</h4></div>
-        <div class="col-sm-12 col-md-6">
-            <div class="breadcrumb-nav">
-                <ul>
-                    <li>
-                        <a href="index.html">Index</a>
-                    </li>
-                    <li>
-                        <a href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="active">Messages</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="submit-address dashboard-list">
     <form method="GET">
         <h4>Messages List</h4>
@@ -90,3 +72,10 @@
     </form>
 </div>
 @stop
+@section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#messages-active').addClass('active');
+});
+</script>
+@endsection

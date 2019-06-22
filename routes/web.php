@@ -105,7 +105,11 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		Route::any('change-password','OwnerController@changePassword');
 		Route::get('invoices','OwnerController@invoices');
 		Route::any('submit-property','OwnerController@submitProperty');
-		Route::any('my-properties','OwnerController@myProperties');
+		Route::any('my-properties','OwnerController@myProperties'); //list of properties
+		Route::any('my-properties/edit/{id}','OwnerController@myPropertiesEdit');
+		Route::any('property-details','OwnerController@PropertyDetails');
+		Route::get('my-properties/delete','OwnerController@PropertyDelete');
+
 		Route::get('logout','OwnerLoginController@logout');
 
 		///propertey
@@ -132,7 +136,11 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::group(['middleware'=>['pgLogin']],function(){
 		Route::get('dashboard','PgController@dashboard');
 		Route::get('messages','PgController@messages');
-		Route::get('my-profile','PgController@myProfile');
+		Route::any('my-profile','PgController@myProfile');
+		Route::any('change-password','PgController@changePassword');
+		Route::any('invoices','PgController@invoices');
+		Route::any('complain','PgController@complain');
+
 		Route::get('logout','PgLoginController@logout');
 	});
 
