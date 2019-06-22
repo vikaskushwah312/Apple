@@ -56,11 +56,11 @@
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <div class="subject">
-                                <label>Subject <strong class="required">*</strong></label>
-                                <textarea class="form-control" name="message" placeholder="Write message"></textarea>
-                                <p class="error help-block" id="message">
-                                  @if($errors->has('message'))
-                                    <i class="error"></i> {{ $errors->first('message') }}
+                                <label>Message <strong class="required">*</strong></label>
+                                <textarea class="form-control" name="complain" id="complain" placeholder="Write Your Complain Here"></textarea>
+                                <p class="error help-block" id="complain">
+                                  @if($errors->has('complain'))
+                                    <i class="error"></i> {{ $errors->first('complain') }}
                                   @endif
                                 </p>
                             </div>

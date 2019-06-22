@@ -70,7 +70,7 @@ class PgController extends Controller
             }
 
         } else {
-            return view('welcome');
+            
             $data['title'] = 'Complain';
             $data['info'] = User::find(Session::get('pg'));
             return view('web.pg.dashboard.complain',$data);
