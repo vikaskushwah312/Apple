@@ -5,7 +5,7 @@ namespace App\Http\Controllers\web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{User,Complain};
-use Validator,Redirect,Session,Config;
+use Validator,Redirect,Session,Config,Auth;
 
 class PgController extends Controller
 {
@@ -125,7 +125,7 @@ class PgController extends Controller
     *purpose: change the password for owner 
     */
     public function changePassword(Request $request){
-        $id = Session::get('owner');
+        $id = auth('user')->user()->id;
         if ($request->isMethod('post')) {
 
             $validation = Validator::make($request->all(),[
@@ -134,22 +134,22 @@ class PgController extends Controller
             ]);
 
             if ($validation->fails()) {
-              return Redirect::to("owner/change-password")->withErrors($validation)->withInput();
+              return Redirect::to("pg/change-password")->withErrors($validation)->withInput();
             }else{
 
-                $data = array(  'password'  => bcrypt($request->password),
+                $data = array(  'password'  => bcrypt($request->new_password),
                             );
-                $upd = User::where($id)->update($data);
-                if ($upd) {              
-                  return Redirect::to("owner/dashboard")->withSuccess('Password Successfull Updated.');
+                $upd = User::where('id',$id)->update($data);
+                if ($upd) {      
+                  return Redirect::to("pg/dashboard")->withSuccess('Password Successfull Updated.');
                 }else{
-                  return Redirect::to("owner/change-password")->withFail('Something went to wrong.');
+                  return Redirect::to("pg/change-password")->withFail('Something went to wrong.');
                   }
             }
 
         } else {
             $data['title'] = "Change Password";
-            return view('web.owner.dashboard.change_password',$data);
+            return view('web.pg.dashboard.change_password',$data);
         }
     }
 }

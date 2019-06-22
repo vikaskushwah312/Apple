@@ -1,7 +1,6 @@
 @extends('web.owner.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
-    <h3 class="heading">Change Password</h3>
     <div class="dashboard-message contact-2">
         <form action="{{ url('owner/change-password') }}" id="change_password" name="change_password" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}

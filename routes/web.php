@@ -137,6 +137,7 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::get('dashboard','PgController@dashboard');
 		Route::get('messages','PgController@messages');
 		Route::any('my-profile','PgController@myProfile');
+		Route::any('change-password','PgController@changePassword');
 		Route::any('invoices','PgController@invoices');
 		Route::any('complain','PgController@complain');
 

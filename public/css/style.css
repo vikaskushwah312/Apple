@@ -39,7 +39,10 @@ Version:    1.1.0
 .error{
     color: red;
 }
-
+.required{
+    color: red;
+    font-size: 20px;
+}
 
 
 
@@ -4184,7 +4187,7 @@ footer {
 
 .form-group label, .checkbox label {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 /** Dashboard nav start **/
