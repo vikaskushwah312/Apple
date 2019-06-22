@@ -345,7 +345,5 @@ class OwnerController extends Controller
 
             return $res ;
         }
-
-
     }
 }
