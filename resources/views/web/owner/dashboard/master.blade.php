@@ -41,16 +41,13 @@
             <div class="col-lg-3 col-md-12 col-sm-12 col-pad">
                 <div class="dashboard-nav d-none d-xl-block d-lg-block">
                     <div class="dashboard-inner">
-                        <h4>Main</h4>
-                        <ul>
-                            <li class="active"><a href="{{url('owner/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
-                            <li><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
-                        </ul>
-                        <h4>Listings</h4>
-                        <ul>
-                            <li><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
-                            <li><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
-                            <li><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
+                        <ul class="dashoard-list">
+                            <li id="dashboard-active"><a href="{{url('owner/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
+                            <li id="messages-active"><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
+                        
+                            <li id="mypropertis-active"><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
+                            <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
+                            <li id="sub-active"><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                         </ul>
                     </div>
                 </div>

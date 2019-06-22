@@ -335,6 +335,8 @@
 @stop
 @section('js')
 <script type="text/javascript">
+    // sub-active
+    $('#sub-active').addClass('active');
 $(document).ready(function() {
 
    /*******************************************************************/

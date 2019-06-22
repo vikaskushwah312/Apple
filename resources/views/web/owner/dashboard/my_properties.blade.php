@@ -29,6 +29,7 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function(){
+        
         $('.delete').on('click',function(){
             var p_delete = $(this).data('id');
             var result = confirm("Are you sure you want to delete?");
@@ -42,7 +43,8 @@
                   }
                 });
             }
-        })
+        });
+        $('#mypropertis-active').addClass('active');
     })
 </script>
 @endsection
