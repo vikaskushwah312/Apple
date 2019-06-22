@@ -200,8 +200,8 @@ class OwnerController extends Controller
     public function myProperties(Request $request){
 
         $data['title'] =  "My Properties";
-        $data['property'] = Property::with('imgGallery')->where('p_status','Active')->orderBy('created_at','desc')->get();
-
+        $data['property'] = Property::where('p_status','Active')->orderBy('created_at','desc')->get();
+        // print(json_encode($data['property']));die;
         // print_r($data['property'][0]['imgGallery']);die();
         return view('web.owner.dashboard.my_properties',$data);
     }

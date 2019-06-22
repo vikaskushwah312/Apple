@@ -272,6 +272,7 @@
             <div class="preview-images-zone" >
                 <div class="row col-sm-12" id="image_append">
                     @foreach($image_gallery as $img)
+                    @if($img->image != '')
                     <div class="col-lg-2 col-md-2 preview-image preview-show-{{$img->id}} ">
                         <div class="close_image image-cancel" data-no="{{$img->id}}">x</div>
                         <div class="image-zone">
@@ -279,6 +280,7 @@
                         </div>
                         <input type="hidden" name="image_edit[]" id="image_edit" value="{{$img->image}}">
                     </div>
+                    @endif
                     @endforeach
                     <!-- append preview images -->
                 </div>

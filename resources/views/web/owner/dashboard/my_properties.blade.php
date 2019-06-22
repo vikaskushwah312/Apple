@@ -7,7 +7,7 @@
         @foreach($property as $pro)
         <tr class="responsive-table">
             <td class="listing-photoo">
-                <img src="{{url('public/uploads/gallery_image').'/'.$pro->imgGallery->image}}" alt="listing-photo" class="img-fluid">
+                {!! myPropertiesImage($pro->id)!!}
             </td>
             <td class="title-container">
                 <h2><a href="{{url('owner/property-details')}}">{{ $pro->title }}</a></h2>
