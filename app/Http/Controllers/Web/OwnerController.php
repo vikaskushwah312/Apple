@@ -28,6 +28,7 @@ class OwnerController extends Controller
             
             'first_name'    => 'required|regex:/^[\pL\s\-]+$/u',
             'last_name'     => 'required|regex:/^[\pL\s\-]+$/u',
+            'email'         => 'required',
             'contact_no'    => 'required|numeric|digits:10|unique:users,contact_no,'.$id,
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
@@ -80,9 +81,9 @@ class OwnerController extends Controller
               return Redirect::to("owner/change-password")->withErrors($validation)->withInput();
             }else{
 
-                $data = array(  'password'  => bcrypt($request->password),
+                $data = array(  'password'  => bcrypt($request->new_password),
                             );
-                $upd = User::where($id)->update($data);
+                $upd = User::where('id',$id)->update($data);
                 if ($upd) {              
                   return Redirect::to("owner/dashboard")->withSuccess('Password Successfull Updated.');
                 }else{

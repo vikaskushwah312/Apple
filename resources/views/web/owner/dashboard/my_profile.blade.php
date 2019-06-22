@@ -10,8 +10,8 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="name">
-                                <label>First Name</label>
-                                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" value="{{$info->first_name}}">
+                                <label>First Name <strong class="required">*</strong></label>
+                                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" value="{{$info->first_name}}" required="">
                                 <p class="error help-block" id="first_name">
                                   @if($errors->has('first_name'))
                                     <i class="error"></i> {{ $errors->first('first_name') }}
@@ -21,8 +21,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="name">
-                                <label>Last Name</label>
-                                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="{{$info->last_name}}">
+                                <label>Last Name <strong class="required">*</strong></label>
+                                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="{{$info->last_name}}" required="">
                                 <p class="error help-block" id="last_name">
                                   @if($errors->has('last_name'))
                                     <i class="error"></i> {{ $errors->first('last_name') }}
@@ -32,8 +32,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="subject">
-                                <label>Phone</label>
-                                <input type="text" name="contact_no" id="contact_no" class="form-control" placeholder="Phone" value="{{$info->contact_no}}">
+                                <label>Phone <strong class="required">*</strong></label>
+                                <input type="text" name="contact_no" id="contact_no" class="form-control" placeholder="Phone" value="{{$info->contact_no}}" required="">
                                 <p class="error help-block" id="contact_no">
                                   @if($errors->has('contact_no'))
                                     <i class="error"></i> {{ $errors->first('contact_no') }}
@@ -43,8 +43,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="number">
-                                <label>Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}">
+                                <label>Email <strong class="required">*</strong></label>
+                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}" required="">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -71,9 +71,16 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                        <div class="send-btn">
-                            <button type="submit" class="btn btn-md button-theme pull-right">Update Profile</button>
-                        </div>
+                            <div class="col-lg-6">
+                                <div class="send-btn pull-left">
+                                    <button type="submit" class="btn btn-md button-theme pull-right">Update Profile</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pull-right">
+                                <div class="send-btn">
+                                    <a href="{{url('owner/change-password')}}" class="btn btn-md button-theme pull-right">Change Password</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
