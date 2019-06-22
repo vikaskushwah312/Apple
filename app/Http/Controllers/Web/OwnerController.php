@@ -113,7 +113,7 @@ class OwnerController extends Controller
                 'bathroom' => 'required',
                 'kitchen'  => 'required',
                 'address'  => 'required',
-                'image'    => 'required|mimes:jpeg,bmp,png,jpg|max:50240',
+                'image'    => 'required|max:50240',
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
@@ -225,7 +225,7 @@ class OwnerController extends Controller
                 'bathroom' => 'required',
                 'kitchen'  => 'required',
                 'address'  => 'required',
-                'image'    => 'mimes:jpeg,bmp,png,jpg|max:50240',
+                'image'    => 'max:50240',
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
@@ -261,7 +261,9 @@ class OwnerController extends Controller
                     //now insert the images GalleryImage
                     // $data = $request->file('image');
                     // print_r($data);die;
-                    if ($files = $request->file('image')) {
+                    /*when all images are updated from beging*/
+                    if ($files = $request->file('image')) { 
+                        // die('choose');
                         GalleryImage::where('property_id',$id)->delete();
                         foreach($files as $file){
                             $destinationPath = Config::get('constants.Gallery_Image');
@@ -276,8 +278,23 @@ class OwnerController extends Controller
                             GalleryImage::insertGetId($imageData);
                         }
 
-                    } //images
+                    }//images insert
 
+                    if ($request->image_edit) { 
+                        GalleryImage::where('property_id',$id)->delete();
+                        $files =  $request->image_edit;
+                        // print_r($files =  $request->image_edit);die;
+                        foreach($files as $file){
+
+                            $imageData = array(
+                                    'property_id' => $id, //propertey id
+                                    'image' => $file,
+                                    'created_at'    => date('Y-m-d H:i:s'),
+                                );
+                            GalleryImage::insertGetId($imageData);
+                        }
+
+                    }
                     //Now Insert the Contact Details contact_of_person
                     $contactData = array(
                                 'property_id' => $id, //propertey id
@@ -287,9 +304,9 @@ class OwnerController extends Controller
                     );
                     ContactOfPerson::where('property_id',$id)->update($contactData);
                     
-                  return Redirect::to("owner/submit-property")->withSuccess('You have Successfull Properte Updated.');
+                  return Redirect::to("owner/my-properties")->withSuccess('You have Successfull Properte Updated.');
                 }else{
-                  return Redirect::to("owner/submit-property")->withFail('Something went to wrong.');
+                  return Redirect::to("owner/my-properties/edit/$id")->withFail('Something went to wrong.');
                   }
 
             }
