@@ -18,7 +18,7 @@
             <td class="action">
                 <a href="{{url('owner/my-properties/edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
                 <!-- <a href=""><i class="fa  fa-eye-slash"></i> Hide</a> -->
-                <!-- <a href="javascript:void(0)" class="delete" id="p_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a> -->
+                <a href="javascript:void(0)" class="delete" id="p_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
             </td>
         </tr>
         @endforeach
@@ -29,9 +29,33 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function(){
-        
         $('.delete').on('click',function(){
-            var p_delete = $(this).data('id');
+        var p_delete = $(this).data('id');
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{'my-properties/delete'}}",
+                    data:{'id':p_delete},
+                    cache: false,
+                    success: function(res){
+                    console.log('res',res);
+                    if(res.success){
+                        swal("Deleted successfully!", {
+                            icon: "success",
+                        });
+                        setTimeout(function(){ window.location.reload(); }, 1000);
+                    }
+                  }
+                });
+            }
+        })
+          /*  var p_delete = $(this).data('id');
             var result = confirm("Are you sure you want to delete?");
             if (result) {
                 $.ajax({
@@ -42,7 +66,7 @@
                     $("#results").append(html);
                   }
                 });
-            }
+            }*/
         });
         $('#mypropertis-active').addClass('active');
     })

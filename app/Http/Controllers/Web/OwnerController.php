@@ -331,24 +331,20 @@ class OwnerController extends Controller
     * purpose : To delete the property
     */
     public function PropertyDelete(Request $request){
+        
+        if($request->ajax()){
 
-        $property_id = $request->id;
-        
-        $res['success'] = false;
-        $res['msg'] = "Something went to wrong.";
-        $delete = Property::where('id',$property_id)->delete();
-        
-        if($delete){
+            $property_id = $request->id;
             $res['success'] = false;
-            $res['msg'] = "You have Successfull Properte Updated.";
-
-            $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
-            $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
-            $data['state'] = State::where('status','Active')->get();
+           
+            $delete = Property::where('id',$property_id)->delete();
             
-            return ['res'=>$res,'data'=>view('web.owner.dashboard.my_properties_edit',$data)] ;
-       
-       }
+            if($delete){
+                $res['success'] = true;
+            }
+
+            return $res ;
+        }
 
 
     }
