@@ -23,12 +23,10 @@ class HomeController extends Controller
         $share_bed = $request->share_bed;
         $room = $request->room;
         $type = $request->type;
-        print($request->location);
+        // print($request->location);
         $data['result'] = $query->where(['p_status'=>'Active'])
                                   ->orderBy('updated_at','desc')
-                             ->when($address != '', function ($query, $address) {
-                                    return $query->where('address', "LIKE", "%".$address."%");
-                                })
+                             ->where('address', "LIKE", "%".$address."%")
                            /* ->when($share_bed != '', function ($query, $share_bed) {
                                     return $query->where('share_bed', $share_bed);
                                 })
@@ -41,7 +39,7 @@ class HomeController extends Controller
                             ->paginate(2);
         
         $data['count'] = count($data['result']);
-        print_r(count($data['result']));die;
+        // print_r(count($data['result']));die;
         // print(count($data));
         // print_r($data);
         // die;
