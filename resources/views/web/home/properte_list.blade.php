@@ -27,13 +27,7 @@
                         <div class="s-border"></div>
                         <form  id="search_form" name="search_form" >
                             <div class="form-group">
-                                <select class="selectpicker search-fields" name="location" id="location">
-                                    <option value="indore">indore</option>
-                                    <option value="lahuwar">lahuwar</option>
-                                    <option value="american somoa">American Samoa</option>
-                                    <option value="dewah">Dewah</option>
-                                    <option value="canada">Canada</option>
-                                </select>
+                                <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -49,12 +43,12 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="bathroom">
+                                        <select class="selectpicker search-fields" name="bathroom" id="bathroom">
                                             <option>Bathroom</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
                                         </select>
                                     </div>
                                 </div>
@@ -62,12 +56,21 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <select class="selectpicker search-fields" name="balcony">
+                                        <select class="selectpicker search-fields" name="share_bed" id="share_bed">
                                             <option>Sharing</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <select class="selectpicker search-fields" name="type" id="type">
+                                            <option value="Ac">Ac</option>
+                                            <option value="Non-Ac">Non-Ac</option>
                                         </select>
                                     </div>
                                 </div>
@@ -79,7 +82,7 @@
                             </div>
                             <div class="range-slider">
                                 <label>Price</label>
-                                <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="USD" class="range-slider-ui ui-slider" aria-disabled="false"></div>
+                                <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="INR" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
                             </div>
                            <!--  <a class="show-more-options" data-toggle="collapse" data-target="#options-content">
@@ -154,6 +157,7 @@
             <div class="col-lg-8 col-md-12" id="filter_page">
                  <!-- Option bar start -->
                 <!-- Property box 2 start -->
+                @if($count > 0)
                 @foreach($result as $res)
                 <div class="property-box-2" >
                     <div class="row">
@@ -204,6 +208,7 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
               
                 <!-- Page navigation start -->
                 <div class="pagination-box hidden-mb-45 text-center">
@@ -248,4 +253,15 @@ $(document).ready(function(){
 	
 });
 </script>
+<script type="text/javascript">
+    //google autocomplete
+     function initAutocomplete() {
+  
+        var autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('location'), {types: ['geocode']});
+        autocomplete.setFields(['address_component']);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD48RM8R6yisl1QRVKIJd77de5EtwT7-WY&libraries=places&callback=initAutocomplete"
+        async defer></script>
 @endsection

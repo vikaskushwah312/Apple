@@ -21,7 +21,7 @@
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="share_bed" name="share_bed" style="text-align: center;">
-										        <option>Sharing</option>
+										        <option value="">Sharing</option>
 										        <option value="1">1</option>
 										        <option value="2">2</option>
 										        <option value="3">3</option>
@@ -30,7 +30,7 @@
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="room" name="room" >
-										        <option>Rooms</option>
+										        <option value="">Rooms</option>
 										        <option value="1">1</option>
 										        <option value="2">2</option>
 										        <option value="3">3</option>
@@ -39,6 +39,7 @@
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="type" name="type">
+										    	<option value="">Ac/Non-Ac</option>
 										        <option value="Ac">Ac</option>
 										        <option value="Non-Ac">Non-Ac</option>
 										    </select>
@@ -119,7 +120,7 @@
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="location">
+	                                    <select class="selectpicker search-fields" name="location1">
 	                                        <option>location</option>
 	                                        <option>United States</option>
 	                                        <option>American Samoa</option>

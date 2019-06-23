@@ -23,24 +23,25 @@ class HomeController extends Controller
         $share_bed = $request->share_bed;
         $room = $request->room;
         $type = $request->type;
-
-
+        print($request->location);
         $data['result'] = $query->where(['p_status'=>'Active'])
-              ->orderBy('updated_at','desc')
-              ->when($address != '', function ($query, $address) {
-                    return $query->where('address', "LIKE", "%".$address."%");
-                })
-              ->when($share_bed != '', function ($query, $share_bed) {
-                    return $query->where('share_bed', $share_bed);
-                })
-              ->when($room != '', function ($query, $room) {
-                    return $query->where('room', $room);
-                })
-              ->when($type != '', function ($query, $type) {
-                    return $query->where('type', $type);
-                })
-              ->paginate(2);
-            // print_r($data);die;
+                                  ->orderBy('updated_at','desc')
+                             ->when($address != '', function ($query, $address) {
+                                    return $query->where('address', "LIKE", "%".$address."%");
+                                })
+                           /* ->when($share_bed != '', function ($query, $share_bed) {
+                                    return $query->where('share_bed', $share_bed);
+                                })
+                            ->when($room != '', function ($query, $room) {
+                                    return $query->where('room', $room);
+                                })
+                            ->when($type != '', function ($query, $type) {
+                                    return $query->where('type', $type);
+                                })*/
+                            ->paginate(2);
+        
+        $data['count'] = count($data['result']);
+        print_r(count($data['result']));die;
         // print(count($data));
         // print_r($data);
         // die;
@@ -51,17 +52,45 @@ class HomeController extends Controller
         if($request->ajax()){
             
             $query = Property::query();
-            // print($_GET['location']);die;
             $box = $request->all();        
             $myValue=  array();
             parse_str($box['formvalue'], $myValue);
-            // print_r($myValue['location']);die;
-            $address = $myValue['location'];
+            // print_r($myValue);die;
+            $address   = $myValue['location']; 
+            $share_bed = $myValue['share_bed'];
+            $room      = $myValue['rooms'];
+            $type      = $myValue['type'];
+            $bathroom  = $myValue['bathroom'];
+            $min_area  = $myValue['min_area']; //area
+            $max_area  = $myValue['max_area'];
+            $min_price = $myValue['min_price'];
+            $max_price = $myValue['max_price'];
+
+
             $data['result'] = $query->where(['p_status'=>'Active'])
                                     ->orderBy('updated_at','desc')
-                                    ->where('address', "LIKE", "%".$address."%")
+                                    ->when($address != '', function ($query, $address) {
+                                            return $query->where('address', "LIKE", "%".$address."%");
+                                        })
+                                    /*->when($share_bed != '', function ($query, $share_bed) {
+                                            return $query->where('share_bed', $share_bed);
+                                        })
+                                    ->when($room != '', function ($query, $room) {
+                                            return $query->where('room', $room);
+                                        })
+                                    ->when($type != '', function ($query, $type) {
+                                            return $query->where('type', $type);
+                                        })*/
+                                    /*->where('area', '=>', $min_area)
+                                    ->orWhere('area','=<', $max_area)
+                                    ->where('price', '=>', $min_price)
+                                    ->orWhere('price','=<', $max_price)*/
                                     ->paginate(2);
+            print($address);
+            print(count($data['result']));die;
+            $data['count'] = count($data['result']);
 
+            // print(count($data['result']));die;
             $res = ['status'=>true ,'data'=>view('web.home.filter_page',$data)->render()];
             return $res;
             
