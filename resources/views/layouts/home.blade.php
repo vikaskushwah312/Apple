@@ -632,7 +632,7 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-	function filter(search){
+	/*function filter(search){
 		var key = search;
 		$.ajax({
 			url : "home-filter" ,
@@ -646,7 +646,7 @@ $(document).ready(function(){
 			}
 		});
 	}
-	filter();
+	filter();*/
 });
 </script>
 <script type="text/javascript">

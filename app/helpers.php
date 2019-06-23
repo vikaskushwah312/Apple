@@ -22,7 +22,21 @@ function myPropertiesImage($id){
 	} else {
 		$path = url(''.Config::get('constants.NO_Image').'');	
 	}
+	return $path;
 	return '<img src="'.$path.'" alt="listing-photo" class="img-fluid">';
+}
+
+// to show the image in my propertey list page
+function myPropertiesImageUrl($id){
+	$img = GalleryImage::where('property_id',$id)->first(['image']);
+	
+	if($img != ''){
+		$path = url(''.Config::get('constants.Gallery_Image').$img->image);
+
+	} else {
+		$path = url(''.Config::get('constants.NO_Image').'');	
+	}
+	return $path;
 }
 
 function logoImage()	{

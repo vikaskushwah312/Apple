@@ -19,14 +19,16 @@ class HomeController extends Controller
     public function homeFilter(Request $request){
 
         $query = Property::query();
-        $address = $request->address;
-        $data = $query->where(['p_status'=>'Active'])
+        $address = $request->location;
+
+        $data['result'] = $query->where(['p_status'=>'Active'])
               ->orderBy('updated_at','desc')
-              ->where('address', "LIKE", "%$address%")
-              ->get();
-        print(count($data));
+              ->where('address', "LIKE", "%".$address."%")
+              ->paginate(2);
+            // print_r($data);die;
+        // print(count($data));
         // print_r($data);
-        die;
+        // die;
 
         return view('web.home.properte_list',$data);
     }
