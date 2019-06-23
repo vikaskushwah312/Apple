@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage};
 use Validator,Redirect,Session;
 
 class HomeController extends Controller
@@ -17,7 +17,18 @@ class HomeController extends Controller
         // return view('layouts.master');
     }
     public function homeFilter(Request $request){
-        return view('web.home.properte_list');
+
+        $query = Property::query();
+        $address = $request->address;
+        $data = $query->where(['p_status'=>'Active'])
+              ->orderBy('updated_at','desc')
+              ->where('address', "LIKE", "%$address%")
+              ->get();
+        print(count($data));
+        // print_r($data);
+        die;
+
+        return view('web.home.properte_list',$data);
     }
     
     public function properteDetails(Request $request){

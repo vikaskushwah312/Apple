@@ -55,18 +55,7 @@
                 });
             }
         })
-          /*  var p_delete = $(this).data('id');
-            var result = confirm("Are you sure you want to delete?");
-            if (result) {
-                $.ajax({
-                  url: "{{'my-properties/delete'}}",
-                  data:{'id':p_delete},
-                  cache: false,
-                  success: function(html){
-                    $("#results").append(html);
-                  }
-                });
-            }*/
+         
         });
         $('#mypropertis-active').addClass('active');
     })
