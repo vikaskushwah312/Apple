@@ -20,10 +20,25 @@ class HomeController extends Controller
 
         $query = Property::query();
         $address = $request->location;
+        $share_bed = $request->share_bed;
+        $room = $request->room;
+        $type = $request->type;
+
 
         $data['result'] = $query->where(['p_status'=>'Active'])
               ->orderBy('updated_at','desc')
-              ->where('address', "LIKE", "%".$address."%")
+              ->when($address != '', function ($query, $address) {
+                    return $query->where('address', "LIKE", "%".$address."%");
+                })
+              ->when($share_bed != '', function ($query, $share_bed) {
+                    return $query->where('share_bed', $share_bed);
+                })
+              ->when($room != '', function ($query, $room) {
+                    return $query->where('room', $room);
+                })
+              ->when($type != '', function ($query, $type) {
+                    return $query->where('type', $type);
+                })
               ->paginate(2);
             // print_r($data);die;
         // print(count($data));
@@ -31,6 +46,26 @@ class HomeController extends Controller
         // die;
 
         return view('web.home.properte_list',$data);
+    }
+    public function searchFilter(Request $request){
+        if($request->ajax()){
+            
+            $query = Property::query();
+            // print($_GET['location']);die;
+            $box = $request->all();        
+            $myValue=  array();
+            parse_str($box['formvalue'], $myValue);
+            // print_r($myValue['location']);die;
+            $address = $myValue['location'];
+            $data['result'] = $query->where(['p_status'=>'Active'])
+                                    ->orderBy('updated_at','desc')
+                                    ->where('address', "LIKE", "%".$address."%")
+                                    ->paginate(2);
+
+            $res = ['status'=>true ,'data'=>view('web.home.filter_page',$data)->render()];
+            return $res;
+            
+        }
     }
     
     public function properteDetails(Request $request){

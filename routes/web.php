@@ -76,6 +76,8 @@ Route::get('block_unblock/{id}/{Status}/{function}','AdminController@block_unblo
 /*############# My Account Urls ###########################*/
 Route::get('/','HomeController@home');
 Route::get('home-filter','HomeController@homeFilter');
+Route::get('search-filter','HomeController@searchFilter');
+
 Route::get('properte-details','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
 

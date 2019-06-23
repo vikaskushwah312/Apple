@@ -22,23 +22,23 @@
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="share_bed" name="share_bed" style="text-align: center;">
 										        <option>Sharing</option>
-										        <option>1</option>
-										        <option>2</option>
-										        <option>3</option>
-										        <option>4</option>
+										        <option value="1">1</option>
+										        <option value="2">2</option>
+										        <option value="3">3</option>
+										        <option value="4">4</option>
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="room" name="room" >
 										        <option>Rooms</option>
-										        <option>1</option>
-										        <option>2</option>
-										        <option>3</option>
-										        <option>4</option>
+										        <option value="1">1</option>
+										        <option value="2">2</option>
+										        <option value="3">3</option>
+										        <option value="4">4</option>
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <select class="selectpicker search-fields" id="bed" name="bed">
+										    <select class="selectpicker search-fields" id="type" name="type">
 										        <option value="Ac">Ac</option>
 										        <option value="Non-Ac">Non-Ac</option>
 										    </select>
