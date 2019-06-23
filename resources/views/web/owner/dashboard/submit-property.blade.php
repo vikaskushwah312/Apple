@@ -255,7 +255,7 @@
             </fieldset> -->
 
             <fieldset class="form-group">
-                <a href="javascript:void(0)" onclick="$('#image').click()">Upload Image<strong class="required">*</strong></a>
+                <a href="javascript:void(0)" onclick="$('#image').click()"><button class="btn btn-outline pricing-btn button-theme">Upload Image</button> <strong class="required">*</strong></a>
                 <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
                 <p class="error help-block" id="image">
                   @if($errors->has('image'))

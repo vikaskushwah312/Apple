@@ -23,7 +23,7 @@ class HomeController extends Controller
         $share_bed = $request->share_bed;
         $room = $request->room;
         $type = $request->type;
-        print($share_bed);die;
+        // print($share_bed);die;
         $query->where(['p_status'=>'Active'])
                 ->orderBy('updated_at','desc');
                 if($address != ''){
@@ -31,13 +31,13 @@ class HomeController extends Controller
                 }
         $query->when($share_bed != '', function ($query, $share_bed) {
                     return $query->where('share_bed', $share_bed);
-                })
-                ->when($room != '', function ($query, $room) {
+                });
+                /*->when($room != '', function ($query, $room) {
                         return $query->where('room', $room);
                 })
                 ->when($type != '', function ($query, $type) {
                     return $query->where('type', $type);
-                });
+                });*/
 
         $data['result'] = $query->paginate(10);
         

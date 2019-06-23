@@ -1,4 +1,9 @@
 @extends('layouts.master')
+@section('css')
+<style type="text/css">
+	
+</style>
+@endsection
 <!-- Banner start -->
 @section('home')
 	<div class="banner" id="banner">
@@ -17,7 +22,7 @@
 	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter" style="margin-left:140px;">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;" placeholder="Location">
+										    <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;max-width: 135px;text-align: left;padding-left: 16px!important;font-size: 13px;" placeholder="Location">
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="share_bed" name="share_bed" style="text-align: center;">
