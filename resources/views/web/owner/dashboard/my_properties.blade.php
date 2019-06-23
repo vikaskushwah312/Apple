@@ -10,7 +10,7 @@
                 {!! myPropertiesImage($pro->id)!!}
             </td>
             <td class="title-container">
-                <h2><a href="{{url('owner/property-details')}}">{{ $pro->title }}</a></h2>
+                <h2><a href="javascript:void(0)">{{ $pro->title }}</a></h2> <!-- {{url('owner/property-details')}} -->
                 <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i>{{ $pro->address }}</h5>
                 <h6 class="table-property-price">{{ $pro->price }} / monthly</h6>
             </td>

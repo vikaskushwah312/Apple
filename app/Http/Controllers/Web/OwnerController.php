@@ -16,6 +16,7 @@ class OwnerController extends Controller
     }
 
     public function messages(Request $request){
+        // print(auth('user')->id());
         $data['title'] = "";
     	return view('web.owner.dashboard.messages',$data);
     }
@@ -126,7 +127,8 @@ class OwnerController extends Controller
                 2. then image id insert into propertey
                 3.property id insert into featurs tabel*/
 
-                $data = array(  'title'     => $request->title,
+                $data = array(  'added_by' => auth('user')->id(),
+                                'title'     => $request->title,
                                 'status'     => 'For Rent',
                                 'price'        => $request->price,
                                 'type'        => $request->type,
@@ -198,11 +200,10 @@ class OwnerController extends Controller
     *purpose : To show the list of my properties
     */
     public function myProperties(Request $request){
-
+        
         $data['title'] =  "My Properties";
-        $data['property'] = Property::where('p_status','Active')->orderBy('created_at','desc')->get();
-        // print(json_encode($data['property']));die;
-        // print_r($data['property'][0]['imgGallery']);die();
+        $data['property'] = Property::where(['p_status'=>'Active','added_by'=>auth('user')->id()])->orderBy('created_at','desc')->get();
+        
         return view('web.owner.dashboard.my_properties',$data);
     }
 
@@ -254,7 +255,7 @@ class OwnerController extends Controller
                                 'description'  => $request->description, 
                            );
           
-                $update = Property::where('id',$id)->update($data);
+                $update = Property::where(['id'=>$id,'added_by'=>auth('user')->id()])->update($data);
                 if ($update) {  //if properte insert                
                     //now insert the images GalleryImage
                     // $data = $request->file('image');
