@@ -196,10 +196,10 @@
                                 </ul>
                                 <div class="footer">
                                     <a href="#" tabindex="0">
-                                        <i class="flaticon-people"></i>{{$res->kitchen}} Jhon Doe
+                                        <i class="flaticon-people"></i>{{$res->id}} Jhon Doe
                                     </a>
                                     <span>
-                                          <i class="flaticon-calendar"></i>{{$res->kitchen}}5 Days ago
+                                          <i class="flaticon-calendar"></i>{{$res->id}}5 Days ago
                                     </span>
                                 </div>
                             </div>
