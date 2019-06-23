@@ -127,7 +127,7 @@ class OwnerController extends Controller
                 3.property id insert into featurs tabel*/
 
                 $data = array(  'title'     => $request->title,
-                                'status'     => 'For Sale',
+                                'status'     => 'For Rent',
                                 'price'        => $request->price,
                                 'type'        => $request->type,
                                 'area'         => $request->area, 

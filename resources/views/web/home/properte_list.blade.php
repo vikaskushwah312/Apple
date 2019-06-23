@@ -24,7 +24,6 @@
                     <!-- Advanced search start -->
                     <div class="widget advanced-search">
                         <h3 class="sidebar-title">Advanced Search</h3>
-                        <div class="s-border"></div>
                         <form  id="search_form" name="search_form" >
                             <div class="form-group">
                                 <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location">
@@ -186,13 +185,13 @@
                                         <span>Area</span>{{$res->area}} Sqft
                                     </li>
                                     <li>
-                                        <span>Beds</span>{{$res->bed}}
+                                        <span>Sharing</span>{{$res->share_bed}}
                                     </li>
                                     <li>
-                                        <span>Baths</span>{{$res->bathroom}}
+                                        <span>Rooms</span>{{$res->room}}
                                     </li>
                                     <li>
-                                        <span>Kitchen</span>{{$res->kitchen}}
+                                        <span>Ac/Non-Ac</span>{{$res->type}}
                                     </li>
                                 </ul>
                                 <div class="footer">

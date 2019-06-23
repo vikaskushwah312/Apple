@@ -23,20 +23,23 @@ class HomeController extends Controller
         $share_bed = $request->share_bed;
         $room = $request->room;
         $type = $request->type;
-        // print($request->location);
-        $data['result'] = $query->where(['p_status'=>'Active'])
-                                  ->orderBy('updated_at','desc')
-                             ->where('address', "LIKE", "%".$address."%")
-                           /* ->when($share_bed != '', function ($query, $share_bed) {
-                                    return $query->where('share_bed', $share_bed);
-                                })
-                            ->when($room != '', function ($query, $room) {
-                                    return $query->where('room', $room);
-                                })
-                            ->when($type != '', function ($query, $type) {
-                                    return $query->where('type', $type);
-                                })*/
-                            ->paginate(2);
+        print($share_bed);die;
+        $query->where(['p_status'=>'Active'])
+                ->orderBy('updated_at','desc');
+                if($address != ''){
+                    $query->where('addressss', "LIKE", "%".$address."%");
+                }
+        $query->when($share_bed != '', function ($query, $share_bed) {
+                    return $query->where('share_bed', $share_bed);
+                })
+                ->when($room != '', function ($query, $room) {
+                        return $query->where('room', $room);
+                })
+                ->when($type != '', function ($query, $type) {
+                    return $query->where('type', $type);
+                });
+
+        $data['result'] = $query->paginate(10);
         
         $data['count'] = count($data['result']);
         // print_r(count($data['result']));die;

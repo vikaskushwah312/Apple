@@ -20,10 +20,10 @@ function myPropertiesImage($id){
 		return '<img src="'.$path.'" alt="listing-photo" class="img-fluid">';
 		
 	} else {
+		
 		$path = url(''.Config::get('constants.NO_Image').'');	
+		return '<img src="'.$path.'" alt="listing-photo" class="img-fluid">';
 	}
-	return $path;
-	return '<img src="'.$path.'" alt="listing-photo" class="img-fluid">';
 }
 
 // to show the image in my propertey list page
