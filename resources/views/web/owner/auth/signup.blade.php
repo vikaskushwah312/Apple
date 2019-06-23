@@ -12,7 +12,7 @@
                     <div class="details">
                         <!-- Logo-->
                         <a href="{{url('')}}">
-                            <img src="{{logoImage()}}" alt="logo1" height="50px;"width=50px;>
+                            {!! logoImage()!!}
                         </a>
                         <!-- Name -->
                         <h3>Create an account for Owner </h3>

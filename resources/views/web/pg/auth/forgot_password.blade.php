@@ -12,7 +12,7 @@
                     <div class="details">
                         <!-- Logo -->
                         <a href="index.html">
-                            <img src="img/black-logo.png" class="cm-logo" alt="black-logo">
+                            {!! logoImage()!!}
                         </a>
                         <!-- Name -->
                         <h3>Recover your password pay</h3>

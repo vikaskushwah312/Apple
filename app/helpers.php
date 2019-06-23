@@ -40,7 +40,8 @@ function myPropertiesImageUrl($id){
 }
 
 function logoImage()	{
-	return url('public/img/logos/logo.png');
+	$url = url('public/img/logos/logo.png');
+	return '<img src="'.$url.'" alt="logo1" height="50px;"width=70px;>';
 }
 
 //it will take a properte id and send url 

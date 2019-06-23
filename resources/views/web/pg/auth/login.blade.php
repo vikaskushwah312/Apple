@@ -11,7 +11,7 @@
                     <div class="details">
                         <!-- Logo -->
                         <a href="{{url('')}}">
-                            <img src="{{logoImage()}}" class="cm-logo" alt="black-logo">
+                            {!! logoImage()!!}
                         </a>
                         <!-- Name -->
                          <h3>Login as Paying Guest</h3>
