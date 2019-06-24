@@ -98,9 +98,11 @@ class HomeController extends Controller
         }
     }
     
-    public function properteDetails(Request $request){
-
-        return view('web.home.properte_details');
+    public function properteDetails(Request $request,$id){
+        // $id property id 
+        $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
+        $data['images'] = GalleryImage::where('property_id',$id)->get();
+        return view('web.home.properte_details',$data);
     }
 
 

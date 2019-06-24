@@ -78,7 +78,7 @@ Route::get('/','HomeController@home');
 Route::get('home-filter','HomeController@homeFilter');
 Route::get('search-filter','HomeController@searchFilter');
 
-Route::get('properte-details','HomeController@properteDetails');
+Route::get('properte-details/{id}','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
 
 //log in for all in one 

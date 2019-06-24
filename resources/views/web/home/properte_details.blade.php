@@ -22,8 +22,8 @@
             <div class="col-md-12">
                 <!-- Heading properties 3 start -->
                 <div class="heading-properties-3">
-                    <h1>Relaxing Apartment</h1>
-                    <div class="mb-30"><span class="property-price">$35,0000</span> <span class="rent">For Rent</span> <span class="location"><i class="flaticon-pin"></i>123 Kathal St. Tampa City,</span></div>
+                    <h1>{{$result->title}}</h1>
+                    <div class="mb-30"><span class="property-price">Rs {{$result->price}} / month</span> <span class="rent">{{$result->status}}</span> <span class="location"><i class="flaticon-pin"></i>{{$result->address}},</span></div>
                 </div>
             </div>
         </div>
@@ -32,9 +32,11 @@
                 <!-- main slider carousel items -->
                 <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-40">
                     <div class="carousel-inner">
+                       
                         <div class="active item carousel-item" data-slide-number="0">
                             <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
                         </div>
+                       
                         <div class="item carousel-item" data-slide-number="1">
                             <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
                         </div>
@@ -53,7 +55,7 @@
 
                     </div>
                     <!-- main slider carousel nav controls -->
-                    <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
+                    <!-- <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
                         <li class="list-inline-item active">
                             <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#propertiesDetailsSlider">
                                 <img src="{{ searchSmallImage()}}" class="" alt="properties-small">
@@ -79,7 +81,7 @@
                                 <img src="{{ searchSmallImage()}}" class="" alt="properties-small">
                             </a>
                         </li>
-                    </ul>
+                    </ul> -->
                     <!-- main slider carousel items -->
                 </div>
                 <!-- Advanced search start -->

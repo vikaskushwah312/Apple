@@ -172,7 +172,7 @@
                             <div class="detail">
                                 <div class="hdg">
                                     <h3 class="title">
-                                        <a href="{{url('properte-details')}}">{{$res->title}}</a>
+                                        <a href="{{url('properte-details').'/'.$res->id}}">{{$res->title}}</a>
                                     </h3>
                                     <h5 class="location">
                                         <a href="{{url('properte-details')}}">
@@ -196,10 +196,10 @@
                                 </ul>
                                 <div class="footer">
                                     <a href="#" tabindex="0">
-                                        <i class="flaticon-people"></i>{{$res->id}} Jhon Doe
-                                    </a>
+                                        <i class="flaticon-people"></i>{!! copName($res->id)!!}
+                                      </a>
                                     <span>
-                                          <i class="flaticon-calendar"></i>{{$res->id}}5 Days ago
+                                          <i class="flaticon-phone"></i>{!! copPhone($res->id)!!}
                                     </span>
                                 </div>
                             </div>
