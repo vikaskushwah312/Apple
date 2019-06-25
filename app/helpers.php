@@ -49,12 +49,29 @@ function searchImage(){
 
 	return url('public/img/search1.jpg');
 }
-function searchBigImage(){																					
-	return url('public/img/search2.jpg');
+//get the images for silder
+function searchBigImage($id){
+	$img = GalleryImage::where('id',$id)->first(['image']);
+	if($img != ''){
+		$path = url(''.Config::get('constants.Gallery_Image').$img->image);
+
+	} else {
+		$path = url(''.Config::get('constants.NO_Image').'');	
+	}
+	return '<img src="'.$path.'" class="" alt="slider-properties" width="730px;" height="486px;">';
 }
 
-function searchSmallImage(){
-	return url('public/img/search2.jpg');
+
+function searchSmallImage($id){
+	
+	$img = GalleryImage::where('id',$id)->first(['image']);
+	if($img != ''){
+		$path = url(''.Config::get('constants.Gallery_Image').$img->image);
+
+	} else {
+		$path = url(''.Config::get('constants.NO_Image').'');	
+	}
+	return '<img src="'.$path.'" class="" alt="properties-small" width="146px;" height="97px;">';
 }
 
 // get the name of contact person for property
