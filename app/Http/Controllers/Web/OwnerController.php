@@ -101,7 +101,7 @@ class OwnerController extends Controller
     public function submitProperty(Request $request){
 
         if ($request->isMethod('post')) {
-            // $data = $request->file('image');
+            // $data = $request->features;
             // print_r($data);die;
              $validation = Validator::make($request->all(),[
                 'title'    => 'required',
@@ -167,6 +167,21 @@ class OwnerController extends Controller
 
                     } //images
 
+                    //features insert it's optional
+                    $features = $request->features;
+                    if($features){
+                        foreach ($features as $key => $value) {
+                            $featureData = array(
+
+                                'property_id' => $insert, //property id 
+                                'feature_id'  => $value,
+                                'created_at'    => date('Y-m-d H:i:s'),
+                            );
+
+                            PropertyFeatures::insertGetId($featureData);
+                        }
+                    }
+
                     //Now Insert the Contact Details contact_of_person
                     $contactData = array(
                                 'property_id' => $insert, //propertey id
@@ -182,11 +197,13 @@ class OwnerController extends Controller
                   return Redirect::to("owner/submit-property")->withFail('Something went to wrong.');
                   }
             }
-        
+            
         } else { //get method
             
             $data['title'] = "Submit Property";
             $data['state'] = State::where('status','Active')->get();
+            $data['features'] = Features::where('status','Active')->get();
+            
             return view('web.owner.dashboard.submit-property',$data);
         }
 
@@ -313,9 +330,12 @@ class OwnerController extends Controller
 
         } else { //Get method
 
-            $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
+            $data['property_edit'] = Property::with(['cop','features'])->where('id',$id)->first();
+            print_r($data['property_edit']);die;
             $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
+            $data['features'] = Features::where('status','Active')->get();
             $data['state'] = State::where('status','Active')->get();
+
             return view('web.owner.dashboard.my_properties_edit',$data);
         }
 

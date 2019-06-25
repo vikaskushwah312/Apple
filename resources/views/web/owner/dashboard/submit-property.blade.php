@@ -244,16 +244,6 @@
         </div>
         <h4 class="bg-grea-3">Property Gallery</h4>
         <div class="container">
-            <!-- <input type="file" id="image" name="image" style="" class="form-control" multiple> -->
-            <!-- <fieldset class="form-group">
-                <input type="file" id="image" name="image" class="" multiple="" required>
-                <p class="error help-block" id="image">
-                  @if($errors->has('image'))
-                    <i class="error"></i> {{ $errors->first('image') }}
-                  @endif
-                </p>
-            </fieldset> -->
-
             <fieldset class="form-group">
                 <a href="javascript:void(0)" onclick="$('#image').click()"><button class="btn btn-outline pricing-btn button-theme">Upload Image</button> <strong class="required">*</strong></a>
                 <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
@@ -280,17 +270,19 @@
                 </p>
             </div>
         </div>
-        <!-- <h4 class="bg-grea-3">Features (optional)</h4>
+        <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
+            @foreach($features as $key=>$fe)
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="features" type="checkbox" name="features">
-                    <label for="features">
-                        Free Parking
+                    <input id="features_{{$key}}" type="checkbox" name="features[]" value="{{$fe->id}}">
+                    <label for="features_{{$key}}">
+                        {{$fe->feature}}
                     </label>
                 </div>
             </div>
-        </div> -->
+            @endforeach
+        </div>
         <h4 class="bg-grea-3">Contact Details</h4>
         <div class="row pad-20">
             <div class="col-lg-4 col-md-4 col-sm-12">
