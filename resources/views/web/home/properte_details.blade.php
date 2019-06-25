@@ -33,14 +33,22 @@
                 <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-40">
                     <div class="carousel-inner">
                        
-                        <div class="active item carousel-item" data-slide-number="0">
-                            <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
+                        @foreach($images as $key => $img)
+                        <div class="active item carousel-item" data-slide-number="{{$key}}">
+                            
+                            {!! searchBigImage($img->id) !!}
+                                                      
                         </div>
-                       
-                        <div class="item carousel-item" data-slide-number="1">
-                            <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
-                        </div>
-                        <div class="item carousel-item" data-slide-number="2">
+                        @endforeach
+
+                   <!--      <div class="active item carousel-item" data-slide-number="0">
+                       <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
+                   </div>
+                                          
+                   <div class="item carousel-item" data-slide-number="1">
+                       <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
+                   </div> -->
+                        <!-- <div class="item carousel-item" data-slide-number="2">
                             <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
                         </div>
                         <div class="item carousel-item" data-slide-number="4">
@@ -48,7 +56,7 @@
                         </div>
                         <div class="item carousel-item" data-slide-number="5">
                             <img src="{{ searchBigImage()}}" class="" alt="slider-properties">
-                        </div>
+                        </div> -->
 
                         <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                         <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
