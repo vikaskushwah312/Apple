@@ -23,10 +23,10 @@
                 <div class="sidebar-left">
                     <!-- Advanced search start -->
                     <div class="widget advanced-search">
-                        <h3 class="sidebar-title">Advanced Search</h3>
+                        <h3 class="sidebar-title">Advanced Search {{$count}}</h3>
                         <form  id="search_form" name="search_form" >
                             <div class="form-group">
-                                <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location">
+                                <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location" value="{{$address}}">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -207,6 +207,8 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <div style="text-align: center;"><strong class="error">No Recored Found</strong> </div>
                 @endif
               
                 <!-- Page navigation start -->
@@ -229,12 +231,12 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#search_button').on('click',function(){
+    /*$('#search_button').on('click',function(){
         filterHome();
-    });
+    });*/
     
    
-    function filterHome(){
+    /*function filterHome(){
         var formvalue = $("#search_form").serialize();
         $.ajax({
             url : "search-filter" ,
@@ -247,7 +249,7 @@ $(document).ready(function(){
                 }
             }
         });
-    }
+    }*/
     // filterHome();
 	
 });

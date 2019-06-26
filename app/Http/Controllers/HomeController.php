@@ -27,26 +27,33 @@ class HomeController extends Controller
         $query->where(['p_status'=>'Active'])
                 ->orderBy('updated_at','desc');
                 if($address != ''){
-                    $query->where('addressss', "LIKE", "%".$address."%");
+                    $query->where('address', "LIKE", "%".$address."%");
                 }
-        $query->when($share_bed != '', function ($query, $share_bed) {
+        $query->when($share_bed, function ($query, $share_bed) {
                     return $query->where('share_bed', $share_bed);
-                });
-                /*->when($room != '', function ($query, $room) {
+                })
+                ->when($room, function ($query, $room) {
                         return $query->where('room', $room);
                 })
-                ->when($type != '', function ($query, $type) {
+                ->when($type, function ($query, $type) {
                     return $query->where('type', $type);
-                });*/
+                });
 
-        $data['result'] = $query->paginate(10);
+        $data['result'] = $query->paginate(2);
+        /*if($request->page){
+            print($request->page);
+        }
+        print_r($request->all());die;*/
         
         $data['count'] = count($data['result']);
         // print_r(count($data['result']));die;
         // print(count($data));
         // print_r($data);
         // die;
-
+        $data['address']    = $address;
+        $data['share_bed']  = $share_bed;
+        $data['room']       = $room;
+        $data['type']       = $type;
         return view('web.home.properte_list',$data);
     }
     public function searchFilter(Request $request){
