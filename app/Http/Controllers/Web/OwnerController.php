@@ -254,7 +254,7 @@ class OwnerController extends Controller
                 /*1 Image insert 
                 2. then image id insert into propertey
                 3.property id insert into featurs tabel*/
-
+                // print_r($request->features);die;
                 $data = array(  'title'     => $request->title,
                                 'status'     => 'For Sale',
                                 'price'        => $request->price,
@@ -311,6 +311,23 @@ class OwnerController extends Controller
                         }
 
                     }
+
+                    //features insert it's optional
+                    $features = $request->features;
+                    if($features){
+                            PropertyFeatures::where('property_id',$id)->delete();                         
+                        foreach ($features as $key => $value) {
+                            $featureData = array(
+
+                                'property_id' => $id, //property id 
+                                'feature_id'  => $value,
+                                'created_at'    => date('Y-m-d H:i:s'),
+                            );
+
+                            PropertyFeatures::insertGetId($featureData);
+                        }
+                    }
+
                     //Now Insert the Contact Details contact_of_person
                     $contactData = array(
                                 'property_id' => $id, //propertey id
@@ -330,11 +347,16 @@ class OwnerController extends Controller
 
         } else { //Get method
 
-            $data['property_edit'] = Property::with(['cop','features'])->where('id',$id)->first();
-            print_r($data['property_edit']);die;
+            $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
             $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
             $data['features'] = Features::where('status','Active')->get();
             $data['state'] = State::where('status','Active')->get();
+            $pro_features = PropertyFeatures::where(['property_id'=>$id])->get(['feature_id']);
+            $data['propertey_features'] = [];
+            foreach ($pro_features as $key => $value) {
+                $data['propertey_features'][] = $value->feature_id;
+            }
+            // print_r($data['propertey_features']);die;
 
             return view('web.owner.dashboard.my_properties_edit',$data);
         }

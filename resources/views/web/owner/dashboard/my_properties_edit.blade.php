@@ -300,11 +300,19 @@
         <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
             @foreach($features as $key=>$fe)
+                @php
+                    $checked='';
+                    if(in_array($fe->id,$propertey_features)){
+                        $checked= 'checked';
+                    }
+                    
+                @endphp
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="features_{{$key}}" type="checkbox" name="features[]" value="{{$fe->id}}" >
+                    <input id="features_{{$key}}" type="checkbox" name="features[]" value="{{$fe->id}}" {{$checked}}>
                     <label for="features_{{$key}}">
                         {{$fe->feature}}
+
                     </label>
                 </div>
             </div>
