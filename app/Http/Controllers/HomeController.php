@@ -18,14 +18,17 @@ class HomeController extends Controller
     }
     public function homeFilter(Request $request){
 
-        $query = Property::query();
+        
         $address = $request->location;
         $share_bed = $request->share_bed;
         $room = $request->room;
         $type = $request->type;
         // print($share_bed);die;
-        $query->where(['p_status'=>'Active'])
-                ->orderBy('updated_at','desc');
+        // $query->where(['p_status'=>'Active']);
+          
+        $data['result'] = [];
+        if($address || $share_bed || $room || $type){
+            $query = Property::query();    
                 if($address != ''){
                     $query->where('address', "LIKE", "%".$address."%");
                 }
@@ -37,9 +40,11 @@ class HomeController extends Controller
                 })
                 ->when($type, function ($query, $type) {
                     return $query->where('type', $type);
-                });
+                })
+                ->orderBy('updated_at','desc');
 
-        $data['result'] = $query->paginate(2);
+        $data['result'] = $query->paginate(3);
+        }
         /*if($request->page){
             print($request->page);
         }
@@ -56,7 +61,7 @@ class HomeController extends Controller
         $data['type']       = $type;
         return view('web.home.properte_list',$data);
     }
-    public function searchFilter(Request $request){
+    public function advanceSearch(Request $request){
         if($request->ajax()){
             
             $query = Property::query();
@@ -77,13 +82,13 @@ class HomeController extends Controller
 
             $data['result'] = $query->where(['p_status'=>'Active'])
                                     ->orderBy('updated_at','desc')
-                                    ->when($address != '', function ($query, $address) {
+                                    ->when($address, function ($query, $address) {
                                             return $query->where('address', "LIKE", "%".$address."%");
                                         })
-                                    /*->when($share_bed != '', function ($query, $share_bed) {
+                                    ->when($share_bed, function ($query, $share_bed) {
                                             return $query->where('share_bed', $share_bed);
                                         })
-                                    ->when($room != '', function ($query, $room) {
+                                    /*->when($room != '', function ($query, $room) {
                                             return $query->where('room', $room);
                                         })
                                     ->when($type != '', function ($query, $type) {
@@ -94,8 +99,8 @@ class HomeController extends Controller
                                     ->where('price', '=>', $min_price)
                                     ->orWhere('price','=<', $max_price)*/
                                     ->paginate(2);
-            print($address);
-            print(count($data['result']));die;
+            // print($address);
+            // print(count($data['result']));die;
             $data['count'] = count($data['result']);
 
             // print(count($data['result']));die;
@@ -104,7 +109,21 @@ class HomeController extends Controller
             
         }
     }
-    
+    /*
+    *function : advance Search partial
+    */
+   /* public function advanceSearch(Request $request){
+        try {
+            if($request->ajax()){
+                $data['count'] = 2;
+                $data['address'] = 2;
+                $res = ['status'=>true,'data'=>view('web.home.advance_search',$data)->render()];
+                return $res;
+            }
+        }catch(Exception $e) {
+          echo 'Message: ' .$e->getMessage();
+        }
+    }*//**/
     public function properteDetails(Request $request,$id){
         // $id property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();

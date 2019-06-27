@@ -80,6 +80,9 @@ Route::get('search-filter','HomeController@searchFilter');
 
 Route::get('properte-details/{id}','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
+Route::get('advance-search','HomeController@advanceSearch');
+
+
 
 //log in for all in one 
 Route::any('login','HomeController@login');
