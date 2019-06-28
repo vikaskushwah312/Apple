@@ -16,6 +16,7 @@ class OwnerController extends Controller
     }
 
     public function messages(Request $request){
+        // print(auth('user')->id());
         $data['title'] = "";
     	return view('web.owner.dashboard.messages',$data);
     }
@@ -100,7 +101,7 @@ class OwnerController extends Controller
     public function submitProperty(Request $request){
 
         if ($request->isMethod('post')) {
-            // $data = $request->file('image');
+            // $data = $request->features;
             // print_r($data);die;
              $validation = Validator::make($request->all(),[
                 'title'    => 'required',
@@ -126,7 +127,8 @@ class OwnerController extends Controller
                 2. then image id insert into propertey
                 3.property id insert into featurs tabel*/
 
-                $data = array(  'title'     => $request->title,
+                $data = array(  'added_by' => auth('user')->id(),
+                                'title'     => $request->title,
                                 'status'     => 'For Rent',
                                 'price'        => $request->price,
                                 'type'        => $request->type,
@@ -165,6 +167,21 @@ class OwnerController extends Controller
 
                     } //images
 
+                    //features insert it's optional
+                    $features = $request->features;
+                    if($features){
+                        foreach ($features as $key => $value) {
+                            $featureData = array(
+
+                                'property_id' => $insert, //property id 
+                                'feature_id'  => $value,
+                                'created_at'    => date('Y-m-d H:i:s'),
+                            );
+
+                            PropertyFeatures::insertGetId($featureData);
+                        }
+                    }
+
                     //Now Insert the Contact Details contact_of_person
                     $contactData = array(
                                 'property_id' => $insert, //propertey id
@@ -180,11 +197,13 @@ class OwnerController extends Controller
                   return Redirect::to("owner/submit-property")->withFail('Something went to wrong.');
                   }
             }
-        
+            
         } else { //get method
             
             $data['title'] = "Submit Property";
             $data['state'] = State::where('status','Active')->get();
+            $data['features'] = Features::where('status','Active')->get();
+            
             return view('web.owner.dashboard.submit-property',$data);
         }
 
@@ -198,11 +217,10 @@ class OwnerController extends Controller
     *purpose : To show the list of my properties
     */
     public function myProperties(Request $request){
-
+        
         $data['title'] =  "My Properties";
-        $data['property'] = Property::where('p_status','Active')->orderBy('created_at','desc')->get();
-        // print(json_encode($data['property']));die;
-        // print_r($data['property'][0]['imgGallery']);die();
+        $data['property'] = Property::where(['p_status'=>'Active','added_by'=>auth('user')->id()])->orderBy('created_at','desc')->get();
+        
         return view('web.owner.dashboard.my_properties',$data);
     }
 
@@ -236,7 +254,7 @@ class OwnerController extends Controller
                 /*1 Image insert 
                 2. then image id insert into propertey
                 3.property id insert into featurs tabel*/
-
+                // print_r($request->features);die;
                 $data = array(  'title'     => $request->title,
                                 'status'     => 'For Sale',
                                 'price'        => $request->price,
@@ -254,7 +272,7 @@ class OwnerController extends Controller
                                 'description'  => $request->description, 
                            );
           
-                $update = Property::where('id',$id)->update($data);
+                $update = Property::where(['id'=>$id,'added_by'=>auth('user')->id()])->update($data);
                 if ($update) {  //if properte insert                
                     //now insert the images GalleryImage
                     // $data = $request->file('image');
@@ -293,6 +311,23 @@ class OwnerController extends Controller
                         }
 
                     }
+
+                    //features insert it's optional
+                    $features = $request->features;
+                    if($features){
+                            PropertyFeatures::where('property_id',$id)->delete();                         
+                        foreach ($features as $key => $value) {
+                            $featureData = array(
+
+                                'property_id' => $id, //property id 
+                                'feature_id'  => $value,
+                                'created_at'    => date('Y-m-d H:i:s'),
+                            );
+
+                            PropertyFeatures::insertGetId($featureData);
+                        }
+                    }
+
                     //Now Insert the Contact Details contact_of_person
                     $contactData = array(
                                 'property_id' => $id, //propertey id
@@ -314,7 +349,15 @@ class OwnerController extends Controller
 
             $data['property_edit'] = Property::with(['cop'])->where('id',$id)->first();
             $data['image_gallery'] = GalleryImage::where('property_id',$id)->get();
+            $data['features'] = Features::where('status','Active')->get();
             $data['state'] = State::where('status','Active')->get();
+            $pro_features = PropertyFeatures::where(['property_id'=>$id])->get(['feature_id']);
+            $data['propertey_features'] = [];
+            foreach ($pro_features as $key => $value) {
+                $data['propertey_features'][] = $value->feature_id;
+            }
+            // print_r($data['propertey_features']);die;
+
             return view('web.owner.dashboard.my_properties_edit',$data);
         }
 

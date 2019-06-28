@@ -18,4 +18,9 @@ class Property extends Model
     	return $this->hasOne('App\Models\GalleryImage', 'property_id', 'id');
     }
 
+    public function features() //to get the all images of property
+    {
+    	return $this->hasMany('App\Models\PropertyFeatures', 'property_id', 'id');
+    }
+
 }

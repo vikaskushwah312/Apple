@@ -297,17 +297,27 @@
                 </p>
             </div>
         </div>
-        <!-- <h4 class="bg-grea-3">Features (optional)</h4>
+        <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
+            @foreach($features as $key=>$fe)
+                @php
+                    $checked='';
+                    if(in_array($fe->id,$propertey_features)){
+                        $checked= 'checked';
+                    }
+                    
+                @endphp
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="checkbox checkbox-theme checkbox-circle">
-                    <input id="features" type="checkbox" name="features">
-                    <label for="features">
-                        Free Parking
+                    <input id="features_{{$key}}" type="checkbox" name="features[]" value="{{$fe->id}}" {{$checked}}>
+                    <label for="features_{{$key}}">
+                        {{$fe->feature}}
+
                     </label>
                 </div>
             </div>
-        </div> -->
+            @endforeach
+        </div>
         <h4 class="bg-grea-3">Contact Details</h4>
         <div class="row pad-20">
             <div class="col-lg-4 col-md-4 col-sm-12">
