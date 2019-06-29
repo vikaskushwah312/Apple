@@ -43,7 +43,7 @@ class HomeController extends Controller
                 })
                 ->orderBy('updated_at','desc');
 
-        $data['result'] = $query->paginate(3);
+        $data['result'] = $query->get();
         }
         /*if($request->page){
             print($request->page);
@@ -68,7 +68,6 @@ class HomeController extends Controller
             $box = $request->all();        
             $myValue=  array();
             parse_str($box['formvalue'], $myValue);
-            // print_r($myValue);die;
             $address   = $myValue['location']; 
             $share_bed = $myValue['share_bed'];
             $room      = $myValue['rooms'];
@@ -79,26 +78,38 @@ class HomeController extends Controller
             $min_price = $myValue['min_price'];
             $max_price = $myValue['max_price'];
 
+            // print_r($bathroom);die;
+            /*$address = $request->location;
+            $room = $request->rooms;
+            $bathroom = $request->bathroom;
+            $share_bed = $request->share_bed;
+            $type = $request->type;*/
+            // print_r($share_bed);die;
+            $query = Property::query();    
+            if($address != ''){
+                $query->where('address', "LIKE", "%".$address."%");
+            }
+            $query->when($share_bed, function ($query, $share_bed) {
+                    return $query->where('share_bed', $share_bed);
+                })
+                ->when($room, function ($query, $room) {
+                        return $query->where('room', $room);
+                })
+                ->when($type, function ($query, $type) { //ac /non-ac
+                    return $query->where('type', $type);
+                })
+                ->when($bathroom, function ($query, $bathroom) {
+                    return $query->where('bathroom', $bathroom);
+                })
+                ->when($min_price, function ($query, $min_price) {
+                    return $query->where('price','>=',$min_price);
+                })
+                ->when($max_price, function ($query, $max_price) {
+                    return $query->where('price','<=',$max_price);
+                })
+                ->orderBy('updated_at','desc');
 
-            $data['result'] = $query->where(['p_status'=>'Active'])
-                                    ->orderBy('updated_at','desc')
-                                    ->when($address, function ($query, $address) {
-                                            return $query->where('address', "LIKE", "%".$address."%");
-                                        })
-                                    ->when($share_bed, function ($query, $share_bed) {
-                                            return $query->where('share_bed', $share_bed);
-                                        })
-                                    /*->when($room != '', function ($query, $room) {
-                                            return $query->where('room', $room);
-                                        })
-                                    ->when($type != '', function ($query, $type) {
-                                            return $query->where('type', $type);
-                                        })*/
-                                    /*->where('area', '=>', $min_area)
-                                    ->orWhere('area','=<', $max_area)
-                                    ->where('price', '=>', $min_price)
-                                    ->orWhere('price','=<', $max_price)*/
-                                    ->paginate(2);
+            $data['result'] = $query->paginate(2);
             // print($address);
             // print(count($data['result']));die;
             $data['count'] = count($data['result']);

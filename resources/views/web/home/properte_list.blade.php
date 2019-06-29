@@ -32,7 +32,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="rooms" id="rooms">
-                                          <option>Rooms</option>
+                                          <option value="">Rooms</option>
                                           <option value="1" {{ ( $room == 1 ) ? 'selected' : '' }}>1</option>
                                           <option value="2" {{ ( $room == 2) ? 'selected':''}}>2</option>
                                           <option value="3" {{ ( $room == 3) ? 'selected':''}}>3</option>
@@ -43,7 +43,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="bathroom" id="bathroom">
-                                            <option>Bathroom</option>
+                                            <option value="">Bathroom</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -56,7 +56,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="share_bed" id="share_bed">
-                                            <option>Sharing</option>
+                                            <option value="">Sharing</option>
                                             <option value="1" {{ ( $share_bed == 1 ) ? 'selected' : '' }}>1</option>
                                             <option value="2" {{ ( $share_bed == 2 ) ? 'selected' : '' }}>2</option>
                                             <option value="3" {{ ( $share_bed == 3 ) ? 'selected' : '' }}>3</option>
@@ -68,6 +68,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="type" id="type">
+                                          <option value="">select Ac/Non-Ac</option>
                                             <option value="Ac" {{ ( $type == 'Ac' ) ? 'selected' : '' }}>Ac</option>
                                             <option value="Non-Ac" {{ ( $type == 'Non-AC' ) ? 'selected' : '' }}>Non-Ac</option>
                                         </select>
@@ -183,6 +184,13 @@ $(document).ready(function(){
   //Get the filter result of advance search 
     function advanceSearch(url){
         var formvalue = $("#advance_search_form").serialize();
+        /*var location = $('#location').val();
+        var rooms = $('#rooms').val();
+        var bathroom = $('#bathroom').val();
+        var share_bed = $('#share_bed').val();
+        var type = $('#type').val();
+        'location':location,'rooms':rooms,'bathroom':bathroom,'share_bed':share_bed,'type':type*/
+
         $.ajax({
             url : url ,
             type : "GET",
