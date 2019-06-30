@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     @yield('webcontent')
-                  <p class="sub-banner-2 text-center" style="position: absolute;">© 2018 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                  <p class="sub-banner-2 text-center position:absolute;bottom:0;width:100%;">© 2018 Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
                 </div>
             </div>
         </div>
