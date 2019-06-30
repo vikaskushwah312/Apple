@@ -85,6 +85,7 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
+                @if(count($propertey_features)> 0)
                 <div class="properties-amenities mb-40">
                     <h3 class="heading-2">
                         Features
@@ -93,12 +94,12 @@
                         @foreach($features as $key=>$fe)
                             @php
                                 if(in_array($fe->id,$propertey_features)){
-                                    $d ='col-sm-6';
+                                
                             @endphp
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <ul class="amenities">
                                     <li>
-                                        <i class="fa fa-check {{$d}}"></i>{{$fe->feature}}
+                                        <i class="fa fa-check"></i>{{$fe->feature}}
                                     </li>
                                     </ul>
                                 </div>
@@ -109,6 +110,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">
                     <h3 class="heading-2">Floor Plans</h3>
