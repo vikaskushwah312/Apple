@@ -5,10 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage};
 use Validator,Redirect,Session;
+// *****************************notification ***********
+use App\Notifications\Complain;
+use App\Models\Notification;
+
 
 class HomeController extends Controller
 {
-    
+    // ***************************************Notifications **************************?
+    public function index()
+    {
+        return view('home');
+    }
+
+    public function sendNotification()
+    {
+        $user = User::first();
+  
+        $details = [
+            'greeting' => 'Hi Artisan',
+            'body' => 'This is my first notification from ItSolutionStuff.com',
+            'thanks' => 'Thank you for using ItSolutionStuff.com tuto!',
+            'actionText' => 'View My Site',
+            'actionURL' => url('/'),
+            'order_id' => 101
+        ];
+  
+        Notification::send($user, new Complain($details));
+   
+        dd('done');
+    }
+
+    // **************************************************Home controller****
     //This is for Home page
     public function home(Request $request){
         // die("vikas");die
