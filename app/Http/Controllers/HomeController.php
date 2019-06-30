@@ -43,7 +43,7 @@ class HomeController extends Controller
                 })
                 ->orderBy('updated_at','desc');
 
-        $data['result'] = $query->get();
+        $data['result'] = $query->paginate(2);
         }
         /*if($request->page){
             print($request->page);
@@ -73,18 +73,12 @@ class HomeController extends Controller
             $room      = $myValue['rooms'];
             $type      = $myValue['type'];
             $bathroom  = $myValue['bathroom'];
-            $min_area  = $myValue['min_area']; //area
-            $max_area  = $myValue['max_area'];
-            $min_price = $myValue['min_price'];
-            $max_price = $myValue['max_price'];
+            // $min_area  = $myValue['min_area']; //area
+            // $max_area  = $myValue['max_area'];
+            // $min_price = $myValue['min_price'];
+            // $max_price = $myValue['max_price'];
 
-            // print_r($bathroom);die;
-            /*$address = $request->location;
-            $room = $request->rooms;
-            $bathroom = $request->bathroom;
-            $share_bed = $request->share_bed;
-            $type = $request->type;*/
-            // print_r($share_bed);die;
+            
             $query = Property::query();    
             if($address != ''){
                 $query->where('address', "LIKE", "%".$address."%");
@@ -101,12 +95,18 @@ class HomeController extends Controller
                 ->when($bathroom, function ($query, $bathroom) {
                     return $query->where('bathroom', $bathroom);
                 })
-                ->when($min_price, function ($query, $min_price) {
+            /*    ->when($min_area, function ($query, $min_area) {
+                    return $query->where('area','>=',$min_area);
+                })
+                ->when($max_area, function ($query, $max_area) {
+                    return $query->where('area','<=',$max_area);
+                })
+               ->when($min_price, function ($query, $min_price) {
                     return $query->where('price','>=',$min_price);
                 })
                 ->when($max_price, function ($query, $max_price) {
                     return $query->where('price','<=',$max_price);
-                })
+                })*/
                 ->orderBy('updated_at','desc');
 
             $data['result'] = $query->paginate(2);
@@ -139,6 +139,15 @@ class HomeController extends Controller
         // $id property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
         $data['images'] = GalleryImage::where('property_id',$id)->get();
+        $data['features'] = Features::where('status','Active')->get();
+
+        $pro_features = PropertyFeatures::where(['property_id'=>$id])->get(['feature_id']);
+        $data['propertey_features'] = [];
+        // To create the property features array
+        foreach ($pro_features as $key => $value) {
+            $data['propertey_features'][] = $value->feature_id;
+        }
+        // print_r($data['propertey_features']);die;
         return view('web.home.properte_details',$data);
     }
 

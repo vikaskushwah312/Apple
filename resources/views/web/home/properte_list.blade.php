@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="range-slider">
+                            <!-- <div class="range-slider">
                                 <label>Area</label>
                                 <div data-min="0" data-max="10000" data-min-name="min_area" data-max-name="max_area" data-unit="Sq ft" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
@@ -84,7 +84,7 @@
                                 <label>Price</label>
                                 <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="INR" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
-                            </div>
+                            </div> -->
                             <div class="form-group mb-0">
                                 <button type="button"  class="search-button" id="advance_search_button" name="advance_search_button">Search</button>
                             </div>

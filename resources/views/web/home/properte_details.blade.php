@@ -78,11 +78,11 @@
                 </div>
                 <!-- Advanced search start -->
                 <!-- Properties description start -->
-                <div class="properties-description mb-40">
+                <div class="properties-description mb-40 ">
                     <h3 class="heading-2">
                         Description
                     </h3>
-                    <p>{{$result->description}}</p>
+                    <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
                 <div class="properties-amenities mb-40">
@@ -90,63 +90,23 @@
                         Features
                     </h3>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <ul class="amenities">
-                                <li>
-                                    <i class="fa fa-check"></i>Air conditioning
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Balcony
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Pool
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Room service
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Gym
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <ul class="amenities">
-                                <li>
-                                    <i class="fa fa-check"></i>Wifi
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Parking
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Double Bed
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Home Theater
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Electric
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <ul class="amenities">
-                                <li>
-                                    <i class="fa fa-check"></i>Telephone
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Jacuzzi
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Alarm
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Garage
-                                </li>
-                                <li>
-                                    <i class="fa fa-check"></i>Security
-                                </li>
-                            </ul>
-                        </div>
+                        @foreach($features as $key=>$fe)
+                            @php
+                                if(in_array($fe->id,$propertey_features)){
+                                    $d ='col-sm-6';
+                            @endphp
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <ul class="amenities">
+                                    <li>
+                                        <i class="fa fa-check {{$d}}"></i>{{$fe->feature}}
+                                    </li>
+                                    </ul>
+                                </div>
+                            @php
+                                }
+                                
+                            @endphp
+                        @endforeach
                     </div>
                 </div>
                 <!-- Floor plans start -->
@@ -155,15 +115,19 @@
                     <table>
                         <tbody><tr>
                             <td><strong>Size</strong></td>
+                            <td><strong>Ac/Non-Ac</strong></td>
+                            <td><strong>Share Bed</strong></td>
+                            <td><strong>Kitchen</strong></td>
                             <td><strong>Rooms</strong></td>
                             <td><strong>Bathrooms</strong></td>
-                            <td><strong>Garage</strong></td>
                         </tr>
                         <tr>
-                            <td>1600</td>
-                            <td>3</td>
-                            <td>2</td>
-                            <td>1</td>
+                            <td>{{$result->area}}</td>
+                            <td>{{$result->type}}</td>
+                            <td>{{$result->share_bed}}</td>
+                            <td>{{$result->kitchen}}</td>
+                            <td>{{$result->room}}</td>
+                            <td>{{$result->bathroom}}</td>
                         </tr>
                         </tbody>
                     </table>
