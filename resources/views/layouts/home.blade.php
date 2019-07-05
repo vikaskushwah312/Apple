@@ -269,32 +269,32 @@
 	<div class="counters overview-bgi">
 	    <div class="container">
 	        <div class="row">
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <!-- <div class="col-lg-3 col-md-3 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-sale"></i>
 	                    <h1 class="counter">967</h1>
 	                    <p>Listings For Sale</p>
 	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            </div> -->
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-rent"></i>
-	                    <h1 class="counter">1276</h1>
+	                    <h1 class="counter">{{$property}}</h1>
 	                    <p>Listings For Rent</p>
 	                </div>
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-user"></i>
-	                    <h1 class="counter">396</h1>
-	                    <p>Agents</p>
+	                    <h1 class="counter">{{$customer}}</h1>
+	                    <p>User</p>
 	                </div>
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-work"></i>
-	                    <h1 class="counter">177</h1>
-	                    <p>Brokers</p>
+	                    <h1 class="counter">{{$owner}}</h1>
+	                    <p>Owner</p>
 	                </div>
 	            </div>
 	        </div>

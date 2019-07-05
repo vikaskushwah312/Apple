@@ -16,8 +16,12 @@ class HomeController extends Controller
         $data['result'] = FeaturedProperty::where('featured_property.status','Active')
                                             ->leftjoin('property','featured_property.property_id','=','property.id')
                                             ->get(['property.*']);
-        // print_r($data['result']);die;
         $data['count'] =count($data['result']);
+
+        // total property for rent
+        $data['property'] = Property::where('p_status','Active')->count();
+        $data['owner'] = User::where(['status'=>'Active','user_type'=>2])->count();
+        $data['customer'] = User::where(['status'=>'Active','user_type'=>3])->count();
         // print_r($data['result']);die;
         // print_r($data['count']);die;
         return view('layouts.home',$data);
