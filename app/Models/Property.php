@@ -23,4 +23,9 @@ class Property extends Model
     	return $this->hasMany('App\Models\PropertyFeatures', 'property_id', 'id');
     }
 
+   //To get the all fetured property those will show on home page 
+    public function fatured(){
+        return $this->hasOne('App\Models\FeaturedProperty','property_id','id');
+    }
+
 }

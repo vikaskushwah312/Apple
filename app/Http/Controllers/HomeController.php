@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImagem,FeaturedProperty};
 use Validator,Redirect,Session;
 
 class HomeController extends Controller
@@ -11,9 +11,16 @@ class HomeController extends Controller
     
     //This is for Home page
     public function home(Request $request){
-        // die("vikas");die
+        
     // return view('layouts.index');
-        return view('layouts.home');
+        $data['result'] = FeaturedProperty::where('featured_property.status','Active')
+                                            ->leftjoin('property','featured_property.property_id','=','property.id')
+                                            ->get(['property.*']);
+        // print_r($data['result']);die;
+        $data['count'] =count($data['result']);
+        // print_r($data['result']);die;
+        // print_r($data['count']);die;
+        return view('layouts.home',$data);
         // return view('layouts.master');
     }
     public function homeFilter(Request $request){
