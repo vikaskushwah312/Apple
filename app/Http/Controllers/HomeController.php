@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImagem,FeaturedProperty};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty};
 use Validator,Redirect,Session;
 
 class HomeController extends Controller

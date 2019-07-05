@@ -164,7 +164,7 @@
 	                <div class="slick-slide-item">
 	                    <div class="property-box">
 	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
+	                            <a href="{{url('properte-details').'/'.$res->id}}" class="property-img">
 	                                <div class="listing-badges">
 	                                    <span class="featured">Featured</span>
 	                                </div>
@@ -178,7 +178,7 @@
 	                            </h1>
 
 	                            <div class="location">
-	                                <a href="{{url('properte-details')}}">
+	                                <a href="{{url('properte-details').'/'.$res->id}}">
                                         <i class="flaticon-pin"></i>{{$res->address}}
                                     </a>
 	                            </div>
