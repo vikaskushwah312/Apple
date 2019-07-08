@@ -1,14 +1,13 @@
-@extends('layouts.master')
-<!-- Banner start -->
-@section('home')
+@extends('web.pg.dashboard.master')
+@section('webcontent')
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container">
         <div class="breadcrumb-area">
-            <h1>Properties Detail</h1>
+            <h1>Properties Book</h1>
             <ul class="breadcrumbs">
                 <li><a href="{{url('')}}">Home</a></li>
-                <li class="active">Properties Detail</li>
+                <li class="active">Properties Book</li>
             </ul>
         </div>
     </div>
@@ -92,32 +91,7 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
-                @if(count($propertey_features)> 0)
-                <div class="properties-amenities mb-40">
-                    <h3 class="heading-2">
-                        Features
-                    </h3>
-                    <div class="row">
-                        @foreach($features as $key=>$fe)
-                            @php
-                                if(in_array($fe->id,$propertey_features)){
-                                
-                            @endphp
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <ul class="amenities">
-                                    <li>
-                                        <i class="fa fa-check"></i>{{$fe->feature}}
-                                    </li>
-                                    </ul>
-                                </div>
-                            @php
-                                }
-                                
-                            @endphp
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+           
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">
                     <h3 class="heading-2">Floor Plans</h3>
@@ -150,12 +124,11 @@
 </div>
 <!-- Properties section end -->
 
-@endsection
+@stop
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-
-	
+    $('#invoices-active').addClass('active');
 });
 </script>
 @endsection

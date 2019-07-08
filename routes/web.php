@@ -127,7 +127,7 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
-
+//start the room booking 
 
 Route::namespace('Web')->prefix('pg')->group(function(){
 	/*################# Pg Auth ###################*/
@@ -137,6 +137,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::post('post-signup','PgLoginController@postSignup');
 	Route::get('forgot-password','PgLoginController@forgotPassword');
 	Route::post('post-forgot-password','PgLoginController@postForgotPassword');
+	Route::get('book-room/{id?}','PgLoginController@bookRoom');
+
 /*################# // PG After the login  ###################*/
 	Route::group(['middleware'=>['pgLogin']],function(){
 		Route::get('dashboard','PgController@dashboard');
@@ -145,6 +147,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::any('change-password','PgController@changePassword');
 		Route::any('invoices','PgController@invoices');
 		Route::any('complain','PgController@complain');
+		//Booking room 
+		Route::any('book','BookPaymentController@book');
 
 		Route::get('logout','PgLoginController@logout');
 	});

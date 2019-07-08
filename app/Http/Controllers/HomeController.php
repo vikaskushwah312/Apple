@@ -210,7 +210,7 @@ class HomeController extends Controller
         }
     }*//**/
     public function properteDetails(Request $request,$id){
-        // $id property id 
+        // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
         $data['images'] = GalleryImage::where('property_id',$id)->get();
         $data['features'] = Features::where('status','Active')->get();
