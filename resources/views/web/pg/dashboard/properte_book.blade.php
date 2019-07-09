@@ -22,10 +22,6 @@
                 <!-- Heading properties 3 start -->
                 <div class="heading-properties-3">
                     <!-- <button class="btn pull-right" type="button">For Book</button> -->
-                    
-                    <div class="send-btn">
-                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme pull-right">For Book</a>
-                    </div>
                     <h1>{{$result->title}}</h1>
                     <div class="mb-30"><span class="property-price">Rs {{$result->price}} / month</span> <span class="rent">{{$result->status}}</span> <span class="location"><i class="flaticon-pin"></i>{{$result->address}},</span></div>
                 </div>
@@ -36,52 +32,6 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <!-- main slider carousel items -->
-                <div id="propertiesDetailsSlider" class="carousel properties-details-sliders slide mb-40">
-                    <div class="carousel-inner">
-                       
-                        @foreach($images as $key => $img)
-                            @if($key == 0)
-                                <div class="active item carousel-item" data-slide-number="{{$key}}">
-                                    <center>
-                                    {!! searchBigImage($img->id) !!}
-                                    </center>
-                                </div>
-                            @else
-                                <div class="item carousel-item" data-slide-number="{{$key}}">
-                                    <center>
-                                    {!! searchBigImage($img->id) !!}
-                                    </center>
-                                </div>
-                            @endif
-                        @endforeach
-                        <a class="carousel-control left" href="#propertiesDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                        <a class="carousel-control right" href="#propertiesDetailsSlider" data-slide="next"><i class="fa fa-angle-right"></i></a>
-
-                    </div>
-                    <!-- main slider carousel nav controls -->
-                    <ul class="carousel-indicators smail-properties list-inline nav nav-justified">
-                        @foreach($images as $key => $img)
-                            @if($key == 0)
-                               <li class="list-inline-item active">
-                                   <a id="carousel-selector-{{$key}}" class="selected" data-slide-to="{{$key}}" data-target="#propertiesDetailsSlider">
-                                    <center>
-                                       {{!! searchSmallImage($img->id) !!}}
-                                    </center>
-                                   </a>
-                               </li>
-                            @else
-                               <li class="list-inline-item">
-                                   <a id="carousel-selector-{{$key}}" data-slide-to="{{$key}}" data-target="#propertiesDetailsSlider">
-                                    <center>
-                                       {{!! searchSmallImage($img->id) !!}}
-                                    </center>
-                                   </a>
-                               </li>
-                            @endif
-                        @endforeach
-                   </ul>
-                    <!-- main slider carousel items -->
-                </div>
                 <!-- Advanced search start -->
                 <!-- Properties description start -->
                 <div class="properties-description mb-40 ">
@@ -90,7 +40,33 @@
                     </h3>
                     <span>{{$result->description}}</span>
                 </div>
-                <!-- Properties amenities start -->
+                 <!-- Properties amenities start -->
+                @if(count($propertey_features)> 0)
+                <div class="properties-amenities mb-40">
+                    <h3 class="heading-2">
+                        Features
+                    </h3>
+                    <div class="row">
+                        @foreach($features as $key=>$fe)
+                            @php
+                                if(in_array($fe->id,$propertey_features)){
+                                
+                            @endphp
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <ul class="amenities">
+                                    <li>
+                                        <i class="fa fa-check"></i>{{$fe->feature}}
+                                    </li>
+                                    </ul>
+                                </div>
+                            @php
+                                }
+                                
+                            @endphp
+                        @endforeach
+                    </div>
+                </div>
+                @endif
            
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">
@@ -116,7 +92,60 @@
                     </table>
                 </div>
                 <!-- Location start -->
-                
+                <h3 class="heading">Tenure</h3>
+                <div class="dashboard-message contact-2 bdr clearfix">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <form  id="room_book_form" name="room_book_form" method="Post" action="{{url('pg/book')}}">
+                                {{ csrf_field() }}
+                                <div class="row col-sm-12">
+                                    <div class="col-lg-6 col-md-6 form-group">
+                                        <div class="name">
+                                            <label>Tenure in month<strong class="required">*</strong></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="name">
+                                            <input type="number" name="tenure" id="tenure" class="form-control" placeholder="Tenure" value="" required="">
+                                              @if($errors->has('tenure'))
+                                                <i class="error"></i> {{ $errors->first('tenure') }}
+                                              @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="heading">Payment</h3>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="name">
+                                            <label>First Name <strong class="required">*</strong></label>
+                                            <input type="text" name="amount" id="amount" class="form-control" placeholder="First Name" value="" required="">
+                                            <p class="error help-block" id="amount">
+                                              @if($errors->has('amount'))
+                                                <i class="error"></i> {{ $errors->first('amount') }}
+                                              @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="name">
+                                            <label>Last Name <strong class="required">*</strong></label>
+                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="" required="">
+                                            <p class="error help-block" id="last_name">
+                                              @if($errors->has('last_name'))
+                                                <i class="error"></i> {{ $errors->first('last_name') }}
+                                              @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
+                                <div class="form-group col-lg-6 col-md-6 col-sm-6 pull-right">
+                                    <button type="submit"  class="search-button" id="advance_search_button" name="advance_search_button">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <!-- Similar Properties start -->
             </div>
         </div>
