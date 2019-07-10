@@ -36,11 +36,10 @@ class BookPaymentController extends Controller{
                 	//for updated the property i.e. book so it will not show for rent
                 	Property::where(['id'=>$request->property_id])->update(['booked'=>1]);
                 	if ($booked_id) {
-                		die('booking is done');
-                  		return Redirect::to("owner/dashboard")->withSuccess('Password Successfull Updated.');
+                  		return Redirect::to("pg/booked-list")->withSuccess('You have successfully booked the property.');
 	                }else{
-	                	die('booking issue');
-	                  return Redirect::to("owner/change-password")->withFail('Something went to wrong.');
+	                	
+	                  return Redirect::back()->withFail('Something went to wrong.');
 	                }
             	} else{
             		die('payment issue');
@@ -66,6 +65,19 @@ class BookPaymentController extends Controller{
 
 
         return view('web.pg.dashboard.properte_book',$data);
+	}
+
+	//get the all property booked by user
+	public function bookList(Request $request){
+
+		$data['title'] =  "My Booked Properties";
+        $data['property'] = Book::where(['p_status'=>'Active','user_id'=>auth('user')->id()])
+        					->leftjoin('property','book.property_id','=','property.id')
+        					->orderBy('book.created_at','desc')
+        					->get(['book.*','property.*']);
+        
+        return view('web.pg.dashboard.booked_list',$data);
+
 	}
 
 }

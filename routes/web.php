@@ -146,9 +146,15 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::any('my-profile','PgController@myProfile');
 		Route::any('change-password','PgController@changePassword');
 		Route::any('invoices','PgController@invoices');
-		Route::any('complain','PgController@complain');
+		Route::any('complain/{id}','PgController@complain');
+
+		Route::any('complain-list','PgController@complainList');
+
 		//Booking room 
 		Route::any('book','BookPaymentController@book');
+		Route::get('booked-list','BookPaymentController@bookList');
+
+		
 
 		Route::get('logout','PgLoginController@logout');
 	});
