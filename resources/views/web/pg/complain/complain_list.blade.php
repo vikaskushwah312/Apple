@@ -7,7 +7,7 @@
         @foreach($property as $pro)
         <tr class="responsive-table">
             <td class="listing-photoo">
-                {!! myPropertiesImage($pro->id)!!}
+                {!! myPropertiesImage($pro->property_id)!!}
             </td>
             <td class="title-container">
                 <h2><a href="javascript:void(0)">{{ $pro->title }}</a></h2> <!-- {{url('owner/property-details')}} -->

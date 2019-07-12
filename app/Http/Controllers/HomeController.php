@@ -264,7 +264,10 @@ class HomeController extends Controller
                         return Redirect::to("owner/dashboard")->withSuccess('You have success fully login.');
 
                     } elseif($user->user_type == '3'){ // If user is Paying uest
-                        Session::put(['pg' => $user->id]); 
+                        Session::put(['pg' => $user->id]);
+                        if(session('property_id')) {
+                            return Redirect::to("pg/book")->withSuccess('You have success fully login.');    
+                        }
                         return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
                         
                     } elseif($user->user_type == '1'){ // If user is owner 
