@@ -114,6 +114,9 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		Route::any('my-properties/edit/{id}','OwnerController@myPropertiesEdit');
 		Route::any('property-details','OwnerController@PropertyDetails');
 		Route::get('my-properties/delete','OwnerController@PropertyDelete');
+		//complain
+		Route::get('complain-list','ComplainController@getComplainList');
+		Route::any('complain-reply/{id}','ComplainController@complainReply');
 
 		Route::get('logout','OwnerLoginController@logout');
 

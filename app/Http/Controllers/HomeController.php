@@ -283,6 +283,7 @@ class HomeController extends Controller
             }
 
         } else { //get mehtod
+            
             return view('web.home.login');
         }
     }
