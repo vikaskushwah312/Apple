@@ -22,9 +22,16 @@
             <div class="col-md-12">
                 <!-- Heading properties 3 start -->
                 <div class="heading-properties-3">
+                    <!-- <button class="btn pull-right" type="button">For Book</button> -->
+                    
+                    <div class="send-btn">
+                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme pull-right">For Book</a>
+                    </div>
                     <h1>{{$result->title}}</h1>
                     <div class="mb-30"><span class="property-price">Rs {{$result->price}} / month</span> <span class="rent">{{$result->status}}</span> <span class="location"><i class="flaticon-pin"></i>{{$result->address}},</span></div>
                 </div>
+                
+
             </div>
         </div>
         <div class="row">
@@ -87,6 +94,7 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
+                @if(count($propertey_features)> 0)
                 <div class="properties-amenities mb-40">
                     <h3 class="heading-2">
                         Features
@@ -95,12 +103,12 @@
                         @foreach($features as $key=>$fe)
                             @php
                                 if(in_array($fe->id,$propertey_features)){
-                                    $d ='col-sm-6';
+                                
                             @endphp
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <ul class="amenities">
                                     <li>
-                                        <i class="fa fa-check {{$d}}"></i>{{$fe->feature}}
+                                        <i class="fa fa-check"></i>{{$fe->feature}}
                                     </li>
                                     </ul>
                                 </div>
@@ -111,6 +119,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">
                     <h3 class="heading-2">Floor Plans</h3>

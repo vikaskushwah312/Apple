@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty};
 use Validator,Redirect,Session;
 // *****************************notification ***********
 use App\Notifications\Complain;
@@ -39,55 +39,132 @@ class HomeController extends Controller
     // **************************************************Home controller****
     //This is for Home page
     public function home(Request $request){
-        // die("vikas");die
-    // return view('layouts.index');
-        return view('layouts.home');
+        
+        //This property list shwo in the home page
+        $data['result'] = FeaturedProperty::where(['featured_property.status'=>'Active','booked'=>0])
+                                            ->leftjoin('property','featured_property.property_id','=','property.id')
+                                            ->get(['property.*']);
+        $data['count'] =count($data['result']);
+
+        //total show for counter
+        // total property for rent
+        $data['property'] = Property::where('p_status','Active')->count();
+        //total user regiteras owner
+        $data['owner'] = User::where(['status'=>'Active','user_type'=>2])->count();
+        //total user regiteras customer
+        $data['customer'] = User::where(['status'=>'Active','user_type'=>3])->count();
+        return view('layouts.home',$data);
         // return view('layouts.master');
     }
     public function homeFilter(Request $request){
 
-        
-        $address = $request->location;
-        $share_bed = $request->share_bed;
-        $room = $request->room;
-        $type = $request->type;
-        // print($share_bed);die;
-        // $query->where(['p_status'=>'Active']);
-          
-        $data['result'] = [];
-        if($address || $share_bed || $room || $type){
-            $query = Property::query();    
+        try{
+            if($request->ajax()){
+
+                $query = Property::query();
+                $box = $request->all();        
+                $myValue=  array();
+                parse_str($box['formvalue'], $myValue);
+                $address   = $myValue['location']; 
+                $share_bed = $myValue['share_bed'];
+                $room      = $myValue['rooms'];
+                $type      = $myValue['type'];
+                $bathroom  = $myValue['bathroom'];
+                // $min_area  = $myValue['min_area']; //area
+                // $max_area  = $myValue['max_area'];
+                // $min_price = $myValue['min_price'];
+                // $max_price = $myValue['max_price'];
+
+                
+                $query = Property::query();    
+                $query->where('booked',0);
                 if($address != ''){
                     $query->where('address', "LIKE", "%".$address."%");
                 }
-        $query->when($share_bed, function ($query, $share_bed) {
-                    return $query->where('share_bed', $share_bed);
-                })
-                ->when($room, function ($query, $room) {
-                        return $query->where('room', $room);
-                })
-                ->when($type, function ($query, $type) {
-                    return $query->where('type', $type);
-                })
-                ->orderBy('updated_at','desc');
+                $query->when($share_bed, function ($query, $share_bed) {
+                        return $query->where('share_bed', $share_bed);
+                    })
+                    ->when($room, function ($query, $room) {
+                            return $query->where('room', $room);
+                    })
+                    ->when($type, function ($query, $type) { //ac /non-ac
+                        return $query->where('type', $type);
+                    })
+                    ->when($bathroom, function ($query, $bathroom) {
+                        return $query->where('bathroom', $bathroom);
+                    })
+                /*    ->when($min_area, function ($query, $min_area) {
+                        return $query->where('area','>=',$min_area);
+                    })
+                    ->when($max_area, function ($query, $max_area) {
+                        return $query->where('area','<=',$max_area);
+                    })
+                   ->when($min_price, function ($query, $min_price) {
+                        return $query->where('price','>=',$min_price);
+                    })
+                    ->when($max_price, function ($query, $max_price) {
+                        return $query->where('price','<=',$max_price);
+                    })*/
+                    ->orderBy('updated_at','desc');
 
-        $data['result'] = $query->paginate(2);
-        }
-        /*if($request->page){
-            print($request->page);
-        }
-        print_r($request->all());die;*/
+                $data['result'] = $query->paginate(2);
+                // print($address);
+                // print(count($data['result']));die;
+                $data['count'] = count($data['result']);
+
+                // print(count($data['result']));die;
+                $res = ['status'=>true ,'data'=>view('web.home.filter_page',$data)->render()];
+                return $res;
+              
+            } else {
+
+                $address = $request->location;
+                $share_bed = $request->share_bed;
+                $room = $request->room;
+                $type = $request->type;
+                // print($share_bed);die;
+                // $query->where(['p_status'=>'Active']);
+                  
+                $data['result'] = [];
+                if($address || $share_bed || $room || $type){
+                    $query = Property::query();    
+                    $query->where('booked',0);
+                        if($address != ''){
+                            $query->where('address', "LIKE", "%".$address."%");
+                        }
+                $query->when($share_bed, function ($query, $share_bed) {
+                            return $query->where('share_bed', $share_bed);
+                        })
+                        ->when($room, function ($query, $room) {
+                                return $query->where('room', $room);
+                        })
+                        ->when($type, function ($query, $type) {
+                            return $query->where('type', $type);
+                        })
+                        ->orderBy('updated_at','desc');
+
+                $data['result'] = $query->paginate(2);
+                }
+                /*if($request->page){
+                    print($request->page);
+                }
+                print_r($request->all());die;*/
+                
+                $data['count'] = count($data['result']);
+                // print_r(count($data['result']));die;
+                // print(count($data));
+                // print_r($data);
+                // die;
+                $data['address']    = $address;
+                $data['share_bed']  = $share_bed;
+                $data['room']       = $room;
+                $data['type']       = $type;
+                return view('web.home.properte_list',$data);
+            }
         
-        $data['count'] = count($data['result']);
-        // print_r(count($data['result']));die;
-        // print(count($data));
-        // print_r($data);
-        // die;
-        $data['address']    = $address;
-        $data['share_bed']  = $share_bed;
-        $data['room']       = $room;
-        $data['type']       = $type;
-        return view('web.home.properte_list',$data);
+        }catch(Exception $e) {
+          echo 'Message: ' .$e->getMessage();
+        }
     }
     public function advanceSearch(Request $request){
         if($request->ajax()){
@@ -107,7 +184,8 @@ class HomeController extends Controller
             // $max_price = $myValue['max_price'];
 
             
-            $query = Property::query();    
+            $query = Property::query();   
+            $query->where('booked',0); 
             if($address != ''){
                 $query->where('address', "LIKE", "%".$address."%");
             }
@@ -164,7 +242,7 @@ class HomeController extends Controller
         }
     }*//**/
     public function properteDetails(Request $request,$id){
-        // $id property id 
+        // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
         $data['images'] = GalleryImage::where('property_id',$id)->get();
         $data['features'] = Features::where('status','Active')->get();
@@ -214,7 +292,10 @@ class HomeController extends Controller
                         return Redirect::to("owner/dashboard")->withSuccess('You have success fully login.');
 
                     } elseif($user->user_type == '3'){ // If user is Paying uest
-                        Session::put(['pg' => $user->id]); 
+                        Session::put(['pg' => $user->id]);
+                        if(session('property_id')) {
+                            return Redirect::to("pg/book")->withSuccess('You have success fully login.');    
+                        }
                         return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
                         
                     } elseif($user->user_type == '1'){ // If user is owner 
@@ -230,6 +311,13 @@ class HomeController extends Controller
             }
 
         } else { //get mehtod
+            if ($request->session()->exists('id')) { //for admin
+                return redirect()->intended('admin/dashboard');
+            } elseif($request->session()->exists('owner')){
+                return Redirect::to("owner/dashboard");
+            } elseif($request->session()->exists('pg')){
+                return Redirect::to("pg/dashboard");
+            }
             return view('web.home.login');
         }
     }

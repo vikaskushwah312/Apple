@@ -160,7 +160,7 @@
                 <div class="pagination-box hidden-mb-45 text-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                           
+                           {{$result->links()}}
                         </ul>
                     </nav>
                 </div>
@@ -197,6 +197,7 @@ $(document).ready(function(){
             data: {'formvalue':formvalue},
             success: function(res){
                 if(res.status){
+                    console.log(res.data);
                     $("#advance_search_result").html(res.data);
                 }
             }
@@ -207,6 +208,7 @@ $(document).ready(function(){
 /*******************Advance Search Filter  pagiantion *************************************/
     $('body').on('click', '.pagination a', function(e) {
         var url = $(this).attr('href');
+        console.log(url);
         if (url != '#') {
           advanceSearch(url);
           e.preventDefault();
