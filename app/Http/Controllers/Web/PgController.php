@@ -205,7 +205,7 @@ class PgController extends Controller
 
     }
     public function complainDelete(Request $request){
-
+        
         if($request->ajax()){
 
             $complain_id = $request->id;
