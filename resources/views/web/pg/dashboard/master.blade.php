@@ -46,8 +46,8 @@
                             <li id="messages-active"><a href="{{url('pg/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
                        
                             <li id="invoices-active"><a href="{{url('pg/invoices')}}" ><i class="flaticon-bill"></i>My Invoices</a></li>
-                            <li id="invoices-active"><a href="{{url('pg/booked-list')}}" ><i class="flaticon-bill"></i>Booked property List</a></li>
-                            <li id="complain-active"><a href="{{url('pg/complain-list')}}"><i class="fa fa-comment"></i>Complain List</a></li>
+                            <li id="booked-active"><a href="{{url('pg/booked-list')}}" ><i class="flaticon-bill"></i>Booked property List</a></li>
+                            <li id="complain_list-active"><a href="{{url('pg/complain-list')}}"><i class="fa fa-comment"></i>Complain List</a></li>
                         </ul>
                     </div>
                 </div>

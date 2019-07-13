@@ -30,6 +30,7 @@
 @section('js')
 <script type="text/javascript">
     $(document).ready(function(){
+
         $('.delete').on('click',function(){
         var p_delete = $(this).data('id');
         swal({
@@ -41,11 +42,11 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{'pg/complain/delete'}}",
+                    url: "{{'delete'}}",
                     data:{'id':p_delete},
                     cache: false,
                     success: function(res){
-                    console.log('res',res);
+                    // console.log('res',res);
                     if(res.success){
                         swal("Deleted successfully!", {
                             icon: "success",
@@ -58,7 +59,7 @@
         })
          
         });
-        $('#mypropertis-active').addClass('active');
+        $('#complain_list-active').addClass('active');
     })
 </script>
 
