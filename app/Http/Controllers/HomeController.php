@@ -283,7 +283,13 @@ class HomeController extends Controller
             }
 
         } else { //get mehtod
-            
+            if ($request->session()->exists('id')) { //for admin
+                return redirect()->intended('admin/dashboard');
+            } elseif($request->session()->exists('owner')){
+                return Redirect::to("owner/dashboard");
+            } elseif($request->session()->exists('pg')){
+                return Redirect::to("pg/dashboard");
+            }
             return view('web.home.login');
         }
     }
