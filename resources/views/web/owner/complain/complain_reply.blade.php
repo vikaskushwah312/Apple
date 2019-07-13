@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label>Complain<strong class="required">*</strong></label>
+                        <label>Complain<strong class="required"></strong></label>
                     </div>
                     <p class="" id="complain" name="complain" >{{$complain->complain}}</p>
                 </div>
