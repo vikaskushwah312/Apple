@@ -204,4 +204,20 @@ class PgController extends Controller
         return view('web.pg.complain.complain_list',$data);
 
     }
+    public function complainDelete(Request $request){
+
+        if($request->ajax()){
+
+            $complain_id = $request->id;
+            $res['success'] = false;
+           
+            $delete = Complain::where('id',$complain_id)->delete();
+            
+            if($delete){
+                $res['success'] = true;
+            }
+
+            return $res ;
+        }
+    }
 }

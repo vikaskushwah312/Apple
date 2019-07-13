@@ -17,7 +17,7 @@
             <!-- <td class="expire-date"></td> $pro->created_at -->
             <td class="action">
                 <a href="{{url('pg/complain-edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="javascript:void(0)" class="delete" id="p_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
+                <a href="javascript:void(0)" class="delete" id="complain_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
                 <a href="{{url('pg/complain-status/'.$pro->id)}}"><i class="fa fa-pencil"></i> Resolved or Not</a>
                 <!-- <a href=""><i class="fa  fa-eye-slash"></i> Hide</a> -->
             </td>
@@ -27,3 +27,39 @@
     </table>
     </div>    
 @stop
+@section('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.delete').on('click',function(){
+        var p_delete = $(this).data('id');
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{'pg/complain/delete'}}",
+                    data:{'id':p_delete},
+                    cache: false,
+                    success: function(res){
+                    console.log('res',res);
+                    if(res.success){
+                        swal("Deleted successfully!", {
+                            icon: "success",
+                        });
+                        setTimeout(function(){ window.location.reload(); }, 1000);
+                    }
+                  }
+                });
+            }
+        })
+         
+        });
+        $('#mypropertis-active').addClass('active');
+    })
+</script>
+
+@endsection

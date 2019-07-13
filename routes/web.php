@@ -150,6 +150,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::any('complain-edit/{id}','PgController@complainedit');
 
 		Route::get('complain-list','PgController@complainList');
+		Route::get('complain/delete','PgController@complainDelete');
+
 
 		//Booking room 
 		Route::any('book','BookPaymentController@book');
