@@ -19,7 +19,7 @@ class PgLogin
         if (Session::has('pg')) {
             return $next($request);
         } else {
-            return redirect('pg/login');
+            return redirect('login');
         }
     }
 }

@@ -1,4 +1,4 @@
-@if(count($result) > 0)
+@if($count > 0)
 @foreach($result as $res)
 <div class="property-box-2" >
     <div class="row">
@@ -14,7 +14,7 @@
             <div class="detail">
                 <div class="hdg">
                     <h3 class="title">
-                        <a href="{{url('properte-details')}}">{{$res->title}}</a>
+                        <a href="{{url('properte-details').'/'.$res->id}}">{{$res->title}}</a>
                     </h3>
                     <h5 class="location">
                         <a href="{{url('properte-details')}}">
@@ -27,21 +27,21 @@
                         <span>Area</span>{{$res->area}} Sqft
                     </li>
                     <li>
-                        <span>Beds</span>{{$res->bed}}
+                        <span>Sharing</span>{{$res->share_bed}}
                     </li>
                     <li>
-                        <span>Baths</span>{{$res->bathroom}}
+                        <span>Rooms</span>{{$res->room}}
                     </li>
                     <li>
-                        <span>Kitchen</span>{{$res->kitchen}}
+                        <span>Ac/Non-Ac</span>{{$res->type}}
                     </li>
                 </ul>
                 <div class="footer">
                     <a href="#" tabindex="0">
-                        <i class="flaticon-people"></i>{{$res->kitchen}} Jhon Doe
-                    </a>
+                        <i class="flaticon-people"></i>{!! copName($res->id)!!}
+                      </a>
                     <span>
-                          <i class="flaticon-calendar"></i>{{$res->kitchen}}5 Days ago
+                          <i class="flaticon-phone"></i>{!! copPhone($res->id)!!}
                     </span>
                 </div>
             </div>
@@ -50,7 +50,7 @@
 </div>
 @endforeach
 @else
-<div><H3 class="error"> No Recored Found</H3></div>
+<div style="text-align: center;"><strong class="error">No Recored Found</strong> </div>
 @endif
 <div class="pagination-box hidden-mb-45 text-center">
     <nav aria-label="Page navigation example">

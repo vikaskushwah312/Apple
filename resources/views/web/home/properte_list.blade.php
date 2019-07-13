@@ -22,28 +22,28 @@
             <div class="col-lg-4 col-md-12">
                 <div class="sidebar-left">
                     <!-- Advanced search start -->
-                    <div class="widget advanced-search">
-                        <h3 class="sidebar-title">Advanced Search</h3>
-                        <form  id="search_form" name="search_form" >
+                    <div class="widget advanced-search" id="advance_search">
+                      <h3 class="sidebar-title">Advanced Search</h3>
+                        <form  id="advance_search_form" name="advance_search_form" method="get">
                             <div class="form-group">
-                                <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location">
+                                <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;text-align: center;width: 100%;" placeholder="Location" value="{{$address}}">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="rooms" id="rooms">
-                                            <option>Rooms</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
+                                          <option value="">Rooms</option>
+                                          <option value="1" {{ ( $room == 1 ) ? 'selected' : '' }}>1</option>
+                                          <option value="2" {{ ( $room == 2) ? 'selected':''}}>2</option>
+                                          <option value="3" {{ ( $room == 3) ? 'selected':''}}>3</option>
+                                          <option value="4" {{ ( $room == 4) ? 'selected':''}}>4</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="bathroom" id="bathroom">
-                                            <option>Bathroom</option>
+                                            <option value="">Bathroom</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -56,11 +56,11 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="share_bed" id="share_bed">
-                                            <option>Sharing</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
+                                            <option value="">Sharing</option>
+                                            <option value="1" {{ ( $share_bed == 1 ) ? 'selected' : '' }}>1</option>
+                                            <option value="2" {{ ( $share_bed == 2 ) ? 'selected' : '' }}>2</option>
+                                            <option value="3" {{ ( $share_bed == 3 ) ? 'selected' : '' }}>3</option>
+                                            <option value="4" {{ ( $share_bed == 4 ) ? 'selected' : '' }}>4</option>
                                         </select>
                                     </div>
                                 </div>
@@ -68,13 +68,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="selectpicker search-fields" name="type" id="type">
-                                            <option value="Ac">Ac</option>
-                                            <option value="Non-Ac">Non-Ac</option>
+                                          <option value="">select Ac/Non-Ac</option>
+                                            <option value="Ac" {{ ( $type == 'Ac' ) ? 'selected' : '' }}>Ac</option>
+                                            <option value="Non-Ac" {{ ( $type == 'Non-AC' ) ? 'selected' : '' }}>Non-Ac</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="range-slider">
+                            <!-- <div class="range-slider">
                                 <label>Area</label>
                                 <div data-min="0" data-max="10000" data-min-name="min_area" data-max-name="max_area" data-unit="Sq ft" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
@@ -83,67 +84,12 @@
                                 <label>Price</label>
                                 <div data-min="0" data-max="150000"  data-min-name="min_price" data-max-name="max_price" data-unit="INR" class="range-slider-ui ui-slider" aria-disabled="false"></div>
                                 <div class="clearfix"></div>
-                            </div>
-                           <!--  <a class="show-more-options" data-toggle="collapse" data-target="#options-content">
-                               <i class="fa fa-plus-circle"></i> Other Features
-                           </a>
-                           <div id="options-content" class="collapse">
-                               <h3 class="sidebar-title">Features</h3>
-                               <div class="s-border"></div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox2" type="checkbox">
-                                   <label for="checkbox2">
-                                       Air Condition
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox3" type="checkbox">
-                                   <label for="checkbox3">
-                                       Places to seat
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox4" type="checkbox">
-                                   <label for="checkbox4">
-                                       Swimming Pool
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox1" type="checkbox">
-                                   <label for="checkbox1">
-                                       Free Parking
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox7" type="checkbox">
-                                   <label for="checkbox7">
-                                       Central Heating
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox5" type="checkbox">
-                                   <label for="checkbox5">
-                                       Laundry Room
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox6" type="checkbox">
-                                   <label for="checkbox6">
-                                       Window Covering
-                                   </label>
-                               </div>
-                               <div class="checkbox checkbox-theme checkbox-circle">
-                                   <input id="checkbox8" type="checkbox">
-                                   <label for="checkbox8">
-                                       Alarm
-                                   </label>
-                               </div>
-                               <br>
-                           </div> -->
+                            </div> -->
                             <div class="form-group mb-0">
-                                <button type="button"  class="search-button" id="search_button" name="search_button">Search</button>
+                                <button type="button"  class="search-button" id="advance_search_button" name="advance_search_button">Search</button>
                             </div>
                         </form>
+                        <!-- advance search -->
                     </div>
                     <!-- Recent properties start -->
                    
@@ -153,7 +99,7 @@
                     
                 </div>
             </div>
-            <div class="col-lg-8 col-md-12" id="filter_page">
+            <div class="col-lg-8 col-md-12" id="advance_search_result">
                  <!-- Option bar start -->
                 <!-- Property box 2 start -->
                 @if($count > 0)
@@ -172,7 +118,7 @@
                             <div class="detail">
                                 <div class="hdg">
                                     <h3 class="title">
-                                        <a href="{{url('properte-details')}}">{{$res->title}}</a>
+                                        <a href="{{url('properte-details').'/'.$res->id}}">{{$res->title}}</a>
                                     </h3>
                                     <h5 class="location">
                                         <a href="{{url('properte-details')}}">
@@ -196,10 +142,10 @@
                                 </ul>
                                 <div class="footer">
                                     <a href="#" tabindex="0">
-                                        <i class="flaticon-people"></i>{{$res->kitchen}} Jhon Doe
-                                    </a>
+                                        <i class="flaticon-people"></i>{!! copName($res->id)!!}
+                                      </a>
                                     <span>
-                                          <i class="flaticon-calendar"></i>{{$res->kitchen}}5 Days ago
+                                          <i class="flaticon-phone"></i>{!! copPhone($res->id)!!}
                                     </span>
                                 </div>
                             </div>
@@ -207,8 +153,9 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <div style="text-align: center;"><strong class="error">No Recored Found</strong> </div>
                 @endif
-              
                 <!-- Page navigation start -->
                 <div class="pagination-box hidden-mb-45 text-center">
                     <nav aria-label="Page navigation example">
@@ -217,6 +164,7 @@
                         </ul>
                     </nav>
                 </div>
+                
 
                 <!-- add here filter_page  -->
             </div>
@@ -229,26 +177,45 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#search_button').on('click',function(){
-        filterHome();
+    $('#advance_search_button').on('click',function(){
+        advanceSearch('{{ url("advance-search") }}');
     });
-    
-   
-    function filterHome(){
-        var formvalue = $("#search_form").serialize();
+  
+  //Get the filter result of advance search 
+    function advanceSearch(url){
+        var formvalue = $("#advance_search_form").serialize();
+        /*var location = $('#location').val();
+        var rooms = $('#rooms').val();
+        var bathroom = $('#bathroom').val();
+        var share_bed = $('#share_bed').val();
+        var type = $('#type').val();
+        'location':location,'rooms':rooms,'bathroom':bathroom,'share_bed':share_bed,'type':type*/
+
         $.ajax({
-            url : "search-filter" ,
+            url : url ,
             type : "GET",
             data: {'formvalue':formvalue},
             success: function(res){
-                // console.log(res);
                 if(res.status){
-                    $("#filter_page").html(res.data);
+                    console.log(res.data);
+                    $("#advance_search_result").html(res.data);
                 }
             }
         });
     }
-    // filterHome();
+    // advanceSearch();
+
+/*******************Advance Search Filter  pagiantion *************************************/
+    $('body').on('click', '.pagination a', function(e) {
+        var url = $(this).attr('href');
+        console.log(url);
+        if (url != '#') {
+          advanceSearch(url);
+          e.preventDefault();
+        } 
+        
+    });
+
 	
 });
 </script>

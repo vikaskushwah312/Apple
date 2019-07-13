@@ -78,8 +78,11 @@ Route::get('/','HomeController@home');
 Route::get('home-filter','HomeController@homeFilter');
 Route::get('search-filter','HomeController@searchFilter');
 
-Route::get('properte-details','HomeController@properteDetails');
+Route::get('properte-details/{id}','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
+Route::get('advance-search','HomeController@advanceSearch');
+
+
 
 //log in for all in one 
 Route::any('login','HomeController@login');
@@ -124,7 +127,7 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
-
+//start the room booking 
 
 Route::namespace('Web')->prefix('pg')->group(function(){
 	/*################# Pg Auth ###################*/
@@ -134,6 +137,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::post('post-signup','PgLoginController@postSignup');
 	Route::get('forgot-password','PgLoginController@forgotPassword');
 	Route::post('post-forgot-password','PgLoginController@postForgotPassword');
+	Route::get('book-room/{id?}','PgLoginController@bookRoom');
+
 /*################# // PG After the login  ###################*/
 	Route::group(['middleware'=>['pgLogin']],function(){
 		Route::get('dashboard','PgController@dashboard');
@@ -141,7 +146,18 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::any('my-profile','PgController@myProfile');
 		Route::any('change-password','PgController@changePassword');
 		Route::any('invoices','PgController@invoices');
-		Route::any('complain','PgController@complain');
+		Route::any('complain/{id}','PgController@complain');
+		Route::any('complain-edit/{id}','PgController@complainedit');
+
+		Route::get('complain-list','PgController@complainList');
+		Route::get('complain/delete','PgController@complainDelete');
+
+
+		//Booking room 
+		Route::any('book','BookPaymentController@book');
+		Route::get('booked-list','BookPaymentController@bookList');
+
+		
 
 		Route::get('logout','PgLoginController@logout');
 	});

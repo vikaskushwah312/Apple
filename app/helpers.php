@@ -1,5 +1,5 @@
 <?php
-use App\Models\{User,Property,GalleryImage};
+use App\Models\{User,Property,GalleryImage,ContactOfPerson};
 
 function getPrifileImage($id){
 	$img = User::where('id',$id)->first(['image']);
@@ -49,11 +49,39 @@ function searchImage(){
 
 	return url('public/img/search1.jpg');
 }
-function searchBigImage(){
-	return url('public/img/search2.jpg');
+//get the images for silder
+function searchBigImage($id){
+	$img = GalleryImage::where('id',$id)->first(['image']);
+	if($img != ''){
+		$path = url(''.Config::get('constants.Gallery_Image').$img->image);
+
+	} else {
+		$path = url(''.Config::get('constants.NO_Image').'');	
+	}
+	return '<img src="'.$path.'" class="" alt="slider-properties" width="730px;" height="486px;">';
 }
 
-function searchSmallImage(){
-	return url('public/img/search2.jpg');
+
+function searchSmallImage($id){
+	
+	$img = GalleryImage::where('id',$id)->first(['image']);
+	if($img != ''){
+		$path = url(''.Config::get('constants.Gallery_Image').$img->image);
+
+	} else {
+		$path = url(''.Config::get('constants.NO_Image').'');	
+	}
+	return '<img src="'.$path.'" class="" alt="properties-small" width="146px;" height="97px;">';
+}
+
+// get the name of contact person for property
+function copName($id){
+	$name = ContactOfPerson::where('property_id',$id)->first(['name']);
+	return $name['name'];
+}
+// get the mobile no of contact person for property
+function copPhone($id){
+	$phone = ContactOfPerson::where('property_id',$id)->first(['phone']);
+	return $phone['phone'];
 }
 ?>

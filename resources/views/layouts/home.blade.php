@@ -19,7 +19,7 @@
 	                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	                            </p>
 	                            <div class="inline-search-area ml-auto mr-auto d-none d-xl-block d-lg-block">
-	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter" style="margin-left:140px;">
+	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter" style="margin-left:140px;" onsubmit="return validateForm()">
 	                                <div class="row">
 	                                	<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="height: 54px;max-width: 135px;text-align: left;padding-left: 16px!important;font-size: 13px;" placeholder="Location">
@@ -50,7 +50,7 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <button class="btn button-theme btn-search btn-block">
+										    <button class="btn button-theme btn-search btn-block" type="submit">
 										        <i class="fa fa-search"></i><strong>Find</strong>
 										    </button>
 										</div>
@@ -149,6 +149,7 @@
 	<!-- Search Section end -->
 
 	<!-- Featured Properties start -->
+	@if($count > 0)
 	<div class="featured-properties content-area">
 	    <div class="container">
 	        <!-- Main title -->
@@ -159,282 +160,54 @@
 	        <!-- Slick slider area start -->
 	        <div class="slick-slider-area">
 	            <div class="row slick-carousel" data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+	            	@foreach($result as $res)
 	                <div class="slick-slide-item">
 	                    <div class="property-box">
 	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
+	                            <a href="{{url('properte-details').'/'.$res->id}}" class="property-img">
 	                                <div class="listing-badges">
 	                                    <span class="featured">Featured</span>
 	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
+	                                <div class="price-box"><span style="color:white;"> Rs </span><span>{{$res->price}}</span>/Per month</div>
+	                                <img class="d-block w-100" src="{{myPropertiesImageUrl($res->id)}}" alt="properties" width="330" height="220">
 	                            </a>
 	                        </div>
 	                        <div class="detail">
 	                            <h1 class="title">
-	                                <a href="properties-details.html">Modern Family Home</a>
+	                                <a href="{{url('properte-details').'/'.$res->id}}">{{$res->title}}</a>
 	                            </h1>
 
 	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
+	                                <a href="{{url('properte-details').'/'.$res->id}}">
+                                        <i class="flaticon-pin"></i>{{$res->address}}
+                                    </a>
 	                            </div>
 	                        </div>
 	                        <ul class="facilities-list clearfix">
 	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
+                                    <span>Area</span>{{$res->area}} Sqft
+                                </li>
+                                <li>
+                                    <span>Sharing</span>{{$res->share_bed}}
+                                </li>
+                                <li>
+                                    <span>Rooms</span>{{$res->room}}
+                                </li>
+                                <li>
+                                    <span>Ac/Non-Ac</span>{{$res->type}}
+                                </li>
 	                        </ul>
 	                        <div class="footer">
 	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
+	                                <i class="flaticon-people"></i> {!! copName($res->id)!!}
 	                            </a>
 	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
+	                                <i class="flaticon-phone"></i>{!! copPhone($res->id)!!}
 	                            </span>
 	                        </div>
 	                    </div>
 	                </div>
-	                <div class="slick-slide-item">
-	                    <div class="property-box">
-	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
-	                                <div class="listing-badges">
-	                                    <span class="featured">Featured</span>
-	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
-	                            </a>
-	                        </div>
-	                        <div class="detail">
-	                            <h1 class="title">
-	                                <a href="properties-details.html">Two storey modern flat</a>
-	                            </h1>
-
-	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
-	                            </div>
-	                        </div>
-	                        <ul class="facilities-list clearfix">
-	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
-	                        </ul>
-	                        <div class="footer">
-	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
-	                            </a>
-	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
-	                            </span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="slick-slide-item">
-	                    <div class="property-box">
-	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
-	                                <div class="listing-badges">
-	                                    <span class="featured">Featured</span>
-	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
-	                            </a>
-	                        </div>
-	                        <div class="detail">
-	                            <h1 class="title">
-	                                <a href="properties-details.html">Luxury Villa</a>
-	                            </h1>
-
-	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
-	                            </div>
-	                        </div>
-	                        <ul class="facilities-list clearfix">
-	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
-	                        </ul>
-	                        <div class="footer">
-	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
-	                            </a>
-	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
-	                            </span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="slick-slide-item">
-	                    <div class="property-box">
-	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
-	                                <div class="listing-badges">
-	                                    <span class="featured">Featured</span>
-	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
-	                            </a>
-	                        </div>
-	                        <div class="detail">
-	                            <h1 class="title">
-	                                <a href="properties-details.html">Modern Family Home</a>
-	                            </h1>
-
-	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
-	                            </div>
-	                        </div>
-	                        <ul class="facilities-list clearfix">
-	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
-	                        </ul>
-	                        <div class="footer">
-	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
-	                            </a>
-	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
-	                            </span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="slick-slide-item">
-	                    <div class="property-box">
-	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
-	                                <div class="listing-badges">
-	                                    <span class="featured">Featured</span>
-	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
-	                            </a>
-	                        </div>
-	                        <div class="detail">
-	                            <h1 class="title">
-	                                <a href="properties-details.html">Relaxing Apartment</a>
-	                            </h1>
-
-	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
-	                            </div>
-	                        </div>
-	                        <ul class="facilities-list clearfix">
-	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
-	                        </ul>
-	                        <div class="footer">
-	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
-	                            </a>
-	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
-	                            </span>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="slick-slide-item">
-	                    <div class="property-box">
-	                        <div class="property-thumbnail">
-	                            <a href="properties-details.html" class="property-img">
-	                                <div class="listing-badges">
-	                                    <span class="featured">Featured</span>
-	                                </div>
-	                                <div class="price-box"><span>$850.00</span> Per month</div>
-	                                <img class="d-block w-100" src="http://placehold.it/330x220" alt="properties">
-	                            </a>
-	                        </div>
-	                        <div class="detail">
-	                            <h1 class="title">
-	                                <a href="properties-details.html">Real Luxury Villa</a>
-	                            </h1>
-
-	                            <div class="location">
-	                                <a href="properties-details.html">
-	                                    <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-	                                </a>
-	                            </div>
-	                        </div>
-	                        <ul class="facilities-list clearfix">
-	                            <li>
-	                                <span>Area</span>3600 Sqft
-	                            </li>
-	                            <li>
-	                                <span>Beds</span> 3
-	                            </li>
-	                            <li>
-	                                <span>Baths</span> 2
-	                            </li>
-	                            <li>
-	                                <span>Garage</span> 1
-	                            </li>
-	                        </ul>
-	                        <div class="footer">
-	                            <a href="#">
-	                                <i class="flaticon-people"></i> Jhon Doe
-	                            </a>
-	                            <span>
-	                                <i class="flaticon-calendar"></i>5 Days ago
-	                            </span>
-	                        </div>
-	                    </div>
-	                </div>
+	                @endforeach
 	            </div>
 	            <div class="slick-prev slick-arrow-buton">
 	                <i class="fa fa-angle-left"></i>
@@ -445,6 +218,7 @@
 	        </div>
 	    </div>
 	</div>
+	@endif
 	<!-- Featured Properties end -->
 
 	<!-- Services start -->
@@ -489,123 +263,38 @@
 	<!-- Services end -->
 
 	<!-- Categories strat -->
-	<div class="categories content-area-7">
-	    <div class="container">
-	        <!-- Main title -->
-	        <div class="main-title text-center">
-	            <h1>Most Popular Places</h1>
-	            <p>Find Your Properties In Your City</p>
-	        </div>
-	        <div class="row">
-	            <div class="col-lg-5 col-md-12 col-sm-12 col-pad">
-	                <div class="category">
-	                    <div class="category_bg_box category_long_bg cat-4-bg">
-	                        <div class="category-overlay">
-	                            <div class="category-content">
-	                                <h3 class="category-title">
-	                                    <a href="#">Apartment</a>
-	                                </h3>
-	                                <h4 class="category-subtitle">12 Properties</h4>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-lg-7 col-md-12 col-sm-12">
-	                <div class="row">
-	                    <div class="col-sm-6 col-pad">
-	                        <div class="category">
-	                            <div class="category_bg_box cat-1-bg">
-	                                <div class="category-overlay">
-	                                    <div class="category-content">
-	                                        <h3 class="category-title">
-	                                            <a href="properties-list-rightside.html">Form</a>
-	                                        </h3>
-	                                        <h4 class="category-subtitle">27 Properties</h4>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-sm-6 col-pad">
-	                        <div class="category">
-	                            <div class="category_bg_box cat-2-bg">
-	                                <div class="category-overlay">
-	                                    <div class="category-content">
-	                                        <h3 class="category-title">
-	                                            <a href="#">House</a>
-	                                        </h3>
-	                                        <h4 class="category-subtitle">98 Properties</h4>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-sm-6 col-pad">
-	                        <div class="category">
-	                            <div class="category_bg_box cat-3-bg">
-	                                <div class="category-overlay">
-	                                    <div class="category-content">
-	                                        <h3 class="category-title">
-	                                            <a href="#">Villa</a>
-	                                        </h3>
-	                                        <h4 class="category-subtitle">98 Properties</h4>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <div class="col-sm-6 col-pad">
-	                        <div class="category">
-	                            <div class="category_bg_box cat-5-bg">
-	                                <div class="category-overlay">
-	                                    <div class="category-content">
-	                                        <h3 class="category-title">
-	                                            <a href="#">Restaurant</a>
-	                                        </h3>
-	                                        <h4 class="category-subtitle">98 Properties</h4>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
 	<!-- Categories end -->
 
 	<!-- Counters strat -->
 	<div class="counters overview-bgi">
 	    <div class="container">
 	        <div class="row">
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <!-- <div class="col-lg-3 col-md-3 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-sale"></i>
 	                    <h1 class="counter">967</h1>
 	                    <p>Listings For Sale</p>
 	                </div>
-	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            </div> -->
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-rent"></i>
-	                    <h1 class="counter">1276</h1>
+	                    <h1 class="counter">{{$property}}</h1>
 	                    <p>Listings For Rent</p>
 	                </div>
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-user"></i>
-	                    <h1 class="counter">396</h1>
-	                    <p>Agents</p>
+	                    <h1 class="counter">{{$customer}}</h1>
+	                    <p>User</p>
 	                </div>
 	            </div>
-	            <div class="col-lg-3 col-md-3 col-sm-6">
+	            <div class="col-lg-4 col-md-4 col-sm-6">
 	                <div class="counter-box">
 	                    <i class="flaticon-work"></i>
-	                    <h1 class="counter">177</h1>
-	                    <p>Brokers</p>
+	                    <h1 class="counter">{{$owner}}</h1>
+	                    <p>Owner</p>
 	                </div>
 	            </div>
 	        </div>
@@ -620,24 +309,28 @@
 	<!-- Blog end -->
 
 	<!-- Partners strat -->
-	<div class="partners">
-	    <div class="container">
-	        <div class="slick-slider-area">
-	            <div class="row slick-carousel" data-slick='{"slidesToShow": 5, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 3}}, {"breakpoint": 768,"settings":{"slidesToShow": 2}}]}'>
-	                <div class="slick-slide-item"><img src="public/img/rant_160_80.jpg" alt="brand" class="img-fluid"></div>
-	                <div class="slick-slide-item"><img src="public/img/rant_160_80.jpg" alt="brand" class="img-fluid"></div>
-	                <div class="slick-slide-item"><img src="public/img/rant_160_80.jpg" alt="brand" class="img-fluid"></div>
-	                <div class="slick-slide-item"><img src="public/img/rant_160_80.jpg" alt="brand" class="img-fluid"></div>
-	                <div class="slick-slide-item"><img src="public/img/rant_160_80.jpg" alt="brand" class="img-fluid"></div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
 	<!-- Partners end -->
 @endsection
 @section('js')
 <script type="text/javascript">
+	function validateForm() {
+	  var location = document.forms["home_filter"]["location"].value;
+	  var share_bed = document.forms["home_filter"]["share_bed"].value;
+	  var room = document.forms["home_filter"]["room"].value;
+	  var type = document.forms["home_filter"]["type"].value;
+
+	  if (location == "" && share_bed == "" && room == "" && type == "") {
+	    alert(" must be select any one ");
+	    return false;
+	  }
+	}
+
+</script>
+<script type="text/javascript">
 $(document).ready(function(){
+ 
+
+	
 	/*function filter(search){
 		var key = search;
 		$.ajax({
