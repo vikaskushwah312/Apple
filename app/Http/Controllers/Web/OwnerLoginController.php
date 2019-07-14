@@ -10,8 +10,15 @@ use Validator,Redirect,Session;
 class OwnerLoginController extends Controller
 {
     public function login(Request $request){
-    	if (Session::get('owner')) {
+    	/*if (Session::get('owner')) {
             return Redirect::to("owner/dashboard");
+        }*/
+        if ($request->session()->exists('id')) { //for admin
+            return redirect()->intended('admin/dashboard');
+        } elseif($request->session()->exists('owner')){
+            return Redirect::to("owner/dashboard");
+        } elseif($request->session()->exists('pg')){
+            return Redirect::to("pg/dashboard");
         }
     	return view('web.home.login');
     }
