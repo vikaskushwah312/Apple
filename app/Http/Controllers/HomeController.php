@@ -12,31 +12,6 @@ use App\Models\Notification;
 
 class HomeController extends Controller
 {
-    // ***************************************Notifications **************************?
-    public function index()
-    {
-        return view('home');
-    }
-
-    public function sendNotification()
-    {
-        $user = User::first();
-  
-        $details = [
-            'greeting' => 'Hi Artisan',
-            'body' => 'This is my first notification from ItSolutionStuff.com',
-            'thanks' => 'Thank you for using ItSolutionStuff.com tuto!',
-            'actionText' => 'View My Site',
-            'actionURL' => url('/'),
-            'order_id' => 101
-        ];
-  
-        Notification::send($user, new Complain($details));
-   
-        dd('done');
-    }
-
-    // **************************************************Home controller****
     //This is for Home page
     public function home(Request $request){
         
@@ -226,21 +201,7 @@ class HomeController extends Controller
             
         }
     }
-    /*
-    *function : advance Search partial
-    */
-   /* public function advanceSearch(Request $request){
-        try {
-            if($request->ajax()){
-                $data['count'] = 2;
-                $data['address'] = 2;
-                $res = ['status'=>true,'data'=>view('web.home.advance_search',$data)->render()];
-                return $res;
-            }
-        }catch(Exception $e) {
-          echo 'Message: ' .$e->getMessage();
-        }
-    }*//**/
+    
     public function properteDetails(Request $request,$id){
         // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();

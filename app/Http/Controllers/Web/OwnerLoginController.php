@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{User};
 use Validator,Redirect,Session;
+use Notification;
+use App\Notifications\Registration;
 
 class OwnerLoginController extends Controller
 {
@@ -91,9 +93,21 @@ class OwnerLoginController extends Controller
         					'user_type'		=> 2,
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
-          
-          	$insert = User::insertGetId($data);
-            if ($insert) {	            
+        // print_r($data);
+            $insert = User::create(['first_name' => $request('first_name'),
+                            'last_name'     => $request('last_name'),
+                            'email'         => $request('email'), 
+                            'password'      => bcrypt($request('password')),
+                            'contact_no'    => $request('contact_no'),
+                            'user_type'     => 2,
+                            'created_at'    => date('Y-m-d H:i:s')]);
+          	// $insert = User::insertGetId($data);
+            // print(gettype($insert));die;
+            if ($insert) {	 
+            //notification    
+            // $insert->notify(new Registration($data));
+            Notification::send($request->email, new Registration($data));
+       
               return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
