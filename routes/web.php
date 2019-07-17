@@ -86,6 +86,8 @@ Route::get('advance-search','HomeController@advanceSearch');
 
 //log in for all in one 
 Route::any('login','HomeController@login');
+//otp verification all in one
+Route::any('otp-verification','HomeController@otpVerification');
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################

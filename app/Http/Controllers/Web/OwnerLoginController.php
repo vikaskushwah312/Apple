@@ -78,23 +78,39 @@ class OwnerLoginController extends Controller
           return Redirect::to("owner/signup")->withErrors($validation)->withInput();
         }else{
 
+            $otp = rand(1,999999);
+            
         	$data = array(  'first_name'  	=> $request->first_name,
         					'last_name'  	=> $request->last_name,
         					'email'  		=> $request->email,	
                             'password'      => bcrypt($request->password),
         					'contact_no' 	=> $request->contact_no,
         					'user_type'		=> 2,
+                            'otp'           => $otp,
+                            'verified'      => "0",
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
           
           	$insert = User::insertGetId($data);
-            if ($insert) {	            
-              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+            if ($insert) {
+                $user = new User();
+                $user->email = $request->email;   // This is the email you want to send to.
+                $user->notify(new TemplateEmail());
+                return Redirect::to("otp-verification")->withSuccess('We Have Send The Otp in your Registered Email.');
+                // return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
               }
         }
 
+    }
+
+/*
+*purpose : otp verification for all
+*/
+    public function otpVerification(Request $request){
+
+        return view('web.home.login');
     }
 
     public function forgotPassword(Request $request){
