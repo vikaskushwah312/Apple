@@ -93,22 +93,16 @@ class OwnerLoginController extends Controller
         					'user_type'		=> 2,
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
-        // print_r($data);
-            $insert = User::create(['first_name' => $request('first_name'),
-                            'last_name'     => $request('last_name'),
-                            'email'         => $request('email'), 
-                            'password'      => bcrypt($request('password')),
-                            'contact_no'    => $request('contact_no'),
-                            'user_type'     => 2,
-                            'created_at'    => date('Y-m-d H:i:s')]);
-          	// $insert = User::insertGetId($data);
-            // print(gettype($insert));die;
+          	$insert = User::insertGetId($data);
+
             if ($insert) {	 
-            //notification    
-            // $insert->notify(new Registration($data));
-            Notification::send($request->email, new Registration($data));
+
+            //send the notification to user Registration is done    
+            $user = new User();
+            $user->email = $request->email;   // This is the email you want to send to.
+            $user->notify(new Registration($data));
        
-              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+            return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
               }
