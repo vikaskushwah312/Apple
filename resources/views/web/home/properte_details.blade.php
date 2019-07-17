@@ -22,9 +22,16 @@
             <div class="col-md-12">
                 <!-- Heading properties 3 start -->
                 <div class="heading-properties-3">
+                    <!-- <button class="btn pull-right" type="button">For Book</button> -->
+                    
+                    <div class="send-btn">
+                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme pull-right">For Book</a>
+                    </div>
                     <h1>{{$result->title}}</h1>
                     <div class="mb-30"><span class="property-price">Rs {{$result->price}} / month</span> <span class="rent">{{$result->status}}</span> <span class="location"><i class="flaticon-pin"></i>{{$result->address}},</span></div>
                 </div>
+                
+
             </div>
         </div>
         <div class="row">
@@ -74,6 +81,8 @@
                             @endif
                         @endforeach
                    </ul>
+
+                   
                     <!-- main slider carousel items -->
                 </div>
                 <!-- Advanced search start -->

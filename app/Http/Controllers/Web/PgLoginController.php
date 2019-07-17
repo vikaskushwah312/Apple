@@ -108,4 +108,13 @@ class PgLoginController extends Controller
         Session()->flush();
         return redirect('login')->withSuccess('You have Successfull LogOut.');
     }
+
+    public function bookRoom(Request $request,$property_id){
+        
+        if(isset($property_id)){
+            Session::put(['property_id' => $property_id]); 
+        }
+        return Redirect::to("pg/book");
+        
+    }
 }

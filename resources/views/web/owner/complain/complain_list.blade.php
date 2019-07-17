@@ -1,7 +1,7 @@
-@extends('web.owner.dashboard.master')
+@extends('web.pg.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
-    <h3>My Properties List</h3>
+    <h3>My Complain List</h3>
     <table class="manage-table">
         <tbody>
         @foreach($property as $pro)
@@ -16,23 +16,22 @@
             </td>
             <!-- <td class="expire-date"></td> $pro->created_at -->
             <td class="action">
-                <a href="{{url('owner/my-properties/edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
-                @if($pro->booked == 1)
-                <a href="javascript:void(0)"><i class="fa fa-bookmark"></i> Booked</a>
-                @endif
+                <a href="{{url('owner/complain-reply/'.$pro->complain_id)}}"><i class="fa fa-street-view"></i>View Complain</a>
+                <!-- <a href="javascript:void(0)" class="delete" id="complain_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
+                <a href="{{url('pg/complain-status/'.$pro->id)}}"><i class="fa fa-pencil"></i> Resolved or Not</a> -->
                 <!-- <a href=""><i class="fa  fa-eye-slash"></i> Hide</a> -->
-                <a href="javascript:void(0)" class="delete" id="p_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
             </td>
         </tr>
         @endforeach
         </tbody>
     </table>
-    </div>
+    </div>    
 @stop
 @section('js')
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.delete').on('click',function(){
+
+       /* $('.delete').on('click',function(){
         var p_delete = $(this).data('id');
         swal({
             title: "Are you sure?",
@@ -43,11 +42,11 @@
         }).then((willDelete) => {
             if (willDelete) {
                 $.ajax({
-                    url: "{{'my-properties/delete'}}",
+                    url: "{{'delete'}}",
                     data:{'id':p_delete},
                     cache: false,
                     success: function(res){
-                    console.log('res',res);
+                    // console.log('res',res);
                     if(res.success){
                         swal("Deleted successfully!", {
                             icon: "success",
@@ -59,8 +58,8 @@
             }
         })
          
-        });
-        $('#mypropertis-active').addClass('active');
+        });*/
+        $('#complain_list-active').addClass('active');
     })
 </script>
 

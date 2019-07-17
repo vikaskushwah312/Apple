@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{User};
 use Validator,Redirect,Session;
+use Notification;
+use App\Notifications\Registration;
 
 class OwnerLoginController extends Controller
 {
     public function login(Request $request){
-    	if (Session::get('owner')) {
+
+        if ($request->session()->exists('id')) { //for admin
+            return redirect()->intended('admin/dashboard');
+        } elseif($request->session()->exists('owner')){
             return Redirect::to("owner/dashboard");
+        } elseif($request->session()->exists('pg')){
+            return Redirect::to("pg/dashboard");
         }
     	return view('web.home.login');
     }
@@ -90,28 +97,23 @@ class OwnerLoginController extends Controller
                             'verified'      => "0",
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
-          
           	$insert = User::insertGetId($data);
+
             if ($insert) {
                 $user = new User();
                 $user->email = $request->email;   // This is the email you want to send to.
-                $user->notify(new TemplateEmail());
-                return Redirect::to("otp-verification")->withSuccess('We Have Send The Otp in your Registered Email.');
+                $user->notify(new Registration($data));
+                return Redirect::to("otp-verification/$insert")->withSuccess('We Have Send The Otp in your Registered Email.');
                 // return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
-              }
+            }
         }
 
     }
 
-/*
-*purpose : otp verification for all
-*/
-    public function otpVerification(Request $request){
 
-        return view('web.home.login');
-    }
 
     public function forgotPassword(Request $request){
     	return  view('web.owner.auth.forgot_password');

@@ -48,6 +48,7 @@
                             <li id="mypropertis-active"><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
                             <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li id="sub-active"><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
+                            <li id="complain_list-active"><a href="{{url('owner/complain-list')}}"><i class="flaticon-comment"></i>Complain List</a></li>
                         </ul>
                     </div>
                 </div>
