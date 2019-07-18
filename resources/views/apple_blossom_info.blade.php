@@ -15,6 +15,7 @@ AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
 used pages
 properties-list-leftsidebar.html
 properties-details.html
+ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 
 ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
 

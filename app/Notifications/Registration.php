@@ -10,15 +10,15 @@ use Illuminate\Notifications\Messages\MailMessage;
 class Registration extends Notification
 {
     use Queueable;
-
+    protected $data;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(array $data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -40,9 +40,9 @@ class Registration extends Notification
      */
     public function toMail($notifiable)
     {   
-        print_r($notifiable);die;
+        // print_r($this->data);die;
         return (new MailMessage)
-                    ->line('The introduction to the notificationsssssssssss.'.$notifiable->otp.'  '.$notifiable->id)
+                    ->line('The introduction to the notification.'.$this->data['otp'].'  '.$notifiable->email)
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
