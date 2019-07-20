@@ -12,6 +12,10 @@ paytm@123456
 
 https://business.paytm.com/pricing
 https://dashboard.paytm.com/next/get-started
+https://developer.paytm.com/docs/v1/payment-gateway (download)
+Paytem keys
+Test Merchant ID = HArDfO22555617205368
+Test Account Secret Key = P8wDUw!4Al5eaAXw
 
 multiple image
 https://bootsnipp.com/snippets/2eNKz
