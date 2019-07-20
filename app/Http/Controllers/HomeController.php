@@ -262,7 +262,7 @@ class HomeController extends Controller
                     } elseif($user->user_type == '3'){ // If user is Paying uest
                         Session::put(['pg' => $user->id]); 
                         return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
-                        
+                         
                     } elseif($user->user_type == '1'){ // If user is owner 
                         Session::put(['id' => $user->id]);  
                         # Redirect to dashboard
