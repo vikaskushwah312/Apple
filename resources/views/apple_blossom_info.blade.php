@@ -5,7 +5,13 @@ origi/filter_home
 origi/owner
 origi/pg
 master
+  
+Paytm
+9907305026
+paytm@123456
 
+https://business.paytm.com/pricing
+https://dashboard.paytm.com/next/get-started
 
 multiple image
 https://bootsnipp.com/snippets/2eNKz
