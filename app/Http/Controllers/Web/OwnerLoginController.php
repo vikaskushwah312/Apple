@@ -85,7 +85,7 @@ class OwnerLoginController extends Controller
           return Redirect::to("owner/signup")->withErrors($validation)->withInput();
         }else{
 
-            $otp = rand(1,999999);
+            $otp = rand(1,9999999);
             
         	$data = array(  'first_name'  	=> $request->first_name,
         					'last_name'  	=> $request->last_name,
