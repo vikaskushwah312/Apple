@@ -12,18 +12,19 @@ class HomeController extends Controller
     //This is for Home page
     public function home(Request $request){
         
-    // return view('layouts.index');
-        $data['result'] = FeaturedProperty::where('featured_property.status','Active')
+        //This property list shwo in the home page
+        $data['result'] = FeaturedProperty::where(['featured_property.status'=>'Active','booked'=>0])
                                             ->leftjoin('property','featured_property.property_id','=','property.id')
                                             ->get(['property.*']);
         $data['count'] =count($data['result']);
 
+        //total show for counter
         // total property for rent
         $data['property'] = Property::where('p_status','Active')->count();
+        //total user regiteras owner
         $data['owner'] = User::where(['status'=>'Active','user_type'=>2])->count();
+        //total user regiteras customer
         $data['customer'] = User::where(['status'=>'Active','user_type'=>3])->count();
-        // print_r($data['result']);die;
-        // print_r($data['count']);die;
         return view('layouts.home',$data);
         // return view('layouts.master');
     }
@@ -48,6 +49,7 @@ class HomeController extends Controller
 
                 
                 $query = Property::query();    
+                $query->where('booked',0);
                 if($address != ''){
                     $query->where('address', "LIKE", "%".$address."%");
                 }
@@ -98,6 +100,7 @@ class HomeController extends Controller
                 $data['result'] = [];
                 if($address || $share_bed || $room || $type){
                     $query = Property::query();    
+                    $query->where('booked',0);
                         if($address != ''){
                             $query->where('address', "LIKE", "%".$address."%");
                         }
@@ -153,7 +156,8 @@ class HomeController extends Controller
             // $max_price = $myValue['max_price'];
 
             
-            $query = Property::query();    
+            $query = Property::query();   
+            $query->where('booked',0); 
             if($address != ''){
                 $query->where('address', "LIKE", "%".$address."%");
             }
@@ -210,7 +214,7 @@ class HomeController extends Controller
         }
     }*//**/
     public function properteDetails(Request $request,$id){
-        // $id property id 
+        // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
         $data['images'] = GalleryImage::where('property_id',$id)->get();
         $data['features'] = Features::where('status','Active')->get();
@@ -260,7 +264,10 @@ class HomeController extends Controller
                         return Redirect::to("owner/dashboard")->withSuccess('You have success fully login.');
 
                     } elseif($user->user_type == '3'){ // If user is Paying uest
-                        Session::put(['pg' => $user->id]); 
+                        Session::put(['pg' => $user->id]);
+                        if(session('property_id')) {
+                            return Redirect::to("pg/book")->withSuccess('You have success fully login.');    
+                        }
                         return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
                          
                     } elseif($user->user_type == '1'){ // If user is owner 

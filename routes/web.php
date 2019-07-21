@@ -136,7 +136,7 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
-
+//start the room booking 
 
 Route::namespace('Web')->prefix('pg')->group(function(){
 	/*################# Pg Auth ###################*/
@@ -146,6 +146,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::post('post-signup','PgLoginController@postSignup');
 	Route::get('forgot-password','PgLoginController@forgotPassword');
 	Route::post('post-forgot-password','PgLoginController@postForgotPassword');
+	Route::get('book-room/{id?}','PgLoginController@bookRoom');
+
 /*################# // PG After the login  ###################*/
 	Route::group(['middleware'=>['pgLogin']],function(){
 		Route::get('dashboard','PgController@dashboard');
@@ -153,7 +155,18 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::any('my-profile','PgController@myProfile');
 		Route::any('change-password','PgController@changePassword');
 		Route::any('invoices','PgController@invoices');
-		Route::any('complain','PgController@complain');
+		Route::any('complain/{id}','PgController@complain');
+		Route::any('complain-edit/{id}','PgController@complainedit');
+
+		Route::get('complain-list','PgController@complainList');
+		Route::get('delete','PgController@complainDelete');
+
+
+		//Booking room 
+		Route::any('book','BookPaymentController@book');
+		Route::get('booked-list','BookPaymentController@bookList');
+
+		
 
 		Route::get('logout','PgLoginController@logout');
 	});
