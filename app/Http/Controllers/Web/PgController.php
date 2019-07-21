@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Complain,Payment};
+use App\Models\{User,Complain,Payment,ComplainReply};
 use Validator,Redirect,Session,Config,Auth;
 
 class PgController extends Controller
@@ -289,6 +289,7 @@ class PgController extends Controller
                             ->leftjoin('property','complain.property_id','=','property.id')
                             ->orderBy('complain.created_at','desc')
                             ->get($fields);
+        $data['complian_reply'] = ComplainReply::pluck('complain_id')->toArray();
 
         return view('web.pg.complain.complain_list',$data);
 

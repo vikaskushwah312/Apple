@@ -154,6 +154,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 
 		Route::get('complain-list','PgController@complainList');
 		Route::get('delete','PgController@complainDelete');
+		Route::get('complain-status/{id}','ComplainController@complainStatus');
+
 
 
 		//Booking room 

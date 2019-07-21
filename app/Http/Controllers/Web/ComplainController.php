@@ -64,4 +64,17 @@ public function complainReply(Request $request,$complain_id){
 
 
 /*###################################### FOR PAYING GUEST #####################################*/ 
+
+  public function complainStatus(Request $request,$id){
+    // $id=complain_id
+    $data['title'] = 'Complain';
+    // ComplainReply
+    $filed = array('complain.*','complain_reply.reply');
+    $data['complain'] = Complain::where('complain.id',$id)
+                              ->leftjoin('complain_reply','complain.id','=','complain_reply.complain_id')
+                              ->first($filed);
+    // print_r($data['result'] );die;
+
+    return view('web.pg.complain.complain_solve',$data);
+  }
 }
