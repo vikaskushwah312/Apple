@@ -14,5 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+	// Route::post('payment/status', 'EventController@paymentCallback');
     return $request->user();
 });
+
+ 
+// Route::post('payment/status', 'OrderController@paymentCallback');
+Route::post('payment/status', 'EventController@paymentCallback');
