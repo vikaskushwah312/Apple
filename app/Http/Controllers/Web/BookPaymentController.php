@@ -49,11 +49,12 @@ class BookPaymentController extends Controller{
 
 		} else { //get method
 
-			// $property_id = Session::get('property_id');
+			$property_id = Session::get('property_id');
 			//The pull method will retrieve and delete an item from the session in a single statement
-			$property_id = $request->session()->pull('property_id');
+			// $property_id = $request->session()->pull('property_id');
 			$data['title'] = 'Book and Payment Page';
 			$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
+			// print_r($property_id);die;
 	        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
 	        $data['features'] = Features::where('status','Active')->get();
 		    $pro_features = PropertyFeatures::where(['property_id'=>$property_id])->get(['feature_id']);
