@@ -30,6 +30,11 @@ ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMEN
 payment table
 ALTER TABLE `payment` ADD `user_id` INT NOT NULL COMMENT 'paying guest' AFTER `property_id`;
 ALTER TABLE `payment` ADD `status` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `amount`, ADD `payment_id` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `status`, ADD `_token` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `payment_id`;
+ALTER TABLE `payment` CHANGE `status` `status` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `payment_id` `payment_id` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `_token` `_token` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm';
+ALTER TABLE `payment` ADD `tenure` VARCHAR(250) NOT NULL COMMENT 'in month' AFTER `user_id`;
+ALTER TABLE `payment` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `book` ADD `order_id` VARCHAR(250) NOT NULL COMMENT 'payment.order_id' AFTER `id`;
 
 ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
 

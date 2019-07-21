@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
  
-Route::post('payment/status', 'BookPaymentController@paymentCallback');
+Route::post('payment/status', 'Web\BookPaymentController@paymentCallback');
 //working
 // Route::post('payment/status', 'EventController@paymentCallback');

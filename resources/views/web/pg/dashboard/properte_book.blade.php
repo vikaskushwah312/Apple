@@ -147,7 +147,7 @@ $(document).ready(function(){
         var tenure = $('#tenure').val();
         var price_pm = $('#price_pm').val();
         var total_price = price_pm*tenure;
-        var price = $("#price").val(total_price);
+        var amount = $("#amount").val(total_price);
 
     })
 });

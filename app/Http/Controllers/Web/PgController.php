@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Complain};
+use App\Models\{User,Complain,Payment};
 use Validator,Redirect,Session,Config,Auth;
 
 class PgController extends Controller
@@ -26,12 +26,101 @@ class PgController extends Controller
     *purpose : Get all invoices
     */
     public function invoices(Request $request){
+// $where = ['user_id'=>auth('user')->id(),'status'=>'success'];
+// $data['invoices'] = Payment::where($where)->get();
+        if($request->ajax()){
 
-        if($request->isMethod('post')){
+            $query = Payment::query();
+            
+            $draw   = intval($request->get("draw"));
+            $start  = intval($request->get("start"));
+            $length = intval($request->get("length"));
 
-        } else {
+            if ($request->get('search')['value'] != "") {
+
+                $value = $request->get('search')['value'];
+                
+                $query->where('order_id',"LIKE","%$value%");
+            }
+                //Order
+                $orderByField = "payment.id";
+                $orderBy = 'desc';
+
+            if (isset($request->get('order')[0]['dir']) && $request->get('order')[0]['dir'] != "") {                        
+                $orderBy = $request->get('order')[0]['dir'];
+            }
+
+            if (isset($request->get('order')[0]['column']) && $request->get('order')[0]['column'] != "") {
+
+            if ($request->get('order')[0]['column'] == 0) {
+                          
+                $orderByField = "payment.id";
+                      
+            }else if($request->get('order')[0]['column'] == 1){
+
+                $orderByField = "payment.order_id";             
+            }
+            
+            }
+
+            $total = $query->count();
+              
+            $info = $query->orderBy($orderByField,$orderBy)->skip($start)->take($length)->get(); 
+            print_r($info);die;
+            $data = array();
+            $sno = $start;
+                
+            foreach ($info as $country) {
+              $make = $country->status == "Active" ? 'Inactive' : 'Active'; 
+
+              $statusUrl = URL::to('admin/status_activity',[$country->id, $make, 'country']);
+
+              $status = '<a type="" class="change_status" data-title="Confirmation" style="text-decoration: none;" href="'.$statusUrl.'" title="Make '.$make. '" data-make="'.$make.'"><i class="'.($country->status == "Active" ? 'fa fa-lock' : 'fa fa-unlock').'"></i>  Make '.$make.'</a>';
+            
+              $showStatus = '<span class = "badge '. ($country->status == "Active" ? "bg-green" : "bg-red").'">'.ucfirst($country->status).'</span>'; 
+            
+              $delet_Url = "'admin/delete_activity/$country->id/country','$country->id'";
+
+              $deleteUrl = '<a type="" class="recorddelete" style="text-decoration: none;" data-title ="Confirmation" data-placement = "top" title="Delete Record" onclick="remove_record('.$delet_Url.')" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete Country</a>'; $delet_Url="delete()";
+            
+              $editUrl = URL::to('admin/edit-country',[$country->id]);  
+              //edit url       
+            
+              $edit_url = '<a type="" class="" style="text-decoration: none;" data-title ="Edit Country" title="edit-country" href="'.$editUrl.'"><i class="fa fa-edit"></i>Edit Country</a>';
+            
+              $viewstateUrl = URL::to('admin/state-list',[$country->id]);
+              $view_state = '<a type="" class="data-title" ="View State" title="edit-state" href="'.$viewstateUrl.'"><i class="fa fa-street-view"></i> View States</a>';
+                    $data[] =array(
+                      $sno = $sno+1,
+                        ucfirst($country->name),
+                        $showStatus,
+                  '<div class="">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-success btn-flat dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li>'.$status.'</li>
+                                <li>'.$edit_url.'</li>
+                                <li>'.$view_state.'</li>
+                              </ul>
+                            </div>
+                          </div>'
+                    ); 
+                  }/*foreach*/ //<li>'.$deleteUrl.'</li>
+
+                $output = array(
+                              "draw"            => $draw,
+                              "recordsTotal"    => $total,
+                              "recordsFiltered"  => $total,
+                              "data"             => $data
+                            );
+                echo json_encode($output);
+                exit();
+
+        } else { //get method
             
             $data['title'] = 'Invoices';
+            $where = ['user_id'=>auth('user')->id(),'status'=>'success'];
+            $data['invoices'] = Payment::where($where)->get();
             return view('web.pg.dashboard.invoices',$data);
 
         }
