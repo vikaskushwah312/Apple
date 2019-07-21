@@ -10,15 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*Route::get('eventRegistration', 'OrderController@register');
-Route::post('paytmPayment', 'OrderController@order');*/
-
-Route::get('event', 'EventController@bookEvent');
-Route::post('payment', 'EventController@eventOrderGen')->name('payment');
-Route::post('payment/status',function(){
-	return 'hello';
-});
-// Route::post('payment/status', 'EventController@paymentCallback');
 
 //Admin routes 
 Route::namespace('Admin')->prefix('admin')->group(function(){

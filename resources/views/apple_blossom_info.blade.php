@@ -27,6 +27,10 @@ properties-list-leftsidebar.html
 properties-details.html
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 
+payment table
+ALTER TABLE `payment` ADD `user_id` INT NOT NULL COMMENT 'paying guest' AFTER `property_id`;
+ALTER TABLE `payment` ADD `status` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `amount`, ADD `payment_id` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `status`, ADD `_token` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `payment_id`;
+
 ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
 
 ALTER TABLE `property` ADD `booked` TINYINT NOT NULL DEFAULT '0' COMMENT '0 for not booked,' AFTER `added_by`;

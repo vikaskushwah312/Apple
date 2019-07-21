@@ -20,14 +20,31 @@ class BookPaymentController extends Controller{
             if ($validation->fails()) {
               return Redirect::back()->withErrors($validation)->withInput();
             }else{
-            	$payment_data = array('amount' =>$request->amount,
-            						  'property_id' => $request->property_id,
-            						  'created_at'    => date('Y-m-d H:i:s'),
-            							);
+		       
+		        $order_id= rand(1,999999);
+		        $payment_data = array(	'order_id' => $order_id,
+		        						'property_id' => $request->property_id,
+		            					'user_id' => $user_id,
+		            					'amount' =>$request->amount,
+		        						'created_at'    => date('Y-m-d H:i:s'),
+		            					);
+		        //basic payment store in database
+		        Payment::insertGetId($payment_data);
+		        $user_data = User::find($user_id);
+		        //prepare for payment
+		        $payment = PaytmWallet::with('receive');
 
-            	$payment_id = Payment::insertGetId($payment_data);
+		        $payment->prepare([
+		          'order' => $order_id,
+		          'user' => $user_id,
+		          'mobile_number' => $user_data->contact_no,
+		          'email' => $user_data->email,
+		          'amount' => $request->amount,
+		          'callback_url' => url('api/payment/status')
+		        ]);
+		        return $payment->receive();
 
-            	if($payment_id){
+            	/*if($payment_id){
 	                $data = array(  'tenure'  => $request->tenure,
 	                				'property_id' => $request->property_id,
 	                				'user_id' => $user_id,
@@ -44,7 +61,7 @@ class BookPaymentController extends Controller{
 	                }
             	} else{
             		die('payment issue');
-            	}
+            	}*/
                 
             }
 
