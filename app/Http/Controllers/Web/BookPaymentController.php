@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Book,Payment};
 
 use Validator,Redirect,Session,Config,Auth;
+use PaytmWallet;
 
 class BookPaymentController extends Controller{
 
@@ -20,32 +21,30 @@ class BookPaymentController extends Controller{
             if ($validation->fails()) {
               return Redirect::back()->withErrors($validation)->withInput();
             }else{
-            	$payment_data = array('amount' =>$request->amount,
-            						  'property_id' => $request->property_id,
-            						  'created_at'    => date('Y-m-d H:i:s'),
-            							);
+		       
+		        $order_id= rand(1,999999);
+		        $payment_data = array(	'order_id' => $order_id,
+		        						'property_id' => $request->property_id,
+		            					'user_id' => $user_id,
+		            					'tenure'  => $request->tenure,
+		            					'amount' =>$request->amount,
+		        						'created_at'    => date('Y-m-d H:i:s'),
+		            					);
+		        //basic payment store in database
+		        Payment::insertGetId($payment_data);
+		        $user_data = User::find($user_id);
+		        //prepare for payment
+		        $payment = PaytmWallet::with('receive');
 
-            	$payment_id = Payment::insertGetId($payment_data);
-
-            	if($payment_id){
-	                $data = array(  'tenure'  => $request->tenure,
-	                				'property_id' => $request->property_id,
-	                				'user_id' => $user_id,
-	                				'created_at'    => date('Y-m-d H:i:s'),
-	            				 );
-                	$booked_id = Book::insertGetId($data);
-                	//for updated the property i.e. book so it will not show for rent
-                	Property::where(['id'=>$request->property_id])->update(['booked'=>1]);
-                	if ($booked_id) {
-                  		return Redirect::to("pg/booked-list")->withSuccess('You have successfully booked the property.');
-	                }else{
-	                	
-	                  return Redirect::back()->withFail('Something went to wrong.');
-	                }
-            	} else{
-            		die('payment issue');
-            	}
-                
+		        $payment->prepare([
+		          'order' => $order_id,
+		          'user' => $user_id,
+		          'mobile_number' => $user_data->contact_no,
+		          'email' => $user_data->email,
+		          'amount' => $request->amount,
+		          'callback_url' => url('api/payment/status')
+		        ]);
+		        return $payment->receive();
             }
 
 		} else { //get method
@@ -64,11 +63,49 @@ class BookPaymentController extends Controller{
 		            $data['propertey_features'][] = $value->feature_id;
 		        }
 		}
-		
-
 
         return view('web.pg.dashboard.properte_book',$data);
 	}
+	/*
+	*purpose :: this is called by paytm use api.php file for payment status  
+	*/
+	public function paymentCallback()
+    {	
+    	
+        $transaction = PaytmWallet::with('receive');
+ 
+        $response = $transaction->response();
+        // print_r($response);die; to see the all the responce
+        // $order_id = $transaction->getOrderId(); //get the order id
+
+        if($transaction->isSuccessful()){
+        	Payment::where('order_id',$response['ORDERID'])->update(['status'=>'success', 'payment_id'=>$response['TXNID']]);
+        	$payment_info = Payment::where(['order_id'=>$response['ORDERID'],'status'=>'success', 'payment_id'=>$response['TXNID'] ])->first();
+        	// dd('Payment successfully');
+        
+ 		//1.payment successfully completed then book the property
+ 			$data = array(  'order_id'  => $payment_info->order_id,
+            				'property_id' => $payment_info->property_id,
+            				'user_id' => $payment_info->user_id,
+            				'created_at'    => date('Y-m-d H:i:s'),
+	            		);
+            $booked_id = Book::insertGetId($data); 
+        //2.update the property this is booked
+        //for updated the property i.e. book so it will not show for rent
+        	$pro = Property::where(['id'=>$payment_info->property_id])->update(['booked'=>1]);
+        //*Sesstion distory here property wala
+        	if ($booked_id && $pro) {
+        		// return Redirect::to("owner/my-profile")->withSuccess('You have Successfull Updated.');
+          		return Redirect::to("pg/booked-list")->withSuccess('You have successfully booked the property.');
+            }else{
+              return Redirect::back()->withFail('Something went to wrong.');
+            }
+        }else if($transaction->isFailed()){
+          Payment::where('order_id',$order_id)->update(['status'=>'failed', 'payment_id'=>$response['TXNID']]);
+          return Redirect::back()->withFail('Something went to wrong.');
+          // dd('Payment Failed. Try again lator');
+        }
+    }
 
 	//get the all property booked by user
 	public function bookList(Request $request){

@@ -84,4 +84,18 @@ function copPhone($id){
 	$phone = ContactOfPerson::where('property_id',$id)->first(['phone']);
 	return $phone['phone'];
 }
+//the the user name
+function userName($id){
+	$user = User::where('id',$id)->first();
+	// return $user;
+	$res = 'N/A';
+	if(!$user){
+		$res = $user['first_name'];
+	}
+	return $res;
+}
+
+function propertyTitle($id){
+	return Property::where('id',$id)->value('title');
+}
 ?>

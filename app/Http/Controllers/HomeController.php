@@ -269,7 +269,7 @@ class HomeController extends Controller
                             return Redirect::to("pg/book")->withSuccess('You have success fully login.');    
                         }
                         return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
-                        
+                         
                     } elseif($user->user_type == '1'){ // If user is owner 
                         Session::put(['id' => $user->id]);  
                         # Redirect to dashboard

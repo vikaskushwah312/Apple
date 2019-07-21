@@ -1,0 +1,224 @@
+
+
+git branch
+origi/filter_home
+origi/owner
+origi/pg
+master
+  
+Paytm
+9907305026
+paytm@123456
+
+https://business.paytm.com/pricing
+https://dashboard.paytm.com/next/get-started
+https://developer.paytm.com/docs/v1/payment-gateway (download)
+Paytem keys
+Test Merchant ID = HArDfO22555617205368
+Test Account Secret Key = P8wDUw!4Al5eaAXw
+
+multiple image
+https://bootsnipp.com/snippets/2eNKz
+
+place key
+AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
+used pages
+properties-list-leftsidebar.html
+properties-details.html
+ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
+
+payment table
+ALTER TABLE `payment` ADD `user_id` INT NOT NULL COMMENT 'paying guest' AFTER `property_id`;
+ALTER TABLE `payment` ADD `status` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `amount`, ADD `payment_id` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `status`, ADD `_token` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `payment_id`;
+ALTER TABLE `payment` CHANGE `status` `status` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `payment_id` `payment_id` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `_token` `_token` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm';
+ALTER TABLE `payment` ADD `tenure` VARCHAR(250) NOT NULL COMMENT 'in month' AFTER `user_id`;
+ALTER TABLE `payment` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `book` ADD `order_id` VARCHAR(250) NOT NULL COMMENT 'payment.order_id' AFTER `id`;
+
+ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
+
+ALTER TABLE `property` ADD `booked` TINYINT NOT NULL DEFAULT '0' COMMENT '0 for not booked,' AFTER `added_by`;
+ALTER TABLE `complain` CHANGE `user_id` `user_id` INT(11) NULL DEFAULT NULL COMMENT 'paying guest';
+ALTER TABLE `complain` ADD `status` ENUM('Active','Inactive') NOT NULL AFTER `phone`;
+
+done(07072019)
+ALTER TABLE `features` ADD `status` ENUM('Active','Inactive') NOT NULL DEFAULT 'Active' AFTER `feature`;
+ALTER TABLE `property` ADD `added_by` INT(11) NOT NULL COMMENT 'user_id' AFTER `id`;
+
+done(23-06-2019)
+ALTER TABLE `property` ADD `p_status` ENUM('Active','Inactive') NOT NULL DEFAULT 'Active' AFTER `title`;
+ALTER TABLE `property` ADD `type` ENUM('Ac','Non-Ac') NULL AFTER `status`;
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Autocomplete Address Form</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <style>
+      #locationField, #controls {
+        position: relative;
+        width: 480px;
+      }
+      #autocomplete {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 99%;
+      }
+      .label {
+        text-align: right;
+        font-weight: bold;
+        width: 100px;
+        color: #303030;
+        font-family: "Roboto";
+      }
+      #address {
+        border: 1px solid #000090;
+        background-color: #f0f9ff;
+        width: 480px;
+        padding-right: 2px;
+      }
+      #address td {
+        font-size: 10pt;
+      }
+      .field {
+        width: 99%;
+      }
+      .slimField {
+        width: 80px;
+      }
+      .wideField {
+        width: 200px;
+      }
+      #locationField {
+        height: 20px;
+        margin-bottom: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="locationField">
+      <input id="autocomplete"
+             placeholder="Enter your address"
+             onFocus="geolocate()"
+             type="text"/>
+    </div>
+
+    <!-- Note: The address components in this sample are typical. You might need to adjust them for
+               the locations relevant to your app. For more information, see
+         https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+    -->
+
+    <table id="address">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number" disabled="true"/></td>
+        <td class="wideField" colspan="2"><input class="field" id="route" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td class="label">State</td>
+        <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"/></td>
+        <td class="label">Zip code</td>
+        <td class="wideField"><input class="field" id="postal_code" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td class="label">Country</td>
+        <td class="wideField" colspan="3"><input class="field" id="country" disabled="true"/></td>
+      </tr>
+    </table>
+
+    <script>
+// This sample uses the Autocomplete widget to help the user select a
+// place, then it retrieves the address components associated with that
+// place, and then it populates the form fields with those details.
+// This sample requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var placeSearch, autocomplete;
+
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+
+  for (var component in componentForm) {
+    document.getElementById(component).value = '';
+    document.getElementById(component).disabled = false;
+  }
+
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle(
+          {center: geolocation, radius: position.coords.accuracy});
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
+        async defer></script>
+  </body>
+</html>
