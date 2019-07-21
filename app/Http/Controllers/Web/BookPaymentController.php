@@ -76,7 +76,7 @@ class BookPaymentController extends Controller{
  
         $response = $transaction->response();
         // print_r($response);die; to see the all the responce
-        // $order_id = $transaction->getOrderId(); //get the order id
+        $order_id = $transaction->getOrderId(); //get the order id
 
         if($transaction->isSuccessful()){
         	Payment::where('order_id',$response['ORDERID'])->update(['status'=>'success', 'payment_id'=>$response['TXNID']]);
@@ -101,7 +101,7 @@ class BookPaymentController extends Controller{
               return Redirect::back()->withFail('Something went to wrong.');
             }
         }else if($transaction->isFailed()){
-          Payment::where('order_id',$payment_info->order_id)->update(['status'=>'failed', 'payment_id'=>$response['TXNID']]);
+          Payment::where('order_id',$order_id)->update(['status'=>'failed', 'payment_id'=>$response['TXNID']]);
           return Redirect::back()->withFail('Something went to wrong.');
           // dd('Payment Failed. Try again lator');
         }
