@@ -22,22 +22,14 @@ https://bootsnipp.com/snippets/2eNKz
 
 place key
 AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
-used pages
-properties-list-leftsidebar.html
-properties-details.html
+
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 
 payment table
-ALTER TABLE `payment` ADD `user_id` INT NOT NULL COMMENT 'paying guest' AFTER `property_id`;
-ALTER TABLE `payment` ADD `status` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `amount`, ADD `payment_id` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `status`, ADD `_token` VARCHAR(250) NOT NULL COMMENT 'generate by pyatm' AFTER `payment_id`;
-ALTER TABLE `payment` CHANGE `status` `status` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `payment_id` `payment_id` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm', CHANGE `_token` `_token` VARCHAR(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'generate by pyatm';
-ALTER TABLE `payment` ADD `tenure` VARCHAR(250) NOT NULL COMMENT 'in month' AFTER `user_id`;
-ALTER TABLE `payment` ADD `id` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `book` ADD `order_id` VARCHAR(250) NOT NULL COMMENT 'payment.order_id' AFTER `id`;
-
 ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
 
+
+done(21072019)
 ALTER TABLE `property` ADD `booked` TINYINT NOT NULL DEFAULT '0' COMMENT '0 for not booked,' AFTER `added_by`;
 ALTER TABLE `complain` CHANGE `user_id` `user_id` INT(11) NULL DEFAULT NULL COMMENT 'paying guest';
 ALTER TABLE `complain` ADD `status` ENUM('Active','Inactive') NOT NULL AFTER `phone`;
