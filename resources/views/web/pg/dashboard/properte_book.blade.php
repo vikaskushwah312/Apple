@@ -103,7 +103,7 @@
                                 <div class="form-group">
                                     <label>Tenure in month<strong class="required">*</strong></label>
                                     <input type="number" name="tenure" id="tenure" class="form-control" placeholder="Tenure" value="" required="">
-                                    <p class="error help-block" id="title">
+                                    <p class="error help-block" id="tenure">
                                     @if($errors->has('tenure'))
                                         <i class="error"></i> {{ $errors->first('tenure') }}
                                     @endif
@@ -113,20 +113,21 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Total Price <strong class="required">*</strong></label>
-                                    <input type="text" class="input-text" id="price" name="price" placeholder="Price" value="" required style="font-size: 13px;">
-                                    <p class="error help-block" id="price">
-                                      @if($errors->has('price'))
-                                        <i class="error"></i> {{ $errors->first('price') }}
-                                      @endif
+                                    <input type="number" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
+                                    <p class="error help-block" id="amount">
+                                    @if($errors->has('amount'))
+                                        <i class="error"></i> {{ $errors->first('amount') }}
+                                    @endif
                                     </p>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
                     <input type="hidden" name="price_pm" id="price_pm" value="{{$result->price}}">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 pull-right">
-                        <button type="submit"  class="search-button" id="payment_btn" name="payment_btn">Submit</button>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 pull-right">
+                        <button type="submit"  class="search-button" id="payment_btn" name="payment_btn">Payment</button>
                     </div>
                     </form>
                 </div>

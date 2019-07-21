@@ -15,6 +15,7 @@ class BookPaymentController extends Controller{
 		if($request->isMethod('post')){
 			$validation = Validator::make($request->all(),[
             'tenure'    => 'required',
+            'amount'    => 'required',
             ]);
             if ($validation->fails()) {
               return Redirect::back()->withErrors($validation)->withInput();
