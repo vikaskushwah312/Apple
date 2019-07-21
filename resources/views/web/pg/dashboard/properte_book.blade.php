@@ -1,5 +1,6 @@
 @extends('web.pg.dashboard.master')
 @section('webcontent')
+
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container">
@@ -93,58 +94,42 @@
                 </div>
                 <!-- Location start -->
                 <h3 class="heading">Tenure</h3>
-                <div class="dashboard-message contact-2 bdr clearfix">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <form  id="room_book_form" name="room_book_form" method="Post" action="{{url('pg/book')}}">
-                                {{ csrf_field() }}
-                                <div class="row col-sm-12">
-                                    <div class="col-lg-6 col-md-6 form-group">
-                                        <div class="name">
-                                            <label>Tenure in month<strong class="required">*</strong></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="name">
-                                            <input type="number" name="tenure" id="tenure" class="form-control" placeholder="Tenure" value="" required="">
-                                              @if($errors->has('tenure'))
-                                                <i class="error"></i> {{ $errors->first('tenure') }}
-                                              @endif
-                                        </div>
-                                    </div>
+                <div class="submit-address dashboard-list">
+                    <form method="post" action="{{url('pg/book')}}" id="room_book_form" name="room_book_form" enctype="multipart/form-data" >
+                    {{ csrf_field() }}
+                    <div class="search-contents-sidebar">
+                        <div class="row pad-20">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Tenure in month<strong class="required">*</strong></label>
+                                    <input type="number" name="tenure" id="tenure" class="form-control" placeholder="Tenure" value="" required="">
+                                    <p class="error help-block" id="tenure">
+                                    @if($errors->has('tenure'))
+                                        <i class="error"></i> {{ $errors->first('tenure') }}
+                                    @endif
+                                    </p>
                                 </div>
-                                <h3 class="heading">Payment</h3>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="name">
-                                            <label>First Name <strong class="required">*</strong></label>
-                                            <input type="text" name="amount" id="amount" class="form-control" placeholder="First Name" value="" required="">
-                                            <p class="error help-block" id="amount">
-                                              @if($errors->has('amount'))
-                                                <i class="error"></i> {{ $errors->first('amount') }}
-                                              @endif
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="name">
-                                            <label>Last Name <strong class="required">*</strong></label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" value="" required="">
-                                            <p class="error help-block" id="last_name">
-                                              @if($errors->has('last_name'))
-                                                <i class="error"></i> {{ $errors->first('last_name') }}
-                                              @endif
-                                            </p>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Total Price <strong class="required">*</strong></label>
+                                    <input type="number" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
+                                    <p class="error help-block" id="amount">
+                                    @if($errors->has('amount'))
+                                        <i class="error"></i> {{ $errors->first('amount') }}
+                                    @endif
+                                    </p>
                                 </div>
-                                <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
-                                <div class="form-group col-lg-6 col-md-6 col-sm-6 pull-right">
-                                    <button type="submit"  class="search-button" id="advance_search_button" name="advance_search_button">Submit</button>
-                                </div>
-                            </form>
+                            </div>
+                            
                         </div>
                     </div>
+                    <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
+                    <input type="hidden" name="price_pm" id="price_pm" value="{{$result->price}}">
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 pull-right">
+                        <button type="submit"  class="search-button" id="payment_btn" name="payment_btn">Payment</button>
+                    </div>
+                    </form>
                 </div>
                 <!-- Similar Properties start -->
             </div>
@@ -158,6 +143,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#invoices-active').addClass('active');
+    $('#tenure').on('keyup',function(){
+        var tenure = $('#tenure').val();
+        var price_pm = $('#price_pm').val();
+        var total_price = price_pm*tenure;
+        var price = $("#price").val(total_price);
+
+    })
 });
 </script>
 @endsection
