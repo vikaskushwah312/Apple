@@ -23,6 +23,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        @if(count($invoices) > 0)
                                         @foreach($invoices as $key=>$invoice)
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
@@ -33,6 +34,11 @@
                                             <td class="text-center">{{$invoice->tenure}}</td>
                                         </tr>
                                         @endforeach
+                                        @else
+                                        <tr>
+                                            <td>No Record found </td>
+                                        </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
