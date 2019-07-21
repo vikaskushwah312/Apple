@@ -17,7 +17,7 @@
                         <a href="{{url('properte-details').'/'.$res->id}}">{{$res->title}}</a>
                     </h3>
                     <h5 class="location">
-                        <a href="{{url('properte-details')}}">
+                        <a href="{{url('properte-details').'/'.$res->id}}">
                             <i class="flaticon-pin"></i>{{$res->address}}
                         </a>
                     </h5>
