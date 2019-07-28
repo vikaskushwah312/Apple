@@ -35,7 +35,7 @@ class OwnerController extends Controller
             ]);
 
             if ($validation->fails()) {
-                
+
               return Redirect::to("owner/my-profile")->withErrors($validation)->withInput();
             }else{
 
@@ -205,12 +205,15 @@ class OwnerController extends Controller
             }
             
         } else { //get method
+            if ($request->session()->exists('owner')) {
             
-            $data['title'] = "Submit Property";
-            $data['state'] = State::where('status','Active')->get();
-            $data['features'] = Features::where('status','Active')->get();
-            
-            return view('web.owner.dashboard.submit-property',$data);
+                $data['title'] = "Submit Property";
+                $data['state'] = State::where('status','Active')->get();
+                $data['features'] = Features::where('status','Active')->get();
+                
+                return view('web.owner.dashboard.submit-property',$data);
+            }
+            return Redirect::to("login")->withFail('Please log in firest.');
         }
 
     }

@@ -14,11 +14,14 @@
                             About Us
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item sp">
+                        <a href="{{url('submit-property')}}" class="nav-link link-color"><i class="fa fa-plus"></i> Submit Property</a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link dropdown-toggle" href="{{url('owner/zone')}}">
                             Owner Zone
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link dropdown-toggle" href="{{url('login')}}" >
                             Login

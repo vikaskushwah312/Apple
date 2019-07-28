@@ -94,6 +94,9 @@ Route::any('forgot-password','HomeController@forgotPassword');
 Route::any('post-forgot-password','HomeController@postForgotPassword');
 Route::any('change-password','HomeController@changePassword');
 
+//submit property from Home page
+Route::any('submit-property','Web\OwnerController@submitProperty');
+
 
 
 
