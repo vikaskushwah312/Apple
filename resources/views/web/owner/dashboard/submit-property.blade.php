@@ -248,6 +248,7 @@
             <fieldset class="form-group">
                 <a href="javascript:void(0)" onclick="$('#image').click()"><button class="btn btn-outline pricing-btn button-theme">Upload Image</button> <strong class="required">*</strong></a>
                 <input type="file" id="image" name="image[]" style="display: none;" class="form-control" multiple="" required>
+                <span class="error">max size of image 2 mb</span>
                 <p class="error help-block" id="image">
                   @if($errors->has('image'))
                     <i class="error"></i> {{ $errors->first('image') }}
@@ -343,6 +344,11 @@ $(document).ready(function() {
             output.empty();
             for (let i = 0; i < files.length; i++) {
                 var file = files[i];
+                // console.log('file_size',(((file.size)/1024)/1024));
+                var size = file.size/1024/1024;
+                if(size > 2){
+                    return alert(file.name + " is size more then 2 mb");
+                }
                 if (!file.type.match('image')){
                     return alert(file.name + " is not an image");
                 } else {

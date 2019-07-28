@@ -35,6 +35,7 @@ class OwnerController extends Controller
             ]);
 
             if ($validation->fails()) {
+                
               return Redirect::to("owner/my-profile")->withErrors($validation)->withInput();
             }else{
 

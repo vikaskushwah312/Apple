@@ -43,12 +43,11 @@
                     <div class="dashboard-inner">
                         <ul class="dashoard-list">
                             <li id="dashboard-active"><a href="{{url('owner/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
-                            <li id="messages-active"><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
-                        
                             <li id="mypropertis-active"><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
                             <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li id="sub-active"><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                             <li id="complain_list-active"><a href="{{url('owner/complain-list')}}"><i class="flaticon-comment"></i>Complain List</a></li>
+                            <li id="messages-active"><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i>Enquery<span class="nav-tag">6</span></a></li>
                         </ul>
                     </div>
                 </div>
