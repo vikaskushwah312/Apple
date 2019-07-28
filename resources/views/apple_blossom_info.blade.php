@@ -25,6 +25,7 @@ https://bootsnipp.com/snippets/2eNKz
 place key
 AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
 
+ALTER TABLE `property` ADD `service_type` VARCHAR(250) NULL COMMENT 'premium,ecostay' AFTER `booked`;
 
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 

@@ -227,7 +227,6 @@ class HomeController extends Controller
     }
 
     public function login(Request $request){
-
         if($request->isMethod('post')){ //post method
 
             $validator = Validator::make($request->all(),[
@@ -268,12 +267,14 @@ class HomeController extends Controller
                     }
 
                 } else {
+                    
                     return Redirect::to("owner/login")->withFail('Please check credentials.');
                 } 
 
             }
 
         } else { //get mehtod
+            
             if ($request->session()->exists('id')) { //for admin
                 return redirect()->intended('admin/dashboard');
             } elseif($request->session()->exists('owner')){
