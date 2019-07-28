@@ -100,13 +100,13 @@ class OwnerLoginController extends Controller
           	$insert = User::insertGetId($data);
 
             if ($insert) {
-                return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
-                /*$user = new User();
+                // return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+                $user = new User();
                 $user->email = $request->email;   // This is the email you want to send to.
                 $user->opt = $otp;
                 $user->notify(new Registration($data));
 
-                return Redirect::to("otp-verification/$insert")->withSuccess('We Have Send The Otp in your Registered Email.');*/
+                return Redirect::to("otp-verification/$insert")->withSuccess('We Have Send The Otp in your Registered Email.');
                 
 
             }else{

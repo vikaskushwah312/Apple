@@ -45,7 +45,7 @@
                     </div>
                     <!-- Footer -->
                     <div class="footer">
-                        <span>Don't have an account?Register here <a href="{{url('owner/signup')}}">As Owner</a>/<a href="{{url('pg/signup')}}">As PG</a></span>
+                        <span>Don't have an account?Register here <a href="{{url('owner/signup')}}">As Owner</a>/<a href="{{url('pg/signup')}}">As User</a></span>
                     </div>
                 </div>
                 <!-- Form content box end -->

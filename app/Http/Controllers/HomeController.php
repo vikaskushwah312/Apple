@@ -8,6 +8,7 @@ use Validator,Redirect,Session;
 // *****************************notification ***********
 use App\Notifications\Complain;
 use App\Models\Notification;
+use DateTime,DateInterval;
 
 
 class HomeController extends Controller
@@ -306,13 +307,17 @@ class HomeController extends Controller
                     if($data->verified == 0){
                         $create_DateTime    =  $data->created_at;
                         $create_DateTime    = $create_DateTime->format('Y-m-d H:i:s');
-                        $endTime = strtotime("+15 minutes", strtotime($create_DateTime));
-                        $expired_DateTime =  date('Y-m-d H:i:s', $endTime);
-                        echo $expired_DateTime.'='.date('Y-m-d H:i:s');
-                        $diff = abs(strtotime($expired_DateTime)-strtotime($create_DateTime))/60;
+                        
+                        //add minutes for expired
+                        $minutes_to_add = 15;
+                        $time = new DateTime($data->created_at);
+                        $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                        $expired_DateTime = $time->format('Y-m-d H:i:s');
 
-                        if(strtotime($expired_DateTime) >= strtotime(date('Y-m-d H:i:s'))){
-                        print($diff);die;
+                        $currect_DateTime = date('Y-m-d H:i:s');
+                        
+                        if(strtotime($currect_DateTime) <= strtotime($expired_DateTime)){
+                            
                             //check for enter otp is currect or not
                             $otp = $request->otp;
                             if($data->otp == $otp){
@@ -325,11 +330,13 @@ class HomeController extends Controller
                                     return Redirect::to("owner/signup")->withFail('Something went to wrong.');
                                 }
                             } else {
+                            
                                 return Redirect::to("otp-verification/$user_id")->withFail('Something went to wrong.');
                             }
 
                         } else {
-                            // User::where('id',$user_id)->delete();
+                            
+                            User::where('id',$user_id)->delete();
                             return Redirect::to("login")->withFail('Your session has been expired.');  
                         }
                     } else {
