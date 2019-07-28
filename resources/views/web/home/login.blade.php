@@ -34,10 +34,10 @@
                                   @endif
                                 </p>
                             </div>
-                            <!-- <div class="checkbox">
-                                <a href="{{url('owner/forgot-password')}}" class="link-not-important pull-right">Forgot Password</a>
+                            <div class="checkbox">
+                                <a href="{{url('forgot-password')}}" class="link-not-important pull-right" ><strong style="color: red;"> Forgot Password</strong></a>
                                 <div class="clearfix"></div>
-                            </div> -->
+                            </div>
                             <div class="form-group mb-0">
                                 <button type="submit" class="btn-md button-theme btn-block">login</button>
                             </div>

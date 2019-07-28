@@ -89,6 +89,13 @@ Route::any('login','HomeController@login');
 //otp verification all in one
 Route::any('otp-verification/{id}','HomeController@otpVerification');
 
+//forgot password
+Route::any('forgot-password','HomeController@forgotPassword');
+Route::any('post-forgot-password','HomeController@postForgotPassword');
+Route::any('change-password','HomeController@changePassword');
+
+
+
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
 Route::namespace('Web')->prefix('owner')->group(function(){

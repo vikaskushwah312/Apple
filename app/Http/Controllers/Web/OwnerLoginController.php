@@ -100,7 +100,7 @@ class OwnerLoginController extends Controller
           	$insert = User::insertGetId($data);
 
             if ($insert) {
-                // return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+                //send the otp on user email 
                 $user = new User();
                 $user->email = $request->email;   // This is the email you want to send to.
                 $user->opt = $otp;

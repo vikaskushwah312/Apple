@@ -89,7 +89,7 @@ class OwnerController extends Controller
                   return Redirect::to("owner/dashboard")->withSuccess('Password Successfull Updated.');
                 }else{
                   return Redirect::to("owner/change-password")->withFail('Something went to wrong.');
-                  }
+                }
             }
 
         } else {

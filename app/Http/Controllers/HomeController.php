@@ -8,6 +8,7 @@ use Validator,Redirect,Session;
 // *****************************notification ***********
 use App\Notifications\Complain;
 use App\Models\Notification;
+use App\Notifications\ForgotPassword;
 use DateTime,DateInterval;
 
 
@@ -340,7 +341,7 @@ class HomeController extends Controller
                             return Redirect::to("login")->withFail('Your session has been expired.');  
                         }
                     } else {
-                      return Redirect::to("login")->withSuccess('You have Successfull Registered.');  
+                      return Redirect::to("login");  
                     }
                 } else {
                     User::where('id',$user_id)->delete();
@@ -352,11 +353,122 @@ class HomeController extends Controller
         } else {
 
             $data['user_info'] = User::where('id',$user_id)->first();
+            // print_r($data['user_info']);die;
             if(!empty($data['user_info']) && $data['user_info']->verified == 1){
                 return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }
+            if (empty($data['user_info'])) {
+                return Redirect::to("login");
+            }
+
             return view('web.home.otp_verification',$data);
             
+        }
+    }
+
+
+    //set the forgotpassword
+    public function forgotPassword(Request $request){
+
+        if ($request->isMethod('post')) { //post method
+            $validation = Validator::make($request->all(),[
+            
+            'email' => 'required|email|string|max:255',
+            ]);
+            if ($validation->fails()) {
+              return Redirect::to("forgot-password")->withErrors($validation)->withInput();
+            }else{
+
+                try{
+                    $email = $request->email;
+                    $data = User::where('email',$email)->first();
+                    if(!empty($data)){
+                        $otp = rand(1,9999999);
+                        $main['otp'] = $otp;
+                        //send mail link/otp
+                        $user = new User();
+                        $user->email = $email;  // This is the email you want to send to.
+                        $user->opt = $otp;
+                        $user->notify(new ForgotPassword($main));
+
+                        return view('web.home.forgot_password_update',['info'=>$data]);
+
+                    }else{
+                        return Redirect::to("login")->withFail('Email not found ! please Register');  
+                    }
+                }catch(Exception $e) {
+                  echo 'Message: ' .$e->getMessage();
+                }
+            }
+        } else { //get method
+            return view('web.home.forgot_password');
+        }
+        
+    }
+
+    public function postForgotPassword(Request $request){
+        
+        if($request->isMethod('post')){
+
+            $validation = Validator::make($request->all(),[
+            'otp' => 'required',
+            ]);
+            if ($validation->fails()) {
+              return Redirect::to("post-forgot-password")->withErrors($validation)->withInput();
+            }else{
+
+                $email = $request->email;
+                $otp = $request->otp;
+                $data = user::where(['email'=>$email,'otp'=>$otp])->first();
+                //add minutes for expired
+
+                $minutes_to_add = 15;
+                $time = new DateTime($data->updated_at);
+                $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
+                $expired_DateTime = $time->format('Y-m-d H:i:s');
+
+                $currect_DateTime = date('Y-m-d H:i:s');
+                
+                if(strtotime($currect_DateTime) <= strtotime($expired_DateTime)){
+                    Session::put('forgot_id',$data->id);
+                    return Redirect::to("change-password")->withSuccess('Please Chnage your password.');
+                }
+                return Redirect::to("forgot-password")->withFail('You session has been expired.');
+
+
+            }
+        } else {
+            
+        }
+
+    }
+
+    public function changePassword(Request $request){
+
+        if ($request->isMethod('post')) {
+            $validation = Validator::make($request->all(),[
+            'new_password'    => 'required|min:6|max:20',
+            'confirm_password' => 'required|same:new_password|min:6|max:20',
+            ]);
+
+            if ($validation->fails()) {
+              return Redirect::to("change-password")->withErrors($validation)->withInput();
+            }else{
+
+                $data = array(  'password'  => bcrypt($request->new_password),
+                            );
+                $id = Session::get('forgot_id');
+                $upd = User::where('id',$id)->update($data);
+                if ($upd) {
+                    $request->session()->forget('id');
+                    return Redirect::to("login")->withSuccess('Password Successfull Updated.');
+                }else{
+                  return Redirect::to("change-password")->withFail('Something went to wrong.');
+                }
+
+            }
+        } else {
+            return view('web.home.change_password');
         }
     }
 }

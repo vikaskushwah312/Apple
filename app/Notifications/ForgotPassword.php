@@ -7,11 +7,11 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class Registration extends Notification
+class ForgotPassword extends Notification
 {
     use Queueable;
     protected $data;
-    
+
     /**
      * Create a new notification instance.
      *
@@ -40,11 +40,10 @@ class Registration extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {   
-        // print_r($this->data);die;
+    {
         return (new MailMessage)
-                    ->line('The introduction to the notification.'.$this->data['otp'].'  '.$notifiable->email)
-                    ->action('Notification Action', url('/'))
+                     ->line('ForgotPassword  '.$this->data['otp'].'  '.$notifiable->email)
+                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 

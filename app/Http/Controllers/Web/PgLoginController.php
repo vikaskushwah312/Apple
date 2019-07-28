@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\Registration;
 use App\Models\{User};
 use Validator,Redirect,Session;
 class PgLoginController extends Controller
@@ -76,6 +77,7 @@ class PgLoginController extends Controller
           return Redirect::to("pg/signup")->withErrors($validation)->withInput();
 
         }else{
+            $otp = rand(1,9999999);
 
         	$data = array(  'first_name'  	=> $request->first_name,
         					'last_name'  	=> $request->last_name,
@@ -83,12 +85,21 @@ class PgLoginController extends Controller
         					'password'  	=> bcrypt($request->password),
         					'contact_no' 	=> $request->contact_no,
         					'user_type'		=> 3, // pay guest
+                            'otp'           => $otp,
+                            'verified'      => "0",
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
 
           	$insert = User::insertGetId($data);
-            if ($insert) {	            
-              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+            if ($insert) {
+                //send the otp on user email 
+                $user = new User();
+                $user->email = $request->email;   // This is the email you want to send to.
+                $user->opt = $otp;
+                $user->notify(new Registration($data));
+
+                return Redirect::to("otp-verification/$insert")->withSuccess('We Have Send The Otp in your Registered Email.');
+                return Redirect::to("login")->withSuccess('You have Successfull Registered.');
             }else{
               return Redirect::to("pg/signup")->withFail('Something went to wrong.');
               }
