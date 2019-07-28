@@ -65,6 +65,7 @@
 
 .container {
     padding-top: 50px;
+    padding-bottom: 16px;
 }
 .required{
     color: red;
