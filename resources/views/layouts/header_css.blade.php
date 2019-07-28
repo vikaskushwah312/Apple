@@ -26,7 +26,9 @@
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{{url('public/css/skins/default.css')}}">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon" >
+    <!-- <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon" > -->
+    <link rel="shortcut icon" href="public/img/logo.png" type="image/x-icon" >
+    
 
     <!-- Google fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,300,700">
