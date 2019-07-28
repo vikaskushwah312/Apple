@@ -460,7 +460,7 @@ class HomeController extends Controller
                 $id = Session::get('forgot_id');
                 $upd = User::where('id',$id)->update($data);
                 if ($upd) {
-                    $request->session()->forget('id');
+                    $request->session()->forget('forgot_id');
                     return Redirect::to("login")->withSuccess('Password Successfull Updated.');
                 }else{
                   return Redirect::to("change-password")->withFail('Something went to wrong.');
