@@ -81,6 +81,8 @@
                             @endif
                         @endforeach
                    </ul>
+
+                   
                     <!-- main slider carousel items -->
                 </div>
                 <!-- Advanced search start -->

@@ -1,5 +1,10 @@
 
+<<<<<<< HEAD
 
+=======
+gmail id
+applepenapplepen
+>>>>>>> filter_home
 git branch
 origi/filter_home
 origi/owner
@@ -12,16 +17,20 @@ paytm@123456
 
 https://business.paytm.com/pricing
 https://dashboard.paytm.com/next/get-started
+<<<<<<< HEAD
 https://developer.paytm.com/docs/v1/payment-gateway (download)
 Paytem keys
 Test Merchant ID = HArDfO22555617205368
 Test Account Secret Key = P8wDUw!4Al5eaAXw
+=======
+>>>>>>> filter_home
 
 multiple image
 https://bootsnipp.com/snippets/2eNKz
 
 place key
 AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
+<<<<<<< HEAD
 
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 
@@ -30,6 +39,15 @@ ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verifie
 
 
 done(21072019)
+=======
+used pages
+properties-list-leftsidebar.html
+properties-details.html
+ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
+
+ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
+
+>>>>>>> filter_home
 ALTER TABLE `property` ADD `booked` TINYINT NOT NULL DEFAULT '0' COMMENT '0 for not booked,' AFTER `added_by`;
 ALTER TABLE `complain` CHANGE `user_id` `user_id` INT(11) NULL DEFAULT NULL COMMENT 'paying guest';
 ALTER TABLE `complain` ADD `status` ENUM('Active','Inactive') NOT NULL AFTER `phone`;

@@ -86,6 +86,8 @@ Route::get('advance-search','HomeController@advanceSearch');
 
 //log in for all in one 
 Route::any('login','HomeController@login');
+//otp verification all in one
+Route::any('otp-verification/{id}','HomeController@otpVerification');
 
 
 ######################### OWNER URLS BEFORE LOGIN ###############################
@@ -169,6 +171,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 
 });
 
+############################# NOTIFICATION #####################
+Route::get('send', 'HomeController@sendNotification');
 /*###################### Global Urls #######################*/
 Route::get('get-states','admin\LocationController@getStates');
 Route::get('get-city','admin\LocationController@getCity');

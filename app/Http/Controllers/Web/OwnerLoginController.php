@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\{User};
 use Validator,Redirect,Session;
+use Notification;
+use App\Notifications\Registration;
 
 class OwnerLoginController extends Controller
 {
     public function login(Request $request){
-    	/*if (Session::get('owner')) {
-            return Redirect::to("owner/dashboard");
-        }*/
+
         if ($request->session()->exists('id')) { //for admin
             return redirect()->intended('admin/dashboard');
         } elseif($request->session()->exists('owner')){
@@ -85,24 +85,38 @@ class OwnerLoginController extends Controller
           return Redirect::to("owner/signup")->withErrors($validation)->withInput();
         }else{
 
+            $otp = rand(1,9999999);
+            
         	$data = array(  'first_name'  	=> $request->first_name,
         					'last_name'  	=> $request->last_name,
         					'email'  		=> $request->email,	
                             'password'      => bcrypt($request->password),
         					'contact_no' 	=> $request->contact_no,
         					'user_type'		=> 2,
+                            'otp'           => $otp,
+                            'verified'      => "0",
         				   	'created_at' 	=> date('Y-m-d H:i:s'),
         				 );
-          
           	$insert = User::insertGetId($data);
-            if ($insert) {	            
-              return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+
+            if ($insert) {
+                return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+                /*$user = new User();
+                $user->email = $request->email;   // This is the email you want to send to.
+                $user->opt = $otp;
+                $user->notify(new Registration($data));
+
+                return Redirect::to("otp-verification/$insert")->withSuccess('We Have Send The Otp in your Registered Email.');*/
+                
+
             }else{
               return Redirect::to("owner/signup")->withFail('Something went to wrong.');
-              }
+            }
         }
 
     }
+
+
 
     public function forgotPassword(Request $request){
     	return  view('web.owner.auth.forgot_password');

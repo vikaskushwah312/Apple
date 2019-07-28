@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty};
 use Validator,Redirect,Session;
+// *****************************notification ***********
+use App\Notifications\Complain;
+use App\Models\Notification;
+
 
 class HomeController extends Controller
 {
-    
     //This is for Home page
     public function home(Request $request){
         
@@ -198,21 +201,7 @@ class HomeController extends Controller
             
         }
     }
-    /*
-    *function : advance Search partial
-    */
-   /* public function advanceSearch(Request $request){
-        try {
-            if($request->ajax()){
-                $data['count'] = 2;
-                $data['address'] = 2;
-                $res = ['status'=>true,'data'=>view('web.home.advance_search',$data)->render()];
-                return $res;
-            }
-        }catch(Exception $e) {
-          echo 'Message: ' .$e->getMessage();
-        }
-    }*//**/
+    
     public function properteDetails(Request $request,$id){
         // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
@@ -291,6 +280,76 @@ class HomeController extends Controller
                 return Redirect::to("pg/dashboard");
             }
             return view('web.home.login');
+        }
+    }
+
+    /*
+*purpose : otp verification for all
+*/
+    public function otpVerification(Request $request,$user_id){
+        
+        if ($request->isMethod('post')) {
+            // print_r($request->all());die;
+            $validation = Validator::make($request->all(),[
+            
+            'otp'    => 'required|numeric',
+            ]);
+            
+            if ($validation->fails()) {
+              return Redirect::to("otp-verification/$user_id")->withErrors($validation)->withInput();
+            }else{
+
+                //otp stored in databae
+                $data = User::find($user_id);
+                //user is registred
+                if($data){
+                    if($data->verified == 0){
+                        $create_DateTime    =  $data->created_at;
+                        $create_DateTime    = $create_DateTime->format('Y-m-d H:i:s');
+                        $endTime = strtotime("+15 minutes", strtotime($create_DateTime));
+                        $expired_DateTime =  date('Y-m-d H:i:s', $endTime);
+                        echo $expired_DateTime.'='.date('Y-m-d H:i:s');
+                        $diff = abs(strtotime($expired_DateTime)-strtotime($create_DateTime))/60;
+
+                        if(strtotime($expired_DateTime) >= strtotime(date('Y-m-d H:i:s'))){
+                        print($diff);die;
+                            //check for enter otp is currect or not
+                            $otp = $request->otp;
+                            if($data->otp == $otp){
+                                // echo "databae".$data->otp.'  '.'request'.$otp;
+                                $data = array('verified'  => '1');
+                                $update = User::where('id',$user_id)->update($data);
+                                if($update){
+                                    return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+                                } else {
+                                    return Redirect::to("owner/signup")->withFail('Something went to wrong.');
+                                }
+                            } else {
+                                return Redirect::to("otp-verification/$user_id")->withFail('Something went to wrong.');
+                            }
+
+                        } else {
+                            // User::where('id',$user_id)->delete();
+                            return Redirect::to("login")->withFail('Your session has been expired.');  
+                        }
+                    } else {
+                      return Redirect::to("login")->withSuccess('You have Successfull Registered.');  
+                    }
+                } else {
+                    User::where('id',$user_id)->delete();
+                    return Redirect::to("login")->withFail('You session has been expired.');  
+                }
+
+            }
+
+        } else {
+
+            $data['user_info'] = User::where('id',$user_id)->first();
+            if(!empty($data['user_info']) && $data['user_info']->verified == 1){
+                return Redirect::to("login")->withSuccess('You have Successfull Registered.');
+            }
+            return view('web.home.otp_verification',$data);
+            
         }
     }
 }
