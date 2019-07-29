@@ -93,9 +93,11 @@ Route::any('otp-verification/{id}','HomeController@otpVerification');
 Route::any('forgot-password','HomeController@forgotPassword');
 Route::any('post-forgot-password','HomeController@postForgotPassword');
 Route::any('change-password','HomeController@changePassword');
+Route::get('vigit','HomeController@vigit');
 
 //submit property from Home page
 Route::any('submit-property','Web\OwnerController@submitProperty');
+//vigit for user 
 
 
 
@@ -153,6 +155,7 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 	Route::get('forgot-password','PgLoginController@forgotPassword');
 	Route::post('post-forgot-password','PgLoginController@postForgotPassword');
 	Route::get('book-room/{id?}','PgLoginController@bookRoom');
+
 
 /*################# // PG After the login  ###################*/
 	Route::group(['middleware'=>['pgLogin']],function(){

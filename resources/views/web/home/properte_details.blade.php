@@ -24,8 +24,11 @@
                 <div class="heading-properties-3">
                     <!-- <button class="btn pull-right" type="button">For Book</button> -->
                     
-                    <div class="send-btn">
-                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme pull-right">For Book</a>
+                    <div class="send-btn pull-right"> <!-- {{url('vigit').'/'.$result->id}} -->
+                        <!-- data-toggle="modal" data-target="#vigit" -->
+                        <!-- id="vigit" -->
+                        <a href="javascript:void(0)" class="btn btn-md button-theme"  data-toggle="modal" data-target="#vigit">Vigit</a>
+                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme">Book</a>
                     </div>
                     <h1>{{$result->title}}</h1>
                     <div class="mb-30"><span class="property-price">Rs {{$result->price}} / month</span> <span class="rent">{{$result->status}}</span> <span class="location"><i class="flaticon-pin"></i>{{$result->address}},</span></div>
@@ -151,12 +154,103 @@
     </div>
 </div>
 <!-- Properties section end -->
+<!-- modal section here #vigit -->
+<div id="vigit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Vigiter Information</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="submit-address dashboard-list">
+        <form method="post" action="{{url('owner/submit-property')}}" id="submit_property" name="submit_property" enctype="multipart/form-data" >
+            {{ csrf_field() }}
+            <div class="search-contents-sidebar">
+                <div class="row pad-20">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>First Name<strong class="required">*</strong></label>
+                            <input type="text" class="input-text" id="first_name" name="first_name" placeholder="First Name" value="{{old('first_name')}}" required>
+                            <p class="error help-block" id="first_name">
+                              @if($errors->has('first_name'))
+                                <i class="error"></i> {{ $errors->first('first_name') }}
+                              @endif
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Last Name<strong class="required">*</strong></label>
+                            <input type="text" class="input-text" id="last_name" name="last_name" placeholder="Last Name" value="{{old('last_name')}}" required>
+                            <p class="error help-block" id="last_name">
+                              @if($errors->has('last_name'))
+                                <i class="error"></i> {{ $errors->first('last_name') }}
+                              @endif
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Email<strong class="required">*</strong></label>
+                            <input type="text" class="input-text" id="email" name="email" placeholder="Email" value="{{old('email')}}" required>
+                            <p class="error help-block" id="email">
+                              @if($errors->has('email'))
+                                <i class="error"></i> {{ $errors->first('email') }}
+                              @endif
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label>Contact<strong class="required">*</strong></label>
+                            <input type="text" class="input-text" id="contact" name="contact" placeholder="Contact" value="{{old('contact')}}" required>
+                            <p class="error help-block" id="contact">
+                              @if($errors->has('contact'))
+                                <i class="error"></i> {{ $errors->first('contact') }}
+                              @endif
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" >Submit</button>
+            </div>
+        </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
 @endsection
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-
+    /*$("#vigit").on('click',function(){
+        var property_id = $('#property_id').val();
+        console.log(property_id);
+        $.ajax({
+            url: "{{url('vigit')}}",
+            data:{'property_id':property_id},
+            cache: false,
+            success: function(res){
+            console.log('res',res);
+            if (res.status) {
+                $("#vigit").modal('show')
+            }
+            
+          }
+        });
+    });*/
 	
 });
 </script>

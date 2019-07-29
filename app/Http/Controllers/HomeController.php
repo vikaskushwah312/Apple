@@ -472,4 +472,21 @@ class HomeController extends Controller
             return view('web.home.change_password');
         }
     }
+
+    /*
+    * purpose : to crate the vigiter recoreds in database in for owner and admin
+    */
+
+    public function vigit(Request $request){
+        if ($request->ajax()) {
+            $property_id = $request->property_id;
+            $id = auth('user')->id();
+            $data['info'] = User::where(['id'=>$id,'user_type'=>3])->first();
+            $res = ['status'=>true ,'data'=>view('web.home.vigit',$data)->render()];
+            return $res;
+        } else{
+            return 'Invalid request';
+        }
+
+    }
 }
