@@ -94,6 +94,9 @@ Route::any('forgot-password','HomeController@forgotPassword');
 Route::any('post-forgot-password','HomeController@postForgotPassword');
 Route::any('change-password','HomeController@changePassword');
 Route::get('vigit','HomeController@vigit');
+Route::post('submit-vigit','HomeController@submitVigit');
+
+
 
 //submit property from Home page
 Route::any('submit-property','Web\OwnerController@submitProperty');

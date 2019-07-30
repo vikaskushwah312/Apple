@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Vigit};
 use Validator,Redirect,Session;
 // *****************************notification ***********
 use App\Notifications\Complain;
@@ -488,5 +488,19 @@ class HomeController extends Controller
             return 'Invalid request';
         }
 
+    }
+    public function submitVigit(Request $request){
+        try{
+
+            $vigit = new Vigit();
+            $input = $request->only($vigit->getfillable());
+            if($request->session()->exists('pg')){
+             $input['user_id'] = auth('user')->id();
+            }
+            print_r($input);die;
+
+        }catch(Exception $e){
+            echo "Message".$e->getMessage();
+        }
     }
 }
