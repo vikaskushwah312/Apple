@@ -488,13 +488,32 @@ class HomeController extends Controller
     }
     public function submitVigit(Request $request){
         try{
+            $validation = Validator::make($request->all(),[
+            
+            'first_name'    => 'required|regex:/^[\pL\s\-]+$/u',
+            'last_name'     => 'required|regex:/^[\pL\s\-]+$/u',
+            'email'         => 'required|email|string|max:255',
+            'contact'       => 'required|numeric|digits:10',
+            ]);
 
-            $vigit = new Vigit();
-            $input = $request->only($vigit->getfillable());
-            if($request->session()->exists('pg')){
-             $input['user_id'] = auth('user')->id();
+            if ($validation->fails()) {
+        
+              return Redirect::to("vigit")->withErrors($validation)->withInput();
+            }else{
+                $vigit = new Vigit();
+                $input = $request->only($vigit->getfillable());
+                if($request->session()->exists('pg')){
+                    $input['user_id'] = auth('user')->id();
+                }
+                
+                $insert = Vigit::insertGetId($input);
+                if ($insert) {
+                return Redirect::to("/")->withSuccess('we will contact in 24 hours.');
+                }else{
+                  return Redirect::to("vigit")->withFail('Something went to wrong.');
+                }
             }
-            print_r($input);die;
+            
 
         }catch(Exception $e){
             echo "Message".$e->getMessage();

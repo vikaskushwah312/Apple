@@ -27,7 +27,8 @@
                     <div class="send-btn pull-right"> <!-- {{url('vigit').'/'.$result->id}} -->
                         <!-- data-toggle="modal" data-target="#vigit" -->
                         <!-- id="vigit" -->
-                        <a href="javascript:void(0)" class="btn btn-md button-theme"  data-toggle="modal" data-target="#vigit">Vigit</a>
+                        <!-- data-toggle="modal" data-target="#vigit" -->
+                        <a href="{{url('vigit')}}" class="btn btn-md button-theme"  id="vigit" target="_blank">Vigit</a>
                         <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme">Book</a>
                     </div>
                     <h1>{{$result->title}}</h1>
@@ -166,7 +167,7 @@
       </div>
       <div class="modal-body">
         <div class="submit-address dashboard-list">
-        <form method="post" action="{{url('owner/submit-property')}}" id="submit_property" name="submit_property" enctype="multipart/form-data" >
+        <form method="post" action="{{url('submit-vigit')}}" id="vigit_property" name="vigit_property" enctype="multipart/form-data" >
             {{ csrf_field() }}
             <div class="search-contents-sidebar">
                 <div class="row pad-20">
@@ -216,21 +217,23 @@
                     </div>
                 </div>
             </div>
-        </form>
+            <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" >Submit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn button-theme" >Submit</button>
             </div>
+        </form>
         </div>
         </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+      </div> -->
     </div>
 
   </div>
 </div>
 
-<input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
+
 @endsection
 @section('js')
 <script type="text/javascript">
@@ -250,6 +253,12 @@ $(document).ready(function(){
             
           }
         });
+    });*/
+    /*$('#vigit').on('click',function(){
+
+        // $('#vigit_property').rest();
+        $("#vigit_property").trigger("reset");
+
     });*/
 	
 });
