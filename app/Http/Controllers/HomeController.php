@@ -478,15 +478,12 @@ class HomeController extends Controller
     */
 
     public function vigit(Request $request){
-        if ($request->ajax()) {
+        
             $property_id = $request->property_id;
             $id = auth('user')->id();
             $data['info'] = User::where(['id'=>$id,'user_type'=>3])->first();
-            $res = ['status'=>true ,'data'=>view('web.home.vigit',$data)->render()];
-            return $res;
-        } else{
-            return 'Invalid request';
-        }
+            return view('web.home.vigit',$data);
+        
 
     }
     public function submitVigit(Request $request){
