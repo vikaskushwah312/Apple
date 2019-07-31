@@ -47,7 +47,7 @@
                             <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li id="sub-active"><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                             <li id="complain_list-active"><a href="{{url('owner/complain-list')}}"><i class="flaticon-comment"></i>Complain List</a></li>
-                            <li id="messages-active"><a href="{{url('owner/messages')}}"><i class="flaticon-mail"></i>Enquery<span class="nav-tag">6</span></a></li>
+                            <li id="messages-active"><a href="{{url('owner/vigit')}}"><i class="flaticon-mail"></i>Enquery<span class="nav-tag" id="enquery">6</span></a></li>
                         </ul>
                     </div>
                 </div>

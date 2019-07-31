@@ -28,7 +28,7 @@
                         <!-- data-toggle="modal" data-target="#vigit" -->
                         <!-- id="vigit" -->
                         <!-- data-toggle="modal" data-target="#vigit" -->
-                        <a href="{{url('vigit')}}" class="btn btn-md button-theme"  id="vigit" target="_blank">Vigit</a>
+                        <a href="{{url('vigit').'/'.$result->id}}" class="btn btn-md button-theme"  id="vigit" target="_blank">Vigit</a>
                         <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme">Book</a>
                     </div>
                     <h1>{{$result->title}}</h1>
@@ -214,10 +214,10 @@
                               @endif
                             </p>
                         </div>
+            
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn button-theme" >Submit</button>

@@ -477,11 +477,11 @@ class HomeController extends Controller
     * purpose : to crate the vigiter recoreds in database in for owner and admin
     */
 
-    public function vigit(Request $request){
-        
-            $property_id = $request->property_id;
+    public function vigit(Request $request,$property_id){
+
             $id = auth('user')->id();
             $data['info'] = User::where(['id'=>$id,'user_type'=>3])->first();
+            $data['property_id'] =$property_id;
             return view('web.home.vigit',$data);
         
 
@@ -502,10 +502,10 @@ class HomeController extends Controller
             }else{
                 $vigit = new Vigit();
                 $input = $request->only($vigit->getfillable());
+                $input['vigit_done'] = 0;
                 if($request->session()->exists('pg')){
                     $input['user_id'] = auth('user')->id();
                 }
-                
                 $insert = Vigit::insertGetId($input);
                 if ($insert) {
                 return Redirect::to("/")->withSuccess('we will contact in 24 hours.');

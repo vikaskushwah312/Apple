@@ -1,4 +1,4 @@
-@extends('web.pg.dashboard.master')
+@extends('web.owner.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
     <div class="dashboard-message contact-2">

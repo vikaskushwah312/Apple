@@ -26,7 +26,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="form-group">
                             <label>First Name<strong class="required">*</strong></label>
-                            <input type="text" class="input-text" id="first_name" name="first_name" placeholder="First Name" value="{{old('first_name')}}" required>
+                            <input type="text" class="input-text" id="first_name" name="first_name" placeholder="First Name" value="{{!empty($info)?$info->first_name:old('first_name')}}" required>
                             <p class="error help-block" id="first_name">
                               @if($errors->has('first_name'))
                                 <i class="error"></i> {{ $errors->first('first_name') }}
@@ -40,7 +40,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                          <div class="form-group">
                             <label>Last Name<strong class="required">*</strong></label>
-                            <input type="text" class="input-text" id="last_name" name="last_name" placeholder="Last Name" value="{{old('last_name')}}" required>
+                            <input type="text" class="input-text" id="last_name" name="last_name" placeholder="Last Name" value="{{!empty($info)?$info->last_name:old('last_name')}}" required>
                             <p class="error help-block" id="last_name">
                               @if($errors->has('last_name'))
                                 <i class="error"></i> {{ $errors->first('last_name') }}
@@ -54,7 +54,7 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="form-group">
                             <label>Email<strong class="required">*</strong></label>
-                            <input type="text" class="input-text" id="email" name="email" placeholder="Email" value="{{old('email')}}" required>
+                            <input type="text" class="input-text" id="email" name="email" placeholder="Email" value="{{!empty($info)?$info->email:old('email')}}" required>
                             <p class="error help-block" id="email">
                               @if($errors->has('email'))
                                 <i class="error"></i> {{ $errors->first('email') }}
@@ -67,14 +67,14 @@
                       <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="form-group">
                             <label>Contact<strong class="required">*</strong></label>
-                            <input type="text" class="input-text" id="contact" name="contact" placeholder="Contact" value="{{old('contact')}}" required>
+                            <input type="text" class="input-text" id="contact" name="contact" placeholder="Contact" value="{{!empty($info)?$info->contact_no:old('contact_no')}}" required>
                             <p class="error help-block" id="contact">
                               @if($errors->has('contact'))
                                 <i class="error"></i> {{ $errors->first('contact') }}
                               @endif
                             </p>
                         </div>
-                        
+                        <input type="hidden" name="property_id" id="property_id" value="{{$property_id}}">
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 ">
                         <button type="submit" class="btn btn-default pull-right button-theme" >Submit</button>

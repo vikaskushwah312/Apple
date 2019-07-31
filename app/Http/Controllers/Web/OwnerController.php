@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,Vigit};
 use Validator,Redirect,Session,URL,Config;
 
 class OwnerController extends Controller
@@ -395,5 +395,20 @@ class OwnerController extends Controller
 
             return $res ;
         }
+    }
+
+    /*
+    *purpose:get the vigit list
+    */
+    public function vigitList(Request $request){
+        $id = auth('user')->id();
+        $data['property'] = Property::where('added_by',$id)
+                                    ->leftjoin('vigits','vigits.property_id','=','property.id')
+                                    ->where('vigits.id','!=',null)
+                                    ->get(['vigits.id']);
+
+        return view('web.owner.enquery.enquery_list',$data);
+        print_r(count($data['property']));die;
+
     }
 }

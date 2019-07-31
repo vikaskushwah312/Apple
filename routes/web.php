@@ -93,7 +93,7 @@ Route::any('otp-verification/{id}','HomeController@otpVerification');
 Route::any('forgot-password','HomeController@forgotPassword');
 Route::any('post-forgot-password','HomeController@postForgotPassword');
 Route::any('change-password','HomeController@changePassword');
-Route::get('vigit','HomeController@vigit');
+Route::get('vigit/{id}','HomeController@vigit');
 Route::post('submit-vigit','HomeController@submitVigit');
 
 
@@ -134,7 +134,9 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		//complain
 		Route::get('complain-list','ComplainController@getComplainList');
 		Route::any('complain-reply/{id}','ComplainController@complainReply');
-
+		##### vigit
+		Route::get('vigit','OwnerController@vigitList');
+		
 		Route::get('logout','OwnerLoginController@logout');
 
 		///propertey
