@@ -136,8 +136,8 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		Route::any('complain-reply/{id}','ComplainController@complainReply');
 		##### vigit
 		Route::get('vigit','OwnerController@vigitList');
-		
-		Route::get('logout','OwnerLoginController@logout');
+		Route::get('vigited/{id}','OwnerController@vigitList');
+		Route::get('logout','OwnerController@vigited');
 
 		///propertey
 		// Route::post('submit-property','OwnerController@submitProperty');

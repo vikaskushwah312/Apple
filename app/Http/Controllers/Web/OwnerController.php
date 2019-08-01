@@ -402,13 +402,20 @@ class OwnerController extends Controller
     */
     public function vigitList(Request $request){
         $id = auth('user')->id();
+        $data['title'] = 'Vigit List';
         $data['property'] = Property::where('added_by',$id)
                                     ->leftjoin('vigits','vigits.property_id','=','property.id')
                                     ->where('vigits.id','!=',null)
-                                    ->get(['vigits.id']);
+                                    ->orderBy('vigits.created_at','desc')
+                                    ->get();
 
+        // print_r($data['property']);die;
         return view('web.owner.enquery.enquery_list',$data);
-        print_r(count($data['property']));die;
+
+    }
+
+    public function vigited(Request $request,$id){ //$id = Vigit.id
+        
 
     }
 }
