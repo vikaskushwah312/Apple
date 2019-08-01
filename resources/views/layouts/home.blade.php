@@ -10,7 +10,7 @@
 	    <div id="bannerCarousole" class="carousel slide" data-ride="carousel">
 	        <div class="carousel-inner">
 	            <div class="carousel-item banner-max-height active">
-	                <img class="d-block w-100" src="{{url('public/img/home1920_1000.jpg')}}" alt="banner">
+	                <img class="d-block w-100" src="{{url('public/img/Untitled-3.png')}}" alt="banner">
 	                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
 	                    <div class="carousel-content container">
 	                        <div class="text-center">
