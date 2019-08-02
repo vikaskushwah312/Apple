@@ -414,7 +414,7 @@ class OwnerController extends Controller
 
     }
 
-    public function vigited(Request $request,$id){ //$id = Vigit.id
+    public function vigited(Request $request){ //$id = Vigit.id
         
 
     }

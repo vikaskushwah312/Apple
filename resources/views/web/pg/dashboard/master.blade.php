@@ -43,7 +43,7 @@
                     <div class="dashboard-inner">
                         <ul class="dashoard-list">
                             <li id="dashboard-active"><a href="{{url('pg/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
-                            <li id="messages-active"><a href="{{url('pg/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li>
+                            <!-- <li id="messages-active"><a href="{{url('pg/messages')}}"><i class="flaticon-mail"></i> Messages <span class="nav-tag">6</span></a></li> -->
                        
                             <li id="invoices-active"><a href="{{url('pg/invoices')}}" ><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li id="booked-active"><a href="{{url('pg/booked-list')}}" ><i class="flaticon-bill"></i>Booked property List</a></li>

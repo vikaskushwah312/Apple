@@ -28,14 +28,13 @@ https://bootsnipp.com/snippets/2eNKz
 place key
 AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
 
+
+done(02082019)
 ALTER TABLE `property` ADD `service_type` VARCHAR(250) NULL COMMENT 'premium,ecostay' AFTER `booked`;
 
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 
-payment table
 ALTER TABLE `users` ADD `otp` VARCHAR(250) NOT NULL AFTER `status`, ADD `verified` ENUM('''0''','''1''') NOT NULL COMMENT '0=not verified,1=verified' AFTER `otp`;
-
-
 done(21072019)
 ALTER TABLE `users` CHANGE `verified` `verified` INT NOT NULL DEFAULT '0' COMMENT '0=not verified,1=verified';
 

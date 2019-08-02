@@ -12,6 +12,7 @@ class PgController extends Controller
     public function dashboard(Request $request){
     	$data['info'] = User::find(Session::get('pg'));
         $data['title'] = '';
+        
     	return view('web.pg.dashboard.dashboard',$data);
     }
 
@@ -66,7 +67,7 @@ class PgController extends Controller
             $total = $query->count();
               
             $info = $query->orderBy($orderByField,$orderBy)->skip($start)->take($length)->get(); 
-            print_r($info);die;
+            // print_r($info);die;
             $data = array();
             $sno = $start;
                 

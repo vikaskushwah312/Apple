@@ -137,7 +137,8 @@ Route::namespace('Web')->prefix('owner')->group(function(){
 		##### vigit
 		Route::get('vigit','OwnerController@vigitList');
 		Route::get('vigited/{id}','OwnerController@vigitList');
-		Route::get('logout','OwnerController@vigited');
+		## Logout
+		Route::get('logout','OwnerLoginController@logout');
 
 		///propertey
 		// Route::post('submit-property','OwnerController@submitProperty');

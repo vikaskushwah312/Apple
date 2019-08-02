@@ -128,6 +128,6 @@ class OwnerLoginController extends Controller
 
     public function logout(Request $request){
         Session()->flush();
-        return redirect('login')->withSuccess('You have Successfull LogOut.');
+        return Redirect::to("login")->withSuccess('You have Successfull LogOut.');
     }
 }
