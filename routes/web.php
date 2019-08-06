@@ -182,6 +182,7 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		//Booking room 
 		Route::any('book','BookPaymentController@book');
 		Route::get('booked-list','BookPaymentController@bookList');
+		Route::get('rent','BookPaymentController@payment');
 
 		
 
