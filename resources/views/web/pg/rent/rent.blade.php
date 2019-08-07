@@ -142,7 +142,8 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#invoices-active').addClass('active');
+    $('#money-active').addClass('active');
+    
     $('#tenure').on('keyup',function(){
         var tenure = $('#tenure').val();
         var price_pm = $('#price_pm').val();

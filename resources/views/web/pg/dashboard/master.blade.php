@@ -48,6 +48,7 @@
                             <li id="invoices-active"><a href="{{url('pg/invoices')}}" ><i class="flaticon-bill"></i>My Invoices</a></li>
                             <li id="booked-active"><a href="{{url('pg/booked-list')}}" ><i class="flaticon-bill"></i>Booked property List</a></li>
                             <li id="complain_list-active"><a href="{{url('pg/complain-list')}}"><i class="fa fa-comment"></i>Complain List</a></li>
+                            <li id="money-active"><a href="{{url('pg/rent')}}"><i class="fa fa-money"></i>Pay Rent</a></li>
                         </ul>
                     </div>
                 </div>

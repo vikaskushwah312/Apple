@@ -54,14 +54,16 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-
+ <div class='col-sm-6'>
+            <input type='text' class="form-control" id='datetimepicker4' />
+        </div>
 @endsection
 
 @section('js')
 <script src="{{ asset('public/admin/custom-validation.js') }}"></script>
 <script type="text/javascript">
    $(document).ready(function() {
-        
+        $('#datetimepicker4').datetimepicker();
     });
    
   </script>
