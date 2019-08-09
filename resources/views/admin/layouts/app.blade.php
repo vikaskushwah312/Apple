@@ -8,6 +8,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{url('public/admin/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/2.0.1/css/bootstrap-datetimepicker.min.css" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{url('public/admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
@@ -34,6 +35,7 @@
 <script src="{{ asset('public/admin/jquery.validate.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{url('public/admin/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/2.0.1/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
