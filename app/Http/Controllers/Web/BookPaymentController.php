@@ -21,13 +21,14 @@ class BookPaymentController extends Controller{
             if ($validation->fails()) {
               return Redirect::back()->withErrors($validation)->withInput();
             }else{
-		       
 		        $order_id= rand(1,999999);
 		        $payment_data = array(	'order_id' => $order_id,
 		        						'property_id' => $request->property_id,
 		            					'user_id' => $user_id,
 		            					'tenure'  => $request->tenure,
 		            					'amount' =>$request->amount,
+		            					'start_date' =>$request->start_date,
+		            					'end_date' =>$request->end_date,
 		        						'created_at'    => date('Y-m-d H:i:s'),
 		            					);
 		        //basic payment store in database

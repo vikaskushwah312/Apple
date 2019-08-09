@@ -184,6 +184,9 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::get('booked-list','BookPaymentController@bookList');
 		Route::get('rent','BookPaymentController@payment');
 
+		//Notice period
+		Route::get('notice','PgController@notice');
+
 		
 
 		Route::get('logout','PgLoginController@logout');

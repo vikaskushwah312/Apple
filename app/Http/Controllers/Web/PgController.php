@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Complain,Payment,ComplainReply};
+use App\Models\{User,Complain,Payment,ComplainReply,Book};
 use Validator,Redirect,Session,Config,Auth;
 
 class PgController extends Controller
@@ -310,5 +310,14 @@ class PgController extends Controller
 
             return $res ;
         }
+    }
+
+    //notice period for customer
+    public function notice(Request $request){
+        $data['property'] = Book::where(['p_status'=>'Active','user_id'=>auth('user')->id()])
+                            ->leftjoin('property','book.property_id','=','property.id')
+                            ->orderBy('book.created_at','desc')
+                            ->first(['book.*','property.*']);
+        
     }
 }

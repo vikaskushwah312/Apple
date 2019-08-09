@@ -28,6 +28,10 @@ https://bootsnipp.com/snippets/2eNKz
 place key
 AIzaSyD4O5noLIKdYu9ooDN86zJ7hnoDTpCDM-c
 
+Payment
+ALTER TABLE `payment` ADD `start_date` VARCHAR(250) NULL AFTER `payment_id`, ADD `end_date` VARCHAR(250) NULL AFTER `start_date`;
+
+
 
 done(02082019)
 ALTER TABLE `property` ADD `service_type` VARCHAR(250) NULL COMMENT 'premium,ecostay' AFTER `booked`;

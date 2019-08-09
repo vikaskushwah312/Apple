@@ -16,7 +16,8 @@
                                     <tr>
                                         <td class="text-center"><strong>S.no</strong></td>
                                         <td class="text-center"><strong>Order Id</strong></td>
-                                        <td class="text-center"><strong>Payment Id</strong></td>
+                                        <!-- <td class="text-center"><strong>Name</strong></td> -->
+                                        <td class="text-center"><strong>Month</strong></td>
                                         <td class="text-center"><strong>Property</strong></td>
                                         <td class="text-center"><strong>Amount</strong></td>
                                         <td class="text-center"><strong>Tenure</strong></td>
@@ -28,7 +29,7 @@
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
                                             <td class="text-center">{{$invoice->order_id}}</td>
-                                            <td class="text-center">{{$invoice->payment_id}}</td>
+                                            <td class="text-center">{{$invoice->start_date}}</td>
                                             <td class="text-center">{!! propertyTitle($invoice->property_id)!!} </td>
                                             <td class="text-center">{{$invoice->amount}}</td>
                                             <td class="text-center">{{$invoice->tenure}}</td>

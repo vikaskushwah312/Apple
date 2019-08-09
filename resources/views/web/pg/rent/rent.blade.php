@@ -1,4 +1,9 @@
 @extends('web.pg.dashboard.master')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{url('public/css/bootstrap-datetimepicker/jquery-ui.css')}}">
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ -->
+@endsection
 @section('webcontent')
 
 <!-- Sub banner start -->
@@ -121,9 +126,35 @@
                                     </p>
                                 </div>
                             </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>Start Date<strong class="required">*</strong></label>
+                                    <input type="text" name="start_date" id="start_date" class="form-control" placeholder="Start Date" value="" required="">
+                                    <p class="error help-block" >
+                                    @if($errors->has('start_date'))
+                                        <i class="error"></i> {{ $errors->first('start_date') }}
+                                    @endif
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label>End Date <strong class="required">*</strong></label>
+                                    <input type="text" name="end_date" id="end_date" class="form-control" placeholder="End Date" value="" required="">
+                                    <p class="error help-block">
+                                    @if($errors->has('end_date'))
+                                        <i class="error"></i> {{ $errors->first('end_date') }}
+                                    @endif
+                                    </p>
+                                </div>
+                            </div>
+
+
                             
                         </div>
                     </div>
+                    
                     <input type="hidden" name="property_id" id="property_id" value="{{$result->id}}">
                     <input type="hidden" name="price_pm" id="price_pm" value="{{$result->price}}">
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 pull-right">
@@ -140,10 +171,14 @@
 
 @stop
 @section('js')
+<script type="text/javascript" src="{{url('public/js/bootstrap-datetimepicker/jquery-1.12.4.js')}}"></script>
+<script type="text/javascript" src="{{url('public/js/bootstrap-datetimepicker/jquery-ui.js')}}"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function(){
     $('#money-active').addClass('active');
-    
+         
     $('#tenure').on('keyup',function(){
         var tenure = $('#tenure').val();
         var price_pm = $('#price_pm').val();
@@ -151,6 +186,31 @@ $(document).ready(function(){
         var amount = $("#amount").val(total_price);
 
     })
+
+    /*$('#start_date').on('change',function(){
+        
+    });*/
 });
+</script>
+<script>
+ $(function(){
+        // alert("vikas");
+        $("#start_date").datepicker();
+        /*$("#end_date").datepicker().bind("change",function(){
+            var minValue = $(this).val();
+            minValue = $.datepicker.parseDate("dd/mm/yy", minValue);
+            minValue.setDate(minValue.getDate()+1);
+            $("#start_date").datepicker( "option", "minDate", minValue );
+        })*/
+    });
+ $("#start_date").on('change',function(){
+    
+    $("#end_date").datepicker().bind("change",function(){
+            var minValue = $(this).val();
+            minValue = $.datepicker.parseDate("dd/mm/yy", minValue);
+            minValue.setDate(minValue.getDate()+1);
+            $("#start_date").datepicker( "option", "minDate", minValue );
+        })
+ })
 </script>
 @endsection
