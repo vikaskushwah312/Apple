@@ -319,10 +319,12 @@ class PgController extends Controller
                             ->leftjoin('property','book.property_id','=','property.id')
                             ->orderBy('book.created_at','desc')
                             ->first(['book.*','property.*']);
-        // print_r($data['property']);die;
-        $data['notice'] = Notice::where(['property_id'=>$data['property']->property_id,'user_id'=>auth('user')->id()])->first();
-        // print_r($data['notice']);die;
-        // print_r($data['property']);die;
+        if(!empty($data['property'])){
+
+            $data['notice'] = Notice::where(['property_id'=>$data['property']->property_id,'user_id'=>auth('user')->id()])->first();
+        } else{
+            return Redirect::to("pg/dashboard")->withSuccess('First Book Any Property.');
+        }
         return view('web.pg.notice.notice',$data);
         
     }

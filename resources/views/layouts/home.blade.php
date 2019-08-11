@@ -1,7 +1,21 @@
 @extends('layouts.master')
 @section('css')
 <style type="text/css">
-	
+	.button-theme: {
+    background-color: #3cc1f3;
+}
+    .banner .banner-slider-inner {
+    display: inline-block;
+    text-shadow: none;
+    right: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background-color: rgba(36, 42, 53, 0.7); 
+	}
+
+
 </style>
 @endsection
 <!-- Banner start -->
@@ -13,11 +27,7 @@
 	                <img class="d-block w-100" src="{{url('public/img/Untitled-3.png')}}" alt="banner">
 	                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
 	                    <div class="carousel-content container">
-	                        <div class="text-center">
-	                            <h3 class="text-uppercase">Find Your Property</h3>
-	                            <p>
-	                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                            </p>
+	                        <div class="">
 	                            <div class="inline-search-area ml-auto mr-auto d-none d-xl-block d-lg-block">
 	                            	<form action="{{url('home-filter')}}" method="GET" name="home_filter" id="home_filter" style="margin-left:140px;" onsubmit="return validateForm()">
 	                                <div class="row">
@@ -57,7 +67,7 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
-										    <button class="btn button-theme btn-search btn-block" type="submit">
+										    <button class="btn button-theme btn-search btn-block" type="submit" style="background-color: #3cc1f3;">
 										        <i class="fa fa-search"></i><strong>Find</strong>
 										    </button>
 										</div>

@@ -144,6 +144,27 @@
                             </li>
                             </ul>
                         </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-bitbucket"></i>Bucket  
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-bitbucket"></i>Bucket  
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-bitbucket"></i>Bucket  
+                            </li>
+                            </ul>
+                        </div>
 
 
                     </div>

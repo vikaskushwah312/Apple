@@ -129,20 +129,27 @@ class BookPaymentController extends Controller{
 		if ($request->session()->exists('pg')) {
 			//done the payment transtion
 			$user_id = auth('user')->id();
-			$property_id = Book::where('user_id',$user_id)->first()->id;
-			$data['property_id'] = $property_id;
+			$property_id = Book::where('user_id',$user_id)->first();
 			$data['title'] = 'Payment Page';
-			$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
-			// print_r($data['result']);die;
-	        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
-	        $data['features'] = Features::where('status','Active')->get();
-		    $pro_features = PropertyFeatures::where(['property_id'=>$property_id])->get(['feature_id']);
-		        $data['propertey_features'] = [];
-		        foreach ($pro_features as $key => $value) {
-		            $data['propertey_features'][] = $value->feature_id;
-		        }
+			if (!empty($property_id->id)) {
+				
+				$data['property_id'] = $property_id->id;
+				$property_id = $property_id->id;
+				$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
+				// print_r($data['result']);die;
+		        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
+		        $data['features'] = Features::where('status','Active')->get();
+			    $pro_features = PropertyFeatures::where(['property_id'=>$property_id])->get(['feature_id']);
+			        $data['propertey_features'] = [];
+			        foreach ($pro_features as $key => $value) {
+			            $data['propertey_features'][] = $value->feature_id;
+			        }
 
-			return view('web.pg.rent.rent',$data);
+				return view('web.pg.rent.rent',$data);
+			}else{
+
+				return Redirect::to("pg/dashboard")->withSuccess('First Book Any Property.');
+			}
 		} else {
 			return view('web.home.login');
 		}
