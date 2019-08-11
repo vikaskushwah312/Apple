@@ -186,6 +186,8 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 
 		//Notice period
 		Route::get('notice','PgController@notice');
+		Route::post('notice','PgController@postNotice');
+		Route::get('notice-cancel/{id}','PgController@noticeCancel');
 
 		
 

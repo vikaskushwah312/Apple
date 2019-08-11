@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Complain,Payment,ComplainReply,Book};
+use App\Models\{User,Complain,Payment,ComplainReply,Book,Notice};
 use Validator,Redirect,Session,Config,Auth;
 
 class PgController extends Controller
@@ -314,10 +314,63 @@ class PgController extends Controller
 
     //notice period for customer
     public function notice(Request $request){
+        $data['title'] = "Notice Period";
         $data['property'] = Book::where(['p_status'=>'Active','user_id'=>auth('user')->id()])
                             ->leftjoin('property','book.property_id','=','property.id')
                             ->orderBy('book.created_at','desc')
                             ->first(['book.*','property.*']);
+        // print_r($data['property']);die;
+        $data['notice'] = Notice::where(['property_id'=>$data['property']->property_id,'user_id'=>auth('user')->id()])->first();
+        // print_r($data['notice']);die;
+        // print_r($data['property']);die;
+        return view('web.pg.notice.notice',$data);
         
+    }
+
+    public function postNotice(Request $request){
+         $validation = Validator::make($request->all(),[
+            'subject'    => 'required',
+            'notice'    => 'required',
+        ]);
+
+        if ($validation->fails()) {
+          return Redirect::to("pg/notice")->withErrors($validation)->withInput();
+        }else{
+            $insert = '';
+            $update = '';
+            $data = array(  
+                            'property_id'   => $request->property_id,
+                            'user_id'       => auth('user')->id(),
+                            'subject'       => $request->subject,
+                            'notice'        => $request->notice,
+                         );
+            $notice_ins = Notice::where(['property_id'=>$request->property_id,'user_id'=>auth('user')->id()])->first();
+            if(empty($notice_ins)){
+                $data['created_at']     = date('Y-m-d H:i:s');
+                $insert = Notice::insertGetId($data);
+            } else {
+
+                $update = Notice::where(['property_id'=>$request->property_id,'user_id'=>auth('user')->id()])->update($data);
+            }
+           
+        }
+        if ($insert) {
+            return Redirect::to("pg/dashboard")->withSuccess('You have successfully add Notice');
+        }
+        elseif($update) {              
+          return Redirect::to("pg/dashboard")->withSuccess('You have successfully updated Notice');
+        }else{
+          return Redirect::to("pg/notice")->withFail('Something went to wrong.');
+        }
+    }
+
+    public function noticeCancel(Request $request,$id){ // notice.id
+
+        $delete = Notice::where('id',$id)->delete();
+        if($delete) {              
+          return Redirect::to("pg/dashboard")->withSuccess('Your notice period successfully canceled');
+        }else{
+          return Redirect::to("pg/notice")->withFail('Something went to wrong.');
+        }
     }
 }
