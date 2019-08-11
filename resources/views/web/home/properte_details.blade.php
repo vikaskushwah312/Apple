@@ -1,4 +1,9 @@
 @extends('layouts.master')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{url('public/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url('public/css/font.css')}}">
+
+@endsection
 <!-- Banner start -->
 @section('home')
 <!-- Sub banner start -->
@@ -98,32 +103,53 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
-                @if(count($propertey_features)> 0)
+
                 <div class="properties-amenities mb-40">
                     <h3 class="heading-2">
-                        Features
+                       Home Amenities
                     </h3>
                     <div class="row">
-                        @foreach($features as $key=>$fe)
-                            @php
-                                if(in_array($fe->id,$propertey_features)){
-                                
-                            @endphp
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <ul class="amenities">
-                                    <li>
-                                        <i class="fa fa-check"></i>{{$fe->feature}}
-                                    </li>
-                                    </ul>
-                                </div>
-                            @php
-                                }
-                                
-                            @endphp
-                        @endforeach
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-bed"></i>Bed
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-television "></i>Television 
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-table"></i>Table 
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-cutlery"></i>Cutlery 
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <i class="fa fa-bitbucket"></i>Bucket  
+                            </li>
+                            </ul>
+                        </div>
+
+
                     </div>
+
                 </div>
-                @endif
+                
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">
                     <h3 class="heading-2">Floor Plans</h3>
