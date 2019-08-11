@@ -43,6 +43,13 @@
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+										    <select class="selectpicker search-fields" id="gender" name="gender" >
+										        <option value="">Gender</option>
+										        <option value="Girls">Girls</option>
+										        <option value="Boys">Boys</option>
+										    </select>
+										</div>
+										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="type" name="type">
 										    	<option value="">Ac/Non-Ac</option>
 										        <option value="Ac">Ac</option>
@@ -318,8 +325,10 @@
 	  var share_bed = document.forms["home_filter"]["share_bed"].value;
 	  var room = document.forms["home_filter"]["room"].value;
 	  var type = document.forms["home_filter"]["type"].value;
+	  var gender = document.forms["home_filter"]["gender"].value;
+	  
 
-	  if (location == "" && share_bed == "" && room == "" && type == "") {
+	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="") {
 	    alert(" must be select any one ");
 	    return false;
 	  }

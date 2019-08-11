@@ -130,7 +130,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Start Date<strong class="required">*</strong></label>
-                                    <input type="text" name="start_date" id="start_date" class="form-control" placeholder="Start Date" value="" required="">
+                                    <input type="text" name="start_date" id="start_date" class="form-control" placeholder="Start Date" value="" required="" autocomplete="off">
                                     <p class="error help-block" >
                                     @if($errors->has('start_date'))
                                         <i class="error"></i> {{ $errors->first('start_date') }}
@@ -141,7 +141,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>End Date <strong class="required">*</strong></label>
-                                    <input type="text" name="end_date" id="end_date" class="form-control" placeholder="End Date" value="" required="">
+                                    <input type="text" name="end_date" id="end_date" class="form-control" placeholder="End Date" value="" required="" autocomplete="off">
                                     <p class="error help-block">
                                     @if($errors->has('end_date'))
                                         <i class="error"></i> {{ $errors->first('end_date') }}
@@ -196,6 +196,7 @@ $(document).ready(function(){
  $(function(){
         // alert("vikas");
         $("#start_date").datepicker();
+        $("#end_date").datepicker();
         /*$("#end_date").datepicker().bind("change",function(){
             var minValue = $(this).val();
             minValue = $.datepicker.parseDate("dd/mm/yy", minValue);
@@ -203,7 +204,7 @@ $(document).ready(function(){
             $("#start_date").datepicker( "option", "minDate", minValue );
         })*/
     });
- $("#start_date").on('change',function(){
+ /*$("#start_date").on('change',function(){
     
     $("#end_date").datepicker().bind("change",function(){
             var minValue = $(this).val();
@@ -211,6 +212,6 @@ $(document).ready(function(){
             minValue.setDate(minValue.getDate()+1);
             $("#start_date").datepicker( "option", "minDate", minValue );
         })
- })
+ })*/
 </script>
 @endsection

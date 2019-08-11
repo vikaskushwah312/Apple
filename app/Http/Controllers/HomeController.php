@@ -94,16 +94,17 @@ class HomeController extends Controller
                 return $res;
               
             } else {
-
+                // print_r($request->gender);die;
                 $address = $request->location;
                 $share_bed = $request->share_bed;
                 $room = $request->room;
                 $type = $request->type;
+                $gender = $request->gender;
                 // print($share_bed);die;
                 // $query->where(['p_status'=>'Active']);
                   
                 $data['result'] = [];
-                if($address || $share_bed || $room || $type){
+                if($address || $share_bed || $room || $type || $gender){
                     $query = Property::query();    
                     $query->where('booked',0);
                         if($address != ''){
@@ -117,6 +118,9 @@ class HomeController extends Controller
                         })
                         ->when($type, function ($query, $type) {
                             return $query->where('type', $type);
+                        })
+                        ->when($gender, function ($query, $gender) {
+                            return $query->where('gender', $gender);
                         })
                         ->orderBy('updated_at','desc');
 
