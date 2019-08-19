@@ -75,6 +75,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <select class="selectpicker search-fields" name="service_type" id="service_type">
+                                          <option value="">Service type</option>
+                                            <option value="premium">Premium</option>
+                                            <option value="ecostay">Ecostay</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- <div class="range-slider">
                                 <label>Area</label>
                                 <div data-min="0" data-max="10000" data-min-name="min_area" data-max-name="max_area" data-unit="Sq ft" class="range-slider-ui ui-slider" aria-disabled="false"></div>
@@ -190,7 +201,6 @@ $(document).ready(function(){
         var share_bed = $('#share_bed').val();
         var type = $('#type').val();
         'location':location,'rooms':rooms,'bathroom':bathroom,'share_bed':share_bed,'type':type*/
-
         $.ajax({
             url : url ,
             type : "GET",

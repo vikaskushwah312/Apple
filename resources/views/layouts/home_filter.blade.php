@@ -16,7 +16,7 @@
 </div>
 <div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
     <select class="selectpicker search-fields" name="bedrooms">
-        <option>Bedrooms</option>
+        <option>Bedroomssssssssssssss</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>

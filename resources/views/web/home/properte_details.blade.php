@@ -116,6 +116,27 @@
                             </li>
                             </ul>
                         </div>
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/bed.png')}}"><i></i>Mattress
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/pillow.png')}}"><i></i>Pillow & Cover
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/stage.png')}}"><i></i>Curtain
+                            </li>
+                            </ul>
+                        </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <ul class="amenities">
                             <li>
@@ -158,13 +179,7 @@
                             </li>
                             </ul>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <ul class="amenities">
-                            <li>
-                                <i class="fa fa-bitbucket"></i>Bucket  
-                            </li>
-                            </ul>
-                        </div>
+
 
 
                     </div>

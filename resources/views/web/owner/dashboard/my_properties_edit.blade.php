@@ -92,6 +92,30 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
+                        <label>Service Type <strong class="required">*</strong></label>
+                        <select class="selectpicker search-fields" id="service_type" name="service_type" required>
+                            <option value="">Select Type</option>
+                            @if($property_edit->service_type == 'premium')
+                                <option value="premium" selected>Premium</option>
+                                <option value="ecostay">Ecostay</option>
+                            @elseif(($property_edit->service_type == 'ecostay'))
+                                <option value="premium" >Premium</option>
+                                <option value="ecostay" selected>Ecostay</option>
+                            @else
+                                <option value="premium">Premium</option>
+                                <option value="ecostay">Ecostay</option>
+                            @endif
+
+                        </select>
+                        <p class="error help-block">
+                          @if($errors->has('service_type'))
+                            <i class="error"></i> {{ $errors->first('service_type') }}
+                          @endif
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
                         <label>Price <strong class="required">*</strong></label>
                         <input type="text" class="input-text" id="price" name="price" placeholder="Price" value="{{ $property_edit->price}}" required>
                         <p class="error help-block" id="price">
@@ -297,7 +321,7 @@
                 </p>
             </div>
         </div>
-        <h4 class="bg-grea-3">Features (optional)</h4>
+        <!-- <h4 class="bg-grea-3">Features (optional)</h4>
         <div class="row pad-20">
             @foreach($features as $key=>$fe)
                 @php
@@ -312,12 +336,12 @@
                     <input id="features_{{$key}}" type="checkbox" name="features[]" value="{{$fe->id}}" {{$checked}}>
                     <label for="features_{{$key}}">
                         {{$fe->feature}}
-
+        
                     </label>
                 </div>
             </div>
             @endforeach
-        </div>
+        </div> -->
         <h4 class="bg-grea-3">Contact Details</h4>
         <div class="row pad-20">
             <div class="col-lg-4 col-md-4 col-sm-12">

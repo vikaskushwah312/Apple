@@ -119,6 +119,7 @@ class OwnerController extends Controller
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
+                'service_type'=>'required'
             ]);
 
             if ($validation->fails()) {
@@ -143,7 +144,8 @@ class OwnerController extends Controller
                                 'address'      => $request->address,
                                 'state'      => $request->state,
                                 'postal_code'  => $request->postal_code, 
-                                'description'  => $request->description, 
+                                'description'  => $request->description,
+                                'service_type' => $request->service_type,
                                 'created_at'    => date('Y-m-d H:i:s'),
                          );
                 if($request->features){
@@ -254,6 +256,7 @@ class OwnerController extends Controller
                 'name'     => 'required',
                 'email'    => 'required',
                 'phone'    => 'required',
+                'service_type'=>'required'
             ]);
 
             if ($validation->fails()) {
@@ -279,6 +282,7 @@ class OwnerController extends Controller
                                 'state'      => $request->state,
                                 'postal_code'  => $request->postal_code, 
                                 'description'  => $request->description, 
+                                'service_type'=>$request->service_type
                            );
           
                 $update = Property::where(['id'=>$id,'added_by'=>auth('user')->id()])->update($data);

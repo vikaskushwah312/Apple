@@ -47,6 +47,9 @@ class HomeController extends Controller
                 $room      = $myValue['rooms'];
                 $type      = $myValue['type'];
                 $bathroom  = $myValue['bathroom'];
+                $service_type  = $myValue['service_type'];
+
+                
                 // $min_area  = $myValue['min_area']; //area
                 // $max_area  = $myValue['max_area'];
                 // $min_price = $myValue['min_price'];
@@ -69,6 +72,9 @@ class HomeController extends Controller
                     })
                     ->when($bathroom, function ($query, $bathroom) {
                         return $query->where('bathroom', $bathroom);
+                    })
+                    ->when($service_type, function ($query, $service_type) {
+                        return $query->where('service_type', $service_type);
                     })
                 /*    ->when($min_area, function ($query, $min_area) {
                         return $query->where('area','>=',$min_area);
@@ -100,11 +106,14 @@ class HomeController extends Controller
                 $room = $request->room;
                 $type = $request->type;
                 $gender = $request->gender;
+                $service_type = $request->service_type;
+
+                
                 // print($share_bed);die;
                 // $query->where(['p_status'=>'Active']);
                   
                 $data['result'] = [];
-                if($address || $share_bed || $room || $type || $gender){
+                if($address || $share_bed || $room || $type || $gender ||$service_type){
                     $query = Property::query();    
                     $query->where('booked',0);
                         if($address != ''){
@@ -122,6 +131,9 @@ class HomeController extends Controller
                         ->when($gender, function ($query, $gender) {
                             return $query->where('gender', $gender);
                         })
+                        /*->when($service_type, function ($query, $service_type) {
+                            return $query->where('gender', $service_type);
+                        })*/
                         ->orderBy('updated_at','desc');
 
                 $data['result'] = $query->paginate(2);
@@ -159,11 +171,12 @@ class HomeController extends Controller
             $room      = $myValue['rooms'];
             $type      = $myValue['type'];
             $bathroom  = $myValue['bathroom'];
+            $service_type  = $myValue['service_type'];
             // $min_area  = $myValue['min_area']; //area
             // $max_area  = $myValue['max_area'];
             // $min_price = $myValue['min_price'];
             // $max_price = $myValue['max_price'];
-
+           
             
             $query = Property::query();   
             $query->where('booked',0); 
@@ -181,6 +194,9 @@ class HomeController extends Controller
                 })
                 ->when($bathroom, function ($query, $bathroom) {
                     return $query->where('bathroom', $bathroom);
+                })
+                ->when($service_type, function ($query, $service_type) {
+                    return $query->where('service_type', $service_type);
                 })
             /*    ->when($min_area, function ($query, $min_area) {
                     return $query->where('area','>=',$min_area);

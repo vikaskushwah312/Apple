@@ -68,9 +68,9 @@ input[type=checkbox]:checked + label:before {
     border: solid 2px #ff214f;
 }
 
-.properties-amenities ul li i {
+/* .properties-amenities ul li i {
     color: #ff214f
-}
+} */
 
 .pages-404 .btn {
     background: #ff214f;
