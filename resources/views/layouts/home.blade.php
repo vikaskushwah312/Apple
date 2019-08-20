@@ -12,9 +12,12 @@
     width: 100%;
     height: 100%;
     bottom: 0;
-    background-color: rgba(36, 42, 53, 0.7); 
+/*     background-color: rgba(36, 42, 53, 0.7);  */
 	}
 
+.banner .carousel-content{
+	margin: 185px 0 0px 375px;
+}
 
 </style>
 @endsection
@@ -64,6 +67,13 @@
 										    	<option value="">Ac/Non-Ac</option>
 										        <option value="Ac">Ac</option>
 										        <option value="Non-Ac">Non-Ac</option>
+										    </select>
+										</div>
+										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+										    <select class="selectpicker search-fields" id="service_type" name="service_type">
+										    	<option value="">none</option>
+										        <option value="premium">Premium</option>
+										        <option value="ecostay">Ecostay</option>
 										    </select>
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
@@ -336,9 +346,11 @@
 	  var room = document.forms["home_filter"]["room"].value;
 	  var type = document.forms["home_filter"]["type"].value;
 	  var gender = document.forms["home_filter"]["gender"].value;
+	  var service_type = document.forms["home_filter"]["service_type"].value;
+	  
 	  
 
-	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="") {
+	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="" && service_type=="") {
 	    alert(" must be select any one ");
 	    return false;
 	  }

@@ -103,7 +103,7 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
-
+                @if($result->service_type)
                 <div class="properties-amenities mb-40">
                     <h3 class="heading-2">
                        Home Amenities
@@ -134,6 +134,34 @@
                             <ul class="amenities">
                             <li>
                                 <img src="{{url('public/services/stage.png')}}"><i></i>Curtain
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/couch.png')}}"><i></i>Sofa
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/man-in-office-desk-with-computer.png')}}"><i></i>Chair
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/washing-machine.png')}}"><i></i>Washing Machine
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/camera.png')}}"><i></i>Camera
                             </li>
                             </ul>
                         </div>
@@ -185,6 +213,7 @@
                     </div>
 
                 </div>
+                @endif
                 
                 <!-- Floor plans start -->
                 <div class="floor-plans mb-50">

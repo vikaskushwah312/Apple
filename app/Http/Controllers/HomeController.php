@@ -100,7 +100,7 @@ class HomeController extends Controller
                 return $res;
               
             } else {
-                // print_r($request->gender);die;
+                // print_r($request->service_type);die;
                 $address = $request->location;
                 $share_bed = $request->share_bed;
                 $room = $request->room;
@@ -131,9 +131,9 @@ class HomeController extends Controller
                         ->when($gender, function ($query, $gender) {
                             return $query->where('gender', $gender);
                         })
-                        /*->when($service_type, function ($query, $service_type) {
-                            return $query->where('gender', $service_type);
-                        })*/
+                        ->when($service_type, function ($query, $service_type) {
+                            return $query->where('service_type', $service_type);
+                        })
                         ->orderBy('updated_at','desc');
 
                 $data['result'] = $query->paginate(2);
@@ -227,6 +227,7 @@ class HomeController extends Controller
     public function properteDetails(Request $request,$id){
         // $id = property id 
         $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
+        // print_r($data['result']);die();
         $data['images'] = GalleryImage::where('property_id',$id)->get();
         $data['features'] = Features::where('status','Active')->get();
 
