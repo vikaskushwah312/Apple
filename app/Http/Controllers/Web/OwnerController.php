@@ -148,11 +148,6 @@ class OwnerController extends Controller
                                 'service_type' => $request->service_type,
                                 'created_at'    => date('Y-m-d H:i:s'),
                          );
-                if($request->features){
-                    $data['service_type'] = 'premium'; //with features
-                } else{
-                    $data['service_type'] = 'ecostay';//normal with out features
-                }
           
                 $insert = Property::insertGetId($data);
                 if ($insert) {  //if properte insert                

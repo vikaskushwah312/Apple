@@ -103,7 +103,7 @@
                     <span>{{$result->description}}</span>
                 </div>
                 <!-- Properties amenities start -->
-                @if($result->service_type)
+                @if($result->service_type == 'premium')
                 <div class="properties-amenities mb-40">
                     <h3 class="heading-2">
                        Home Amenities
@@ -161,7 +161,44 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <ul class="amenities">
                             <li>
-                                <img src="{{url('public/services/camera.png')}}"><i></i>Camera
+                                <img src="{{url('public/services/camera.png')}}"><i></i>CCTV
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/water.png')}}"><i></i>RO-Water
+                            </li>
+                            </ul>
+                        </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/restaurant-cutlery.png')}}"><i></i>Utensils
+                            </li>
+                            </ul>
+                        </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/gas.png')}}"><i></i>Gas Cylinder
+                            </li>
+                            </ul>
+                        </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/stove.png')}}"><i></i>Stove
+                            </li>
+                            </ul>
+                        </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/restaurant-cutlery-symbol-of-a-cross.png')}}"><i></i>Cutlery
+                            </li>
+                            </ul>
+                        </div><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <ul class="amenities">
+                            <li>
+                                <img src="{{url('public/services/plate-with-fork-and-knife-eating-set-tools-from-top-view.png')}}"><i></i>Kitchen Set
                             </li>
                             </ul>
                         </div>

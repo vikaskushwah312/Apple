@@ -71,7 +71,7 @@
 										</div>
 										<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="service_type" name="service_type">
-										    	<option value="">none</option>
+										    	<option value="">Services</option>
 										        <option value="premium">Premium</option>
 										        <option value="ecostay">Ecostay</option>
 										    </select>

@@ -73,4 +73,4 @@
 </div>
 <!-- Sub footer end -->
 
-@include('layouts.footer_js');
+@include('layouts.footer_js')
