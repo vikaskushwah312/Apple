@@ -2,7 +2,8 @@
 <html lang="zxx">
 <head>
     <title>{{Config::get('constants.SITE_NAME')}}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
     <!-- External CSS libraries -->

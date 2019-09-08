@@ -106,65 +106,66 @@
 	        <div class="search-section-area">
 	            <div class="search-area-inner">
 	                <div class="search-contents">
-	                    <form method="GET">
+	                    <form action="{{url('home-filter')}}" method="GET" name="home_filter_m" id="home_filter_m" onsubmit="return validateFormM()">
 	                        <div class="row">
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="any-status">
-	                                        <option>Any Status</option>
-	                                        <option>For Rent</option>
-	                                        <option>For Sale</option>
-	                                    </select>
+	                                     <input type="text" class="filter-option-inner selectpicker search-fields" name="location" id="location" style="max-width: 151px;text-align: left;padding-left: 16px!important;font-size: 13px;" placeholder="Location">
 	                                </div>
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="all-type">
-	                                        <option>All Type</option>
-	                                        <option>Apartments</option>
-	                                        <option>Shop</option>
-	                                        <option>Restaurant</option>
-	                                        <option>Villa</option>
-	                                    </select>
+	                                    <select class="selectpicker search-fields" id="share_bed" name="share_bed" style="text-align: center;">
+										        <option value="">Sharing</option>
+										        <option value="1">1</option>
+										        <option value="2">2</option>
+										        <option value="3">3</option>
+										        <option value="4">4</option>
+										    </select>
 	                                </div>
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="bedrooms">
-	                                        <option>Bedrooms</option>
-	                                        <option>1</option>
-	                                        <option>2</option>
-	                                        <option>3</option>
-	                                        <option>4</option>
-	                                    </select>
+	                                    <select class="selectpicker search-fields" id="room" name="room" >
+									        <option value="">Rooms</option>
+									        <option value="1">1</option>
+									        <option value="2">2</option>
+									        <option value="3">3</option>
+									        <option value="4">4</option>
+									    </select>
 	                                </div>
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="bathrooms">
-	                                        <option>Bathrooms</option>
-	                                        <option>1</option>
-	                                        <option>2</option>
-	                                        <option>3</option>
-	                                        <option>4</option>
-	                                    </select>
+	                                    <select class="selectpicker search-fields" id="gender" name="gender" >
+									        <option value="">Gender</option>
+									        <option value="Girls">Girls</option>
+									        <option value="Boys">Boys</option>
+									    </select>
 	                                </div>
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <select class="selectpicker search-fields" name="location1">
-	                                        <option>location</option>
-	                                        <option>United States</option>
-	                                        <option>American Samoa</option>
-	                                        <option>Belgium</option>
-	                                        <option>Canada</option>
-	                                    </select>
+	                                    <select class="selectpicker search-fields" id="type" name="type">
+									    	<option value="">Ac/Non-Ac</option>
+									        <option value="Ac">Ac</option>
+									        <option value="Non-Ac">Non-Ac</option>
+									    </select>
 	                                </div>
 	                            </div>
 	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
 	                                <div class="form-group">
-	                                    <button class="search-button">Search</button>
+	                                    <select class="selectpicker search-fields" id="service_type" name="service_type">
+									    	<option value="">Services</option>
+									        <option value="premium">Premium</option>
+									        <option value="ecostay">Ecostay</option>
+									    </select>
 	                                </div>
+	                            </div>
+	                            <div class="col-lg-4 col-md-6 col-sm-6 col-6">
+	                                <button class="btn button-theme btn-search btn-block" type="submit" style="background-color: #3cc1f3;">
+								        <i class="fa fa-search"></i><strong>Find</strong>
+								    </button>
 	                            </div>
 	                        </div>
 	                    </form>
@@ -253,8 +254,8 @@
 	    <div class="container">
 	        <!-- Main title -->
 	        <div class="main-title text-center">
-	            <h1>Working with the Reality</h1>
-	            <p>Who you work with matters</p>
+	            <h1>Working with reality</h1>
+	            <!-- <p>Who you work with matters</p> -->
 	        </div>
 	        <div class="row">
 	            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
@@ -352,6 +353,22 @@
 
 	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="" && service_type=="") {
 	    alert(" must be select any one ");
+	    return false;
+	  }
+	}
+
+	function validateFormM() {
+	  var location = document.forms["home_filter_m"]["location"].value;
+	  var share_bed = document.forms["home_filter_m"]["share_bed"].value;
+	  var room = document.forms["home_filter_m"]["room"].value;
+	  var type = document.forms["home_filter_m"]["type"].value;
+	  var gender = document.forms["home_filter_m"]["gender"].value;
+	  var service_type = document.forms["home_filter_m"]["service_type"].value;
+	  
+	  
+
+	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="" && service_type=="") {
+	    alert(" must be select any one mobile ");
 	    return false;
 	  }
 	}
