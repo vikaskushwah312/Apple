@@ -11,7 +11,7 @@ class PgLoginController extends Controller
 {
     public function login(Request $request){
     	if (Session::get('pg')) {
-            return Redirect::to("pg/dashboard");
+            return Redirect::to("pg/booked-list");
         }
     	return view('web.pg.auth.login');
     }
@@ -41,7 +41,7 @@ class PgLoginController extends Controller
             if($user->user_type == '3'){ // If user is Paying uest
 
                 Session::put(['pg' => $user->id]); 
-                return Redirect::to("pg/dashboard")->withSuccess('You have success fully login.');
+                return Redirect::to("pg/booked-list")->withSuccess('You have success fully login.');
             } else {
                     return Redirect::to("pg/login")->withFail('Please check credentials.');
             }
@@ -117,7 +117,8 @@ class PgLoginController extends Controller
 
     public function logout(Request $request){
         Session()->flush();
-        return redirect('login')->withSuccess('You have Successfull Logged out.');
+        Session::flash('message', 'You have Successfull Logged out.'); 
+        return Redirect::to("login");
     }
 
     public function bookRoom(Request $request,$property_id){
