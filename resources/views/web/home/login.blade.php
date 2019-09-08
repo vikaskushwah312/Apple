@@ -1,5 +1,18 @@
 @include('layouts.header_css')
 
+@if(Session::has('message'))
+<script type="text/javascript">
+        swal({
+            title: 'Success!',
+            text: "{{Session::get('message')}}",
+            timer: 3000,
+            type: 'success',
+             button: false,
+        }).then((value) => {
+            //location.reload();
+        }).catch(swal.noop);
+      </script>
+@endif
 <!-- Contact section start -->
 <div class="contact-section overview-bgi">
     <div class="container">

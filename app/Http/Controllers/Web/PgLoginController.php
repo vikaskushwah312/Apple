@@ -117,7 +117,7 @@ class PgLoginController extends Controller
 
     public function logout(Request $request){
         Session()->flush();
-        return redirect('login')->withSuccess('You have Successfull LogOut.');
+        return redirect('login')->withSuccess('You have Successfull Logged out.');
     }
 
     public function bookRoom(Request $request,$property_id){

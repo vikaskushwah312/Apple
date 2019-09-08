@@ -62,13 +62,15 @@
 </head>
 
 <body>
+<!-- for logout and button false -->
+
      @if(Session::has('success'))
       <script type="text/javascript">
         swal({
             title: 'Success!',
             text: "{{Session::get('success')}}",
-            timer: 4000,
-            type: 'success'
+            timer: 3000,
+            type: 'success',
         }).then((value) => {
             //location.reload();
         }).catch(swal.noop);
@@ -81,7 +83,7 @@
         title: 'Oops!',
         text: "{{Session::get('fail')}}",
         type: 'error',
-        timer: 4000
+        timer: 3000
     }).then((value) => {
         //location.reload();
     }).catch(swal.noop);
