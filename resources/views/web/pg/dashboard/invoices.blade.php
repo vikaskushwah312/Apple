@@ -18,9 +18,9 @@
                                         <td class="text-center"><strong>Order Id</strong></td>
                                         <!-- <td class="text-center"><strong>Name</strong></td> -->
                                         <td class="text-center"><strong>Month</strong></td>
-                                        <td class="text-center"><strong>Property</strong></td>
                                         <td class="text-center"><strong>Amount</strong></td>
                                         <td class="text-center"><strong>Tenure</strong></td>
+                                        <td class="text-center"><strong>Property Details</strong></td>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -30,9 +30,10 @@
                                             <td class="text-center">{{$key+1}}</td>
                                             <td class="text-center">{{$invoice->order_id}}</td>
                                             <td class="text-center">{{$invoice->start_date}}</td>
-                                            <td class="text-center">{!! propertyTitle($invoice->property_id)!!} </td>
                                             <td class="text-center">{{$invoice->amount}}</td>
                                             <td class="text-center">{{$invoice->tenure}}</td>
+                                            <td class="text-center"><button class="btn"><a href="{{url('pg/property-details/'.$invoice->property_id)}}">View</a></button></td>
+                                            <!-- <td class="text-center">{!! propertyTitle($invoice->property_id)!!} </td> -->
                                         </tr>
                                         @endforeach
                                         @else

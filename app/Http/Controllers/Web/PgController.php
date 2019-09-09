@@ -4,8 +4,9 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Complain,Payment,ComplainReply,Book,Notice};
+use App\Models\{User,Complain,Payment,ComplainReply,Book,Notice,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Vigit};
 use Validator,Redirect,Session,Config,Auth;
+
 
 class PgController extends Controller
 {
@@ -374,5 +375,24 @@ class PgController extends Controller
         }else{
           return Redirect::to("pg/notice")->withFail('Something went to wrong.');
         }
+    }
+
+    public function proDetails(Request $request,$id){
+
+        $data['title'] = '';
+        // $id = property id 
+        $data['result'] = Property::where('id',$id)->orderBy('created_at','desc')->first();
+        // print_r($data['result']);die();
+        $data['images'] = GalleryImage::where('property_id',$id)->get();
+        $data['features'] = Features::where('status','Active')->get();
+
+        $pro_features = PropertyFeatures::where(['property_id'=>$id])->get(['feature_id']);
+        $data['propertey_features'] = [];
+        // To create the property features array
+        foreach ($pro_features as $key => $value) {
+            $data['propertey_features'][] = $value->feature_id;
+        }
+        // print_r($data['propertey_features']);die;
+        return view('web.pg.dashboard.properte_details',$data);
     }
 }

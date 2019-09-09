@@ -111,7 +111,7 @@ class BookPaymentController extends Controller{
 	//get the all property booked by user
 	public function bookList(Request $request){
 
-		$data['title'] =  "My Booked Properties";
+		$data['title'] =  "My Booking ";
         $data['property'] = Book::where(['p_status'=>'Active','user_id'=>auth('user')->id()])
         					->leftjoin('property','book.property_id','=','property.id')
         					->orderBy('book.created_at','desc')

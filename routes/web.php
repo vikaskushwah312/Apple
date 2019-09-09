@@ -189,6 +189,9 @@ Route::namespace('Web')->prefix('pg')->group(function(){
 		Route::post('notice','PgController@postNotice');
 		Route::get('notice-cancel/{id}','PgController@noticeCancel');
 
+		//property details
+		Route::get('property-details/{id}','PgController@proDetails');
+		
 		
 
 		Route::get('logout','PgLoginController@logout');
