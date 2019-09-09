@@ -44,7 +44,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="number">
                                 <label>Email <strong class="required">*</strong></label>
-                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}" required="">
+                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}" required="" disabled="">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">

@@ -44,7 +44,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="number">
                                 <label>Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}">
+                                <input type="text" name="email" class="form-control" placeholder="Email" value="{{$info->email}}" disabled="">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">

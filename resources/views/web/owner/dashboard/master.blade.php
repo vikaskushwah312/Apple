@@ -22,6 +22,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{url('owner/my-profile')}}">My profile</a>
+                                    <a class="dropdown-item" href="{{url('pg/change-password')}}">Change Password</a
                                     <a class="dropdown-item" href="{{url('owner/logout')}}">Logout</a>
                                 </div>
                             </div>
