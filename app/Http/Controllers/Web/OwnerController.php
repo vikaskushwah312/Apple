@@ -4,14 +4,38 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,Vigit};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,Vigit,ComplainReply,Complain};
 use Validator,Redirect,Session,URL,Config;
+use DateTime;
 
 class OwnerController extends Controller
 {   
     public function dashboard(Request $request){
         $data['title'] = "";
     	$data['info'] = User::find(Session::get('owner'));
+        $owner_id = auth('user')->id();
+        $resolved_complains = ComplainReply::where('property.added_by',$owner_id)
+                            ->leftjoin('complain','complain_reply.complain_id','=','complain.id')
+                            ->leftjoin('property','property.id','=','complain.property_id')
+                            ->get('complain_reply.id');
+
+        $complain = Complain::where('property.added_by',$owner_id)
+                            ->leftjoin('complain_reply','complain_reply.complain_id','=','complain.id')
+                            ->leftjoin('property','property.id','=','complain.property_id')
+                            ->get('complain.id');
+        /*$now = new DateTime('Asia/Kolkata');
+        echo $now->format('Y-m-d H:i:s'); echo "<br>";*/
+        $created_at = date('Y-m-d H:i:s', strtotime('-30 days'));
+        
+        $data['vigits'] = Vigit::where('property.added_by',$owner_id)
+                            ->where('vigits.created_at','>',$created_at)
+                            ->leftjoin('property','vigits.property_id','=','property.id')
+                            ->count();
+        $data['complain'] = count($complain);
+        $data['resolved_complains'] = count($resolved_complains);
+        $data['total_property'] = Property::where('added_by',$owner_id)->count();
+        // print_r($data['vigits']);die;
+
     	return view('web.owner.dashboard.dashboard',$data);
     }
 

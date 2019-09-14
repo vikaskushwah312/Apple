@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <center>
-                <p class="copy">© 2019 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                <p class="copy">© Apple blossom shelters</p>
                 </center>
             </div>
         </div>

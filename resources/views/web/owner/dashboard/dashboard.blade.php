@@ -13,8 +13,8 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="ui-item bg-success">
             <div class="left">
-                <h4>242</h4>
-                <p>Active Listings</p>
+                <h4>{{$resolved_complains}}</h4>
+                <p>Resolved Complains</p>
             </div>
             <div class="right">
                 <i class="fa fa-map-marker"></i>
@@ -24,8 +24,8 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="ui-item bg-warning">
             <div class="left">
-                <h4>1242</h4>
-                <p>Listing Views</p>
+                <h4>{{$complain}}</h4>
+                <p>Unresolved Complains</p>
             </div>
             <div class="right">
                 <i class="fa fa-eye"></i>
@@ -35,8 +35,8 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="ui-item bg-active">
             <div class="left">
-                <h4>786</h4>
-                <p>Reviews</p>
+                <h4>{{$total_property}}</h4>
+                <p>Totoal Listings</p>
             </div>
             <div class="right">
                 <i class="fa fa-comments-o"></i>
@@ -46,8 +46,8 @@
     <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="ui-item bg-dark">
             <div class="left">
-                <h4>42</h4>
-                <p>Bookmarked</p>
+                <h4>{{$vigits}}</h4>
+                <p>Present Month Enquires</p>
             </div>
             <div class="right">
                 <i class="fa fa-heart-o"></i>

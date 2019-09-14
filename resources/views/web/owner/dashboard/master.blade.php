@@ -22,7 +22,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{url('owner/my-profile')}}">My profile</a>
-                                    <a class="dropdown-item" href="{{url('pg/change-password')}}">Change Password</a
+                                    <a class="dropdown-item" href="{{url('pg/change-password')}}">Change Password</a>
                                     <a class="dropdown-item" href="{{url('owner/logout')}}">Logout</a>
                                 </div>
                             </div>
@@ -45,10 +45,10 @@
                         <ul class="dashoard-list">
                             <li id="dashboard-active"><a href="{{url('owner/dashboard')}}"><i class="flaticon-dashboard"></i> Dashboard</a></li>
                             <li id="mypropertis-active"><a href="{{url('owner/my-properties')}}"><i class="flaticon-apartment-1"></i>My Properties</a></li>
-                            <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li>
+                            <!-- <li id="invoices-active"><a href="{{url('owner/invoices')}}"><i class="flaticon-bill"></i>My Invoices</a></li> -->
                             <li id="sub-active"><a href="{{url('owner/submit-property')}}"><i class="flaticon-plus"></i>Submit Property</a></li>
                             <li id="complain_list-active"><a href="{{url('owner/complain-list')}}"><i class="flaticon-comment"></i>Complain List</a></li>
-                            <li id="vigit-active"><a href="{{url('owner/vigit')}}"><i class="flaticon-mail"></i>Enquery<!-- <span class="nav-tag" id="enquery">6</span> --></a></li>
+                            <li id="vigit-active"><a href="{{url('owner/vigit')}}"><i class="flaticon-mail"></i>Enquiry<!-- <span class="nav-tag" id="enquery">6</span> --></a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     @yield('webcontent')
-                  <p class="sub-banner-2 text-center position:absolute;bottom:0;width:100%;">© <?php echo  date('Y');?> Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                  <p class="sub-banner-2 text-center position:absolute;bottom:0;width:100%;">©  Apple blossom shelters</p>
                 </div>
             </div>
         </div>

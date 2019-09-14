@@ -1355,7 +1355,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <p class="copy">© 2018 <a href="#">Theme Vessel.</a> Trademarks and brands are the property of their respective owners.</p>
+                <p class="copy">©  Apple blossom shelters</p>
             </div>
             <div class="col-lg-4 col-md-4">
                 <ul class="social-list clearfix">

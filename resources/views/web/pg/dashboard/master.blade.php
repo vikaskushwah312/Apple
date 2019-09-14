@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     @yield('webcontent')
-                  <p class="sub-banner-2 text-center" style="position: absolute;">© <?php echo  date('Y');?> Theme Vessel. Trademarks and brands are the property of their respective owners.</p>
+                  <p class="sub-banner-2 text-center" style="position: absolute;">©  Apple blossom shelters</p>
                 </div>
             </div>
         </div>
