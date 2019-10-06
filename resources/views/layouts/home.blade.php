@@ -75,7 +75,7 @@
 										        <option value="Non-Ac">Non-Ac</option>
 										    </select>
 										</div>
-								    <!--<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
+								        <!--<div class="col-xl-2 col-lg-2 col-sm-4 col-6 search-col">
 										    <select class="selectpicker search-fields" id="service_type" name="service_type">
 										    	<option value="">Services</option>
 										        <option value="premium">Premium</option>
@@ -262,7 +262,7 @@
 	<!-- Featured Properties end -->
 
 	<!-- Services start -->
-	<div class="services content-area bg-grea-3">
+	<div class="services content-area bg-grea-3" style="display: none;">
 	    <div class="container">
 	        <!-- Main title -->
 	        <div class="main-title text-center">
@@ -301,10 +301,478 @@
 	    </div>
 	</div>
 	<!-- Services end -->
-
-	<!-- Categories strat -->
-	<!-- Categories end -->
-
+   
+    <div class="why-choose-us bg-grea-3" style="display: none;">
+	    <div class="container">
+	        <!-- Main title -->
+	        <div class="main-title text-center">
+	            <h1>Why Choose Us ?</h1>
+	            <p>Lorem ipsum dolor sit amet,</p>
+	        </div>
+	        <div class="service-listing row">
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/01-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Unlimited wifi</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/02-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Modern furnishing</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/03-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">House keeping</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/04-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">24*7 Customer support	</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/05-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Repair and maintainance</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/06-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Hygienic food</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/07-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Secure environment</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/08-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title"> Low security deposits</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/09-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Affordable rent</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/10-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">  Zero brokerage</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/11-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">House amenities</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/12-srv-icon.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title"> House at selected location</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        </div>
+	    </div>
+	</div>
+	<!-- why-choose-us end -->
+	<div class="amenities-offer-sec bg-grea-3 pt-md-5 pt-4">
+		<div class="container">
+			 <div class="main-title text-center">
+	            <h1 class="mb-2">Amenities we offer</h1>
+	            <p>Amenities offers list</p>
+	        </div>
+	        <div class="offer-box-cont">
+	        	<div class="row">
+	        		 <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-1.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>R/O filter</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		 <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-2.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Refrigerator</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		 <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-3.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Television</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-4.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Geyser</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-5.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Furniture</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-6.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>A/C or cooler</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-7.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Wifi</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-8.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>Crockery</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        		  <div class="col-md-4">
+	        		 	 <div class="offer-card">
+	        		 	 	 <figure class="offer-img"><img src="{{url('public/img/new-icon-9.png')}}" alt="banner"></figure>
+	        		 	 	 <div class="offer-desc">
+	        		 	 	 	 <h4>DTH service</h4>
+	        		 	 	 	 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	        		 	 	 	 tempor.</p>
+	        		 	 	 </div>
+	        		 	 </div>
+	        		 </div>
+	        		 <!-- ./ col-md-4  -->
+	        	</div>
+	        </div>
+		</div>
+	</div>
+	<!-- amenities-offer-sec end -->
+	<div class="services-offer-sec py-md-5 py-4">
+		<div class="container">
+			<div class="main-title text-center">
+	            <h1 class="mb-2">Services we Offer</h1>
+	            <p>Lorem ipsum dolor sit amet,</p>
+	        </div>
+	        <div class="services-grid">
+	        	<div class="row">
+			   		<div class="col-md-4 service-top1">
+			   			<div class="service-offerBox">
+				   			<div class=" ser-grid">	
+				   				<span class="hi-icon hi-icon-archive"><img src="{{url('public/img/srv-offer-1.png')}}" alt="banner"></span>
+				   			</div>
+				   			<div class="ser-top">
+				   				<h4>CCTV security</h4>
+				   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
+				   					It has roots in a piece.</p>
+				   		    </div>
+			   	        </div>
+			   	    </div>
+					<div class="col-md-4 service-top1">
+			   			<div class="service-offerBox">
+				   			<div class=" ser-grid">	
+				   				<span class="hi-icon hi-icon-archive"><img src="{{url('public/img/srv-offer-3.png')}}" alt="banner"></span>
+				   			</div>
+				   			<div class="ser-top">
+				   				<h4>House cleaning and   maintainace</h4>
+				   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
+				   					It has roots in a piece.</p>
+				   		    </div>
+			   	        </div>
+			   	    </div>
+			   	    <div class="col-md-4 service-top1">
+			   			<div class="service-offerBox">
+				   			<div class=" ser-grid">	
+				   				<span class="hi-icon hi-icon-archive"><img src="{{url('public/img/srv-offer-2.png')}}" alt="banner"></span>
+				   			</div>
+				   			<div class="ser-top">
+				   				<h4>Food service</h4>
+				   				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. 
+				   					It has roots in a piece.</p>
+				   		    </div>
+			   	        </div>
+			   	    </div>
+			   	</div>
+			   	<div class="clearfix"> </div>
+			 </div>
+	       </div>
+	</div>
+	<div class="why-choose-us bg-grea-3">
+	    <div class="container">
+	        <!-- Main title -->
+	        <div class="main-title text-center">
+	            <h1 class="mb-2">Pillars of our Company</h1>
+	            <p>Lorem ipsum dolor sit amet,</p>
+	        </div>
+	        <div class="service-listing row">
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/pil-icon-1.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Security</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/pil-icon-2.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Comfort</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        	<div class="service-card col-lg-4 col-md-6">
+	        		<div class="service-inner">
+                         <div class="icon-box clearfix">
+							<span class="srv-icon">
+								<i class="fa-img"><img src="{{url('public/img/pil-icon-3.png')}}" alt="banner"></i>
+							</span>
+							<div class="srv-content">
+								<h5 class="srv-title">Trust</h5> 
+								<div class="srv-description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+									tempor. </p>
+								</div> 
+							</div>
+						</div>
+	        		</div>
+	        	</div>
+	        	<!-- /. service-card -->
+	        </div>
+	    </div>
+	</div>
+    <div class="owner-section">
+    	<div class="container">
+    		<!-- Main title -->
+	        <div class="main-title text-center">
+	            <h1>Are you Owner?</h1>
+	            <p>Benifits of Renting with appleblossoms </p>
+	        </div>
+    		 <div class="row">
+    		 	 <div class="col-lg-6 col-md-12 owner-img">
+    		 	 	 <figure><img src="{{url('public/img/house-img2.png')}}" alt=""></figure>
+    		 	 </div>
+    		 	 <div class="col-lg-6 col-md-12 owner-dssc">
+                     <h4>Lorem ipsum dolor title</h4>
+                     <ul class="list-style">
+                     	<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                     	tempor.</li>
+                     	<li>Lorem ipsum dolor sit amet, consectetur sed do eiusmod
+                     	tempor.</li>
+                     	<li>Lorem ipsum dolor sit amet, consectetur adipisicing sed do eiusmod
+                     	tempor.</li>
+                     	<li>Lorem ipsum dolor sit amet,  elit sed do eiusmod
+                     	tempor.</li>
+                     	<li>Lorem ipsum dolor sit amet, consectetur sed do eiusmod
+                     	tempor.</li>
+                     	<li>Lorem ipsum dolor sit amet, consectetur adipisicing sed do eiusmod
+                     	tempor.</li>
+                     </ul>
+    		 	 </div>
+    		 </div>
+    	</div>
+    </div>
+    <!--/.  -->
 	<!-- Counters strat -->
 	<div class="counters overview-bgi">
 	    <div class="container">

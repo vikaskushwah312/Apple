@@ -63,10 +63,17 @@
 <div class="sub-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <center>
+            <div class="col-lg-8 col-md-8">
                 <p class="copy">© Apple blossom shelters</p>
-                </center>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <ul class="social-list clearfix">
+                    <li><a href="https://www.facebook.com/appleblossomshelters/?__tn__=%2Cd%2CP-R&eid=ARAAfn2QMwuPvZ-BgyWl8DDroh5waPTyTz9LFHMS2-hxGTCH3shm5B3HMGnXnAcTys-6qo2IQYE2wIMU" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
+                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>

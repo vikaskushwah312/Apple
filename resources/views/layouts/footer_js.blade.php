@@ -35,6 +35,11 @@
 <script  src="{{url('public/js/customjs.js')}}"></script>
 <script type="text/javascript">
  $('.dashoard-list li.active').removeClass('active');
+ 
+ $(".navbar-toggler").click(function(){  
+    // alert('Hello');
+    $("body").toggleClass("open-db-header");  
+}); 
 </script>
 @yield('js')
 </body>

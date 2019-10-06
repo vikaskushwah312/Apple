@@ -59,7 +59,7 @@
 @section('js')
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#dashboard-active').addClass('active');
+    $('#dashboard-active').addClass('active'); 
 });
 </script>
 @endsection
