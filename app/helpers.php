@@ -95,6 +95,16 @@ function userName($id){
 	return $res;
 }
 
+function authName($id){
+	$user = User::where('id',$id)->first();
+	// return $user;
+	$res = 'N/A';
+	if($user){
+		$res = $user['first_name'].' '.$user['last_name'];
+	}
+	return $res;
+}
+
 function propertyTitle($id){
 	return Property::where('id',$id)->value('title');
 }

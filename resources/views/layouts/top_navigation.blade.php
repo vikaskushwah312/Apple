@@ -23,9 +23,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                       @if (auth('user')->id())
                         <a class="nav-link dropdown-toggle" href="{{url('login')}}" >
-                            Login
+                            {!! authName(auth('user')->id())!!}
                         </a>
+                        @else
+                        <a class="nav-link dropdown-toggle" href="{{url('login')}}" >
+                            login 
+                        </a>
+                        @endif
                     </li>
                 </ul>
             </div>
