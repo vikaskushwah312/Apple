@@ -247,6 +247,10 @@ class HomeController extends Controller
         return view('web.home.about_us');
     }
 
+    public function termsConditions(Request $request){
+        return view('web.home.terms_conditions');
+    }
+
     public function login(Request $request){
         if($request->isMethod('post')){ //post method
 

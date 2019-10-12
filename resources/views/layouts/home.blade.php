@@ -827,11 +827,10 @@
 	  var room = document.forms["home_filter"]["room"].value;
 	  var type = document.forms["home_filter"]["type"].value;
 	  var gender = document.forms["home_filter"]["gender"].value;
-	  var service_type = document.forms["home_filter"]["service_type"].value;
-	  
-	  
-
-	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="" && service_type=="") {
+	  // var service_type = document.forms["home_filter"]["service_type"].value;
+	  // console.log(gender);
+   	  // return false;
+	  if (location == "" && share_bed == "" && room == "" && type == "" && gender=="") {
 	    alert(" must be select any one ");
 	    return false;
 	  }

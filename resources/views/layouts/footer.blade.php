@@ -29,31 +29,38 @@
                     </ul>
                 </div>
             </div>
-            <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                <div class="footer-item">
-                    <h4>
-                        Useful Links
-                    </h4>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+               <div class="footer-item">
+                   <h4>
+                       Useful Links
+                   </h4>
                     <div class="f-border"></div>
                     <ul class="links">
                         <li>
                             <a href="{{url('')}}">Home</a>
                         </li>
                         <li>
-                            <a href="{{url('about-us')}}">About Us</a>
+                           <a href="{{url('about-us')}}">About Us</a>
                         </li>
                         <li>
-                            <a href="services.html">Services</a>
+                           <a href="contact.html">Contact Us</a>
                         </li>
                         <li>
-                            <a href="contact.html">Contact Us</a>
+                           <a href="services.html">FAQ</a>
                         </li>
-                        <li>
-                            <a href="properties-details.html">Properties Details</a>
-                        </li>
+                        
+                       <li>
+                           <a href="{{url('terms-conditions')}}">Terms and Conditions</a>
+                       </li>
+                       <li>
+                           <a href="properties-details.html">Privacy Policies</a>
+                       </li>
+                       <li>
+                           <a href="properties-details.html">Careers</a>
+                       </li>
                     </ul>
-                </div>
-            </div> -->
+               </div>
+           </div>
         </div>
     </div>
 </footer>
@@ -68,11 +75,12 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <ul class="social-list clearfix">
-                    <li><a href="https://www.facebook.com/appleblossomshelters/?__tn__=%2Cd%2CP-R&eid=ARAAfn2QMwuPvZ-BgyWl8DDroh5waPTyTz9LFHMS2-hxGTCH3shm5B3HMGnXnAcTys-6qo2IQYE2wIMU" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://www.facebook.com/appleblossomshelters/?__tn__=%2Cd%2CP-R&eid=ARAAfn2QMwuPvZ-BgyWl8DDroh5waPTyTz9LFHMS2-hxGTCH3shm5B3HMGnXnAcTys-6qo2IQYE2wIMU" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/appleblossomshelters_/?hl=en" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                    <!-- <li><a href="#" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="google" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li> -->
+                    
                 </ul>
             </div>
         </div>
