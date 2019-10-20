@@ -1,7 +1,7 @@
 @include('layouts.header_css')
 
 <!-- Main header start -->
-<header class="main-header header-2 fixed-header">
+<header class="main-header header-2 fixed-header" style="opacity: 1;visibility: inherit ;">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand pad-0" href="{{url('')}}">
