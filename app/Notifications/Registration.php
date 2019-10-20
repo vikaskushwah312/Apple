@@ -44,7 +44,7 @@ class Registration extends Notification
         // print_r($this->data);die;
         return (new MailMessage)
                     ->line('The introduction to the notification.'.$this->data['otp'].'  '.$notifiable->email)
-                    ->action('Notification Action', url('/'))
+                    // ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 
