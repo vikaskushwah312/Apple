@@ -16,7 +16,10 @@
             </td>
             <!-- <td class="expire-date"></td> $pro->created_at -->
             <td class="action">
-                <button class="send-btn"><a href="{{url('pg/complain/'.$pro->id)}}"><i class=""></i> Complain</a></button>
+                <div class="send-btn">
+                            <a href="{{url('pg/complain/'.$pro->id)}}" class="btn btn-md button-theme pull-right">Complain</a>
+                        </div>
+                <!-- <button class="send-btn"><a href="{{url('pg/complain/'.$pro->id)}}"><i class=""></i> Complain</a></button> -->
             </td>
         </tr>
         @endforeach
