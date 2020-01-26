@@ -18,7 +18,7 @@ class BookPaymentController extends Controller{
             'tenure'    => 'required',
             'amount'    => 'required',
             ]);
-            if ($validation->fails()) {
+            if ($validation->fails()) { 
               return Redirect::back()->withErrors($validation)->withInput();
             }else{
 		        $order_id= rand(1,999999);
