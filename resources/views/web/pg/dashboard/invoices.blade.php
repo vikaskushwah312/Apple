@@ -29,10 +29,14 @@
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
                                             <td class="text-center">{{$invoice->order_id}}</td>
-                                            <td class="text-center">{{$invoice->start_date}}</td>
+                                            <?php if(empty($invoice->start_date)){ ?>
+                                                <td class="text-center">N/A</td>
+                                            <?php } else { ?> 
+                                                <td class="text-center">{{$invoice->start_date}}</td>
+                                            <?php } ?>
                                             <td class="text-center">{{$invoice->amount}}</td>
                                             <td class="text-center">{{$invoice->tenure}}</td>
-                                            <td class="text-center"><button class="btn"><a href="{{url('pg/property-details/'.$invoice->property_id)}}">View</a></button></td>
+                                            <td class="text-center"><button class="btn button-theme"><a href="{{url('pg/property-details/'.$invoice->property_id)}}" style="color: white;"><strong> View</strong></a></button></td>
                                             <!-- <td class="text-center">{!! propertyTitle($invoice->property_id)!!} </td> -->
                                         </tr>
                                         @endforeach

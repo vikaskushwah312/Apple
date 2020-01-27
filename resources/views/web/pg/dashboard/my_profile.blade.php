@@ -76,11 +76,11 @@
                                     <button type="submit" class="btn btn-md button-theme pull-right">Update Profile</button>
                                 </div>
                             </div>
-                            <div class="col-lg-6 pull-right">
+                            <!-- <div class="col-lg-6 pull-right">
                                 <div class="send-btn">
                                     <a href="{{url('pg/change-password')}}" class="btn btn-md button-theme pull-right">Change Password</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </form>

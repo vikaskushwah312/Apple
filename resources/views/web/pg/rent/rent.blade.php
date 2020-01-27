@@ -10,10 +10,10 @@
 <div class="sub-banner overview-bgi">
     <div class="container">
         <div class="breadcrumb-area">
-            <h1>Properties Book</h1>
+            <h1>Pay Rent</h1>
             <ul class="breadcrumbs">
                 <li><a href="{{url('')}}">Home</a></li>
-                <li class="active">Properties Book</li>
+                <li class="active">Pay Rent</li>
             </ul>
         </div>
     </div>
@@ -117,8 +117,9 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>Total Price <strong class="required">*</strong></label>
-                                    <input type="number" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
+                                    <label>Total Price (Rs)<strong class="required">*</strong></label>
+                                    <p id="show_total_price">0</p>
+                                    <input type="hidden" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
                                     <p class="error help-block" id="amount">
                                     @if($errors->has('amount'))
                                         <i class="error"></i> {{ $errors->first('amount') }}
@@ -179,18 +180,22 @@
 $(document).ready(function(){
     $('#money-active').addClass('active');
          
-    $('#tenure').on('keyup',function(){
+    $('#tenure').on('keyup mouseup', function() {                                                                   
         var tenure = $('#tenure').val();
         var price_pm = $('#price_pm').val();
         var total_price = price_pm*tenure;
         var amount = $("#amount").val(total_price);
+        var amount = $("#show_total_price").text(total_price);                                                 
+      
+    });
 
-    })
-
-    /*$('#start_date').on('change',function(){
-        
-    });*/
+    
 });
+$(window).on('load', function() {
+ var tenure = $('#tenure').val('');
+});
+
+
 </script>
 <script>
  $(function(){

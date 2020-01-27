@@ -112,8 +112,9 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label>Total Price <strong class="required">*</strong></label>
-                                    <input type="number" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
+                                    <label>Total Price (Rs)<strong class="required">*</strong></label>
+                                    <p id="show_total_price">0</p>
+                                    <input type="hidden" name="amount" id="amount" class="form-control" placeholder="Total Price" value="" required="">
                                     <p class="error help-block" id="amount">
                                     @if($errors->has('amount'))
                                         <i class="error"></i> {{ $errors->first('amount') }}
@@ -143,13 +144,19 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $('#invoices-active').addClass('active');
-    $('#tenure').on('keyup',function(){
+    $('#tenure').on('keyup mouseup', function() {
         var tenure = $('#tenure').val();
         var price_pm = $('#price_pm').val();
         var total_price = price_pm*tenure;
         var amount = $("#amount").val(total_price);
+        var total_price = $("#show_total_price").text(total_price); 
+        
 
     })
+
+});
+$(window).on('load', function() {
+ var tenure = $('#tenure').val('');
 });
 </script>
 @endsection

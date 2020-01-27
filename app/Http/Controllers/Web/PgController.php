@@ -13,6 +13,7 @@ class PgController extends Controller
     public function dashboard(Request $request){
     	$data['info'] = User::find(Session::get('pg'));
         $data['title'] = '';
+        
         return Redirect::to("pg/booked-list");
     	return view('web.pg.dashboard.dashboard',$data);
     }
