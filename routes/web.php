@@ -81,6 +81,9 @@ Route::get('search-filter','HomeController@searchFilter');
 Route::get('properte-details/{id}','HomeController@properteDetails');
 Route::get('about-us','HomeController@aboutUs');
 Route::get('terms-conditions','HomeController@termsConditions');
+Route::get('contact-us','HomeController@contactUs');
+Route::get('faq','HomeController@faq');
+
 
 
 Route::get('advance-search','HomeController@advanceSearch');

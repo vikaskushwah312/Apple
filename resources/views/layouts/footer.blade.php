@@ -5,7 +5,7 @@
                 <div class="footer-item clearfix">
                     {!! logoImage() !!}
                     <div class="text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.</p>
+                        <p style="font-family:auto;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.</p>
                     </div>
                 </div>
             </div>
@@ -21,10 +21,10 @@
                             <i class="flaticon-mail"></i><a href="mailto:sales@hotelempire.com">appleblossomshelter@gmail.com</a>
                         </li>
                         <li>
-                            <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">9009991924</a>
+                            <i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">9827749830</a>
                         </li>
                         <li>
-                            <i class="flaticon-fax"></i>9753165691
+                            <i class="flaticon-fax"></i>9009992617
                         </li>
                     </ul>
                 </div>
@@ -43,21 +43,21 @@
                            <a href="{{url('about-us')}}">About Us</a>
                         </li>
                         <li>
-                           <a href="contact.html">Contact Us</a>
+                           <a href="{{url('contact-us')}}">Contact Us</a>
                         </li>
                         <li>
-                           <a href="services.html">FAQ</a>
+                           <a href="{{url('faq')}}">Faq</a>
                         </li>
                         
                        <li>
                            <a href="{{url('terms-conditions')}}">Terms and Conditions</a>
                        </li>
-                       <li>
+                       <!-- <li>
                            <a href="properties-details.html">Privacy Policies</a>
                        </li>
                        <li>
                            <a href="properties-details.html">Careers</a>
-                       </li>
+                       </li> -->
                     </ul>
                </div>
            </div>

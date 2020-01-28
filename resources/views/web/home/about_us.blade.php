@@ -7,7 +7,7 @@
         <div class="breadcrumb-area">
             <h1>About Us</h1>
             <ul class="breadcrumbs">
-                <li><a href="{{url('')}}">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li class="active">About Us</li>
             </ul>
         </div>
@@ -16,14 +16,66 @@
 <!-- Sub Banner end -->
 
 <!-- About city estate start -->
-<div class="about-real-estate  content-area-12">
+<div class="about-real-estate  content-area-5">
     <div class="container">
         <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                <div class="about-slider-box simple-slider">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="http://placehold.it/540x360" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="http://placehold.it/540x360" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="http://placehold.it/540x360" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="slider-mover-left slider-btn-l" aria-hidden="true">
+                                <i class="fa fa-angle-left"></i>
+                            </span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="slider-mover-right slider-btn-r " aria-hidden="true">
+                                 <i class="fa fa-angle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="Properties-info d-none d-xl-block d-lg-block d-md-block d-sm-block">
+                        <ul>
+                            <li>
+                                <i class="flaticon-hotel"></i>
+                                <h4>Bed 3</h4>
+                            </li>
+                            <li>
+                                <i class="flaticon-bathroom"></i>
+                                <h4>Beds 2</h4>
+                            </li>
+                            <li>
+                                <i class="flaticon-area"></i>
+                                <h4>SQ.FT 3500</h4>
+                            </li>
+                            <li>
+                                <i class="flaticon-mechanic"></i>
+                                <h4>Garage 1</h4>
+                            </li>
+                            <li>
+                                <i class="flaticon-balcony"></i>
+                                <h4>Balcony 1</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-xs-12">
                 <div class="about-text">
-                    <h3>Welcome to APPLE BLOSSOM SHELTER </h3>
-                    <p>Our vision is to create a Staying & Living environment that makes Life better for everyone, every person, every organization, and every community around the globe. This motivates us —inspires us —to do what we do. To make & give what we make. To invent, and to reinvent. To engineer experiences that amaze. We won’t stop pushing ahead, becauseyouwon’t stop pushing ahead. You’re reinventing how you work. How you play. How you live. With our innovations environment design and stay experience, you’ll reinvent your world.This is our calling. This is Apple Blossom Shelter.Keep reinventing.Joy of Living.Joy of Togetherness. Our journey started from small place which was not 22 beds nor 10 rooms, but it was a Place where Joy of living is there! Our services, hygiene, security, closed watch, healthy stay has not only helped everyone to grew, but also brought smile in their faces with promises to stay for ever. People come and stay with us for short or long term as per their needs, but they never forget to come back again and stay with us again. Customers Happiness & Joy is our endeavor for which Apple Blossom Shelter Team strives for!!!!</p>
-                    <!-- <a href="#" class="btn btn-md button-theme">Read More</a> -->
+                    <h3>Welcome to RealHouse</h3>
+                    <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>
+                    <p>transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted.</p>
+                    <a href="#" class="btn btn-md button-theme">Read More</a>
                 </div>
             </div>
         </div>
@@ -32,62 +84,175 @@
 <!-- About city estate end -->
 
 <!-- Our team start -->
-<!-- Our team end -->
-
-<!-- Counters strat -->
-<!-- Counters end -->
-
-<!-- Helping sentar start -->
-<!-- <div class="helping-sentar">
+<div class="our-team content-area-3">
     <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 align-self-center">
-                <div class="contact-2 pb-hediin-60">
-                    <h5 class="clearfix">Always Support You</h5>
-                    <h3 class="heading">How can we help</h3>
-                    <form action="#" method="GET" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group name">
-                                    <input type="text" name="name" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group email">
-                                    <input type="email" name="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group subject">
-                                    <input type="text" name="subject" class="form-control" placeholder="Subject">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group number">
-                                    <input type="text" name="phone" class="form-control" placeholder="Number">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group message">
-                                    <textarea class="form-control" name="message" placeholder="Write message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="send-btn">
-                                    <button type="submit" class="btn btn-md button-theme">Send Message</button>
-                                </div>
+        <!-- Main title -->
+        <div class="main-title">
+            <h1>Our Agent</h1>
+            <p>We Have Professional Agents</p>
+        </div>
+        <div class="slick-slider-area">
+            <div class="row slick-carousel" data-slick='{"slidesToShow": 2, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
+                <div class="slick-slide-item">
+                    <div class="row team-2">
+                        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-pad">
+                            <div class="photo">
+                                <img src="http://placehold.it/225x268" alt="avatar-10" class="img-fluid">
                             </div>
                         </div>
-                    </form>
+                        <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-pad bg align-self-center">
+                            <div class="detail">
+                                <h4>
+                                    <a href="agent-detail.html">Karen Paran</a>
+                                </h4>
+                                <h5>Office Manager</h5>
+                                <div class="contact">
+                                    <ul>
+                                        <li>
+                                            <i class="flaticon-pin"></i><a>44 New Design Street,</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-mail"></i><a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-phone"></i><a href="tel:+554XX-634-7071"> +55 4XX-634-7071</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="social-list clearfix">
+                                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="slick-slide-item">
+                    <div class="row team-2">
+                        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-pad">
+                            <div class="photo">
+                                <img src="http://placehold.it/225x268" alt="avatar-9" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-pad bg align-self-center">
+                            <div class="detail">
+                                <h4>
+                                    <a href="agent-detail.html">Eliane Pereira</a>
+                                </h4>
+                                <h5>Creative Director</h5>
+                                <div class="contact">
+                                    <ul>
+                                        <li>
+                                            <i class="flaticon-pin"></i><a>44 New Design Street,</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-mail"></i><a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-phone"></i><a href="tel:+554XX-634-7071"> +55 4XX-634-7071</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="social-list clearfix">
+                                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="row team-2">
+                        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-pad">
+                            <div class="photo">
+                                <img src="http://placehold.it/225x268" alt="avatar-10" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-pad bg align-self-center">
+                            <div class="detail">
+                                <h4>
+                                    <a href="agent-detail.html">Karen Paran</a>
+                                </h4>
+                                <h5>Office Manager</h5>
+                                <div class="contact">
+                                    <ul>
+                                        <li>
+                                            <i class="flaticon-pin"></i><a>44 New Design Street,</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-mail"></i><a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-phone"></i><a href="tel:+554XX-634-7071"> +55 4XX-634-7071</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="social-list clearfix">
+                                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slick-slide-item">
+                    <div class="row team-2">
+                        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-pad">
+                            <div class="photo">
+                                <img src="http://placehold.it/225x268" alt="avatar-9" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-pad bg align-self-center">
+                            <div class="detail">
+                                <h4>
+                                    <a href="agent-detail.html">Eliane Pereira</a>
+                                </h4>
+                                <h5>Creative Director</h5>
+                                <div class="contact">
+                                    <ul>
+                                        <li>
+                                            <i class="flaticon-pin"></i><a>44 New Design Street,</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-mail"></i><a href="mailto:info@themevessel.com">info@themevessel.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="flaticon-phone"></i><a href="tel:+554XX-634-7071"> +55 4XX-634-7071</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <ul class="social-list clearfix">
+                                    <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="google-bg"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="offset-xl-1 col-xl-5 col-lg-6">
-                <img src="http://placehold.it/445x630" alt="avatar-10" class="img-fluid">
+            <div class="slick-prev slick-arrow-buton">
+                <i class="fa fa-angle-left"></i>
+            </div>
+            <div class="slick-next slick-arrow-buton">
+                <i class="fa fa-angle-right"></i>
             </div>
         </div>
     </div>
-</div> -->
-<!-- Helping sentar end -->
+</div>
+<!-- Our team end -->
 @endsection
 @section('js')
 <script type="text/javascript">

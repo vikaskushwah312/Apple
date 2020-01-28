@@ -247,6 +247,13 @@ class HomeController extends Controller
         return view('web.home.about_us');
     }
 
+    public function contactUs(){
+        return view('web.home.contact_us');        
+    }
+    public function faq(){
+        return view('web.home.faq');   
+    }
+
     public function termsConditions(Request $request){
         return view('web.home.terms_conditions');
     }
