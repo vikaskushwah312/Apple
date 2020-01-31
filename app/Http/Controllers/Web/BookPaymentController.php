@@ -116,8 +116,9 @@ class BookPaymentController extends Controller{
         					->leftjoin('property','book.property_id','=','property.id')
         					->orderBy('book.created_at','desc')
         					->get(['book.*','property.*']);
-        
-        return view('web.pg.dashboard.booked_list',$data);
+
+        return view('web.pg.dashboard.dashboard',$data);
+        // return view('web.pg.dashboard.booked_list',$data);
 
 	}
 

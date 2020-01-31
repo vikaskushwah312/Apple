@@ -1,67 +1,36 @@
 @extends('web.pg.dashboard.master')
 @section('webcontent')
-<div class="dashboard-header clearfix">
-    <div class="row">
-        <div class="col-sm-12 col-md-6"><h4>Hello ,{{$info->first_name}}</h4></div>
-    </div>
-</div>
-<!-- <div class="alert alert-success alert-2" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>Your listing</strong> YOUR LISTING HAS BEEN APPROVED!
-</div> -->
-<div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="ui-item bg-success">
-            <div class="left">
-                <h4>242</h4>
-                <p>Active Listings</p>
-            </div>
-            <div class="right">
-                <i class="fa fa-map-marker"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="ui-item bg-warning">
-            <div class="left">
-                <h4>1242</h4>
-                <p>Listing Views</p>
-            </div>
-            <div class="right">
-                <i class="fa fa-eye"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="ui-item bg-active">
-            <div class="left">
-                <h4>786</h4>
-                <p>Reviews</p>
-            </div>
-            <div class="right">
-                <i class="fa fa-comments-o"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="ui-item bg-dark">
-            <div class="left">
-                <h4>42</h4>
-                <p>Bookmarked</p>
-            </div>
-            <div class="right">
-                <i class="fa fa-heart-o"></i>
-            </div>
-        </div>
-    </div>
-</div>
-       
-   
+<div class="dashboard-list">
+    <h3>My Properties List</h3>
+    <table class="manage-table">
+        <tbody>
+        @foreach($property as $pro)
+        <tr class="responsive-table">
+            <td class="listing-photoo">
+                {!! myPropertiesImage($pro->id)!!}
+            </td>
+            <td class="title-container">
+                <h2><a href="javascript:void(0)">{{ $pro->title }}</a></h2> <!-- {{url('owner/property-details')}} -->
+                <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i>{{ $pro->address }}</h5>
+                <h6 class="table-property-price">{{ $pro->price }} / monthly</h6>
+            </td>
+            <!-- <td class="expire-date"></td> $pro->created_at -->
+            <td class="action">
+                <div class="send-btn">
+                            <a href="{{url('pg/complain/'.$pro->id)}}" class="btn btn-md button-theme pull-right">Complain</a>
+                        </div>
+                <!-- <button class="send-btn"><a href="{{url('pg/complain/'.$pro->id)}}"><i class=""></i> Complain</a></button> -->
+            </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
+    </div>    
 @stop
 @section('js')
 <script type="text/javascript">
-$(document).ready(function(){
-    $('#dashboard-active').addClass('active');
-});
+    $(document).ready(function(){
+        $('#dashboard-active').addClass('active');
+    })
 </script>
 @endsection
