@@ -141,7 +141,7 @@
                         <div class="row pad-20">
                             <div class="col-lg-4 col-md-4 col-sm-12">
                                 <div class="form-group">
-                                    <label>Tenure in month<strong class="required">*</strong></label>
+                                    <label>Start Date<strong class="required">*</strong></label>
                                     <input type="text" name="start_date" id="start_date" class="form-control" placeholder="DD/MM/YYYY" value="" required="" autocomplete="off">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -201,9 +201,9 @@
 <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
 <script type="text/javascript">
-        $(function () {
-            $('#start_date').datepicker();
-        });
+$(function () {
+    $('#start_date').datepicker();
+});
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
