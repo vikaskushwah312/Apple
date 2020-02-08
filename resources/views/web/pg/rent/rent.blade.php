@@ -21,6 +21,7 @@
 <!-- Sub Banner end -->
 
 <!-- Properties section start -->
+@if($result)
 <div class="properties-details-page content-area">
     <div class="container">
         <div class="row">
@@ -169,6 +170,7 @@
     </div>
 </div>
 <!-- Properties section end -->
+@endif
 
 @stop
 @section('js')

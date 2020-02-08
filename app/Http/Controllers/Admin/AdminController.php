@@ -16,6 +16,7 @@ class AdminController extends Controller
         if (Session::get('id') == 1 ) {
             return redirect('admin/dashboard');
         }
+        return view('calender');
        return view('admin.auth.login');
      }
 

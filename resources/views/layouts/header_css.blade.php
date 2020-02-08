@@ -23,6 +23,7 @@
 
     <!-- Custom stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{url('public/css/style.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{url('public/css/bootstrap-datetimepicker.min.css')}}"> -->
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{{url('public/css/skins/default.css')}}">
 
     <!-- Favicon icon -->
@@ -41,7 +42,7 @@
     <!--[if lt IE 9]><script  src="{{url('public/js/ie8-responsive-file-warning.js')}}"></script><![endif]-->
     <script  src="{{url('public/js/ie-emulation-modes-warning.js')}}"></script>
     <script src="{{url('public/sweetalert/sweetalert.min.js')}}"></script>
-
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.0.0/jquery.datetimepicker.min.css"> -->
 
 
     <!-- HTML5 shim and Respond.js')}} for IE8 support of HTML5 elements and media queries -->

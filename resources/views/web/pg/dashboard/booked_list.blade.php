@@ -1,7 +1,7 @@
 @extends('web.pg.dashboard.master')
 @section('webcontent')
 <div class="dashboard-list">
-    <h3>My Properties List</h3>
+    <h3>My Properties Listssssssss</h3>
     <table class="manage-table">
         <tbody>
         @foreach($property as $pro)

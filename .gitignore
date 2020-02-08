@@ -9,5 +9,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+tast_for_live.php
 
 /public/uploads

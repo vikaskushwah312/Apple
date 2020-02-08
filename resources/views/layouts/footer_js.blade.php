@@ -7,8 +7,17 @@
     </form>
 </div>
 
-<script src="{{url('public/js/popper.min.js')}}"></script>
+<!-- daterangepicker -->
+<script  src="{{url('public/admin/bower_components/moment/min/moment.min.js')}}"></script>
+<script src="{{url('public/admin/bower_components/bootstrap/js/transition.js')}}"></script>
+<script src="{{url('public/admin/bower_components/bootstrap/js/collapse.js')}}"></script>
 <script src="{{url('public/js/bootstrap.min.js')}}"></script>
+<!-- <script src="{{url('public/js/bootstrap-datetimepicker.min.js')}}"></script> -->
+<!-- datepicker -->
+<!-- <script src="{{url('public/admin/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js')}}"></script> -->
+<!-- <script src="{{url('public/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script> -->
+
+<script src="{{url('public/js/popper.min.js')}}"></script>
 <script  src="{{url('public/js/bootstrap-submenu.js')}}"></script>
 <script  src="{{url('public/js/rangeslider.js')}}"></script>
 <script  src="{{url('public/js/jquery.mb.YTPlayer.js')}}"></script>
@@ -26,6 +35,13 @@
 <script  src="{{url('public/js/jquery.countdown.js')}}"></script>
 <script  src="{{url('public/js/maps.js')}}"></script>
 <script  src="{{url('public/js/app.js')}}"></script>
+
+
+<!-- <script src="{{url('public/admin/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script> -->
+<!-- <script src="{{url('public/admin/bower_components/bootstrap/js/collapse.js')}}"></script> -->
+<!-- <script src="{{url('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script> -->
+<!-- <script src="{{url('public/admin/bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js')}}"></script> -->
+
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script  src="{{url('public/js/ie10-viewport-bug-workaround.js')}}"></script>

@@ -4,6 +4,14 @@
     <h3>My Complain List</h3>
     <table class="manage-table">
         <tbody>
+            
+        @if(count($property) == 0)
+            <!--  <tr class="responsive-table">
+               <td class="title-container">
+                   <h4 ><strong class="error"> !! NO Record found !!</strong> </h4>            
+               </td>
+                        </tr> -->
+        @else
         @foreach($property as $pro)
         <tr class="responsive-table">
             <td class="listing-photoo">
@@ -25,6 +33,8 @@
             </td>
         </tr>
         @endforeach
+        @endif
+        
         </tbody>
     </table>
     </div>    

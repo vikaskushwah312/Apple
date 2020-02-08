@@ -27,6 +27,7 @@ class BookPaymentController extends Controller{
 		            					'user_id' => $user_id,
 		            					'tenure'  => $request->tenure,
 		            					'amount' =>$request->amount,
+		            					'security_money' => $request->security_money,
 		            					'start_date' =>$request->start_date,
 		            					'end_date' =>$request->end_date,
 		        						'created_at'    => date('Y-m-d H:i:s'),
@@ -145,7 +146,7 @@ class BookPaymentController extends Controller{
 			        foreach ($pro_features as $key => $value) {
 			            $data['propertey_features'][] = $value->feature_id;
 			        }
-
+			    
 				return view('web.pg.rent.rent',$data);
 			}else{
 
