@@ -1,8 +1,6 @@
 @extends('web.pg.dashboard.master')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{url('public/css/bootstrap-datetimepicker/jquery-ui.css')}}">
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- -->
+<link rel="stylesheet" type="text/css" href="{{url('public/datepicker/jquery-ui.css')}}">
 @endsection
 @section('webcontent')
 
@@ -129,7 +127,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12">
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>Start Date<strong class="required">*</strong></label>
                                     <input type="text" name="start_date" id="start_date" class="form-control" placeholder="Start Date" value="" required="" autocomplete="off">
@@ -139,8 +137,8 @@
                                     @endif
                                     </p>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
+                            </div> -->
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label>End Date <strong class="required">*</strong></label>
                                     <input type="text" name="end_date" id="end_date" class="form-control" placeholder="End Date" value="" required="" autocomplete="off">
@@ -150,7 +148,7 @@
                                     @endif
                                     </p>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             
@@ -174,10 +172,20 @@
 
 @stop
 @section('js')
-<!-- <script type="text/javascript" src="{{url('public/js/bootstrap-datetimepicker/jquery-1.12.4.js')}}"></script>
-<script type="text/javascript" src="{{url('public/js/bootstrap-datetimepicker/jquery-ui.js')}}"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+<script src="{{url('public/datepicker/jquery-ui.js')}}"></script>
+<script type="text/javascript">
+$(function () {
+    $('#date').datepicker({
+        minDate: 0,
+        changeMonth: true,
+        changeYear: true,
+        // showButtonPanel: true,
+        dateFormat: 'd M yy',
+    });
+});
+</script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     $('#money-active').addClass('active');

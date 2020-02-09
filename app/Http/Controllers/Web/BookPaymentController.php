@@ -146,11 +146,12 @@ class BookPaymentController extends Controller{
 			//done the payment transtion
 			$user_id = auth('user')->id();
 			$property_id = Book::where('user_id',$user_id)->first();
+			// print_r($property_id->id);die;
 			$data['title'] = 'Payment Page';
-			if (!empty($property_id->id)) {
+			if (!empty($property_id->property_id)) {
 				
-				$data['property_id'] = $property_id->id;
-				$property_id = $property_id->id;
+				$data['property_id'] = $property_id->property_id;
+				$property_id = $property_id->property_id;
 				$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
 				// print_r($data['result']);die;
 		        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
@@ -169,5 +170,9 @@ class BookPaymentController extends Controller{
 		} else {
 			return view('web.home.login');
 		}
+	}
+
+	public function payRent(Request $request){
+		
 	}
 }
