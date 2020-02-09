@@ -335,6 +335,7 @@ class PgController extends Controller
          $validation = Validator::make($request->all(),[
             'subject'    => 'required',
             'notice'    => 'required',
+            'date'    => 'required',
         ]);
 
         if ($validation->fails()) {
@@ -346,6 +347,7 @@ class PgController extends Controller
                             'property_id'   => $request->property_id,
                             'user_id'       => auth('user')->id(),
                             'subject'       => $request->subject,
+                            'date'       => $request->date,
                             'notice'        => $request->notice,
                          );
             $notice_ins = Notice::where(['property_id'=>$request->property_id,'user_id'=>auth('user')->id()])->first();

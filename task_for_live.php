@@ -8,3 +8,4 @@ notice
 vigits
 ALTER TABLE `payment` ADD `security_money` INT(11) NULL DEFAULT NULL AFTER `tenure`;
 import the book_by_user.sql table
+ALTER TABLE `notice` ADD `date` VARCHAR(250) NULL AFTER `subject`;

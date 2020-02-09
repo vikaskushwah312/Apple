@@ -425,7 +425,7 @@ class OwnerController extends Controller
     */
     public function vigitList(Request $request){
         $id = auth('user')->id();
-        $data['title'] = 'Vigit List';
+        $data['title'] = 'Visit List';
         $data['property'] = Property::where('added_by',$id)
                                     ->leftjoin('vigits','vigits.property_id','=','property.id')
                                     ->where('vigits.id','!=',null)

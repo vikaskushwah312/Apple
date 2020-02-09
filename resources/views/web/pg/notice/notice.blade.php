@@ -1,4 +1,7 @@
 @extends('web.pg.dashboard.master')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{url('public/datepicker/jquery-ui.css')}}">
+@endsection
 @section('webcontent')
 <div class="dashboard-list">
     <div class="dashboard-message contact-2">
@@ -13,6 +16,17 @@
                     <p class="error help-block" id="subject">
                       @if($errors->has('subject'))
                         <i class="error"></i> {{ $errors->first('subject') }}
+                      @endif
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Date <strong class="required">*</strong></label>
+                    </div>
+                    <input type="text" name="date" id="date" placeholder="Date" style="width: 98%" height="37px;" value="{{$notice?$notice->date:''}}">
+                    <p class="error help-block" id="date">
+                      @if($errors->has('date'))
+                        <i class="error"></i> {{ $errors->first('date') }}
                       @endif
                     </p>
                 </div>
@@ -47,4 +61,18 @@
         </form>
     </div>
 </div>
+@stop
+@section('js')
+<script src="{{url('public/datepicker/jquery-ui.js')}}"></script>
+<script type="text/javascript">
+$(function () {
+    $('#date').datepicker({
+        minDate: 0,
+        changeMonth: true,
+        changeYear: true,
+        // showButtonPanel: true,
+        dateFormat: 'd M yy',
+    });
+});
+</script>
 @stop
