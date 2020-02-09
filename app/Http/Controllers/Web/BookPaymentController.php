@@ -4,7 +4,7 @@ namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Book,Payment};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Book,Payment,BookByUser};
 
 use Validator,Redirect,Session,Config,Auth;
 use PaytmWallet;
@@ -13,6 +13,7 @@ class BookPaymentController extends Controller{
 
 	public function book(Request $request){
 		$user_id = auth('user')->id();
+		// Book::where('user_id',$user_id)->first();
 		if($request->isMethod('post')){
 			$validation = Validator::make($request->all(),[
             'tenure'    => 'required',
@@ -38,32 +39,39 @@ class BookPaymentController extends Controller{
 		        //prepare for payment
 		        $payment = PaytmWallet::with('receive');
 
+		        $total_amount = $request->security_money + $request->amount;
 		        $payment->prepare([
 		          'order' => $order_id,
 		          'user' => $user_id,
 		          'mobile_number' => $user_data->contact_no,
 		          'email' => $user_data->email,
-		          'amount' => $request->amount,
+		          'amount' => $total_amount,
 		          'callback_url' => url('api/payment/status')
 		        ]);
 		        return $payment->receive();
             }
 
 		} else { //get method
-
-			$property_id = Session::get('property_id');
-			//The pull method will retrieve and delete an item from the session in a single statement
-			// $property_id = $request->session()->pull('property_id');
-			$data['title'] = 'Book and Payment Page';
-			$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
-			// print_r($property_id);die;
-	        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
-	        $data['features'] = Features::where('status','Active')->get();
-		    $pro_features = PropertyFeatures::where(['property_id'=>$property_id])->get(['feature_id']);
-		        $data['propertey_features'] = [];
-		        foreach ($pro_features as $key => $value) {
-		            $data['propertey_features'][] = $value->feature_id;
-		        }
+			//if proerty already booked then redirect to pg dashboard page
+			$booked_property = BookByUser::where('user_id',$user_id)->first();
+			if (empty($booked_property)) {
+				$property_id = Session::get('property_id');
+				//The pull method will retrieve and delete an item from the session in a single statement
+				// $property_id = $request->session()->pull('property_id');
+				$data['title'] = 'Book and Payment Page';
+				$data['result'] = Property::where('id',$property_id)->orderBy('created_at','desc')->first();
+				// print_r($property_id);die;
+		        $data['images'] = GalleryImage::where('property_id',$property_id)->get();
+		        $data['features'] = Features::where('status','Active')->get();
+			    $pro_features = PropertyFeatures::where(['property_id'=>$property_id])->get(['feature_id']);
+			        $data['propertey_features'] = [];
+			        foreach ($pro_features as $key => $value) {
+			            $data['propertey_features'][] = $value->feature_id;
+			        }
+			} else {
+				// return Redirect::to("pg/booked-list");
+				return Redirect::to("pg/booked-list")->withSuccess('You have already booked property.');
+			}
 		}
 
         return view('web.pg.dashboard.properte_book',$data);
@@ -98,6 +106,12 @@ class BookPaymentController extends Controller{
         //*Sesstion distory here property wala
         	if ($booked_id && $pro) {
         		// return Redirect::to("owner/my-profile")->withSuccess('You have Successfull Updated.');
+        		$book_by_user = array(
+        								'user_id' =>$payment_info->user_id,
+        								'property_id' =>$payment_info->property_id,
+        								'created_at' =>date('Y-m-d H:i:s') ,
+        								 );
+        		$book_by_user_id = BookByUser::insertGetId($book_by_user);
           		return Redirect::to("pg/booked-list")->withSuccess('You have successfully booked the property.');
             }else{
               return Redirect::back()->withFail('Something went to wrong.');

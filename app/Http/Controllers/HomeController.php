@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Vigit};
+use App\Models\{User,Features,Property,PropertyFeatures,State,ContactOfPerson,GalleryImage,FeaturedProperty,Vigit,BookByUser};
 use Validator,Redirect,Session;
 // *****************************notification ***********
 use App\Notifications\Complain;
@@ -238,6 +238,8 @@ class HomeController extends Controller
             $data['propertey_features'][] = $value->feature_id;
         }
         // print_r($data['propertey_features']);die;
+        $user_id = auth('user')->id();
+        $data['booked_property'] = BookByUser::where('user_id',$user_id)->first();
         return view('web.home.properte_details',$data);
     }
 

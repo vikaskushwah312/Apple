@@ -124,7 +124,6 @@ class PgController extends Controller
             $data['title'] = 'Invoices';
             $where = ['user_id'=>auth('user')->id(),'status'=>'success'];
             $data['invoices'] = Payment::where($where)->get();
-            print_r($data['invoices']);die;
             return view('web.pg.dashboard.invoices',$data);
 
         }

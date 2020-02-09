@@ -202,7 +202,13 @@
 
 <script type="text/javascript">
 $(function () {
-    $('#start_date').datepicker();
+    $('#start_date').datepicker({
+        minDate: 0,
+        changeMonth: true,
+        changeYear: true,
+        // showButtonPanel: true,
+        dateFormat: 'd M yy',
+    });
 });
 </script>
 <script type="text/javascript">

@@ -24,10 +24,12 @@
             </td>
             <!-- <td class="expire-date"></td> $pro->created_at -->
             <td class="action">
-                <a href="{{url('pg/complain-edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
-                <a href="javascript:void(0)" class="delete" id="complain_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
                 @if(in_array($pro->id,$complian_reply))
-                <a href="{{url('pg/complain-status/'.$pro->id)}}"><i class="fa fa-pencil"></i> Resolved or Not</a>
+                    <a href="{{url('pg/complain-status/'.$pro->id)}}" class="btn button-theme">Resolved</a>
+                    <a href="{{url('pg/complain-status/'.$pro->id)}}" class="btn button-theme">Not</a>
+                @else
+                    <a href="{{url('pg/complain-edit/'.$pro->id)}}"><i class="fa fa-pencil"></i> Edit</a>
+                    <a href="javascript:void(0)" class="delete" id="complain_delete" data-id="{{$pro->id}}"><i class="fa fa-remove"></i> Delete</a>
                 @endif
                 <!-- <a href=""><i class="fa  fa-eye-slash"></i> Hide</a> -->
             </td>

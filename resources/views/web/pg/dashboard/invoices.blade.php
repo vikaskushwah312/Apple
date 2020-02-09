@@ -31,12 +31,20 @@
                                             <td class="text-center">{{$invoice->order_id}}</td>
                                             <?php if(empty($invoice->start_date)){ ?>
                                                 <td class="text-center">N/A</td>
-                                            <?php } else { ?> 
-                                                <td class="text-center">{{$invoice->start_date}}</td>
+                                            <?php } else { 
+                                                // One month from a specific date
+                                                $tenure = $invoice->tenure;
+                                                // $effectiveDate = date('d M yy', strtotime("+3 months", strtotime($invoice->start_date)));
+
+                                                $date = date('d M yy', strtotime('+'.$tenure.' month', strtotime($invoice->start_date)));
+                                                // echo $date;die;
+                                                ?> 
+
+                                                <td class="text-center">{{$invoice->start_date}} - {{$date}}</td>
                                             <?php } ?>
                                             <td class="text-center">{{$invoice->amount}}</td>
                                             <td class="text-center">{{$invoice->tenure}}</td>
-                                            <td class="text-center"><button class="btn button-theme"><a href="{{url('pg/property-details/'.$invoice->property_id)}}" style="color: white;"><strong> View</strong></a></button></td>
+                                            <td class="text-center"><a class="btn button-theme" target="_blank" href="{{url('pg/property-details/'.$invoice->property_id)}}" style="color: white;"><strong> View</strong></a></td>
                                             <!-- <td class="text-center">{!! propertyTitle($invoice->property_id)!!} </td> -->
                                         </tr>
                                         @endforeach

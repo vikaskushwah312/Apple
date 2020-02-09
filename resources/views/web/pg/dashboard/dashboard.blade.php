@@ -14,10 +14,10 @@
             @foreach($property as $pro)
             <tr class="responsive-table">
                 <td class="listing-photoo">
-                    {!! myPropertiesImage($pro->id)!!}
+                    <a href="{{url('pg/property-details/'.$pro->id)}}"> {!! myPropertiesImage($pro->id)!!} </a>
                 </td>
                 <td class="title-container">
-                    <h2><a href="javascript:void(0)">{{ $pro->title }}</a></h2> <!-- {{url('owner/property-details')}} -->
+                    <h2><a href="{{url('pg/property-details/'.$pro->id)}}">{{ $pro->title }}</a></h2> <!-- {{url('owner/property-details')}} -->
                     <h5 class="d-none d-xl-block d-lg-block d-md-block"><i class="flaticon-pin"></i>{{ $pro->address }}</h5>
                     <h6 class="table-property-price">{{ $pro->price }} / monthly</h6>
                 </td>

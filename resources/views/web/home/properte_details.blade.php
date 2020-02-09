@@ -34,6 +34,10 @@
                         <!-- id="vigit" -->
                         <!-- data-toggle="modal" data-target="#vigit" -->
                         <a href="{{url('vigit').'/'.$result->id}}" class="btn btn-md button-theme"  id="vigit" target="_blank">Vigit</a>
+                        <!-- @if($booked_property->id)
+                        <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme" disabled>Book</a>
+                        @else
+                        @endif -->
                         <a href="{{url('pg/book-room').'/'.$result->id}}" class="btn btn-md button-theme">Book</a>
                     </div>
                     <h1>{{$result->title}}</h1>
